@@ -1,0 +1,74 @@
+Game name ideas:
+	- ???
+
+
+Throwback ideas:
+	- a reversion to an earlier ancestral characteristic
+		= powerup that transforms player into a caveman or amoeba
+
+	- a person or thing having the characteristics of a former time
+		= me as a child
+
+	-a nostalgia for something in the past (fashion, movies, literature, games, technology)
+		- elements from nostalgic games
+			- Nintendo zapper
+			- Roguelike dungeon
+			- Point 'n' click?
+			- DeLorean that throws TassuP Back To The Future
+			- Princess is in another castle
+			- Zelda-like treasure boxes
+			- Pacman ghosts
+			- Super Mario pipe
+
+	-something retro—a blast from the past
+		- 8bit music?
+		- pixelized graphics?
+		- pixelized effects
+
+	-something passé—no longer fashionable or popular
+
+	-throwing something back—as in a ball or reply
+
+
+
+
+
+### Intro cutscene ###
+
+A kid version me (TassuP) is sitting at his computer. He has just submitted his entry to the Procjam 2017. The computer screen shows his facebook post:
+"Yay! My Procjam entry is done and there's still 21 days to make something for GitHub Game Off!"
+
+
+TassuP is thinking:
+"That was easy. Luckily the jam had such loose rules and using existing code was allowed."
+
+"I wish Github Game Off allowed that too. I would have made a really cool game with my Niceworld generator. But I guess this is a bit more serious competition. Everything should be done in the given timeframe."
+
+"Oh well, I'll just make something else then. No prob!"
+
+"What's the theme, let's see... Hmm.. 'Throwback'."
+
+"Oh geez, there's gonna be sooo many pixelized retro remakes! I'm tired of those."
+
+"Hmm.. I have no idea what to do. I must think of an idea... Something nostalgic... ZZzzZZzzz..."
+
+
+TassuP falls asleep while thinking about nostalgic game ideas. In his dreams he is thrown back in time into a game world that is filled with elements from the games he played as a child. He finds a Nintendo Zapper, Zelda-like treasure boxes and stuff like that in a nethack-like dungeon. He makes his way deeper into the dungeons and ends up in gnomish mines. Lots of monsters there. He finds Toads who tell him the Princess is in another castle.
+
+
+
+
+
+### Game Starts ###
+
+TassuP: "Oh no! I've been thrown back in time to an era when everything was still 2D! And I'm a child again! Damn, there's pixels everywhere. Could you please change the settings for me? Press ESC and disable the annoying retro shader."
+
+
+
+
+
+### Enging scene ###
+
+TassuP finds his way out from the horrible mines trough a Super Mario pipe only to find himself in the middle of a chaotic battlefield. Just as the Space Invaders are attacking, TassuP finds a DeLorean and gets thrown Back In To The Future, wakes up and knows what to make for the GitHub Game Off.
+
+
