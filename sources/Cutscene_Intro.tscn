@@ -1,0 +1,894 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://scripts/Cutscene_Intro.gd" type="Script" id=1]
+[ext_resource path="res://images/star.png" type="Texture" id=2]
+[ext_resource path="res://images/particle.png" type="Texture" id=3]
+[ext_resource path="res://materials/PostProcessing.material" type="Material" id=4]
+[ext_resource path="res://Technically, But Not Actually.ttf" type="DynamicFontData" id=5]
+
+[sub_resource type="Gradient" id=1]
+
+offsets = PoolRealArray( 0, 0.319527, 0.846154, 1 )
+colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 0.603351, 0.944444, 0.947917, 1, 0.596656, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=2]
+
+gradient = SubResource( 1 )
+width = 2048
+
+[sub_resource type="ParticlesMaterial" id=3]
+
+render_priority = 0
+trail_divisor = 1
+emission_shape = 2
+emission_box_extents = Vector3( 512, 600, 1 )
+flag_align_y = false
+flag_rotate_y = false
+flag_disable_z = true
+spread = 0.0
+flatness = 0.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 0.0
+initial_velocity_random = 0.0
+angular_velocity = 0.0
+angular_velocity_random = 0.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 0.0
+linear_accel_random = 0.0
+radial_accel = 0.0
+radial_accel_random = 0.0
+tangential_accel = 0.0
+tangential_accel_random = 0.0
+damping = 0.0
+damping_random = 0.0
+angle = 0.0
+angle_random = 0.0
+scale = 0.05
+scale_random = 0.1
+color_ramp = SubResource( 2 )
+hue_variation = 0.0
+hue_variation_random = 0.0
+anim_speed = 0.0
+anim_speed_random = 0.0
+anim_offset = 0.0
+anim_offset_random = 0.0
+anim_loop = false
+_sections_unfolded = [ "Color", "Emission Shape", "Gravity", "Hue Variation", "Initial Velocity", "Scale", "Spread" ]
+
+[sub_resource type="Gradient" id=4]
+
+offsets = PoolRealArray( 0, 0.248521, 1 )
+colors = PoolColorArray( 1, 0.28125, 0, 0, 0.136719, 0.136719, 0.136719, 0.769231, 0.121094, 0.121094, 0.121094, 0 )
+
+[sub_resource type="GradientTexture" id=5]
+
+gradient = SubResource( 4 )
+width = 2048
+
+[sub_resource type="ParticlesMaterial" id=6]
+
+render_priority = 0
+trail_divisor = 1
+emission_shape = 0
+flag_align_y = false
+flag_rotate_y = false
+flag_disable_z = true
+spread = 5.0
+flatness = 0.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 20.0
+initial_velocity_random = 0.0
+angular_velocity = 0.0
+angular_velocity_random = 0.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 0.0
+linear_accel_random = 0.0
+radial_accel = 0.0
+radial_accel_random = 0.0
+tangential_accel = 0.0
+tangential_accel_random = 0.0
+damping = 0.0
+damping_random = 0.0
+angle = 0.0
+angle_random = 1.0
+scale = 0.7
+scale_random = 0.0
+color_ramp = SubResource( 5 )
+hue_variation = 0.0
+hue_variation_random = 0.0
+anim_speed = 0.0
+anim_speed_random = 0.0
+anim_offset = 0.0
+anim_offset_random = 0.0
+anim_loop = false
+_sections_unfolded = [ "Angle", "Color", "Gravity", "Hue Variation", "Initial Velocity", "Scale", "Spread" ]
+
+[sub_resource type="ParticlesMaterial" id=7]
+
+render_priority = 0
+trail_divisor = 1
+emission_shape = 2
+emission_box_extents = Vector3( 512, 300, 1 )
+flag_align_y = false
+flag_rotate_y = false
+flag_disable_z = true
+spread = 0.0
+flatness = 0.0
+gravity = Vector3( 0, 5, 0 )
+initial_velocity = 0.0
+initial_velocity_random = 0.0
+angular_velocity = 0.0
+angular_velocity_random = 0.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 0.0
+linear_accel_random = 0.0
+radial_accel = 0.0
+radial_accel_random = 0.0
+tangential_accel = 0.0
+tangential_accel_random = 0.0
+damping = 0.0
+damping_random = 0.0
+angle = 0.0
+angle_random = 0.0
+scale = 0.1
+scale_random = 0.1
+color_ramp = SubResource( 2 )
+hue_variation = 0.0
+hue_variation_random = 0.0
+anim_speed = 0.0
+anim_speed_random = 0.0
+anim_offset = 0.0
+anim_offset_random = 0.0
+anim_loop = false
+_sections_unfolded = [ "Color", "Emission Shape", "Gravity", "Hue Variation", "Initial Velocity", "Scale", "Spread" ]
+
+[sub_resource type="Animation" id=8]
+
+resource_name = "Camera movement"
+length = 10.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 7.1, 10 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 512, -300 ), Vector2( 512, -300 ), Vector2( 512, 300 ), Vector2( 437.975, 344.415 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Camera2D:zoom")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/keys = {
+"times": PoolRealArray( 0, 6, 10 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 0.8, 0.8 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Texts/Press any key:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Texts/TassuP\'s Throwback:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/keys = {
+"times": PoolRealArray( 0, 2.3, 3.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Texts/by Tapio Pyrhönen:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/keys = {
+"times": PoolRealArray( 0, 2.7, 3.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Texts/for GitHub:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Camera2D/Fade out:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/keys = {
+"times": PoolRealArray( 8, 10 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath(".:done")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/keys = {
+"times": PoolRealArray( 10 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=9]
+
+resource_name = "Intro texts"
+length = 12.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Texts/TassuP\'s Throwback:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3, 5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Texts/by Tapio Pyrhönen:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/keys = {
+"times": PoolRealArray( 0, 5, 7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Texts/for GitHub:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/keys = {
+"times": PoolRealArray( 0, 7, 8, 10, 11 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Texts/Press any key:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/keys = {
+"times": PoolRealArray( 0, 11, 12 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Camera2D:zoom")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Camera2D:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 512, -300 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Camera2D/Fade out:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="DynamicFont" id=10]
+
+size = 48
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 5 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="DynamicFont" id=11]
+
+size = 32
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 5 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[node name="Cutscene_Intro" type="Node"]
+
+script = ExtResource( 1 )
+done = false
+
+[node name="Scenery" type="Node2D" parent="."]
+
+editor/display_folded = true
+
+[node name="Stars" type="Particles2D" parent="Scenery"]
+
+position = Vector2( 509.485, 1.31091 )
+emitting = true
+amount = 2000
+lifetime = 10.0
+one_shot = false
+preprocess = 100.0
+speed_scale = 1.0
+explosiveness = 0.0
+randomness = 0.0
+fixed_fps = 0
+fract_delta = true
+visibility_rect = Rect2( -512, -600, 1023, 1200 )
+local_coords = true
+draw_order = 0
+process_material = SubResource( 3 )
+texture = ExtResource( 2 )
+normal_map = null
+h_frames = 1
+v_frames = 1
+_sections_unfolded = [ "Drawing", "Process Material", "Textures", "Time", "Transform" ]
+
+[node name="Trees" type="Node2D" parent="Scenery"]
+
+editor/display_folded = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Tree3" type="Polygon2D" parent="Scenery/Trees"]
+
+position = Vector2( 822.557, 568.617 )
+polygon = PoolVector2Array( 721.757, 146.402, 702.712, 192.654, 665.982, 238.907, 695.91, 230.745, 679.586, 264.754, 642.855, 312.367, 608.846, 349.098, 665.982, 340.935, 693.189, 331.413, 676.865, 362.701, 634.693, 400.792, 592.522, 426.639, 646.937, 419.837, 675.504, 417.116, 646.937, 444.324, 604.765, 472.892, 570.756, 489.216, 641.495, 487.856, 691.829, 470.171, 672.784, 493.297, 714.955, 478.333, 747.604, 479.693, 807.461, 489.216, 787.055, 468.81, 810.182, 475.612, 848.272, 479.693, 806.1, 453.846, 776.172, 422.558, 797.938, 437.522, 833.308, 447.044, 874.119, 440.243, 825.146, 404.873, 792.497, 372.224, 777.532, 339.575, 802.019, 357.26, 836.029, 357.26, 804.74, 330.052, 777.532, 285.16, 758.487, 232.105, 781.614, 256.592, 810.182, 264.754, 777.532, 229.385, 748.965, 176.33, 769.37, 191.294, 743.523, 143.681, 721.757, 97.4283 )
+uv = PoolVector2Array(  )
+color = Color( 0.00393295, 0.0429688, 0.00167847, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( -724.475, -455.73 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Tree2" type="Polygon2D" parent="Scenery/Trees"]
+
+position = Vector2( 950.25, 494.593 )
+polygon = PoolVector2Array( 721.757, 146.402, 702.712, 192.654, 665.982, 238.907, 695.91, 230.745, 679.586, 264.754, 642.855, 312.367, 608.846, 349.098, 665.982, 340.935, 693.189, 331.413, 676.865, 362.701, 634.693, 400.792, 592.522, 426.639, 646.937, 419.837, 675.504, 417.116, 646.937, 444.324, 604.765, 472.892, 570.756, 489.216, 641.495, 487.856, 691.829, 470.171, 672.784, 493.297, 714.955, 478.333, 747.604, 479.693, 807.461, 489.216, 787.055, 468.81, 810.182, 475.612, 848.272, 479.693, 806.1, 453.846, 776.172, 422.558, 797.938, 437.522, 833.308, 447.044, 874.119, 440.243, 825.146, 404.873, 792.497, 372.224, 777.532, 339.575, 802.019, 357.26, 836.029, 357.26, 804.74, 330.052, 777.532, 285.16, 758.487, 232.105, 781.614, 256.592, 810.182, 264.754, 777.532, 229.385, 748.965, 176.33, 769.37, 191.294, 743.523, 143.681, 721.757, 97.4283 )
+uv = PoolVector2Array(  )
+color = Color( 0.00384521, 0.0703125, 0, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( -724.475, -455.73 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Tree4" type="Polygon2D" parent="Scenery/Trees"]
+
+position = Vector2( 203.403, 486.712 )
+scale = Vector2( 0.5, 0.5 )
+polygon = PoolVector2Array( 721.757, 146.402, 702.712, 192.654, 665.982, 238.907, 695.91, 230.745, 679.586, 264.754, 642.855, 312.367, 608.846, 349.098, 665.982, 340.935, 693.189, 331.413, 676.865, 362.701, 634.693, 400.792, 592.522, 426.639, 646.937, 419.837, 675.504, 417.116, 646.937, 444.324, 604.765, 472.892, 570.756, 489.216, 641.495, 487.856, 691.829, 470.171, 672.784, 493.297, 714.955, 478.333, 747.604, 479.693, 807.461, 489.216, 787.055, 468.81, 810.182, 475.612, 848.272, 479.693, 806.1, 453.846, 776.172, 422.558, 797.938, 437.522, 833.308, 447.044, 874.119, 440.243, 825.146, 404.873, 792.497, 372.224, 777.532, 339.575, 802.019, 357.26, 836.029, 357.26, 804.74, 330.052, 777.532, 285.16, 758.487, 232.105, 781.614, 256.592, 810.182, 264.754, 777.532, 229.385, 748.965, 176.33, 769.37, 191.294, 743.523, 143.681, 721.757, 97.4283 )
+uv = PoolVector2Array(  )
+color = Color( 0.00393653, 0.0429688, 0.00167847, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( -724.475, -455.73 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Tree5" type="Polygon2D" parent="Scenery/Trees"]
+
+position = Vector2( 36.0447, 501.995 )
+rotation = -3.14159
+scale = Vector2( 1, -1 )
+polygon = PoolVector2Array( 721.757, 146.402, 702.712, 192.654, 665.982, 238.907, 695.91, 230.745, 679.586, 264.754, 642.855, 312.367, 608.846, 349.098, 665.982, 340.935, 693.189, 331.413, 676.865, 362.701, 634.693, 400.792, 592.522, 426.639, 646.937, 419.837, 675.504, 417.116, 646.937, 444.324, 604.765, 472.892, 570.756, 489.216, 641.495, 487.856, 691.829, 470.171, 672.784, 493.297, 714.955, 478.333, 747.604, 479.693, 807.461, 489.216, 787.055, 468.81, 810.182, 475.612, 848.272, 479.693, 806.1, 453.846, 776.172, 422.558, 797.938, 437.522, 833.308, 447.044, 874.119, 440.243, 825.146, 404.873, 792.497, 372.224, 777.532, 339.575, 802.019, 357.26, 836.029, 357.26, 804.74, 330.052, 777.532, 285.16, 758.487, 232.105, 781.614, 256.592, 810.182, 264.754, 777.532, 229.385, 748.965, 176.33, 769.37, 191.294, 743.523, 143.681, 721.757, 97.4283 )
+uv = PoolVector2Array(  )
+color = Color( 0.00384521, 0.0703125, 0, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( -724.475, -455.73 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Ground" type="Polygon2D" parent="Scenery"]
+
+position = Vector2( 6.81621, -68.1622 )
+polygon = PoolVector2Array( -123.76, 648.949, 33.0129, 578.514, 217.051, 542.161, 430.626, 526.257, 687.37, 521.712, 844.143, 533.073, 1055.45, 562.61, 1203.13, 612.595, 1203.13, 719.383, -121.488, 726.199 )
+uv = PoolVector2Array(  )
+color = Color( 0.00390625, 0.125, 0, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="House" type="Polygon2D" parent="Scenery"]
+
+editor/display_folded = true
+polygon = PoolVector2Array( 304.78, 488.711, 289.975, 329.558, 412.116, 249.981, 537.958, 324.006, 528.704, 486.86 )
+uv = PoolVector2Array(  )
+color = Color( 0.355469, 0, 0, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Smoke" type="Particles2D" parent="Scenery/House"]
+
+position = Vector2( 331.36, 246.751 )
+rotation = -1.7138
+emitting = true
+amount = 32
+lifetime = 10.0
+one_shot = false
+preprocess = 0.0
+speed_scale = 1.0
+explosiveness = 0.0
+randomness = 0.0
+fixed_fps = 0
+fract_delta = true
+visibility_rect = Rect2( -100, -100, 200, 200 )
+local_coords = true
+draw_order = 0
+process_material = SubResource( 6 )
+texture = ExtResource( 3 )
+normal_map = null
+h_frames = 1
+v_frames = 1
+_sections_unfolded = [ "Drawing", "Process Material", "Textures", "Time", "Transform", "Visibility" ]
+
+[node name="Roof" type="Polygon2D" parent="Scenery/House"]
+
+polygon = PoolVector2Array( 273.33, 350.143, 410.726, 258.177, 558.095, 342.387, 565.851, 325.767, 409.069, 236.098, 354.217, 274.797, 347.569, 230.476, 313.22, 236.016, 328.732, 288.094, 266.682, 331.307 )
+uv = PoolVector2Array(  )
+color = Color( 0.0719485, 0.0718384, 0.0859375, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Window" type="Polygon2D" parent="Scenery/House"]
+
+editor/display_folded = true
+position = Vector2( 2.70178, -6.48431 )
+polygon = PoolVector2Array( 425.473, 375.665, 426.013, 435.104, 501.123, 434.023, 504.906, 374.043 )
+uv = PoolVector2Array(  )
+color = Color( 1, 0.914062, 0, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Boards" type="Polygon2D" parent="Scenery/House/Window"]
+
+polygon = PoolVector2Array( 458.435, 370.261, 458.435, 394.577, 418.988, 397.279, 418.988, 409.707, 458.435, 409.167, 458.975, 440.508, 470.323, 439.427, 468.702, 408.627, 507.067, 409.707, 507.067, 397.279, 468.702, 396.198, 468.161, 368.099 )
+uv = PoolVector2Array(  )
+color = Color( 0.355469, 0, 0, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Door" type="Polygon2D" parent="Scenery/House"]
+
+editor/display_folded = true
+polygon = PoolVector2Array( 334.147, 479.151, 328.744, 369.998, 386.562, 366.216, 382.78, 476.99 )
+uv = PoolVector2Array(  )
+color = Color( 0.484375, 0.173895, 0.0378418, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Window" type="Polygon2D" parent="Scenery/House/Door"]
+
+position = Vector2( 125.484, 193.564 )
+scale = Vector2( 0.5, 0.5 )
+polygon = PoolVector2Array( 425.473, 375.665, 426.013, 435.104, 501.123, 434.023, 504.906, 374.043 )
+uv = PoolVector2Array(  )
+color = Color( 1, 0.914062, 0, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Trees2" type="Node2D" parent="Scenery"]
+
+editor/display_folded = true
+
+[node name="Tree3" type="Polygon2D" parent="Scenery/Trees2"]
+
+position = Vector2( 688.906, 746.013 )
+polygon = PoolVector2Array( 721.757, 146.402, 702.712, 192.654, 665.982, 238.907, 695.91, 230.745, 679.586, 264.754, 642.855, 312.367, 608.846, 349.098, 665.982, 340.935, 693.189, 331.413, 676.865, 362.701, 634.693, 400.792, 592.522, 426.639, 646.937, 419.837, 675.504, 417.116, 646.937, 444.324, 604.765, 472.892, 570.756, 489.216, 641.495, 487.856, 691.829, 470.171, 672.784, 493.297, 714.955, 478.333, 747.604, 479.693, 807.461, 489.216, 787.055, 468.81, 810.182, 475.612, 848.272, 479.693, 806.1, 453.846, 776.172, 422.558, 797.938, 437.522, 833.308, 447.044, 874.119, 440.243, 825.146, 404.873, 792.497, 372.224, 777.532, 339.575, 802.019, 357.26, 836.029, 357.26, 804.74, 330.052, 777.532, 285.16, 758.487, 232.105, 781.614, 256.592, 810.182, 264.754, 777.532, 229.385, 748.965, 176.33, 769.37, 191.294, 743.523, 143.681, 721.757, 97.4283 )
+uv = PoolVector2Array(  )
+color = Color( 0.00393295, 0.0429688, 0.00167847, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( -724.475, -455.73 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Tree6" type="Polygon2D" parent="Scenery/Trees2"]
+
+position = Vector2( 982.858, 679.206 )
+polygon = PoolVector2Array( 721.757, 146.402, 702.712, 192.654, 665.982, 238.907, 695.91, 230.745, 679.586, 264.754, 642.855, 312.367, 608.846, 349.098, 665.982, 340.935, 693.189, 331.413, 676.865, 362.701, 634.693, 400.792, 592.522, 426.639, 646.937, 419.837, 675.504, 417.116, 646.937, 444.324, 604.765, 472.892, 570.756, 489.216, 641.495, 487.856, 691.829, 470.171, 672.784, 493.297, 714.955, 478.333, 747.604, 479.693, 807.461, 489.216, 787.055, 468.81, 810.182, 475.612, 848.272, 479.693, 806.1, 453.846, 776.172, 422.558, 797.938, 437.522, 833.308, 447.044, 874.119, 440.243, 825.146, 404.873, 792.497, 372.224, 777.532, 339.575, 802.019, 357.26, 836.029, 357.26, 804.74, 330.052, 777.532, 285.16, 758.487, 232.105, 781.614, 256.592, 810.182, 264.754, 777.532, 229.385, 748.965, 176.33, 769.37, 191.294, 743.523, 143.681, 721.757, 97.4283 )
+uv = PoolVector2Array(  )
+color = Color( 0.00393295, 0.0429688, 0.00167847, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( -724.475, -455.73 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Tree5" type="Polygon2D" parent="Scenery/Trees2"]
+
+position = Vector2( 156.788, 642.961 )
+rotation = -3.14159
+scale = Vector2( 1, -1 )
+polygon = PoolVector2Array( 721.757, 146.402, 702.712, 192.654, 665.982, 238.907, 695.91, 230.745, 679.586, 264.754, 642.855, 312.367, 608.846, 349.098, 665.982, 340.935, 693.189, 331.413, 676.865, 362.701, 634.693, 400.792, 592.522, 426.639, 646.937, 419.837, 675.504, 417.116, 646.937, 444.324, 604.765, 472.892, 570.756, 489.216, 641.495, 487.856, 691.829, 470.171, 672.784, 493.297, 714.955, 478.333, 747.604, 479.693, 807.461, 489.216, 787.055, 468.81, 810.182, 475.612, 848.272, 479.693, 806.1, 453.846, 776.172, 422.558, 797.938, 437.522, 833.308, 447.044, 874.119, 440.243, 825.146, 404.873, 792.497, 372.224, 777.532, 339.575, 802.019, 357.26, 836.029, 357.26, 804.74, 330.052, 777.532, 285.16, 758.487, 232.105, 781.614, 256.592, 810.182, 264.754, 777.532, 229.385, 748.965, 176.33, 769.37, 191.294, 743.523, 143.681, 721.757, 97.4283 )
+uv = PoolVector2Array(  )
+color = Color( 0.00393295, 0.0429688, 0.00167847, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( -724.475, -455.73 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Tree7" type="Polygon2D" parent="Scenery/Trees2"]
+
+position = Vector2( 342.179, 814.99 )
+rotation = -3.14159
+scale = Vector2( 1, -1 )
+polygon = PoolVector2Array( 721.757, 146.402, 702.712, 192.654, 665.982, 238.907, 695.91, 230.745, 679.586, 264.754, 642.855, 312.367, 608.846, 349.098, 665.982, 340.935, 693.189, 331.413, 676.865, 362.701, 634.693, 400.792, 592.522, 426.639, 646.937, 419.837, 675.504, 417.116, 646.937, 444.324, 604.765, 472.892, 570.756, 489.216, 641.495, 487.856, 691.829, 470.171, 672.784, 493.297, 714.955, 478.333, 747.604, 479.693, 807.461, 489.216, 787.055, 468.81, 810.182, 475.612, 848.272, 479.693, 806.1, 453.846, 776.172, 422.558, 797.938, 437.522, 833.308, 447.044, 874.119, 440.243, 825.146, 404.873, 792.497, 372.224, 777.532, 339.575, 802.019, 357.26, 836.029, 357.26, 804.74, 330.052, 777.532, 285.16, 758.487, 232.105, 781.614, 256.592, 810.182, 264.754, 777.532, 229.385, 748.965, 176.33, 769.37, 191.294, 743.523, 143.681, 721.757, 97.4283 )
+uv = PoolVector2Array(  )
+color = Color( 0.00393295, 0.0429688, 0.00167847, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( -724.475, -455.73 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Tree4" type="Polygon2D" parent="Scenery/Trees2"]
+
+position = Vector2( 29.4452, 605.151 )
+scale = Vector2( 0.5, 0.5 )
+polygon = PoolVector2Array( 721.757, 146.402, 702.712, 192.654, 665.982, 238.907, 695.91, 230.745, 679.586, 264.754, 642.855, 312.367, 608.846, 349.098, 665.982, 340.935, 693.189, 331.413, 676.865, 362.701, 634.693, 400.792, 592.522, 426.639, 646.937, 419.837, 675.504, 417.116, 646.937, 444.324, 604.765, 472.892, 570.756, 489.216, 641.495, 487.856, 691.829, 470.171, 672.784, 493.297, 714.955, 478.333, 747.604, 479.693, 807.461, 489.216, 787.055, 468.81, 810.182, 475.612, 848.272, 479.693, 806.1, 453.846, 776.172, 422.558, 797.938, 437.522, 833.308, 447.044, 874.119, 440.243, 825.146, 404.873, 792.497, 372.224, 777.532, 339.575, 802.019, 357.26, 836.029, 357.26, 804.74, 330.052, 777.532, 285.16, 758.487, 232.105, 781.614, 256.592, 810.182, 264.754, 777.532, 229.385, 748.965, 176.33, 769.37, 191.294, 743.523, 143.681, 721.757, 97.4283 )
+uv = PoolVector2Array(  )
+color = Color( 0.00393653, 0.0429688, 0.00167847, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( -724.475, -455.73 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Snow" type="Particles2D" parent="Scenery"]
+
+position = Vector2( 512, -300 )
+emitting = true
+amount = 200
+lifetime = 17.0
+one_shot = false
+preprocess = 100.0
+speed_scale = 1.0
+explosiveness = 0.0
+randomness = 0.0
+fixed_fps = 0
+fract_delta = true
+visibility_rect = Rect2( -512, -300, 1024, 1200 )
+local_coords = true
+draw_order = 0
+process_material = SubResource( 7 )
+texture = ExtResource( 3 )
+normal_map = null
+h_frames = 1
+v_frames = 1
+_sections_unfolded = [ "Drawing", "Process Material", "Textures", "Time", "Transform" ]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+root_node = NodePath("..")
+"anims/Camera movement" = SubResource( 8 )
+"anims/Intro texts" = SubResource( 9 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = "Intro texts"
+_sections_unfolded = [ "Playback Options", "playback" ]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+position = Vector2( 512, -300 )
+anchor_mode = 1
+rotating = false
+current = true
+zoom = Vector2( 1, 1 )
+limit_left = -10000000
+limit_top = -10000000
+limit_right = 10000000
+limit_bottom = 10000000
+limit_smoothed = false
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = false
+smoothing_speed = 5.0
+drag_margin_left = 0.2
+drag_margin_top = 0.2
+drag_margin_right = 0.2
+drag_margin_bottom = 0.2
+editor_draw_screen = true
+editor_draw_limits = false
+editor_draw_drag_margin = false
+_sections_unfolded = [ "Transform" ]
+
+[node name="PostProcessing" type="ColorRect" parent="Camera2D"]
+
+material = ExtResource( 4 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -512.0
+margin_top = -418.0
+margin_right = 448.0
+margin_bottom = 236.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 1, 1, 1, 1 )
+_sections_unfolded = [ "Material", "Rect", "Size Flags" ]
+
+[node name="Fade out" type="ColorRect" parent="Camera2D"]
+
+modulate = Color( 1, 1, 1, 0.0500002 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -512.0
+margin_top = -418.0
+margin_right = 448.0
+margin_bottom = 236.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 0, 0, 0, 1 )
+_sections_unfolded = [ "Material", "Rect", "Size Flags", "Visibility" ]
+
+[node name="Texts" type="Control" parent="."]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -600.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="TassuP's Throwback" type="Label" parent="Texts"]
+
+anchor_left = 0.5
+anchor_top = 0.0
+anchor_right = 0.5
+anchor_bottom = 0.0
+margin_left = -190.0
+margin_top = 230.0
+margin_right = 189.0
+margin_bottom = 278.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 10 )
+text = "TassuP's Throwback"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Margin", "Size Flags", "Visibility", "custom_fonts" ]
+
+[node name="by Tapio Pyrhönen" type="Label" parent="Texts"]
+
+anchor_left = 0.5
+anchor_top = 0.0
+anchor_right = 0.5
+anchor_bottom = 0.0
+margin_left = -190.0
+margin_top = 286.0
+margin_right = 189.0
+margin_bottom = 318.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 11 )
+text = "By Tapio Pyrhönen"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Visibility", "custom_fonts" ]
+
+[node name="for GitHub" type="Label" parent="Texts"]
+
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.5
+anchor_top = 0.0
+anchor_right = 0.5
+anchor_bottom = 0.0
+margin_left = -190.0
+margin_top = 371.0
+margin_right = 189.0
+margin_bottom = 403.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 11 )
+text = "For GitHub Game Off 20 17"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Visibility", "custom_fonts" ]
+
+[node name="Press any key" type="Label" parent="Texts"]
+
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.5
+anchor_top = 0.0
+anchor_right = 0.5
+anchor_bottom = 0.0
+margin_left = -190.0
+margin_top = 371.0
+margin_right = 189.0
+margin_bottom = 403.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 11 )
+text = "< Press any key to start >"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Visibility", "custom_fonts" ]
+
+

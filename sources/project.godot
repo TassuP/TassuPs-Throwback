@@ -10,8 +10,17 @@ config_version=3
 
 [application]
 
-config/name="Throwback"
+config/name="TassuP's Throwback"
+run/main_scene="res://Cutscene_Intro.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+Game="*res://scripts/Game.gd"
+
+[display]
+
+window/stretch/mode="2d"
 
 [gdnative]
 
@@ -19,4 +28,5 @@ singletons=[  ]
 
 [rendering]
 
+environment/default_clear_color=Color( 0, 0, 0, 1 )
 environment/default_environment="res://default_env.tres"

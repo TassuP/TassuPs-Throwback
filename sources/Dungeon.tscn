@@ -1,0 +1,287 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scripts/Player.gd" type="Script" id=1]
+[ext_resource path="res://materials/PostProcessing.material" type="Material" id=2]
+
+[sub_resource type="CapsuleShape2D" id=1]
+
+custom_solver_bias = 0.0
+radius = 10.0
+height = 7.82054
+
+[node name="Main" type="Node"]
+
+[node name="Control" type="Control" parent="."]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 40.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="Node2D" type="Node2D" parent="."]
+
+editor/display_folded = true
+
+[node name="Floor" type="Polygon2D" parent="Node2D"]
+
+position = Vector2( 42.2055, 4.52197 )
+polygon = PoolVector2Array( 122.289, 118.598, 112.766, 193.418, 120.929, 261.437, 131.812, 317.212, 123.649, 347.141, 78.7569, 375.708, 51.5494, 393.393, 44.7476, 427.403, 47.4683, 479.097, 76.0362, 518.548, 142.694, 549.836, 237.921, 547.116, 277.372, 515.827, 286.894, 464.133, 276.011, 375.708, 231.119, 351.222, 225.677, 310.41, 276.011, 315.852, 378.039, 321.293, 440.616, 349.861, 474.626, 398.835, 515.437, 447.808, 489.59, 466.853, 465.103, 515.827, 480.067, 555.278, 578.014, 567.521, 783.431, 557.999, 871.855, 488.619, 852.81, 402.916, 865.053, 272.32, 843.287, 159.409, 799.755, 79.1469, 675.961, 68.2639, 564.41, 80.5073, 531.761, 140.364, 530.401, 247.833, 535.843, 321.293, 515.437, 315.852, 485.509, 280.482, 424.292, 239.671, 350.832, 224.707, 217.515, 221.986, 203.911, 125.4, 227.038, 103.634, 227.038, 42.4168, 195.749, 24.7319, 120.929, 28.8131, 86.9192, 80.5073 )
+uv = PoolVector2Array(  )
+color = Color( 0.289062, 0.289062, 0.289062, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Node2D/Floor"]
+
+position = Vector2( -42.2055, -4.52197 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/Floor/StaticBody2D"]
+
+position = Vector2( 42.2055, 4.52197 )
+build_mode = 0
+polygon = PoolVector2Array( 191.65, 25.8641, 120.441, 30.7751, 87.2921, 82.34, 124.124, 120.4, 114.302, 191.609, 135.174, 315.61, 125.352, 352.442, 54.1432, 392.958, 49.2323, 472.761, 77.4702, 516.959, 143.768, 552.564, 233.393, 546.425, 232.165, 591.851, -33.0262, 590.623, -36.7094, 17.2699, 194.105, 2.53709 )
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Node2D/Floor/StaticBody2D"]
+
+position = Vector2( 42.2055, 4.52197 )
+build_mode = 0
+polygon = PoolVector2Array( 196.105, 3.13125, 190.105, 26.1313, 226.105, 40.1312, 227.105, 103.131, 202.105, 130.131, 217.105, 224.131, 350.105, 225.131, 425.105, 238.131, 484.105, 281.131, 513.105, 317.131, 535.105, 324.131, 532.105, 139.131, 569.105, 79.1312, 670.976, 67.4583, 801.116, 79.7356, 794.977, 1.16043 )
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Node2D/Floor/StaticBody2D"]
+
+position = Vector2( 42.2055, 4.52197 )
+build_mode = 0
+polygon = PoolVector2Array( 794.977, 1.16043, 797.433, 82.1911, 835.492, 158.311, 864.958, 277.401, 853.909, 405.086, 871.097, 487.345, 780.244, 557.326, 776.561, 597.841, 982.821, 592.93, 979.138, 1.16043 )
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="Node2D/Floor/StaticBody2D"]
+
+position = Vector2( 42.2055, 4.52197 )
+build_mode = 0
+polygon = PoolVector2Array( 227.762, 315.461, 228.99, 353.521, 274.573, 377.59, 282.695, 462.425, 277.28, 514.77, 232.155, 546.358, 231.253, 593.288, 779.973, 596.898, 782.68, 556.285, 575.105, 567.115, 481.245, 552.675, 466.805, 514.77, 493.88, 465.133, 517.345, 447.985, 443.34, 349.613, 378.36, 318.928 )
+
+[node name="Player" type="KinematicBody2D" parent="Node2D"]
+
+position = Vector2( 204.268, 78.1934 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Gfx" type="Node2D" parent="Node2D/Player"]
+
+editor/display_folded = true
+
+[node name="Head" type="Polygon2D" parent="Node2D/Player/Gfx"]
+
+editor/display_folded = true
+position = Vector2( 1.57343, -0.524467 )
+polygon = PoolVector2Array( -4.45607, -13.8209, -6.58689, -16.5328, -7.74916, -20.9882, -6.78061, -24.2813, -3.68122, -26.9933, -0.388126, -27.5744, 3.29239, -25.4436, 4.06724, -21.5693, 3.4861, -16.7265, 0.774139, -13.046, 0.774139, -9.55922, -4.26236, -9.55922 )
+uv = PoolVector2Array(  )
+color = Color( 0.980469, 0.796451, 0.509384, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Hair" type="Polygon2D" parent="Node2D/Player/Gfx/Head"]
+
+polygon = PoolVector2Array( -1.21853, -29.1442, -4.91189, -27.7592, -8.5283, -23.7581, -9.06692, -20.6803, -8.68219, -18.5258, -10.2211, -17.8333, -11.8369, -16.2175, -12.6064, -14.063, -12.8372, -11.4469, -14.3761, -9.83102, -15.992, -9.60019, -17.0692, -10.2157, -16.8384, -8.52296, -14.607, -7.21489, -11.9139, -7.29184, -9.52859, -9.21546, -8.83608, -11.6777, -9.60553, -13.9091, -9.60553, -16.0636, -8.29747, -17.6794, -7.52802, -16.4483, -5.75828, -15.6019, -6.37384, -18.4489, -6.37384, -20.4494, -4.83494, -22.0653, -3.9116, -22.0653, -2.91132, -21.3728, -2.37271, -20.3725, -1.44937, -20.6033, -1.83409, -22.3731, -1.14158, -23.9889, -0.295191, -24.9122, 2.0901, -25.5278, 3.16733, -25.22, 3.24428, -26.4511, 1.62843, -28.4517 )
+uv = PoolVector2Array(  )
+color = Color( 1, 0.8526, 0.179688, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Nose" type="Polygon2D" parent="Node2D/Player/Gfx/Head"]
+
+position = Vector2( -2.20126, -1.21916 )
+polygon = PoolVector2Array( 5.10007, -18.8202, 5.87898, -19.396, 7.06428, -19.5314, 8.18184, -19.0234, 8.48663, -18.1768, 8.14797, -17.364, 7.2336, -16.9238, 5.81125, -17.0931, 5.13394, -17.7365, 4.99848, -18.1768 )
+uv = PoolVector2Array(  )
+color = Color( 0.980392, 0.796078, 0.505882, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Eye" type="Polygon2D" parent="Node2D/Player/Gfx/Head"]
+
+editor/display_folded = true
+polygon = PoolVector2Array( 2.01926, -23.9945, 0.913588, -23.6259, 0.452889, -22.8427, 0.31468, -21.4146, 0.913588, -20.4932, 1.88105, -20.0325, 2.98673, -20.3549, 3.44743, -21.3224, 3.44743, -23.0731, 2.80245, -23.9484 )
+uv = PoolVector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Pupil" type="Polygon2D" parent="Node2D/Player/Gfx/Head/Eye"]
+
+position = Vector2( 0.0976148, 0.578707 )
+polygon = PoolVector2Array( 2.58602, -23.0602, 2.11303, -22.861, 1.8143, -22.388, 1.73962, -21.5665, 1.93877, -21.1433, 2.33708, -20.9442, 2.83496, -20.9442, 3.18349, -21.3176, 3.30796, -22.1391, 3.05901, -22.861 )
+uv = PoolVector2Array(  )
+color = Color( 0, 0, 0, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Spec1" type="Polygon2D" parent="Node2D/Player/Gfx/Head/Eye/Pupil"]
+
+polygon = PoolVector2Array( 2.07977, -22.6759, 1.93733, -22.4458, 2.03594, -22.2486, 2.20029, -22.2595, 2.30986, -22.4787, 2.24412, -22.6649 )
+uv = PoolVector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Spec2" type="Polygon2D" parent="Node2D/Player/Gfx/Head/Eye/Pupil"]
+
+position = Vector2( 0.865574, 1.15045 )
+polygon = PoolVector2Array( 2.07977, -22.6759, 1.93733, -22.4458, 2.03594, -22.2486, 2.20029, -22.2595, 2.30986, -22.4787, 2.24412, -22.6649 )
+uv = PoolVector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Shirt" type="Polygon2D" parent="Node2D/Player/Gfx"]
+
+position = Vector2( 1.57343, -0.524467 )
+polygon = PoolVector2Array( -4.03583, -10.1472, -6.09201, -7.5769, -6.60606, 0.13382, -6.22052, 6.68794, 3.03235, 6.68794, 3.28937, 0.13382, 2.13277, -7.5769, 0.590622, -10.1472 )
+uv = PoolVector2Array(  )
+color = Color( 0.234375, 0.0979614, 0.0979614, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Legs" type="Polygon2D" parent="Node2D/Player/Gfx"]
+
+editor/display_folded = true
+position = Vector2( 1.57343, -0.524467 )
+polygon = PoolVector2Array( -4.93539, 6.30241, -3.39325, 18.5111, 1.74722, 18.5111, 2.38979, 6.1739 )
+uv = PoolVector2Array(  )
+color = Color( 0.198706, 0.184097, 0.371094, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Shoe" type="Polygon2D" parent="Node2D/Player/Gfx/Legs"]
+
+polygon = PoolVector2Array( -3.06778, 18.3492, -3.14471, 21.6578, 7.78146, 21.9656, 7.70453, 19.5034, 5.7809, 18.2723, 1.1642, 18.657, 0.856415, 18.1184 )
+uv = PoolVector2Array(  )
+color = Color( 0.101562, 0.101562, 0.101562, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Player"]
+
+position = Vector2( 0.774857, 9.49186 )
+shape = SubResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+
+material = ExtResource( 2 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 1, 1, 1, 1 )
+_sections_unfolded = [ "Material" ]
+
+
