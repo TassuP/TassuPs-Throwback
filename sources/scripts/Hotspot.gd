@@ -4,6 +4,9 @@ export(PoolStringArray) var foot_str
 export(PoolStringArray) var eye_str
 export(PoolStringArray) var hand_str
 export(String) var correct_item = ""
+export(NodePath) var node_to_trigger
+export var one_shot = true
+var has_triggered = false
 
 export var click_distance = 64.0
 var foot_str_i = 0
@@ -14,9 +17,8 @@ var mouse_is_over = false
 var wait_for_release = false
 
 func _ready():
-	# Called every time the node is added to the scene.
-	# Initialization here
-	pass
+	if(node_to_trigger != null):
+		node_to_trigger = get_node(node_to_trigger)
 
 func _process(delta):
 	if(Game.paused || Game.talking):
@@ -57,5 +59,11 @@ func _process(delta):
 	else:
 		wait_for_release = false
 
-func trigger_stuff():
-	print("Something happens now.")
+func after_talk():
+	if(node_to_trigger != null):
+		if(one_shot == false || has_triggered == false):
+			print(get_name(), " triggered ",node_to_trigger.get_name())
+			node_to_trigger.run()
+			has_triggered = true
+	else:
+		print(get_name(), " doesn't have a node to trigger.")

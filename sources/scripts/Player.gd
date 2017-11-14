@@ -23,9 +23,14 @@ func _process(delta):
 
 func walking(delta):
 	
-	if(Input.is_mouse_button_pressed(BUTTON_LEFT) && Game.cursor.tool_mode == 0 && Game.wait_for_release == false):
-		target_pos = get_local_mouse_position() + get_global_position()
-	else:
+	if(Game.event_running):
 		move_vec = target_pos - get_global_position()
 		if(move_vec.length() > 10.0):
 			move_and_slide(move_vec.normalized() * walk_spd)
+	else:
+		if(Input.is_mouse_button_pressed(BUTTON_LEFT) && Game.cursor.tool_mode == 0 && Game.wait_for_release == false):
+			target_pos = get_local_mouse_position() + get_global_position()
+		else:
+			move_vec = target_pos - get_global_position()
+			if(move_vec.length() > 10.0):
+				move_and_slide(move_vec.normalized() * walk_spd)

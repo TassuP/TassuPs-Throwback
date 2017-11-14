@@ -1,27 +1,20 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scripts/Hotspot.gd" type="Script" id=1]
-[ext_resource path="res://scripts/Player.gd" type="Script" id=2]
-[ext_resource path="res://Technically, But Not Actually.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://scripts/HotspotEvent.gd" type="Script" id=2]
+[ext_resource path="res://scripts/Player.gd" type="Script" id=3]
 [ext_resource path="res://scripts/Cursor.gd" type="Script" id=4]
 [ext_resource path="res://scripts/cam.gd" type="Script" id=5]
 [ext_resource path="res://shaders/PostProsessing.shd" type="Shader" id=6]
 [ext_resource path="res://scripts/PauseMenu.gd" type="Script" id=7]
-[ext_resource path="res://scripts/Monolog.gd" type="Script" id=8]
+[ext_resource path="res://Technically, But Not Actually.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://scripts/Talk label.gd" type="Script" id=9]
 
 [sub_resource type="CapsuleShape2D" id=1]
 
 custom_solver_bias = 0.0
 radius = 10.0
 height = 7.82054
-
-[sub_resource type="DynamicFont" id=4]
-
-size = 30
-use_mipmaps = false
-use_filter = true
-font_data = ExtResource( 3 )
-_sections_unfolded = [ "Font", "Settings" ]
 
 [sub_resource type="ShaderMaterial" id=2]
 
@@ -35,8 +28,16 @@ _sections_unfolded = [ "shader_param" ]
 size = 16
 use_mipmaps = false
 use_filter = false
-font_data = ExtResource( 3 )
+font_data = ExtResource( 8 )
 _sections_unfolded = [ "Font" ]
+
+[sub_resource type="DynamicFont" id=4]
+
+size = 30
+use_mipmaps = false
+use_filter = true
+font_data = ExtResource( 8 )
+_sections_unfolded = [ "Font", "Settings" ]
 
 [node name="Main" type="Node"]
 
@@ -113,10 +114,39 @@ audio_bus_name = "Master"
 script = ExtResource( 1 )
 _sections_unfolded = [ "Pickable", "Textures" ]
 foot_str = PoolStringArray( "I don\'t think I should go there.", "I really shouldn\'t...", "Umm...#Well...#What the heck.#$" )
-eye_str = PoolStringArray( "It\'s a staircase up.", "I\'ve heard stories about people who go up there.#They never come back.", "I wonder what happens in Nethack when you climb the stairs up in the first level\?" )
+eye_str = PoolStringArray( "It\'s a staircase up.", "I\'ve heard stories about people who go up there.#They never come back.", "Remember what happened in NetHack\?", "It\'s a staircase up.#Maybe I should find a staircase down." )
 hand_str = null
 correct_item = ""
+node_to_trigger = NodePath("Walk Here")
+one_shot = true
 click_distance = 64.0
+
+[node name="Walk Here" type="Node2D" parent="Node2D/Staircase up"]
+
+position = Vector2( -36, 29 )
+script = ExtResource( 2 )
+auto_start = false
+action = 0
+monolog = null
+next_event = NodePath("../Fade Out")
+
+[node name="Fade Out" type="Node2D" parent="Node2D/Staircase up"]
+
+position = Vector2( -36, 29 )
+script = ExtResource( 2 )
+auto_start = false
+action = 2
+monolog = null
+next_event = NodePath("../Game Over")
+
+[node name="Game Over" type="Node2D" parent="Node2D/Staircase up"]
+
+position = Vector2( -36, 29 )
+script = ExtResource( 2 )
+auto_start = false
+action = 3
+monolog = null
+next_event = null
 
 [node name="Staircase up2" type="Polygon2D" parent="Node2D/Staircase up"]
 
@@ -221,12 +251,13 @@ polygon = PoolVector2Array( -6, -59, -26, -46, -79, 11, -80, 28, 7, 64, 63, 21, 
 
 [node name="Player" type="KinematicBody2D" parent="Node2D"]
 
+editor/display_folded = true
 position = Vector2( 129, 79 )
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
 collision/safe_margin = 0.08
-script = ExtResource( 2 )
+script = ExtResource( 3 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -414,32 +445,6 @@ position = Vector2( 0.774857, 9.49186 )
 scale = Vector2( 3, 3 )
 shape = SubResource( 1 )
 _sections_unfolded = [ "Transform" ]
-
-[node name="Talk label" type="Label" parent="Node2D/Player"]
-
-visible = false
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = -179.0
-margin_top = -216.0
-margin_right = 176.0
-margin_bottom = -127.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-size_flags_horizontal = 1
-size_flags_vertical = 4
-custom_fonts/font = SubResource( 4 )
-text = "Plapla"
-align = 1
-valign = 2
-autowrap = true
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "custom_fonts" ]
 
 [node name="Cursor" type="Node2D" parent="Node2D"]
 
@@ -863,6 +868,7 @@ invert_border = 100.0
 
 [node name="Camera2D" type="Camera2D" parent="Node2D"]
 
+editor/display_folded = true
 position = Vector2( 129, 79 )
 anchor_mode = 1
 rotating = false
@@ -927,6 +933,27 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="Fader" type="ColorRect" parent="Node2D/Camera2D/Control"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -100.0
+margin_top = -100.0
+margin_right = 100.0
+margin_bottom = 100.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 0, 0, 0, 0 )
+_sections_unfolded = [ "Margin", "Visibility" ]
+__meta__ = {
+"_edit_lock_": true
+}
+
 [node name="PauseMenu" type="Panel" parent="Node2D/Camera2D/Control"]
 
 editor/display_folded = true
@@ -974,11 +1001,49 @@ flat = false
 align = 0
 _sections_unfolded = [ "custom_fonts" ]
 
-[node name="Starting monolog" type="Node" parent="."]
+[node name="Talk label" type="Label" parent="Node2D"]
 
-script = ExtResource( 8 )
-monolog = PoolStringArray( "Who!!!", "Seems like I\'ve been Thrown Back in time!", "Back to when it was still all 2D. Look at all those ugly pixels!", "Hey player!", "Could you do me a favour\?", "Press ESC and turn off the Ugly Pixels." )
-autostart = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -95.0
+margin_top = -144.0
+margin_right = 348.0
+margin_bottom = -37.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 4 )
+text = "Plapla"
+align = 1
+valign = 1
+autowrap = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+script = ExtResource( 9 )
+_sections_unfolded = [ "custom_fonts" ]
+
+[node name="Fade In" type="Node2D" parent="."]
+
+position = Vector2( 278, -14 )
+script = ExtResource( 2 )
+auto_start = true
+action = 1
+monolog = null
+next_event = NodePath("../Starting monolog")
+
+[node name="Starting monolog" type="Node2D" parent="."]
+
+position = Vector2( 278, -14 )
+script = ExtResource( 2 )
+auto_start = false
+action = 4
+monolog = PoolStringArray( "", "Whoa!!!", "I\'ve been Thrown Back in time!", "And I\'m a child again!", "I have regained my Characteristics Of a Former Time.", "", "Back in the good ol\' days when everything was still 2D.", "Just look at all those pixels!", "Could you turn them off please\?", "Press ESC and uncheck the Ugly Pixels effect." )
+next_event = null
 
 [connection signal="toggled" from="Node2D/Camera2D/Control/PauseMenu/UglyPixels" to="Node2D/Camera2D/Control/PauseMenu" method="_on_UglyPixels_toggled"]
 

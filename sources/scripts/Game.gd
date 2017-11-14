@@ -6,6 +6,7 @@ var cursor
 
 var paused = false
 var talking = false
+var event_running = false
 var talk_i = 0
 var talk_t = 0
 var talk_str = null
@@ -13,6 +14,7 @@ var wait_for_release = false
 
 var talk_caller
 var min_talk_delay = 20
+var talking_speed = 15
 
 func _ready():
 	set_process(false)
@@ -21,7 +23,7 @@ func start_level():
 	set_process(true)
 	cursor = get_node("/root/Main/Node2D/Cursor")
 	player = get_node("/root/Main/Node2D/Player")
-	player_talk_label = player.get_node("Talk label")
+	player_talk_label = get_node("/root/Main/Node2D/Talk label")
 
 func _process(delta):
 	
@@ -34,6 +36,10 @@ func _process(delta):
 		wait_for_release = false
 	
 	do_talking(delta)
+
+
+func do_gameover():
+	get_tree().change_scene("GameOver.tscn")
 
 func player_says(say, caller):
 	talk_caller = caller
@@ -49,8 +55,7 @@ func do_talking(delta):
 		player_talk_label.set_visible(true)
 		
 		if(talk_str[talk_i] == "$"):
-			print(talk_caller.get_name(), " triggered")
-			talk_caller.trigger_stuff()
+			talk_caller.after_talk()
 			player_talk_label.set_visible(false)
 			talking = false
 			return
@@ -63,7 +68,7 @@ func do_talking(delta):
 			talk_t = 0.0
 			
 		# Advance talking
-		talk_t -= delta * 10.0
+		talk_t -= delta * talking_speed
 		if(talk_t <= 0.0):
 			talk_i += 1
 			
