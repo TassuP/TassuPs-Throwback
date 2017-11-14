@@ -3,35 +3,29 @@ extends KinematicBody2D
 var walk_spd = 150.0
 var smooth_moves = 0.2
 var move_vec = Vector2(0.0, 0.0)
+var target_pos = Vector2(0.0, 0.0)
 var gfx
 
+var zeldalike = false
+
 func _ready():
+	Game.start_level()
 	gfx = get_node("Gfx")
+	target_pos = get_global_position()
+	
 
 func _process(delta):
+	
+	if(Game.paused || Game.talking):
+		return
+	
 	walking(delta)
 
 func walking(delta):
 	
-	delta *= 60.0
-	
-	var moving = false
-	if(Input.is_action_pressed("ui_left")):
-		gfx.set_scale(Vector2(-1.0, 1.0))
-		moving = true
-		move_vec = move_vec.linear_interpolate(Vector2(-1.0, move_vec.y/2.0), smooth_moves * delta)
-	if(Input.is_action_pressed("ui_right")):
-		gfx.set_scale(Vector2(1.0, 1.0))
-		moving = true
-		move_vec = move_vec.linear_interpolate(Vector2(1.0, move_vec.y/2.0), smooth_moves * delta)
-	if(Input.is_action_pressed("ui_up")):
-		moving = true
-		move_vec = move_vec.linear_interpolate(Vector2(move_vec.x/2.0, -1.0), smooth_moves * delta)
-	if(Input.is_action_pressed("ui_down")):
-		moving = true
-		move_vec = move_vec.linear_interpolate(Vector2(move_vec.x/2.0, 1.0), smooth_moves * delta)
-	if(moving == false):
-		move_vec = move_vec.linear_interpolate(Vector2(0.0, 0.0), smooth_moves * delta)
-	
-	if(move_vec.length() >= 0.1):
-		move_and_slide(move_vec * walk_spd)
+	if(Input.is_mouse_button_pressed(BUTTON_LEFT) && Game.cursor.tool_mode == 0 && Game.wait_for_release == false):
+		target_pos = get_local_mouse_position() + get_global_position()
+	else:
+		move_vec = target_pos - get_global_position()
+		if(move_vec.length() > 10.0):
+			move_and_slide(move_vec.normalized() * walk_spd)

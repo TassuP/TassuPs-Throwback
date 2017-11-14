@@ -1,5 +1,11 @@
 Game name ideas:
-	- ???
+	- TassuP's Throwback
+
+
+Dialog system:
+	- PoolStringArrays used one by one every time hotspot is clicked
+	- # separates sentences
+	- $ triggers something
 
 
 Throwback ideas:

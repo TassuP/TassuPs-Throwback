@@ -1,7 +1,13 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://scripts/Player.gd" type="Script" id=1]
-[ext_resource path="res://materials/PostProcessing.material" type="Material" id=2]
+[ext_resource path="res://scripts/Hotspot.gd" type="Script" id=1]
+[ext_resource path="res://scripts/Player.gd" type="Script" id=2]
+[ext_resource path="res://Technically, But Not Actually.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://scripts/Cursor.gd" type="Script" id=4]
+[ext_resource path="res://scripts/cam.gd" type="Script" id=5]
+[ext_resource path="res://shaders/PostProsessing.shd" type="Shader" id=6]
+[ext_resource path="res://scripts/PauseMenu.gd" type="Script" id=7]
+[ext_resource path="res://scripts/Monolog.gd" type="Script" id=8]
 
 [sub_resource type="CapsuleShape2D" id=1]
 
@@ -9,29 +15,38 @@ custom_solver_bias = 0.0
 radius = 10.0
 height = 7.82054
 
+[sub_resource type="DynamicFont" id=4]
+
+size = 30
+use_mipmaps = false
+use_filter = true
+font_data = ExtResource( 3 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="ShaderMaterial" id=2]
+
+render_priority = 0
+shader = ExtResource( 6 )
+shader_param/pixelize = true
+_sections_unfolded = [ "shader_param" ]
+
+[sub_resource type="DynamicFont" id=3]
+
+size = 16
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 3 )
+_sections_unfolded = [ "Font" ]
+
 [node name="Main" type="Node"]
-
-[node name="Control" type="Control" parent="."]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 40.0
-margin_bottom = 40.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
 
 [node name="Node2D" type="Node2D" parent="."]
 
-editor/display_folded = true
-
 [node name="Floor" type="Polygon2D" parent="Node2D"]
 
-position = Vector2( 42.2055, 4.52197 )
+editor/display_folded = true
+position = Vector2( -284, -161 )
+scale = Vector2( 3, 3 )
 polygon = PoolVector2Array( 122.289, 118.598, 112.766, 193.418, 120.929, 261.437, 131.812, 317.212, 123.649, 347.141, 78.7569, 375.708, 51.5494, 393.393, 44.7476, 427.403, 47.4683, 479.097, 76.0362, 518.548, 142.694, 549.836, 237.921, 547.116, 277.372, 515.827, 286.894, 464.133, 276.011, 375.708, 231.119, 351.222, 225.677, 310.41, 276.011, 315.852, 378.039, 321.293, 440.616, 349.861, 474.626, 398.835, 515.437, 447.808, 489.59, 466.853, 465.103, 515.827, 480.067, 555.278, 578.014, 567.521, 783.431, 557.999, 871.855, 488.619, 852.81, 402.916, 865.053, 272.32, 843.287, 159.409, 799.755, 79.1469, 675.961, 68.2639, 564.41, 80.5073, 531.761, 140.364, 530.401, 247.833, 535.843, 321.293, 515.437, 315.852, 485.509, 280.482, 424.292, 239.671, 350.832, 224.707, 217.515, 221.986, 203.911, 125.4, 227.038, 103.634, 227.038, 42.4168, 195.749, 24.7319, 120.929, 28.8131, 86.9192, 80.5073 )
 uv = PoolVector2Array(  )
 color = Color( 0.289062, 0.289062, 0.289062, 1 )
@@ -44,9 +59,11 @@ texture_scale = Vector2( 1, 1 )
 texture_rotation = 0.0
 invert_enable = false
 invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Node2D/Floor"]
 
+editor/display_folded = true
 position = Vector2( -42.2055, -4.52197 )
 input_pickable = false
 collision_layer = 1
@@ -80,14 +97,136 @@ position = Vector2( 42.2055, 4.52197 )
 build_mode = 0
 polygon = PoolVector2Array( 227.762, 315.461, 228.99, 353.521, 274.573, 377.59, 282.695, 462.425, 277.28, 514.77, 232.155, 546.358, 231.253, 593.288, 779.973, 596.898, 782.68, 556.285, 575.105, 567.115, 481.245, 552.675, 466.805, 514.77, 493.88, 465.133, 517.345, 447.985, 443.34, 349.613, 378.36, 318.928 )
 
+[node name="Staircase up" type="Area2D" parent="Node2D" groups=[
+"Hotspots",
+]]
+
+editor/display_folded = true
+position = Vector2( 314, -43 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 1 )
+_sections_unfolded = [ "Pickable", "Textures" ]
+foot_str = PoolStringArray( "I don\'t think I should go there.", "I really shouldn\'t...", "Umm...#Well...#What the heck.#$" )
+eye_str = PoolStringArray( "It\'s a staircase up.", "I\'ve heard stories about people who go up there.#They never come back.", "I wonder what happens in Nethack when you climb the stairs up in the first level\?" )
+hand_str = null
+correct_item = ""
+click_distance = 64.0
+
+[node name="Staircase up2" type="Polygon2D" parent="Node2D/Staircase up"]
+
+position = Vector2( 31, -109 )
+polygon = PoolVector2Array( 30, 52, 8, 58, -22, 111, -39, 158, -24, 176, 32, 134 )
+uv = PoolVector2Array(  )
+color = Color( 0.421875, 0.421875, 0.421875, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Staircase up0" type="Polygon2D" parent="Node2D/Staircase up"]
+
+position = Vector2( 31, -109 )
+polygon = PoolVector2Array( -40, 49, -63, 59, -61, 67, -78, 75, -77, 86, -96, 96, -94, 110, -117, 120, -114, 123, -24, 149, -8, 136, -7, 115, 6, 102, 5, 86, 18, 78, 17, 64, 30, 52 )
+uv = PoolVector2Array(  )
+color = Color( 0.621094, 0.621094, 0.621094, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Staircase up1" type="Polygon2D" parent="Node2D/Staircase up"]
+
+position = Vector2( -21, -38 )
+polygon = PoolVector2Array( -65, 49, -62, 68, 28, 105, 29, 77 )
+uv = PoolVector2Array(  )
+color = Color( 0.542969, 0.542969, 0.542969, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Staircase up3" type="Polygon2D" parent="Node2D/Staircase up"]
+
+position = Vector2( -3, -66 )
+polygon = PoolVector2Array( -62, 53, -62, 68, 26, 93, 27, 72 )
+uv = PoolVector2Array(  )
+color = Color( 0.542969, 0.542969, 0.542969, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Staircase up4" type="Polygon2D" parent="Node2D/Staircase up"]
+
+position = Vector2( 15, -90 )
+polygon = PoolVector2Array( -62, 56, -62, 68, 22, 83, 21, 67 )
+uv = PoolVector2Array(  )
+color = Color( 0.542969, 0.542969, 0.542969, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Staircase up5" type="Polygon2D" parent="Node2D/Staircase up"]
+
+position = Vector2( 31, -109 )
+polygon = PoolVector2Array( -63, 59, -62, 68, 18, 78, 17, 64 )
+uv = PoolVector2Array(  )
+color = Color( 0.542969, 0.542969, 0.542969, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/Staircase up"]
+
+build_mode = 0
+polygon = PoolVector2Array( -6, -59, -26, -46, -79, 11, -80, 28, 7, 64, 63, 21, 60, -55 )
+
 [node name="Player" type="KinematicBody2D" parent="Node2D"]
 
-position = Vector2( 204.268, 78.1934 )
+position = Vector2( 129, 79 )
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
 collision/safe_margin = 0.08
-script = ExtResource( 1 )
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -95,11 +234,14 @@ __meta__ = {
 [node name="Gfx" type="Node2D" parent="Node2D/Player"]
 
 editor/display_folded = true
+position = Vector2( -1.54971, -18.9837 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="Head" type="Polygon2D" parent="Node2D/Player/Gfx"]
 
 editor/display_folded = true
 position = Vector2( 1.57343, -0.524467 )
+scale = Vector2( 3, 3 )
 polygon = PoolVector2Array( -4.45607, -13.8209, -6.58689, -16.5328, -7.74916, -20.9882, -6.78061, -24.2813, -3.68122, -26.9933, -0.388126, -27.5744, 3.29239, -25.4436, 4.06724, -21.5693, 3.4861, -16.7265, 0.774139, -13.046, 0.774139, -9.55922, -4.26236, -9.55922 )
 uv = PoolVector2Array(  )
 color = Color( 0.980469, 0.796451, 0.509384, 1 )
@@ -219,6 +361,7 @@ __meta__ = {
 [node name="Shirt" type="Polygon2D" parent="Node2D/Player/Gfx"]
 
 position = Vector2( 1.57343, -0.524467 )
+scale = Vector2( 3, 3 )
 polygon = PoolVector2Array( -4.03583, -10.1472, -6.09201, -7.5769, -6.60606, 0.13382, -6.22052, 6.68794, 3.03235, 6.68794, 3.28937, 0.13382, 2.13277, -7.5769, 0.590622, -10.1472 )
 uv = PoolVector2Array(  )
 color = Color( 0.234375, 0.0979614, 0.0979614, 1 )
@@ -236,6 +379,7 @@ invert_border = 100.0
 
 editor/display_folded = true
 position = Vector2( 1.57343, -0.524467 )
+scale = Vector2( 3, 3 )
 polygon = PoolVector2Array( -4.93539, 6.30241, -3.39325, 18.5111, 1.74722, 18.5111, 2.38979, 6.1739 )
 uv = PoolVector2Array(  )
 color = Color( 0.198706, 0.184097, 0.371094, 1 )
@@ -267,21 +411,575 @@ invert_border = 100.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Player"]
 
 position = Vector2( 0.774857, 9.49186 )
+scale = Vector2( 3, 3 )
 shape = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Talk label" type="Label" parent="Node2D/Player"]
 
-material = ExtResource( 2 )
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -179.0
+margin_top = -216.0
+margin_right = 176.0
+margin_bottom = -127.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 4 )
+text = "Plapla"
+align = 1
+valign = 2
+autowrap = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_fonts" ]
+
+[node name="Cursor" type="Node2D" parent="Node2D"]
+
+editor/display_folded = true
+script = ExtResource( 4 )
+_sections_unfolded = [ "Visibility", "Z" ]
+
+[node name="Eye" type="Polygon2D" parent="Node2D/Cursor"]
+
+editor/display_folded = true
+position = Vector2( -2, 1 )
+polygon = PoolVector2Array( -1, -25, -11, -21, -18, -13, -23, -3, -23, 6, -18, 15, -8, 21, 4, 22, 17, 18, 26, 10, 29, -2, 27, -15, 18, -24, 9, -26 )
+uv = PoolVector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="LookAt2" type="Polygon2D" parent="Node2D/Cursor/Eye"]
+
+position = Vector2( 7, 3 )
+scale = Vector2( 0.5, 0.8 )
+polygon = PoolVector2Array( -1, -25, -11, -21, -18, -13, -23, -3, -23, 6, -18, 15, -8, 21, 4, 22, 17, 18, 26, 10, 29, -2, 27, -15, 18, -24, 9, -26 )
+uv = PoolVector2Array(  )
+color = Color( 0, 0, 0, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="LookAt3" type="Polygon2D" parent="Node2D/Cursor/Eye"]
+
+position = Vector2( -2, -9 )
+scale = Vector2( 0.4, 0.4 )
+polygon = PoolVector2Array( -1, -25, -11, -21, -18, -13, -23, -3, -23, 6, -18, 15, -8, 21, 4, 22, 17, 18, 26, 10, 29, -2, 27, -15, 18, -24, 9, -26 )
+uv = PoolVector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="LookAt4" type="Polygon2D" parent="Node2D/Cursor/Eye"]
+
+position = Vector2( 14, 13 )
+scale = Vector2( 0.2, 0.2 )
+polygon = PoolVector2Array( -1, -25, -11, -21, -18, -13, -23, -3, -23, 6, -18, 15, -8, 21, 4, 22, 17, 18, 26, 10, 29, -2, 27, -15, 18, -24, 9, -26 )
+uv = PoolVector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Can" type="Polygon2D" parent="Node2D/Cursor/Eye"]
+
+editor/display_folded = true
+polygon = PoolVector2Array( -1, -25, -11, -21, -18, -13, -23, -3, -23, 6, -19, -2, -11, -12, 0, -19, 10, -21, 18, -20, 27, -15, 18, -24, 9, -26 )
+uv = PoolVector2Array(  )
+color = Color( 0.917969, 0.742852, 0.441055, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="2" type="Polygon2D" parent="Node2D/Cursor/Eye/Can"]
+
+polygon = PoolVector2Array( 7, 18, -2, 18, -10, 15, -18, 11, -23, 6, -18, 15, -8, 21, 4, 22, 17, 18, 26, 10, 16, 17 )
+uv = PoolVector2Array(  )
+color = Color( 0.917647, 0.741176, 0.439216, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Can't" type="Polygon2D" parent="Node2D/Cursor/Eye"]
+
+editor/display_folded = true
+visible = false
+polygon = PoolVector2Array( -1, -25, -11, -21, -18, -13, -23, -3, -23, 6, -15, 1, -3, -3, 8, -5, 18, -5, 24, -4, 29, -2, 27, -15, 18, -24, 9, -26 )
+uv = PoolVector2Array(  )
+color = Color( 0.917969, 0.742852, 0.441055, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="2" type="Polygon2D" parent="Node2D/Cursor/Eye/Can't"]
+
+polygon = PoolVector2Array( 7, 12, -3, 12, -10, 11, -19, 9, -23, 6, -18, 15, -8, 21, 4, 22, 17, 18, 26, 10, 29, -2, 26, 2, 21, 6, 14, 10 )
+uv = PoolVector2Array(  )
+color = Color( 0.917647, 0.741176, 0.439216, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Foot" type="Polygon2D" parent="Node2D/Cursor"]
+
+editor/display_folded = true
+position = Vector2( 3, -4 )
+rotation = -0.086507
+scale = Vector2( 0.7, 0.8 )
+polygon = PoolVector2Array( -18, -8, -19, -3, -16, 1, -10, 7, -1, 12, 14, 17, 20, 17, 28, 14, 31, 9, -13, -11 )
+uv = PoolVector2Array(  )
+color = Color( 0.214844, 0.194702, 0.194702, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Foot2" type="Polygon2D" parent="Node2D/Cursor/Foot"]
+
+position = Vector2( 1, -3 )
+polygon = PoolVector2Array( -15, -14, -18, -8, -19, -3, -13, 4, 0, 12, 13, 17, 24, 16, 30, 12, 30, 3, 22, -4, 8, -13, -1, -17, -8, -17 )
+uv = PoolVector2Array(  )
+color = Color( 0.261719, 0.207407, 0.159485, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Foot3" type="Polygon2D" parent="Node2D/Cursor/Foot"]
+
+position = Vector2( 1, -3 )
+polygon = PoolVector2Array( -8, -15, -12, -13, -14, -10, -13, -7, -8, -4, 0, -4, 7, -6, 8, -9, 1, -14, -4, -15 )
+uv = PoolVector2Array(  )
+color = Color( 0.125, 0.105804, 0.0888672, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Foot4" type="Polygon2D" parent="Node2D/Cursor/Foot"]
+
+position = Vector2( 1, -3 )
+polygon = PoolVector2Array( -7, -11, -11, -10, -13, -9, -13, -7, -8, -4, 0, -4, 7, -6, 6, -8, 2, -10, -1, -11 )
+uv = PoolVector2Array(  )
+color = Color( 0.0898438, 0.0773322, 0.06633, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Foot5" type="Polygon2D" parent="Node2D/Cursor/Foot"]
+
+position = Vector2( 1, -3 )
+polygon = PoolVector2Array( 1, -1, 8, -5, 12, -6, 18, -6, 19, -5, 13, -5, 8, -4, 2, -1, 1, 0 )
+uv = PoolVector2Array(  )
+color = Color( 0, 0, 0, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Foot6" type="Polygon2D" parent="Node2D/Cursor/Foot"]
+
+position = Vector2( 4, -1 )
+polygon = PoolVector2Array( 4, -3, 8, -5, 12, -6, 18, -6, 19, -5, 12, -5, 6, -3, 3, 0, 2, 0 )
+uv = PoolVector2Array(  )
+color = Color( 0, 0, 0, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Foot7" type="Polygon2D" parent="Node2D/Cursor/Foot"]
+
+position = Vector2( 10, 1 )
+scale = Vector2( 0.8, 1 )
+polygon = PoolVector2Array( 4, -3, 8, -5, 12, -6, 18, -6, 19, -5, 12, -5, 6, -3, 3, 0, 2, 0 )
+uv = PoolVector2Array(  )
+color = Color( 0, 0, 0, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Foot8" type="Polygon2D" parent="Node2D/Cursor/Foot"]
+
+editor/display_folded = true
+position = Vector2( -19.26, 12.4993 )
+rotation = 0.168376
+scale = Vector2( 1.1, 1.1 )
+polygon = PoolVector2Array( -18, -8, -19, -3, -16, 1, -10, 7, -1, 12, 14, 17, 20, 17, 28, 14, 31, 9, -13, -11 )
+uv = PoolVector2Array(  )
+color = Color( 0.214844, 0.194702, 0.194702, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Foot2" type="Polygon2D" parent="Node2D/Cursor/Foot/Foot8"]
+
+position = Vector2( 1, -3 )
+polygon = PoolVector2Array( -15, -14, -18, -8, -19, -3, -13, 4, 0, 12, 13, 17, 24, 16, 30, 12, 30, 3, 22, -4, 8, -13, -1, -17, -8, -17 )
+uv = PoolVector2Array(  )
+color = Color( 0.261719, 0.207407, 0.159485, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Foot3" type="Polygon2D" parent="Node2D/Cursor/Foot/Foot8"]
+
+position = Vector2( 1, -3 )
+polygon = PoolVector2Array( -8, -15, -12, -13, -14, -10, -13, -7, -8, -4, 0, -4, 7, -6, 8, -9, 1, -14, -4, -15 )
+uv = PoolVector2Array(  )
+color = Color( 0.125, 0.105804, 0.0888672, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Foot4" type="Polygon2D" parent="Node2D/Cursor/Foot/Foot8"]
+
+position = Vector2( 1, -3 )
+polygon = PoolVector2Array( -7, -11, -11, -10, -13, -9, -13, -7, -8, -4, 0, -4, 7, -6, 6, -8, 2, -10, -1, -11 )
+uv = PoolVector2Array(  )
+color = Color( 0.0898438, 0.0773322, 0.06633, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Foot5" type="Polygon2D" parent="Node2D/Cursor/Foot/Foot8"]
+
+position = Vector2( 1, -3 )
+polygon = PoolVector2Array( 1, -1, 8, -5, 12, -6, 18, -6, 19, -5, 13, -5, 8, -4, 2, -1, 1, 0 )
+uv = PoolVector2Array(  )
+color = Color( 0, 0, 0, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Foot6" type="Polygon2D" parent="Node2D/Cursor/Foot/Foot8"]
+
+position = Vector2( 4, -1 )
+polygon = PoolVector2Array( 4, -3, 8, -5, 12, -6, 18, -6, 19, -5, 12, -5, 6, -3, 3, 0, 2, 0 )
+uv = PoolVector2Array(  )
+color = Color( 0, 0, 0, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Foot7" type="Polygon2D" parent="Node2D/Cursor/Foot/Foot8"]
+
+position = Vector2( 10, 1 )
+scale = Vector2( 0.8, 1 )
+polygon = PoolVector2Array( 4, -3, 8, -5, 12, -6, 18, -6, 19, -5, 12, -5, 6, -3, 3, 0, 2, 0 )
+uv = PoolVector2Array(  )
+color = Color( 0, 0, 0, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Hand" type="Polygon2D" parent="Node2D/Cursor"]
+
+editor/display_folded = true
+position = Vector2( 1, 0 )
+scale = Vector2( 1.5, 1.5 )
+polygon = PoolVector2Array( -11, 10, -7, 3, -7, -4, -5, -5, -4, -4, -1, -6, 2, -6, 6, -4, 7, 1, 6, 3, 2, 5, -1, 6, -4, 14 )
+uv = PoolVector2Array(  )
+color = Color( 0.833984, 0.699219, 0.476807, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Can't" type="Polygon2D" parent="Node2D/Cursor/Hand"]
+
+position = Vector2( -1, 0 )
+polygon = PoolVector2Array( -11, 11, -7, 3, -7, -3, -9, -9, -7, -9, -5, -7, -4, -4, 0, -6, 3, -10, 5, -15, 7, -15, 7, -13, 5, -8, 3, -4, 7, -6, 10, -10, 11, -12, 13, -12, 13, -10, 11, -7, 9, -4, 6, -1, 10, -3, 13, -6, 14, -5, 11, -1, 6, 3, 1, 5, -1, 7, -3, 14 )
+uv = PoolVector2Array(  )
+color = Color( 0.833984, 0.699219, 0.476807, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Camera2D" type="Camera2D" parent="Node2D"]
+
+position = Vector2( 129, 79 )
+anchor_mode = 1
+rotating = false
+current = true
+zoom = Vector2( 1, 1 )
+limit_left = -10000000
+limit_top = -10000000
+limit_right = 10000000
+limit_bottom = 10000000
+limit_smoothed = false
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = false
+smoothing_speed = 5.0
+drag_margin_left = 0.0
+drag_margin_top = 0.0
+drag_margin_right = 0.0
+drag_margin_bottom = 0.0
+editor_draw_screen = true
+editor_draw_limits = false
+editor_draw_drag_margin = false
+script = ExtResource( 5 )
+_sections_unfolded = [ "Drag Margin", "Limit", "Smoothing", "Transform" ]
+target = NodePath("../Player")
+
+[node name="Control" type="Control" parent="Node2D/Camera2D"]
+
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = -512.0
+margin_top = -300.0
+margin_right = 448.0
+margin_bottom = 236.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Margin" ]
+
+[node name="PostProsessing" type="ColorRect" parent="Node2D/Camera2D/Control"]
+
+material = SubResource( 2 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -100.0
+margin_top = -100.0
+margin_right = 100.0
+margin_bottom = 100.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 color = Color( 1, 1, 1, 1 )
-_sections_unfolded = [ "Material" ]
+_sections_unfolded = [ "Margin", "Material" ]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="PauseMenu" type="Panel" parent="Node2D/Camera2D/Control"]
+
+editor/display_folded = true
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -182.0
+margin_top = -158.0
+margin_right = 182.0
+margin_bottom = 158.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = ExtResource( 7 )
+_sections_unfolded = [ "Visibility" ]
+post_prosessing = NodePath("../PostProsessing")
+
+[node name="UglyPixels" type="CheckBox" parent="Node2D/Camera2D/Control/PauseMenu"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 144.0
+margin_top = 166.0
+margin_right = 232.0
+margin_bottom = 191.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 3 )
+toggle_mode = true
+pressed = true
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Ugly Pixels"
+flat = false
+align = 0
+_sections_unfolded = [ "custom_fonts" ]
+
+[node name="Starting monolog" type="Node" parent="."]
+
+script = ExtResource( 8 )
+monolog = PoolStringArray( "Who!!!", "Seems like I\'ve been Thrown Back in time!", "Back to when it was still all 2D. Look at all those ugly pixels!", "Hey player!", "Could you do me a favour\?", "Press ESC and turn off the Ugly Pixels." )
+autostart = true
+
+[connection signal="toggled" from="Node2D/Camera2D/Control/PauseMenu/UglyPixels" to="Node2D/Camera2D/Control/PauseMenu" method="_on_UglyPixels_toggled"]
 
 
