@@ -868,7 +868,6 @@ invert_border = 100.0
 
 [node name="Camera2D" type="Camera2D" parent="Node2D"]
 
-editor/display_folded = true
 position = Vector2( 129, 79 )
 anchor_mode = 1
 rotating = false
@@ -913,6 +912,7 @@ _sections_unfolded = [ "Margin" ]
 
 [node name="PostProsessing" type="ColorRect" parent="Node2D/Camera2D/Control"]
 
+visible = false
 material = SubResource( 2 )
 anchor_left = 0.0
 anchor_top = 0.0

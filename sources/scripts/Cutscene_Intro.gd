@@ -12,7 +12,7 @@ func start_game():
 		
 func _process(delta):
 	if(done):
-		get_tree().change_scene("Cutscene_Home.tscn")
+		Game.next_scene()
 func skip():
 	get_tree().change_scene("Dungeon.tscn")
 

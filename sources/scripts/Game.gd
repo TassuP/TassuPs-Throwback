@@ -1,5 +1,8 @@
 extends Node
 
+var scenes = []
+var cur_scene = 0
+
 var player
 var player_talk_label
 var cursor
@@ -16,16 +19,29 @@ var talk_caller
 var min_talk_delay = 20
 var talking_speed = 15
 
+var in_game = false
+
 func _ready():
 	set_process(false)
+	
+	cur_scene = 0
+	scenes.append("Cutscene_Intro.tscn")
+	scenes.append("Cutscene_Home.tscn")
+	scenes.append("Dungeon.tscn")
+	
 
 func start_level():
+	in_game = true
 	set_process(true)
 	cursor = get_node("/root/Main/Node2D/Cursor")
 	player = get_node("/root/Main/Node2D/Player")
 	player_talk_label = get_node("/root/Main/Node2D/Talk label")
 
 func _process(delta):
+	
+	if(in_game == false):
+		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+		return
 	
 	if(paused):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -37,8 +53,15 @@ func _process(delta):
 	
 	do_talking(delta)
 
-
+func next_scene():
+	cur_scene += 1
+	if(cur_scene <= scenes.size()):
+		get_tree().change_scene(scenes[cur_scene])
+	else:
+		do_gameover()
+	
 func do_gameover():
+	in_game = false
 	get_tree().change_scene("GameOver.tscn")
 
 func player_says(say, caller):

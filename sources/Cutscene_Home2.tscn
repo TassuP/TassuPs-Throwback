@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://scripts/Cutscene_Home.gd" type="Script" id=1]
 [ext_resource path="res://images/particle.png" type="Texture" id=2]
@@ -8,23 +8,23 @@
 [ext_resource path="res://Technically, But Not Actually.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://scripts/CutsceneText.gd" type="Script" id=7]
 
-[sub_resource type="CanvasItemMaterial" id=1]
+[sub_resource type="CanvasItemMaterial" id=8]
 
 render_priority = 0
 blend_mode = 0
 light_mode = 0
 
-[sub_resource type="Gradient" id=2]
+[sub_resource type="Gradient" id=9]
 
 offsets = PoolRealArray( 0.502959, 1 )
 colors = PoolColorArray( 0.308594, 0.308594, 0.308594, 0, 0.148438, 0.148438, 0.148438, 1 )
 
-[sub_resource type="GradientTexture" id=3]
+[sub_resource type="GradientTexture" id=10]
 
-gradient = SubResource( 2 )
+gradient = SubResource( 9 )
 width = 2048
 
-[sub_resource type="ParticlesMaterial" id=4]
+[sub_resource type="ParticlesMaterial" id=11]
 
 render_priority = 0
 trail_divisor = 1
@@ -54,7 +54,7 @@ angle = 360.0
 angle_random = 1.0
 scale = 3.0
 scale_random = 1.0
-color_ramp = SubResource( 3 )
+color_ramp = SubResource( 10 )
 hue_variation = 0.0
 hue_variation_random = 0.0
 anim_speed = 0.0
@@ -64,23 +64,23 @@ anim_offset_random = 0.0
 anim_loop = false
 _sections_unfolded = [ "Angle", "Angular Velocity", "Color", "Emission Shape", "Gravity", "Radial Accel", "Scale" ]
 
-[sub_resource type="CanvasItemMaterial" id=5]
+[sub_resource type="CanvasItemMaterial" id=7]
 
 render_priority = 0
 blend_mode = 1
 light_mode = 0
 
-[sub_resource type="Gradient" id=6]
+[sub_resource type="Gradient" id=4]
 
 offsets = PoolRealArray( 0, 0.0828402, 0.43787, 0.680473, 1 )
 colors = PoolColorArray( 1, 0.84375, 0, 0, 1, 0.773438, 0, 1, 1, 0, 0, 1, 0.35006, 0.230402, 0.230402, 1, 0.261719, 0.261719, 0.261719, 0 )
 
-[sub_resource type="GradientTexture" id=7]
+[sub_resource type="GradientTexture" id=5]
 
-gradient = SubResource( 6 )
+gradient = SubResource( 4 )
 width = 2048
 
-[sub_resource type="ParticlesMaterial" id=8]
+[sub_resource type="ParticlesMaterial" id=6]
 
 render_priority = 0
 trail_divisor = 1
@@ -110,7 +110,7 @@ angle = 360.0
 angle_random = 1.0
 scale = 3.0
 scale_random = 1.0
-color_ramp = SubResource( 7 )
+color_ramp = SubResource( 5 )
 hue_variation = 0.0
 hue_variation_random = 0.0
 anim_speed = 0.0
@@ -120,23 +120,23 @@ anim_offset_random = 0.0
 anim_loop = false
 _sections_unfolded = [ "Angle", "Angular Velocity", "Color", "Emission Shape", "Gravity", "Radial Accel", "Scale" ]
 
-[sub_resource type="CanvasItemMaterial" id=9]
+[sub_resource type="CanvasItemMaterial" id=12]
 
 render_priority = 0
 blend_mode = 1
 light_mode = 0
 
-[sub_resource type="Gradient" id=10]
+[sub_resource type="Gradient" id=13]
 
 offsets = PoolRealArray( 0, 0.142012, 0.745562, 1 )
 colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 1, 0.992188, 1, 0, 0.846154, 0.992188, 1, 0, 0 )
 
-[sub_resource type="GradientTexture" id=11]
+[sub_resource type="GradientTexture" id=14]
 
-gradient = SubResource( 10 )
+gradient = SubResource( 13 )
 width = 2048
 
-[sub_resource type="ParticlesMaterial" id=12]
+[sub_resource type="ParticlesMaterial" id=15]
 
 render_priority = 0
 trail_divisor = 1
@@ -166,7 +166,7 @@ angle = 360.0
 angle_random = 1.0
 scale = 0.1
 scale_random = 0.0
-color_ramp = SubResource( 11 )
+color_ramp = SubResource( 14 )
 hue_variation = 0.0
 hue_variation_random = 0.0
 anim_speed = 0.0
@@ -176,7 +176,7 @@ anim_offset_random = 0.0
 anim_loop = false
 _sections_unfolded = [ "Angle", "Color", "Emission Shape", "Gravity", "Initial Velocity", "Orbit Velocity", "Radial Accel", "Scale", "Spread" ]
 
-[sub_resource type="DynamicFont" id=13]
+[sub_resource type="DynamicFont" id=17]
 
 size = 42
 use_mipmaps = false
@@ -184,168 +184,7 @@ use_filter = false
 font_data = ExtResource( 6 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[sub_resource type="Animation" id=14]
-
-resource_name = "Camera move"
-length = 20.0
-loop = false
-step = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath("Fade out:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Camera2D:zoom")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/keys = {
-"times": PoolRealArray( 0, 1, 2, 5.6, 12.2, 16.1, 17.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0.2, 0.2 ), Vector2( 0.2, 0.2 ), Vector2( 0.2, 0.2 ), Vector2( 0.541132, 0.541132 ), Vector2( 0.541132, 0.541132 ), Vector2( 0.541132, 0.541132 ), Vector2( 0.12, 0.12 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Camera2D:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/keys = {
-"times": PoolRealArray( 0, 3.1, 5.6, 10.7, 12.2, 16.1, 17.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 541.537, 352.258 ), Vector2( 541.537, 352.258 ), Vector2( 298.03, 497.818 ), Vector2( 162.694, 503.969 ), Vector2( -158.232, 390.55 ), Vector2( -158.232, 390.55 ), Vector2( -216.536, 335.936 ) ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("Scenery/Doggy/Head/eye1:scale")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/keys = {
-"times": PoolRealArray( 0, 6.8, 7.1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 1, 0.2 ), Vector2( 1, 0.2 ), Vector2( 1, 1 ) ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("Scenery/Doggy/Head/eye2:scale")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/keys = {
-"times": PoolRealArray( 0, 6.8, 7.1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 1, 0.2 ), Vector2( 1, 0.2 ), Vector2( 1, 1 ) ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("Scenery/Doggy/Head:position")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/keys = {
-"times": PoolRealArray( 0, 8.1, 8.8 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( -33.1307, -181.153 ), Vector2( -33.1307, -181.153 ), Vector2( -32.1601, -219.654 ) ]
-}
-tracks/6/type = "value"
-tracks/6/path = NodePath("Scenery/Doggy/Head/eye1:position")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/keys = {
-"times": PoolRealArray( 0, 8.1, 9 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 205.168, 599.702 ), Vector2( 205.168, 599.702 ), Vector2( 203.022, 594.418 ) ]
-}
-tracks/7/type = "value"
-tracks/7/path = NodePath("Scenery/Doggy/Head/eye2:position")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/keys = {
-"times": PoolRealArray( 0, 8.1, 9 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 222.298, 598.096 ), Vector2( 222.298, 598.096 ), Vector2( 222.133, 592.152 ) ]
-}
-tracks/8/type = "value"
-tracks/8/path = NodePath("Scenery/Doggy/Head/Nose:position")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/imported = false
-tracks/8/keys = {
-"times": PoolRealArray( 0, 8.1, 8.5, 9.1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0.495314, 3.30214 ), Vector2( 0, -3.46727 ) ]
-}
-tracks/9/type = "value"
-tracks/9/path = NodePath("Scenery/Doggy/Head/Ear 2:position")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/imported = false
-tracks/9/keys = {
-"times": PoolRealArray( 0, 8.5, 9.1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( -9.01021, -0.941299 ), Vector2( -9.01021, -0.941299 ), Vector2( -119.782, 56.5728 ) ]
-}
-tracks/10/type = "value"
-tracks/10/path = NodePath("Scenery/Doggy/Head/Ear 2:rotation_deg")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/imported = false
-tracks/10/keys = {
-"times": PoolRealArray( 0, 8.5, 9.1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ 0.0, 0.0, -11.6836 ]
-}
-tracks/11/type = "value"
-tracks/11/path = NodePath("Scenery/Doggy/Head/Ear 1:position")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/imported = false
-tracks/11/keys = {
-"times": PoolRealArray( 0, 8.5, 9.1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( -4.57231, 0.403534 ), Vector2( -4.57231, 0.403534 ), Vector2( 79.2509, -24.467 ) ]
-}
-tracks/12/type = "value"
-tracks/12/path = NodePath("Scenery/Doggy/Head/Ear 1:rotation_deg")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/imported = false
-tracks/12/keys = {
-"times": PoolRealArray( 0, 8.5, 9.1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ 0.0, 0.0, 7.88415 ]
-}
-tracks/13/type = "value"
-tracks/13/path = NodePath("Scenery/TassuP2:position")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/imported = false
-tracks/13/keys = {
-"times": PoolRealArray( 0, 14.3, 17.3 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( -217.379, 412.215 ), Vector2( -217.379, 412.215 ), Vector2( -300.361, 504.72 ) ]
-}
-
-[node name="Cutscene_Home" type="Node"]
+[node name="Cutscene_Home2" type="Node"]
 
 script = ExtResource( 1 )
 done = false
@@ -415,7 +254,7 @@ __meta__ = {
 [node name="Smoke" type="Particles2D" parent="Scenery"]
 
 modulate = Color( 1, 1, 1, 0.243098 )
-material = SubResource( 1 )
+material = SubResource( 8 )
 position = Vector2( 541.013, 506.536 )
 emitting = true
 amount = 64
@@ -430,7 +269,7 @@ fract_delta = true
 visibility_rect = Rect2( -100, -100, 200, 200 )
 local_coords = true
 draw_order = 0
-process_material = SubResource( 4 )
+process_material = SubResource( 11 )
 texture = ExtResource( 2 )
 normal_map = null
 h_frames = 1
@@ -443,7 +282,7 @@ __meta__ = {
 [node name="Fire" type="Particles2D" parent="Scenery"]
 
 modulate = Color( 1, 0.715332, 0.171875, 0.541451 )
-material = SubResource( 5 )
+material = SubResource( 7 )
 position = Vector2( 541.013, 506.536 )
 emitting = true
 amount = 64
@@ -458,7 +297,7 @@ fract_delta = true
 visibility_rect = Rect2( -100, -100, 200, 200 )
 local_coords = true
 draw_order = 0
-process_material = SubResource( 8 )
+process_material = SubResource( 6 )
 texture = ExtResource( 3 )
 normal_map = null
 h_frames = 1
@@ -470,7 +309,7 @@ __meta__ = {
 
 [node name="Sparks" type="Particles2D" parent="Scenery"]
 
-material = SubResource( 9 )
+material = SubResource( 12 )
 position = Vector2( 542.013, 465.536 )
 emitting = true
 amount = 10
@@ -485,7 +324,7 @@ fract_delta = true
 visibility_rect = Rect2( -100, -100, 200, 200 )
 local_coords = true
 draw_order = 0
-process_material = SubResource( 12 )
+process_material = SubResource( 15 )
 texture = ExtResource( 2 )
 normal_map = null
 h_frames = 1
@@ -832,6 +671,7 @@ _sections_unfolded = [ "Transform" ]
 editor/display_folded = true
 show_behind_parent = true
 position = Vector2( -9.01021, -0.941299 )
+scale = Vector2( 1, 1 )
 polygon = PoolVector2Array( 225.636, 576.763, 236.999, 567.323, 247.139, 563.477, 255.356, 561.903, 257.803, 563.651, 253.957, 567.323, 247.838, 580.959, 241.545, 592.148, 233.852, 595.994, 227.209, 588.477, 222.489, 580.085 )
 uv = PoolVector2Array(  )
 color = Color( 0.777344, 0.422432, 0.11235, 1 )
@@ -895,6 +735,7 @@ invert_border = 100.0
 
 editor/display_folded = true
 position = Vector2( -4.57231, 0.403534 )
+scale = Vector2( 1, 1 )
 polygon = PoolVector2Array( 172.406, 562.384, 188.103, 567.854, 201.659, 576.416, 203.324, 583.075, 189.767, 596.869, 182.157, 591.161, 176.687, 577.367, 170.979, 567.378, 165.509, 563.097, 167.36, 560.107 )
 uv = PoolVector2Array(  )
 color = Color( 0.777344, 0.422432, 0.11235, 1 )
@@ -2264,6 +2105,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Hands2" type="Polygon2D" parent="Scenery/TassuP2/Hands"]
 
+scale = Vector2( 1, 1 )
 polygon = PoolVector2Array( 16.9751, 48.9303, 16.9, 52.687, 16.3741, 56.0679, 16.9, 58.923, 18.7032, 60.4257, 21.6334, 61.3273, 24.0376, 60.05, 25.7657, 54.3399, 24.6387, 51.0341, 21.9339, 47.2774 )
 uv = PoolVector2Array(  )
 color = Color( 0.933594, 0.744945, 0.423035, 1 )
@@ -2445,6 +2287,7 @@ __meta__ = {
 
 [node name="Fade out" type="ColorRect" parent="."]
 
+visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -2505,7 +2348,7 @@ rect_clip_content = false
 mouse_filter = 2
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 13 )
+custom_fonts/font = SubResource( 17 )
 text = "Yay!!!"
 align = 1
 valign = 1
@@ -2517,17 +2360,5 @@ script = ExtResource( 7 )
 _sections_unfolded = [ "Anchor", "Margin", "Rect", "Size Flags", "custom_fonts" ]
 txt = PoolStringArray( "", "", "", "", "", "", "Yay!!! ", "", "", "", "", "My Procjam entry is done.", "", "Check it out at tassup.itch.io" )
 next_scene = true
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-
-playback_process_mode = 1
-playback_default_blend_time = 0.0
-root_node = NodePath("..")
-"anims/Camera move" = SubResource( 14 )
-playback/active = true
-playback/speed = 1.0
-blend_times = [  ]
-autoplay = "Camera move"
-_sections_unfolded = [ "Playback Options", "playback" ]
 
 
