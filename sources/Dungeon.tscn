@@ -102,7 +102,6 @@ polygon = PoolVector2Array( 227.762, 315.461, 228.99, 353.521, 274.573, 377.59, 
 "Hotspots",
 ]]
 
-editor/display_folded = true
 position = Vector2( 314, -43 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -1016,7 +1015,6 @@ mouse_filter = 2
 size_flags_horizontal = 1
 size_flags_vertical = 4
 custom_fonts/font = SubResource( 4 )
-text = "Plapla"
 align = 1
 valign = 1
 autowrap = true

@@ -2798,7 +2798,6 @@ __meta__ = {
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-editor/display_folded = true
 position = Vector2( 541.537, 352.258 )
 anchor_mode = 1
 rotating = false
@@ -2839,7 +2838,6 @@ mouse_filter = 2
 size_flags_horizontal = 1
 size_flags_vertical = 4
 custom_fonts/font = SubResource( 13 )
-text = "Yay!!!"
 align = 1
 valign = 1
 autowrap = true
