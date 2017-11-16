@@ -4,7 +4,7 @@ export var done = false
 
 func _process(delta):
 	if(done):
-		get_tree().change_scene("Cutscene_Home2.tscn")
+		get_tree().change_scene("Cutscene_Bedroom.tscn")
 func skip():
 	get_tree().change_scene("Dungeon.tscn")
 

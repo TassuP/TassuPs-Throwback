@@ -1,8 +1,5 @@
 extends Node
 
-var scenes = []
-var cur_scene = 0
-
 var player
 var player_talk_label
 var cursor
@@ -16,19 +13,13 @@ var talk_str = null
 var wait_for_release = false
 
 var talk_caller
-var min_talk_delay = 20
-var talking_speed = 15
+var min_talk_delay = 1.5
+var talking_speed = 0.5
 
 var in_game = false
 
 func _ready():
 	set_process(false)
-	
-	cur_scene = 0
-	scenes.append("Cutscene_Intro.tscn")
-	scenes.append("Cutscene_Home.tscn")
-	scenes.append("Dungeon.tscn")
-	
 
 func start_level():
 	in_game = true
@@ -52,13 +43,6 @@ func _process(delta):
 		wait_for_release = false
 	
 	do_talking(delta)
-
-func next_scene():
-	cur_scene += 1
-	if(cur_scene <= scenes.size()):
-		get_tree().change_scene(scenes[cur_scene])
-	else:
-		do_gameover()
 	
 func do_gameover():
 	in_game = false
@@ -69,7 +53,7 @@ func player_says(say, caller):
 	talking = true
 	talk_i = 0
 	talk_str = say
-	talk_t = talk_str[talk_i].length() + min_talk_delay
+	talk_t = calc_text_speed(talk_str[talk_i])
 	wait_for_release = true
 #	print(talk_str[talk_i])
 
@@ -91,7 +75,7 @@ func do_talking(delta):
 			talk_t = 0.0
 			
 		# Advance talking
-		talk_t -= delta * talking_speed
+		talk_t -= delta
 		if(talk_t <= 0.0):
 			talk_i += 1
 			
@@ -102,5 +86,11 @@ func do_talking(delta):
 			else:
 				# Say next line
 #				print(talk_str[talk_i])
-				talk_t = talk_str[talk_i].length() + min_talk_delay
+				talk_t = calc_text_speed(talk_str[talk_i])
 		
+		
+func calc_text_speed(txt):
+	var words = txt.split(" ")
+	return max(talking_speed * words.size(), min_talk_delay)
+	
+	
