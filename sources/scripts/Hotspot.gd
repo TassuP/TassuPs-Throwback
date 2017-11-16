@@ -36,8 +36,10 @@ func _process(delta):
 						Game.player_says(s, self)
 						foot_str_i += 1
 						if(foot_str_i >= foot_str.size()):
-							foot_str_i = foot_str.size()-1
-				
+							if(one_shot):
+								foot_str_i = foot_str.size()-1
+							else:
+								foot_str_i = 0
 				# Eye
 				if(Game.cursor.tool_mode == 1):
 					if(eye_str != null):
@@ -45,8 +47,10 @@ func _process(delta):
 						Game.player_says(s, self)
 						eye_str_i += 1
 						if(eye_str_i >= eye_str.size()):
-							eye_str_i = eye_str.size()-1
-				
+							if(one_shot):
+								eye_str_i = eye_str.size()-1
+							else:
+								eye_str_i = 0
 				# Hand
 				if(Game.cursor.tool_mode == 2):
 					if(hand_str != null):
@@ -54,7 +58,10 @@ func _process(delta):
 						Game.player_says(s, self)
 						hand_str_i += 1
 						if(hand_str_i >= hand_str.size()):
-							hand_str_i = hand_str.size()-1
+							if(one_shot):
+								hand_str_i = hand_str.size()-1
+							else:
+								hand_str_i = 0
 							
 	else:
 		wait_for_release = false

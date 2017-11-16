@@ -3,9 +3,9 @@ Game name ideas:
 
 
 Dialog system:
-	- PoolStringArrays used one by one every time hotspot is clicked
-	- # separates sentences
-	- $ triggers something
+	+ PoolStringArrays used one by one every time hotspot is clicked
+	+ # separates sentences
+	+ $ triggers something
 
 
 Throwback ideas:
@@ -13,9 +13,9 @@ Throwback ideas:
 		= powerup that transforms player into a caveman or amoeba
 
 	- a person or thing having the characteristics of a former time
-		= me as a child
+		+ me as a child
 
-	-a nostalgia for something in the past (fashion, movies, literature, games, technology)
+	- a nostalgia for something in the past (fashion, movies, literature, games, technology)
 		- elements from nostalgic games
 			- Nintendo zapper
 			- Roguelike dungeon
@@ -26,14 +26,14 @@ Throwback ideas:
 			- Pacman ghosts
 			- Super Mario pipe
 
-	-something retro—a blast from the past
+	- something retro—a blast from the past
 		- 8bit music?
-		- pixelized graphics?
-		- pixelized effects
+		+ pixelized graphics (optional)
+		- pixelized effects?
 
-	-something passé—no longer fashionable or popular
+	- something passé—no longer fashionable or popular
 
-	-throwing something back—as in a ball or reply
+	- throwing something back—as in a ball or reply
 
 
 
@@ -57,7 +57,6 @@ TassuP is thinking:
 "There's gonna be sooo many pixelized retro remakes!"
 "I'm tired of those."
 "I have to think of something else."
-"Hmm.. I have no idea what to do."
 "Something... Zzz... "
 "Nostalgic... ZZzzZZzzz..."
 
@@ -78,6 +77,15 @@ TassuP: "Oh no! I've been thrown back in time to an era when everything was stil
 
 ### Enging scene ###
 
-TassuP finds his way out from the horrible mines trough a Super Mario pipe only to find himself in the middle of a chaotic battlefield. Just as the Space Invaders are attacking, TassuP finds a DeLorean and gets thrown Back In To The Future, wakes up and knows what to make for the GitHub Game Off.
+TassuP finds his way out from the horrible mines trough a Super Mario pipe only to find himself in the middle of a chaotic battlefield. Just as the Space Invaders are attacking, TassuP finds a DeLorean, gets thrown Back In To The Future and wakes up.
 
+"ZZzzZAAaaaAAaarGGGH!!!"
+"Huh?"
+"Oh..."
+"I'm here again."
+"What a crazy dream!"
+"Hey! I just had an idea!"
+"Oh my gosh, this game is going to so cool!"
+"Thanks for playing! You really helped me out."
 
+Then it's Game Over and Credits.

@@ -15,7 +15,8 @@ _sections_unfolded = [ "Font", "Settings" ]
 
 render_priority = 0
 shader = ExtResource( 2 )
-shader_param/phase = 0.2
+shader_param/pixelize = null
+shader_param/dream = 0.27
 _sections_unfolded = [ "shader_param" ]
 
 [sub_resource type="Animation" id=3]
@@ -25,12 +26,12 @@ length = 30.0
 loop = false
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("PostProcessing:material:shader_param/phase")
+tracks/0/path = NodePath("PostProcessing:material:shader_param/dream")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1, 2 ),
+"times": PoolRealArray( 0, 1, 3 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ 1.0, 0.9, 0.2 ]

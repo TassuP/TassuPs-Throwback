@@ -1,10 +1,10 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://scripts/Cutscene_Intro.gd" type="Script" id=1]
 [ext_resource path="res://images/star.png" type="Texture" id=2]
 [ext_resource path="res://images/particle.png" type="Texture" id=3]
-[ext_resource path="res://materials/PostProcessing.material" type="Material" id=4]
-[ext_resource path="res://Technically, But Not Actually.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://Technically, But Not Actually.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://shaders/dream_shader.shd" type="Shader" id=5]
 
 [sub_resource type="Gradient" id=1]
 
@@ -234,10 +234,32 @@ tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/keys = {
-"times": PoolRealArray( 10 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 10 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ true ]
+"values": [ false, true ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Camera2D/PostProcessing:material:shader_param/pixelize")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/keys = {
+"times": PoolRealArray( 0, 7.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, false ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Camera2D/PostProcessing:material:shader_param/dream")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/keys = {
+"times": PoolRealArray( 0, 7.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.27, 0.0 ]
 }
 
 [sub_resource type="Animation" id=9]
@@ -329,7 +351,7 @@ tracks/6/keys = {
 size = 48
 use_mipmaps = false
 use_filter = false
-font_data = ExtResource( 5 )
+font_data = ExtResource( 4 )
 _sections_unfolded = [ "Font", "Settings" ]
 
 [sub_resource type="DynamicFont" id=11]
@@ -337,8 +359,16 @@ _sections_unfolded = [ "Font", "Settings" ]
 size = 32
 use_mipmaps = false
 use_filter = false
-font_data = ExtResource( 5 )
+font_data = ExtResource( 4 )
 _sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="ShaderMaterial" id=12]
+
+render_priority = 0
+shader = ExtResource( 5 )
+shader_param/pixelize = false
+shader_param/dream = 0.27
+_sections_unfolded = [ "shader_param" ]
 
 [node name="Cutscene_Intro" type="Node"]
 
@@ -346,8 +376,6 @@ script = ExtResource( 1 )
 done = false
 
 [node name="Scenery" type="Node2D" parent="."]
-
-editor/display_folded = true
 
 [node name="Stars" type="Particles2D" parent="Scenery"]
 
@@ -374,7 +402,6 @@ _sections_unfolded = [ "Drawing", "Process Material", "Textures", "Time", "Trans
 
 [node name="Trees" type="Node2D" parent="Scenery"]
 
-editor/display_folded = true
 __meta__ = {
 "_edit_lock_": true
 }
@@ -384,7 +411,7 @@ __meta__ = {
 position = Vector2( 822.557, 568.617 )
 polygon = PoolVector2Array( 721.757, 146.402, 702.712, 192.654, 665.982, 238.907, 695.91, 230.745, 679.586, 264.754, 642.855, 312.367, 608.846, 349.098, 665.982, 340.935, 693.189, 331.413, 676.865, 362.701, 634.693, 400.792, 592.522, 426.639, 646.937, 419.837, 675.504, 417.116, 646.937, 444.324, 604.765, 472.892, 570.756, 489.216, 641.495, 487.856, 691.829, 470.171, 672.784, 493.297, 714.955, 478.333, 747.604, 479.693, 807.461, 489.216, 787.055, 468.81, 810.182, 475.612, 848.272, 479.693, 806.1, 453.846, 776.172, 422.558, 797.938, 437.522, 833.308, 447.044, 874.119, 440.243, 825.146, 404.873, 792.497, 372.224, 777.532, 339.575, 802.019, 357.26, 836.029, 357.26, 804.74, 330.052, 777.532, 285.16, 758.487, 232.105, 781.614, 256.592, 810.182, 264.754, 777.532, 229.385, 748.965, 176.33, 769.37, 191.294, 743.523, 143.681, 721.757, 97.4283 )
 uv = PoolVector2Array(  )
-color = Color( 0.00393295, 0.0429688, 0.00167847, 1 )
+color = Color( 0.0390479, 0.09375, 0.0358887, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( -724.475, -455.73 )
 antialiased = false
@@ -400,7 +427,7 @@ invert_border = 100.0
 position = Vector2( 950.25, 494.593 )
 polygon = PoolVector2Array( 721.757, 146.402, 702.712, 192.654, 665.982, 238.907, 695.91, 230.745, 679.586, 264.754, 642.855, 312.367, 608.846, 349.098, 665.982, 340.935, 693.189, 331.413, 676.865, 362.701, 634.693, 400.792, 592.522, 426.639, 646.937, 419.837, 675.504, 417.116, 646.937, 444.324, 604.765, 472.892, 570.756, 489.216, 641.495, 487.856, 691.829, 470.171, 672.784, 493.297, 714.955, 478.333, 747.604, 479.693, 807.461, 489.216, 787.055, 468.81, 810.182, 475.612, 848.272, 479.693, 806.1, 453.846, 776.172, 422.558, 797.938, 437.522, 833.308, 447.044, 874.119, 440.243, 825.146, 404.873, 792.497, 372.224, 777.532, 339.575, 802.019, 357.26, 836.029, 357.26, 804.74, 330.052, 777.532, 285.16, 758.487, 232.105, 781.614, 256.592, 810.182, 264.754, 777.532, 229.385, 748.965, 176.33, 769.37, 191.294, 743.523, 143.681, 721.757, 97.4283 )
 uv = PoolVector2Array(  )
-color = Color( 0.00384521, 0.0703125, 0, 1 )
+color = Color( 0.0233621, 0.171875, 0.0147705, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( -724.475, -455.73 )
 antialiased = false
@@ -417,7 +444,7 @@ position = Vector2( 203.403, 486.712 )
 scale = Vector2( 0.5, 0.5 )
 polygon = PoolVector2Array( 721.757, 146.402, 702.712, 192.654, 665.982, 238.907, 695.91, 230.745, 679.586, 264.754, 642.855, 312.367, 608.846, 349.098, 665.982, 340.935, 693.189, 331.413, 676.865, 362.701, 634.693, 400.792, 592.522, 426.639, 646.937, 419.837, 675.504, 417.116, 646.937, 444.324, 604.765, 472.892, 570.756, 489.216, 641.495, 487.856, 691.829, 470.171, 672.784, 493.297, 714.955, 478.333, 747.604, 479.693, 807.461, 489.216, 787.055, 468.81, 810.182, 475.612, 848.272, 479.693, 806.1, 453.846, 776.172, 422.558, 797.938, 437.522, 833.308, 447.044, 874.119, 440.243, 825.146, 404.873, 792.497, 372.224, 777.532, 339.575, 802.019, 357.26, 836.029, 357.26, 804.74, 330.052, 777.532, 285.16, 758.487, 232.105, 781.614, 256.592, 810.182, 264.754, 777.532, 229.385, 748.965, 176.33, 769.37, 191.294, 743.523, 143.681, 721.757, 97.4283 )
 uv = PoolVector2Array(  )
-color = Color( 0.00393653, 0.0429688, 0.00167847, 1 )
+color = Color( 0.0390479, 0.09375, 0.0358887, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( -724.475, -455.73 )
 antialiased = false
@@ -436,7 +463,7 @@ rotation = -3.14159
 scale = Vector2( 1, -1 )
 polygon = PoolVector2Array( 721.757, 146.402, 702.712, 192.654, 665.982, 238.907, 695.91, 230.745, 679.586, 264.754, 642.855, 312.367, 608.846, 349.098, 665.982, 340.935, 693.189, 331.413, 676.865, 362.701, 634.693, 400.792, 592.522, 426.639, 646.937, 419.837, 675.504, 417.116, 646.937, 444.324, 604.765, 472.892, 570.756, 489.216, 641.495, 487.856, 691.829, 470.171, 672.784, 493.297, 714.955, 478.333, 747.604, 479.693, 807.461, 489.216, 787.055, 468.81, 810.182, 475.612, 848.272, 479.693, 806.1, 453.846, 776.172, 422.558, 797.938, 437.522, 833.308, 447.044, 874.119, 440.243, 825.146, 404.873, 792.497, 372.224, 777.532, 339.575, 802.019, 357.26, 836.029, 357.26, 804.74, 330.052, 777.532, 285.16, 758.487, 232.105, 781.614, 256.592, 810.182, 264.754, 777.532, 229.385, 748.965, 176.33, 769.37, 191.294, 743.523, 143.681, 721.757, 97.4283 )
 uv = PoolVector2Array(  )
-color = Color( 0.00384521, 0.0703125, 0, 1 )
+color = Color( 0.0221175, 0.136719, 0.0154877, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( -724.475, -455.73 )
 antialiased = false
@@ -594,14 +621,12 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Trees2" type="Node2D" parent="Scenery"]
 
-editor/display_folded = true
-
 [node name="Tree3" type="Polygon2D" parent="Scenery/Trees2"]
 
 position = Vector2( 688.906, 746.013 )
 polygon = PoolVector2Array( 721.757, 146.402, 702.712, 192.654, 665.982, 238.907, 695.91, 230.745, 679.586, 264.754, 642.855, 312.367, 608.846, 349.098, 665.982, 340.935, 693.189, 331.413, 676.865, 362.701, 634.693, 400.792, 592.522, 426.639, 646.937, 419.837, 675.504, 417.116, 646.937, 444.324, 604.765, 472.892, 570.756, 489.216, 641.495, 487.856, 691.829, 470.171, 672.784, 493.297, 714.955, 478.333, 747.604, 479.693, 807.461, 489.216, 787.055, 468.81, 810.182, 475.612, 848.272, 479.693, 806.1, 453.846, 776.172, 422.558, 797.938, 437.522, 833.308, 447.044, 874.119, 440.243, 825.146, 404.873, 792.497, 372.224, 777.532, 339.575, 802.019, 357.26, 836.029, 357.26, 804.74, 330.052, 777.532, 285.16, 758.487, 232.105, 781.614, 256.592, 810.182, 264.754, 777.532, 229.385, 748.965, 176.33, 769.37, 191.294, 743.523, 143.681, 721.757, 97.4283 )
 uv = PoolVector2Array(  )
-color = Color( 0.00393295, 0.0429688, 0.00167847, 1 )
+color = Color( 0.00977705, 0.0859375, 0.00537109, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( -724.475, -455.73 )
 antialiased = false
@@ -617,7 +642,7 @@ invert_border = 100.0
 position = Vector2( 982.858, 679.206 )
 polygon = PoolVector2Array( 721.757, 146.402, 702.712, 192.654, 665.982, 238.907, 695.91, 230.745, 679.586, 264.754, 642.855, 312.367, 608.846, 349.098, 665.982, 340.935, 693.189, 331.413, 676.865, 362.701, 634.693, 400.792, 592.522, 426.639, 646.937, 419.837, 675.504, 417.116, 646.937, 444.324, 604.765, 472.892, 570.756, 489.216, 641.495, 487.856, 691.829, 470.171, 672.784, 493.297, 714.955, 478.333, 747.604, 479.693, 807.461, 489.216, 787.055, 468.81, 810.182, 475.612, 848.272, 479.693, 806.1, 453.846, 776.172, 422.558, 797.938, 437.522, 833.308, 447.044, 874.119, 440.243, 825.146, 404.873, 792.497, 372.224, 777.532, 339.575, 802.019, 357.26, 836.029, 357.26, 804.74, 330.052, 777.532, 285.16, 758.487, 232.105, 781.614, 256.592, 810.182, 264.754, 777.532, 229.385, 748.965, 176.33, 769.37, 191.294, 743.523, 143.681, 721.757, 97.4283 )
 uv = PoolVector2Array(  )
-color = Color( 0.00393295, 0.0429688, 0.00167847, 1 )
+color = Color( 0.00977705, 0.0859375, 0.00537109, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( -724.475, -455.73 )
 antialiased = false
@@ -635,7 +660,7 @@ rotation = -3.14159
 scale = Vector2( 1, -1 )
 polygon = PoolVector2Array( 721.757, 146.402, 702.712, 192.654, 665.982, 238.907, 695.91, 230.745, 679.586, 264.754, 642.855, 312.367, 608.846, 349.098, 665.982, 340.935, 693.189, 331.413, 676.865, 362.701, 634.693, 400.792, 592.522, 426.639, 646.937, 419.837, 675.504, 417.116, 646.937, 444.324, 604.765, 472.892, 570.756, 489.216, 641.495, 487.856, 691.829, 470.171, 672.784, 493.297, 714.955, 478.333, 747.604, 479.693, 807.461, 489.216, 787.055, 468.81, 810.182, 475.612, 848.272, 479.693, 806.1, 453.846, 776.172, 422.558, 797.938, 437.522, 833.308, 447.044, 874.119, 440.243, 825.146, 404.873, 792.497, 372.224, 777.532, 339.575, 802.019, 357.26, 836.029, 357.26, 804.74, 330.052, 777.532, 285.16, 758.487, 232.105, 781.614, 256.592, 810.182, 264.754, 777.532, 229.385, 748.965, 176.33, 769.37, 191.294, 743.523, 143.681, 721.757, 97.4283 )
 uv = PoolVector2Array(  )
-color = Color( 0.00393295, 0.0429688, 0.00167847, 1 )
+color = Color( 0.00977705, 0.0859375, 0.00537109, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( -724.475, -455.73 )
 antialiased = false
@@ -654,7 +679,7 @@ rotation = -3.14159
 scale = Vector2( 1, -1 )
 polygon = PoolVector2Array( 721.757, 146.402, 702.712, 192.654, 665.982, 238.907, 695.91, 230.745, 679.586, 264.754, 642.855, 312.367, 608.846, 349.098, 665.982, 340.935, 693.189, 331.413, 676.865, 362.701, 634.693, 400.792, 592.522, 426.639, 646.937, 419.837, 675.504, 417.116, 646.937, 444.324, 604.765, 472.892, 570.756, 489.216, 641.495, 487.856, 691.829, 470.171, 672.784, 493.297, 714.955, 478.333, 747.604, 479.693, 807.461, 489.216, 787.055, 468.81, 810.182, 475.612, 848.272, 479.693, 806.1, 453.846, 776.172, 422.558, 797.938, 437.522, 833.308, 447.044, 874.119, 440.243, 825.146, 404.873, 792.497, 372.224, 777.532, 339.575, 802.019, 357.26, 836.029, 357.26, 804.74, 330.052, 777.532, 285.16, 758.487, 232.105, 781.614, 256.592, 810.182, 264.754, 777.532, 229.385, 748.965, 176.33, 769.37, 191.294, 743.523, 143.681, 721.757, 97.4283 )
 uv = PoolVector2Array(  )
-color = Color( 0.00393295, 0.0429688, 0.00167847, 1 )
+color = Color( 0.00977705, 0.0859375, 0.00537109, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( -724.475, -455.73 )
 antialiased = false
@@ -672,7 +697,7 @@ position = Vector2( 29.4452, 605.151 )
 scale = Vector2( 0.5, 0.5 )
 polygon = PoolVector2Array( 721.757, 146.402, 702.712, 192.654, 665.982, 238.907, 695.91, 230.745, 679.586, 264.754, 642.855, 312.367, 608.846, 349.098, 665.982, 340.935, 693.189, 331.413, 676.865, 362.701, 634.693, 400.792, 592.522, 426.639, 646.937, 419.837, 675.504, 417.116, 646.937, 444.324, 604.765, 472.892, 570.756, 489.216, 641.495, 487.856, 691.829, 470.171, 672.784, 493.297, 714.955, 478.333, 747.604, 479.693, 807.461, 489.216, 787.055, 468.81, 810.182, 475.612, 848.272, 479.693, 806.1, 453.846, 776.172, 422.558, 797.938, 437.522, 833.308, 447.044, 874.119, 440.243, 825.146, 404.873, 792.497, 372.224, 777.532, 339.575, 802.019, 357.26, 836.029, 357.26, 804.74, 330.052, 777.532, 285.16, 758.487, 232.105, 781.614, 256.592, 810.182, 264.754, 777.532, 229.385, 748.965, 176.33, 769.37, 191.294, 743.523, 143.681, 721.757, 97.4283 )
 uv = PoolVector2Array(  )
-color = Color( 0.00393653, 0.0429688, 0.00167847, 1 )
+color = Color( 0.00977705, 0.0859375, 0.00537109, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( -724.475, -455.73 )
 antialiased = false
@@ -719,69 +744,6 @@ playback/speed = 1.0
 blend_times = [  ]
 autoplay = "Intro texts"
 _sections_unfolded = [ "Playback Options", "playback" ]
-
-[node name="Camera2D" type="Camera2D" parent="."]
-
-position = Vector2( 512, -300 )
-anchor_mode = 1
-rotating = false
-current = true
-zoom = Vector2( 1, 1 )
-limit_left = -10000000
-limit_top = -10000000
-limit_right = 10000000
-limit_bottom = 10000000
-limit_smoothed = false
-drag_margin_h_enabled = true
-drag_margin_v_enabled = true
-smoothing_enabled = false
-smoothing_speed = 5.0
-drag_margin_left = 0.2
-drag_margin_top = 0.2
-drag_margin_right = 0.2
-drag_margin_bottom = 0.2
-editor_draw_screen = true
-editor_draw_limits = false
-editor_draw_drag_margin = false
-_sections_unfolded = [ "Transform" ]
-
-[node name="PostProcessing" type="ColorRect" parent="Camera2D"]
-
-material = ExtResource( 4 )
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -512.0
-margin_top = -418.0
-margin_right = 448.0
-margin_bottom = 236.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-color = Color( 1, 1, 1, 1 )
-_sections_unfolded = [ "Material", "Rect", "Size Flags" ]
-
-[node name="Fade out" type="ColorRect" parent="Camera2D"]
-
-modulate = Color( 1, 1, 1, 0.0500002 )
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -512.0
-margin_top = -418.0
-margin_right = 448.0
-margin_bottom = 236.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-color = Color( 0, 0, 0, 1 )
-_sections_unfolded = [ "Material", "Rect", "Size Flags", "Visibility" ]
 
 [node name="Texts" type="Control" parent="."]
 
@@ -890,5 +852,68 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Visibility", "custom_fonts" ]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+position = Vector2( 512, -300 )
+anchor_mode = 1
+rotating = false
+current = true
+zoom = Vector2( 1, 1 )
+limit_left = -10000000
+limit_top = -10000000
+limit_right = 10000000
+limit_bottom = 10000000
+limit_smoothed = false
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = false
+smoothing_speed = 5.0
+drag_margin_left = 0.2
+drag_margin_top = 0.2
+drag_margin_right = 0.2
+drag_margin_bottom = 0.2
+editor_draw_screen = true
+editor_draw_limits = false
+editor_draw_drag_margin = false
+_sections_unfolded = [ "Transform" ]
+
+[node name="PostProcessing" type="ColorRect" parent="Camera2D"]
+
+material = SubResource( 12 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -512.0
+margin_top = -418.0
+margin_right = 448.0
+margin_bottom = 236.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 1, 1, 1, 1 )
+_sections_unfolded = [ "Material", "Rect", "Size Flags" ]
+
+[node name="Fade out" type="ColorRect" parent="Camera2D"]
+
+modulate = Color( 1, 1, 1, 0.0500002 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -512.0
+margin_top = -418.0
+margin_right = 448.0
+margin_bottom = 236.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 0, 0, 0, 1 )
+_sections_unfolded = [ "Material", "Rect", "Size Flags", "Visibility" ]
 
 

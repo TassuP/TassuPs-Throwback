@@ -1,18 +1,20 @@
 extends Node2D
 
 export var auto_start = false
-enum HotspotEventType {walk_here, fade_in, fade_out, game_over, monolog}
-export(int, "Walk Here", "Fade In", "Fade Out", "Game Over", "Monolog") var action
+enum HotspotEventType {walk_here, fade_in, fade_out, game_over, monolog, dream_on, dream_off}
+export(int, "Walk Here", "Fade In", "Fade Out", "Game Over", "Monolog", "Dream On", "Dream Off") var action
 export(PoolStringArray) var monolog
 export(NodePath) var next_event
 
 var is_running = false
 var t = 0.0
 var fader = "/root/Main/Node2D/Camera2D/Control/Fader"
+var post_prosessing = "/root/Main/Node2D/Camera2D/Control/PostProsessing"
 
 func _ready():
 	
 	fader = get_node(fader)
+	post_prosessing = get_node(post_prosessing)
 	
 	if(next_event != null):
 		next_event = get_node(next_event)
@@ -82,3 +84,21 @@ func _process(delta):
 			set_process(false)
 			Game.event_running = false
 			Game.player_says(monolog, self)
+			
+		# Dream On
+		if(action == HotspotEventType.dream_on):
+			t += delta / 2.0
+			if(t > 1.0):
+				t = 1.0
+				stop()
+			else:
+				post_prosessing.get_material().set_shader_param("dream", t)
+				
+		# Dream Off
+		if(action == HotspotEventType.dream_off):
+			t += delta / 2.0
+			if(t > 1.0):
+				t = 1.0
+				stop()
+			else:
+				post_prosessing.get_material().set_shader_param("dream", 1.0 - t)

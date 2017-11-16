@@ -5,14 +5,15 @@
 [ext_resource path="res://Technically, But Not Actually.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://scripts/CutsceneText.gd" type="Script" id=4]
 
-[sub_resource type="ShaderMaterial" id=18]
+[sub_resource type="ShaderMaterial" id=1]
 
 render_priority = 0
 shader = ExtResource( 2 )
-shader_param/phase = 0.0
+shader_param/pixelize = null
+shader_param/dream = 0.0
 _sections_unfolded = [ "shader_param" ]
 
-[sub_resource type="DynamicFont" id=17]
+[sub_resource type="DynamicFont" id=2]
 
 size = 42
 use_mipmaps = false
@@ -20,14 +21,14 @@ use_filter = false
 font_data = ExtResource( 3 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[sub_resource type="Animation" id=19]
+[sub_resource type="Animation" id=3]
 
 resource_name = "fall asleep"
 length = 20.0
 loop = false
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("PostProcessing:material:shader_param/phase")
+tracks/0/path = NodePath("PostProcessing:material:shader_param/dream")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -325,7 +326,6 @@ __meta__ = {
 
 position = Vector2( -45.6236, -18.3598 )
 rotation = 0.754001
-scale = Vector2( 1, 1 )
 polygon = PoolVector2Array( 15.6354, -83.3922, 4.36417, -83.7462, -7.29747, -75.8475, -14.9827, -65.0688, -17.0693, -52.9337, -12.4183, -42.2924, -5.12956, -32.093, -2.51675, -24.6487, 1.26576, -13.3011, 0.185043, 1.82898, 3.66292, 14.1167, 6.29738, 24.6801, 14.7291, 33.2504, 24.5376, 42.0616, 20.996, 28.899, 11.5326, 13.1765, 14.2344, -5.19571, 11.5326, -18.7047, 15.3151, -27.3505, 14.1225, -34.5938, 15.1279, -42.7901, 25.4019, -72.7214, 25.4726, -79.1475 )
 uv = PoolVector2Array(  )
 color = Color( 1, 0.705963, 0.199219, 1 )
@@ -839,7 +839,6 @@ _sections_unfolded = [ "Transform" ]
 editor/display_folded = true
 show_behind_parent = true
 position = Vector2( -9.01021, -0.941299 )
-scale = Vector2( 1, 1 )
 polygon = PoolVector2Array( 225.636, 576.763, 236.999, 567.323, 247.139, 563.477, 255.356, 561.903, 257.803, 563.651, 253.957, 567.323, 247.838, 580.959, 241.545, 592.148, 233.852, 595.994, 227.209, 588.477, 222.489, 580.085 )
 uv = PoolVector2Array(  )
 color = Color( 0.777344, 0.422432, 0.11235, 1 )
@@ -902,7 +901,6 @@ invert_border = 100.0
 [node name="Ear 1" type="Polygon2D" parent="Doggy sleeping/Head"]
 
 position = Vector2( -4.57231, 0.403534 )
-scale = Vector2( 1, 1 )
 polygon = PoolVector2Array( 172.406, 562.384, 188.103, 567.854, 201.659, 576.416, 203.324, 583.075, 189.767, 596.869, 182.157, 591.161, 176.687, 577.367, 170.979, 567.378, 165.509, 563.097, 167.36, 560.107 )
 uv = PoolVector2Array(  )
 color = Color( 0.777344, 0.422432, 0.11235, 1 )
@@ -1004,7 +1002,7 @@ invert_border = 100.0
 
 [node name="PostProcessing" type="ColorRect" parent="."]
 
-material = SubResource( 18 )
+material = SubResource( 1 )
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -1086,7 +1084,7 @@ rect_clip_content = false
 mouse_filter = 2
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 17 )
+custom_fonts/font = SubResource( 2 )
 align = 1
 valign = 1
 autowrap = true
@@ -1102,7 +1100,7 @@ txt = PoolStringArray( "", "I have to think of something else.", "", "Something.
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 root_node = NodePath("..")
-"anims/fall asleep" = SubResource( 19 )
+"anims/fall asleep" = SubResource( 3 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]

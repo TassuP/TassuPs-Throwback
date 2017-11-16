@@ -1,26 +1,1338 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scripts/Hotspot.gd" type="Script" id=1]
 [ext_resource path="res://scripts/HotspotEvent.gd" type="Script" id=2]
 [ext_resource path="res://scripts/Player.gd" type="Script" id=3]
 [ext_resource path="res://scripts/Cursor.gd" type="Script" id=4]
 [ext_resource path="res://scripts/cam.gd" type="Script" id=5]
-[ext_resource path="res://shaders/PostProsessing.shd" type="Shader" id=6]
+[ext_resource path="res://shaders/dream_shader.shd" type="Shader" id=6]
 [ext_resource path="res://scripts/PauseMenu.gd" type="Script" id=7]
 [ext_resource path="res://Technically, But Not Actually.ttf" type="DynamicFontData" id=8]
 [ext_resource path="res://scripts/Talk label.gd" type="Script" id=9]
 
-[sub_resource type="CapsuleShape2D" id=1]
+[sub_resource type="CircleShape2D" id=5]
 
 custom_solver_bias = 0.0
-radius = 10.0
-height = 7.82054
+radius = 7.33333
+
+[sub_resource type="Animation" id=7]
+
+resource_name = "Standing"
+length = 2.0
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Side/Neck:rotation_deg")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Side/Neck/Head:rotation_deg")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Side/Neck/Head/Pony tail:rotation_deg")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Side/Shirt/Arm:rotation_deg")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -0.577121, -0.577121 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Side/Arm2:rotation_deg")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -12.0726, -12.0726 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Front/Neck/Head:position")
+tracks/5/interp = 2
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -0.810791, -5.62994 ), Vector2( -0.810791, -5.62994 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Front/Neck/Head/Pony tail:rotation_deg")
+tracks/6/interp = 2
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -10.986, -10.986 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Front/Shirt/Arm:rotation_deg")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.868307, 0.868307 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Front/Shirt/Arm2:rotation_deg")
+tracks/8/interp = 2
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -18.297, -18.297 ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Back/Head:position")
+tracks/9/interp = 2
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -6.88266, -44.9061 ), Vector2( -6.88266, -44.9061 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Back/Head/Hair/Pony tail2:rotation_deg")
+tracks/10/interp = 2
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -49.013, -49.013 ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Side/Neck:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -4.45029, -28.0163 ), Vector2( -4.45029, -28.0163 ) ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("Side/Neck/Head:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -0.333332, -5.66667 ), Vector2( -0.333332, -5.66667 ) ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("Side/Neck/Head/Pony tail:position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -5.66667, -0.666667 ), Vector2( -5.66667, -0.666667 ) ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("Side/Leg 1:position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -3.34511, 3.21794 ), Vector2( -3.34511, 3.21794 ) ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("Side/Leg 1:rotation_deg")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -16.1836, -16.1836 ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("Side/Leg 1/Leg:position")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.107994, 4.98236 ), Vector2( 0.107994, 4.98236 ) ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("Side/Leg 1/Leg:rotation_deg")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 21.3378, 21.3378 ]
+}
+tracks/18/type = "value"
+tracks/18/path = NodePath("Side/Leg 1/Leg/Shoe:position")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.194572, 7.24305 ), Vector2( 0.194572, 7.24305 ) ]
+}
+tracks/19/type = "value"
+tracks/19/path = NodePath("Side/Leg 1/Leg/Shoe:rotation_deg")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0 ]
+}
+tracks/20/type = "value"
+tracks/20/path = NodePath("Side/Leg 2:position")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -4.45029, 5.98372 ), Vector2( -4.45029, 5.98372 ) ]
+}
+tracks/21/type = "value"
+tracks/21/path = NodePath("Side/Leg 2:rotation_deg")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 2.86779, 2.86779 ]
+}
+tracks/22/type = "value"
+tracks/22/path = NodePath("Side/Leg 2/Leg:position")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/imported = false
+tracks/22/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.107994, 4.98236 ), Vector2( 0.107994, 4.98236 ) ]
+}
+tracks/23/type = "value"
+tracks/23/path = NodePath("Side/Leg 2/Leg:rotation_deg")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/imported = false
+tracks/23/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 16.9245, 16.9245 ]
+}
+tracks/24/type = "value"
+tracks/24/path = NodePath("Side/Leg 2/Leg/Shoe:position")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/imported = false
+tracks/24/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.194572, 7.24305 ), Vector2( 0.194572, 7.24305 ) ]
+}
+tracks/25/type = "value"
+tracks/25/path = NodePath("Side/Leg 2/Leg/Shoe:rotation_deg")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/imported = false
+tracks/25/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -5.99504, -5.99504 ]
+}
+tracks/26/type = "value"
+tracks/26/path = NodePath("Side/Shirt:position")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/imported = false
+tracks/26/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1.57343, -0.524467 ), Vector2( 1.57343, -0.524467 ) ]
+}
+tracks/27/type = "value"
+tracks/27/path = NodePath("Side/Shirt:rotation_deg")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/imported = false
+tracks/27/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0 ]
+}
+tracks/28/type = "value"
+tracks/28/path = NodePath("Side/Shirt/Arm:position")
+tracks/28/interp = 1
+tracks/28/loop_wrap = true
+tracks/28/imported = false
+tracks/28/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -3.6941, -9.28134 ), Vector2( -3.6941, -9.28134 ) ]
+}
+tracks/29/type = "value"
+tracks/29/path = NodePath("Side/Arm2:position")
+tracks/29/interp = 1
+tracks/29/loop_wrap = true
+tracks/29/imported = false
+tracks/29/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -0.620262, -9.09805 ), Vector2( -0.620262, -9.09805 ) ]
+}
+tracks/30/type = "value"
+tracks/30/path = NodePath("Front/Neck/Head:rotation_deg")
+tracks/30/interp = 1
+tracks/30/loop_wrap = true
+tracks/30/imported = false
+tracks/30/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0 ]
+}
+tracks/31/type = "value"
+tracks/31/path = NodePath("Front/Leg 1:position")
+tracks/31/interp = 1
+tracks/31/loop_wrap = true
+tracks/31/imported = false
+tracks/31/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 2.09232, 5.05229 ), Vector2( 2.09232, 5.05229 ) ]
+}
+tracks/32/type = "value"
+tracks/32/path = NodePath("Front/Leg 1:rotation_deg")
+tracks/32/interp = 1
+tracks/32/loop_wrap = true
+tracks/32/imported = false
+tracks/32/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -5.1807, -5.1807 ]
+}
+tracks/33/type = "value"
+tracks/33/path = NodePath("Front/Leg 1/Leg:position")
+tracks/33/interp = 1
+tracks/33/loop_wrap = true
+tracks/33/imported = false
+tracks/33/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.107994, 4.98236 ), Vector2( 0.107994, 4.98236 ) ]
+}
+tracks/34/type = "value"
+tracks/34/path = NodePath("Front/Leg 1/Leg:rotation_deg")
+tracks/34/interp = 1
+tracks/34/loop_wrap = true
+tracks/34/imported = false
+tracks/34/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 7.45507, 7.45507 ]
+}
+tracks/35/type = "value"
+tracks/35/path = NodePath("Front/Leg 2:position")
+tracks/35/interp = 1
+tracks/35/loop_wrap = true
+tracks/35/imported = false
+tracks/35/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -6.81175, 4.75095 ), Vector2( -6.81175, 4.75095 ) ]
+}
+tracks/36/type = "value"
+tracks/36/path = NodePath("Front/Leg 2:rotation_deg")
+tracks/36/interp = 1
+tracks/36/loop_wrap = true
+tracks/36/imported = false
+tracks/36/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 3.37676, 3.37676 ]
+}
+tracks/37/type = "value"
+tracks/37/path = NodePath("Front/Leg 2/Leg:position")
+tracks/37/interp = 1
+tracks/37/loop_wrap = true
+tracks/37/imported = false
+tracks/37/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.107994, 4.98236 ), Vector2( 0.107994, 4.98236 ) ]
+}
+tracks/38/type = "value"
+tracks/38/path = NodePath("Front/Leg 2/Leg:rotation_deg")
+tracks/38/interp = 1
+tracks/38/loop_wrap = true
+tracks/38/imported = false
+tracks/38/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 5.33836, 5.33836 ]
+}
+tracks/39/type = "value"
+tracks/39/path = NodePath("Front/Shirt:position")
+tracks/39/interp = 1
+tracks/39/loop_wrap = true
+tracks/39/imported = false
+tracks/39/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1.57343, -0.524467 ), Vector2( 1.57343, -0.524467 ) ]
+}
+tracks/40/type = "value"
+tracks/40/path = NodePath("Front/Shirt:rotation_deg")
+tracks/40/interp = 1
+tracks/40/loop_wrap = true
+tracks/40/imported = false
+tracks/40/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0 ]
+}
+tracks/41/type = "value"
+tracks/41/path = NodePath("Front/Shirt/Arm:position")
+tracks/41/interp = 1
+tracks/41/loop_wrap = true
+tracks/41/imported = false
+tracks/41/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -4.32231, -9.16168 ), Vector2( -4.32231, -9.16168 ) ]
+}
+tracks/42/type = "value"
+tracks/42/path = NodePath("Front/Shirt/Arm2:position")
+tracks/42/interp = 1
+tracks/42/loop_wrap = true
+tracks/42/imported = false
+tracks/42/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.698414, -9.13874 ), Vector2( 0.698414, -9.13874 ) ]
+}
+tracks/43/type = "value"
+tracks/43/path = NodePath("Back/Leg 1:position")
+tracks/43/interp = 1
+tracks/43/loop_wrap = true
+tracks/43/imported = false
+tracks/43/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 2.09232, 5.05229 ), Vector2( 2.09232, 5.05229 ) ]
+}
+tracks/44/type = "value"
+tracks/44/path = NodePath("Back/Leg 1:rotation_deg")
+tracks/44/interp = 1
+tracks/44/loop_wrap = true
+tracks/44/imported = false
+tracks/44/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -5.1807, -5.1807 ]
+}
+tracks/45/type = "value"
+tracks/45/path = NodePath("Back/Leg 1/Leg:position")
+tracks/45/interp = 1
+tracks/45/loop_wrap = true
+tracks/45/imported = false
+tracks/45/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.107994, 4.98236 ), Vector2( 0.107994, 4.98236 ) ]
+}
+tracks/46/type = "value"
+tracks/46/path = NodePath("Back/Leg 1/Leg:rotation_deg")
+tracks/46/interp = 1
+tracks/46/loop_wrap = true
+tracks/46/imported = false
+tracks/46/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 7.45507, 7.45507 ]
+}
+tracks/47/type = "value"
+tracks/47/path = NodePath("Back/Leg 2:position")
+tracks/47/interp = 1
+tracks/47/loop_wrap = true
+tracks/47/imported = false
+tracks/47/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -6.81175, 4.75095 ), Vector2( -6.81175, 4.75095 ) ]
+}
+tracks/48/type = "value"
+tracks/48/path = NodePath("Back/Leg 2:rotation_deg")
+tracks/48/interp = 1
+tracks/48/loop_wrap = true
+tracks/48/imported = false
+tracks/48/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 3.37676, 3.37676 ]
+}
+tracks/49/type = "value"
+tracks/49/path = NodePath("Back/Leg 2/Leg:position")
+tracks/49/interp = 1
+tracks/49/loop_wrap = true
+tracks/49/imported = false
+tracks/49/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.107994, 4.98236 ), Vector2( 0.107994, 4.98236 ) ]
+}
+tracks/50/type = "value"
+tracks/50/path = NodePath("Back/Leg 2/Leg:rotation_deg")
+tracks/50/interp = 1
+tracks/50/loop_wrap = true
+tracks/50/imported = false
+tracks/50/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 5.33836, 5.33836 ]
+}
+tracks/51/type = "value"
+tracks/51/path = NodePath("Back/Shirt:position")
+tracks/51/interp = 1
+tracks/51/loop_wrap = true
+tracks/51/imported = false
+tracks/51/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1.57343, -0.524467 ), Vector2( 1.57343, -0.524467 ) ]
+}
+tracks/52/type = "value"
+tracks/52/path = NodePath("Back/Shirt:rotation_deg")
+tracks/52/interp = 1
+tracks/52/loop_wrap = true
+tracks/52/imported = false
+tracks/52/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0 ]
+}
+tracks/53/type = "value"
+tracks/53/path = NodePath("Back/Shirt/Arm:position")
+tracks/53/interp = 1
+tracks/53/loop_wrap = true
+tracks/53/imported = false
+tracks/53/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -4.32231, -9.16168 ), Vector2( -4.32231, -9.16168 ) ]
+}
+tracks/54/type = "value"
+tracks/54/path = NodePath("Back/Shirt/Arm:rotation_deg")
+tracks/54/interp = 1
+tracks/54/loop_wrap = true
+tracks/54/imported = false
+tracks/54/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 6.89436, 6.89436 ]
+}
+tracks/55/type = "value"
+tracks/55/path = NodePath("Back/Shirt/Arm2:position")
+tracks/55/interp = 1
+tracks/55/loop_wrap = true
+tracks/55/imported = false
+tracks/55/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.698414, -9.13874 ), Vector2( 0.698414, -9.13874 ) ]
+}
+tracks/56/type = "value"
+tracks/56/path = NodePath("Back/Shirt/Arm2:rotation_deg")
+tracks/56/interp = 1
+tracks/56/loop_wrap = true
+tracks/56/imported = false
+tracks/56/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -24.3042, -24.3042 ]
+}
+tracks/57/type = "value"
+tracks/57/path = NodePath("Back/Head:rotation_deg")
+tracks/57/interp = 1
+tracks/57/loop_wrap = true
+tracks/57/imported = false
+tracks/57/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0 ]
+}
+tracks/58/type = "value"
+tracks/58/path = NodePath("Back/Head/Hair/Pony tail2:position")
+tracks/58/interp = 1
+tracks/58/loop_wrap = true
+tracks/58/imported = false
+tracks/58/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.594536, 2.81969 ), Vector2( 0.594536, 2.81969 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+
+resource_name = "Walking"
+length = 0.5
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Side/Neck:rotation_deg")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Side/Neck/Head:rotation_deg")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Side/Neck/Head/Pony tail:rotation_deg")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Side/Shirt/Arm:rotation_deg")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -0.577121, 10.1673, -0.577121 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Side/Arm2:rotation_deg")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -12.0726, -21.2056, -12.0726 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Front/Neck/Head:position")
+tracks/5/interp = 2
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -0.810791, -5.62994 ), Vector2( -0.810791, -5.62994 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Front/Neck/Head/Pony tail:rotation_deg")
+tracks/6/interp = 2
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -10.986, -10.986 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Front/Shirt/Arm:rotation_deg")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 5.76156, 0.868307, 5.76156 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Front/Shirt/Arm2:rotation_deg")
+tracks/8/interp = 2
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -21.0865, -17.6453, -21.0865 ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Back/Head:position")
+tracks/9/interp = 2
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -6.88266, -44.9061 ), Vector2( -6.88266, -44.9061 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Back/Head/Hair/Pony tail2:rotation_deg")
+tracks/10/interp = 2
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -49.013, -49.013 ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Side/Neck:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -4.45029, -28.0163 ), Vector2( -4.45029, -28.0163 ) ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("Side/Neck/Head:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -0.333332, -5.66667 ), Vector2( -0.333332, -5.66667 ) ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("Side/Neck/Head/Pony tail:position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -5.66667, -0.666667 ), Vector2( -5.66667, -0.666667 ) ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("Side/Leg 1:position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -3.34511, 3.21794 ), Vector2( -3.34511, 3.21794 ) ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("Side/Leg 1:rotation_deg")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/keys = {
+"times": PoolRealArray( 0, 0.25, 0.375, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ -16.1836, 7.58052, -11.812, -16.1836 ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("Side/Leg 1/Leg:position")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.107994, 4.98236 ), Vector2( 0.107994, 4.98236 ) ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("Side/Leg 1/Leg:rotation_deg")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/keys = {
+"times": PoolRealArray( 0, 0.25, 0.375, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 21.3378, 14.6361, 36.6463, 21.3378 ]
+}
+tracks/18/type = "value"
+tracks/18/path = NodePath("Side/Leg 1/Leg/Shoe:position")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.194572, 7.24305 ), Vector2( 0.194572, 7.24305 ) ]
+}
+tracks/19/type = "value"
+tracks/19/path = NodePath("Side/Leg 1/Leg/Shoe:rotation_deg")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0 ]
+}
+tracks/20/type = "value"
+tracks/20/path = NodePath("Side/Leg 2:position")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -4.45029, 5.98372 ), Vector2( -4.45029, 5.98372 ) ]
+}
+tracks/21/type = "value"
+tracks/21/path = NodePath("Side/Leg 2:rotation_deg")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/keys = {
+"times": PoolRealArray( 0, 0.25, 0.375, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 2.86779, -23.3195, -3.63498, 2.86779 ]
+}
+tracks/22/type = "value"
+tracks/22/path = NodePath("Side/Leg 2/Leg:position")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/imported = false
+tracks/22/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.107994, 4.98236 ), Vector2( 0.107994, 4.98236 ) ]
+}
+tracks/23/type = "value"
+tracks/23/path = NodePath("Side/Leg 2/Leg:rotation_deg")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/imported = false
+tracks/23/keys = {
+"times": PoolRealArray( 0, 0.125, 0.25, 0.375, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 16.9245, 34.7955, 13.2925, 10.979, 16.9245 ]
+}
+tracks/24/type = "value"
+tracks/24/path = NodePath("Side/Leg 2/Leg/Shoe:position")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/imported = false
+tracks/24/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.194572, 7.24305 ), Vector2( 0.194572, 7.24305 ) ]
+}
+tracks/25/type = "value"
+tracks/25/path = NodePath("Side/Leg 2/Leg/Shoe:rotation_deg")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/imported = false
+tracks/25/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -5.99504, -5.99504 ]
+}
+tracks/26/type = "value"
+tracks/26/path = NodePath("Side/Shirt:position")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/imported = false
+tracks/26/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1.57343, -0.524467 ), Vector2( 1.57343, -0.524467 ) ]
+}
+tracks/27/type = "value"
+tracks/27/path = NodePath("Side/Shirt:rotation_deg")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/imported = false
+tracks/27/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0 ]
+}
+tracks/28/type = "value"
+tracks/28/path = NodePath("Side/Shirt/Arm:position")
+tracks/28/interp = 1
+tracks/28/loop_wrap = true
+tracks/28/imported = false
+tracks/28/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -3.6941, -9.28134 ), Vector2( -3.6941, -9.28134 ) ]
+}
+tracks/29/type = "value"
+tracks/29/path = NodePath("Side/Arm2:position")
+tracks/29/interp = 1
+tracks/29/loop_wrap = true
+tracks/29/imported = false
+tracks/29/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -0.287361, -27.8186 ), Vector2( -0.287361, -27.8186 ) ]
+}
+tracks/30/type = "value"
+tracks/30/path = NodePath("Front/Neck/Head:rotation_deg")
+tracks/30/interp = 1
+tracks/30/loop_wrap = true
+tracks/30/imported = false
+tracks/30/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0 ]
+}
+tracks/31/type = "value"
+tracks/31/path = NodePath("Front/Leg 1:position")
+tracks/31/interp = 1
+tracks/31/loop_wrap = true
+tracks/31/imported = false
+tracks/31/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 2.09232, 5.05229 ), Vector2( 2.09232, 5.05229 ) ]
+}
+tracks/32/type = "value"
+tracks/32/path = NodePath("Front/Leg 1:rotation_deg")
+tracks/32/interp = 1
+tracks/32/loop_wrap = true
+tracks/32/imported = false
+tracks/32/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -5.1807, -5.1807 ]
+}
+tracks/33/type = "value"
+tracks/33/path = NodePath("Front/Leg 1/Leg:position")
+tracks/33/interp = 1
+tracks/33/loop_wrap = true
+tracks/33/imported = false
+tracks/33/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.239792, 3.1579 ), Vector2( 0.161987, 4.48614 ), Vector2( 0.239792, 3.1579 ) ]
+}
+tracks/34/type = "value"
+tracks/34/path = NodePath("Front/Leg 1/Leg:rotation_deg")
+tracks/34/interp = 1
+tracks/34/loop_wrap = true
+tracks/34/imported = false
+tracks/34/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 7.45507, 7.45507 ]
+}
+tracks/35/type = "value"
+tracks/35/path = NodePath("Front/Leg 2:position")
+tracks/35/interp = 1
+tracks/35/loop_wrap = true
+tracks/35/imported = false
+tracks/35/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -6.81175, 4.75095 ), Vector2( -6.81175, 4.75095 ) ]
+}
+tracks/36/type = "value"
+tracks/36/path = NodePath("Front/Leg 2:rotation_deg")
+tracks/36/interp = 1
+tracks/36/loop_wrap = true
+tracks/36/imported = false
+tracks/36/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 3.37676, 3.37676 ]
+}
+tracks/37/type = "value"
+tracks/37/path = NodePath("Front/Leg 2/Leg:position")
+tracks/37/interp = 1
+tracks/37/loop_wrap = true
+tracks/37/imported = false
+tracks/37/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.107994, 4.98236 ), Vector2( 0.0490952, 3.21061 ), Vector2( 0.107994, 4.98236 ) ]
+}
+tracks/38/type = "value"
+tracks/38/path = NodePath("Front/Leg 2/Leg:rotation_deg")
+tracks/38/interp = 1
+tracks/38/loop_wrap = true
+tracks/38/imported = false
+tracks/38/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 5.33836, 5.33836 ]
+}
+tracks/39/type = "value"
+tracks/39/path = NodePath("Front/Shirt:position")
+tracks/39/interp = 1
+tracks/39/loop_wrap = true
+tracks/39/imported = false
+tracks/39/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1.57343, -0.524467 ), Vector2( 1.57343, -0.524467 ) ]
+}
+tracks/40/type = "value"
+tracks/40/path = NodePath("Front/Shirt:rotation_deg")
+tracks/40/interp = 1
+tracks/40/loop_wrap = true
+tracks/40/imported = false
+tracks/40/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0 ]
+}
+tracks/41/type = "value"
+tracks/41/path = NodePath("Front/Shirt/Arm:position")
+tracks/41/interp = 1
+tracks/41/loop_wrap = true
+tracks/41/imported = false
+tracks/41/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -4.32231, -9.16168 ), Vector2( -4.32231, -9.16168 ) ]
+}
+tracks/42/type = "value"
+tracks/42/path = NodePath("Front/Shirt/Arm2:position")
+tracks/42/interp = 1
+tracks/42/loop_wrap = true
+tracks/42/imported = false
+tracks/42/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.698414, -9.13874 ), Vector2( 0.698414, -9.13874 ) ]
+}
+tracks/43/type = "value"
+tracks/43/path = NodePath("Back/Leg 1:position")
+tracks/43/interp = 1
+tracks/43/loop_wrap = true
+tracks/43/imported = false
+tracks/43/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 2.09232, 5.05229 ), Vector2( 2.09232, 5.05229 ) ]
+}
+tracks/44/type = "value"
+tracks/44/path = NodePath("Back/Leg 1:rotation_deg")
+tracks/44/interp = 1
+tracks/44/loop_wrap = true
+tracks/44/imported = false
+tracks/44/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -5.1807, -5.1807 ]
+}
+tracks/45/type = "value"
+tracks/45/path = NodePath("Back/Leg 1/Leg:position")
+tracks/45/interp = 1
+tracks/45/loop_wrap = true
+tracks/45/imported = false
+tracks/45/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.107994, 4.98236 ), Vector2( 0.292114, 3.29008 ), Vector2( 0.107994, 4.98236 ) ]
+}
+tracks/46/type = "value"
+tracks/46/path = NodePath("Back/Leg 1/Leg:rotation_deg")
+tracks/46/interp = 1
+tracks/46/loop_wrap = true
+tracks/46/imported = false
+tracks/46/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 7.45507, 7.45507 ]
+}
+tracks/47/type = "value"
+tracks/47/path = NodePath("Back/Leg 2:position")
+tracks/47/interp = 1
+tracks/47/loop_wrap = true
+tracks/47/imported = false
+tracks/47/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -6.81175, 4.75095 ), Vector2( -6.81175, 4.75095 ) ]
+}
+tracks/48/type = "value"
+tracks/48/path = NodePath("Back/Leg 2:rotation_deg")
+tracks/48/interp = 1
+tracks/48/loop_wrap = true
+tracks/48/imported = false
+tracks/48/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 3.37676, 3.37676 ]
+}
+tracks/49/type = "value"
+tracks/49/path = NodePath("Back/Leg 2/Leg:position")
+tracks/49/interp = 1
+tracks/49/loop_wrap = true
+tracks/49/imported = false
+tracks/49/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.203331, 2.86696 ), Vector2( 0.107994, 4.98236 ), Vector2( 0.203331, 2.86696 ) ]
+}
+tracks/50/type = "value"
+tracks/50/path = NodePath("Back/Leg 2/Leg:rotation_deg")
+tracks/50/interp = 1
+tracks/50/loop_wrap = true
+tracks/50/imported = false
+tracks/50/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 5.33836, 5.33836 ]
+}
+tracks/51/type = "value"
+tracks/51/path = NodePath("Back/Shirt:position")
+tracks/51/interp = 1
+tracks/51/loop_wrap = true
+tracks/51/imported = false
+tracks/51/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1.57343, -0.524467 ), Vector2( 1.57343, -0.524467 ) ]
+}
+tracks/52/type = "value"
+tracks/52/path = NodePath("Back/Shirt:rotation_deg")
+tracks/52/interp = 1
+tracks/52/loop_wrap = true
+tracks/52/imported = false
+tracks/52/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0 ]
+}
+tracks/53/type = "value"
+tracks/53/path = NodePath("Back/Shirt/Arm:position")
+tracks/53/interp = 1
+tracks/53/loop_wrap = true
+tracks/53/imported = false
+tracks/53/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -4.32231, -9.16168 ), Vector2( -4.32231, -9.16168 ) ]
+}
+tracks/54/type = "value"
+tracks/54/path = NodePath("Back/Shirt/Arm:rotation_deg")
+tracks/54/interp = 1
+tracks/54/loop_wrap = true
+tracks/54/imported = false
+tracks/54/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 6.89436, 10.603, 6.89436 ]
+}
+tracks/55/type = "value"
+tracks/55/path = NodePath("Back/Shirt/Arm2:position")
+tracks/55/interp = 1
+tracks/55/loop_wrap = true
+tracks/55/imported = false
+tracks/55/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.698414, -9.13874 ), Vector2( 0.698414, -9.13874 ) ]
+}
+tracks/56/type = "value"
+tracks/56/path = NodePath("Back/Shirt/Arm2:rotation_deg")
+tracks/56/interp = 1
+tracks/56/loop_wrap = true
+tracks/56/imported = false
+tracks/56/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -24.3042, -27.6487, -24.3042 ]
+}
+tracks/57/type = "value"
+tracks/57/path = NodePath("Back/Head:rotation_deg")
+tracks/57/interp = 1
+tracks/57/loop_wrap = true
+tracks/57/imported = false
+tracks/57/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0 ]
+}
+tracks/58/type = "value"
+tracks/58/path = NodePath("Back/Head/Hair/Pony tail2:position")
+tracks/58/interp = 1
+tracks/58/loop_wrap = true
+tracks/58/imported = false
+tracks/58/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.594536, 2.81969 ), Vector2( 0.594536, 2.81969 ) ]
+}
 
 [sub_resource type="ShaderMaterial" id=2]
 
 render_priority = 0
 shader = ExtResource( 6 )
 shader_param/pixelize = true
+shader_param/dream = 0.5
 _sections_unfolded = [ "shader_param" ]
 
 [sub_resource type="DynamicFont" id=3]
@@ -48,12 +1360,12 @@ _sections_unfolded = [ "Font", "Settings" ]
 editor/display_folded = true
 position = Vector2( -284, -161 )
 scale = Vector2( 3, 3 )
-polygon = PoolVector2Array( 122.289, 118.598, 112.766, 193.418, 120.929, 261.437, 131.812, 317.212, 123.649, 347.141, 78.7569, 375.708, 51.5494, 393.393, 44.7476, 427.403, 47.4683, 479.097, 76.0362, 518.548, 142.694, 549.836, 237.921, 547.116, 277.372, 515.827, 286.894, 464.133, 276.011, 375.708, 231.119, 351.222, 225.677, 310.41, 276.011, 315.852, 378.039, 321.293, 440.616, 349.861, 474.626, 398.835, 515.437, 447.808, 489.59, 466.853, 465.103, 515.827, 480.067, 555.278, 578.014, 567.521, 783.431, 557.999, 871.855, 488.619, 852.81, 402.916, 865.053, 272.32, 843.287, 159.409, 799.755, 79.1469, 675.961, 68.2639, 564.41, 80.5073, 531.761, 140.364, 530.401, 247.833, 535.843, 321.293, 515.437, 315.852, 485.509, 280.482, 424.292, 239.671, 350.832, 224.707, 217.515, 221.986, 203.911, 125.4, 227.038, 103.634, 227.038, 42.4168, 195.749, 24.7319, 120.929, 28.8131, 86.9192, 80.5073 )
+polygon = PoolVector2Array( 122.289, 118.598, 112.766, 193.418, 120.929, 261.437, 131.812, 317.212, 123.649, 347.141, 78.7569, 375.708, 51.5494, 393.393, 44.7476, 427.403, 47.4683, 479.097, 76.0362, 518.548, 142.694, 549.836, 237.921, 547.116, 277.372, 515.827, 286.894, 464.133, 276.011, 375.708, 231.119, 351.222, 225.677, 310.41, 276.011, 315.852, 378.039, 321.293, 440.616, 349.861, 474.626, 398.835, 515.437, 447.808, 489.59, 466.853, 465.103, 515.827, 480.067, 555.278, 578.014, 567.521, 783.431, 557.999, 871.855, 488.619, 852.81, 402.916, 865.053, 272.32, 843.287, 159.409, 799.755, 79.1469, 675.961, 68.2639, 564.41, 80.5073, 531.761, 140.364, 530.401, 247.833, 535.843, 321.293, 515.437, 315.852, 485.509, 280.482, 424.292, 239.671, 350.832, 224.707, 217.515, 221.986, 203.911, 125.4, 227.038, 103.634, 226.003, 59.6042, 170.407, 27.724, 120.929, 28.8131, 86.9192, 80.5073 )
 uv = PoolVector2Array(  )
 color = Color( 0.289062, 0.289062, 0.289062, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0, 0 )
-antialiased = false
+antialiased = true
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -64,7 +1376,6 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Node2D/Floor"]
 
-editor/display_folded = true
 position = Vector2( -42.2055, -4.52197 )
 input_pickable = false
 collision_layer = 1
@@ -102,6 +1413,7 @@ polygon = PoolVector2Array( 227.762, 315.461, 228.99, 353.521, 274.573, 377.59, 
 "Hotspots",
 ]]
 
+editor/display_folded = true
 position = Vector2( 314, -43 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -155,7 +1467,7 @@ uv = PoolVector2Array(  )
 color = Color( 0.421875, 0.421875, 0.421875, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0, 0 )
-antialiased = false
+antialiased = true
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -171,7 +1483,7 @@ uv = PoolVector2Array(  )
 color = Color( 0.621094, 0.621094, 0.621094, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0, 0 )
-antialiased = false
+antialiased = true
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -187,7 +1499,7 @@ uv = PoolVector2Array(  )
 color = Color( 0.542969, 0.542969, 0.542969, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0, 0 )
-antialiased = false
+antialiased = true
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -203,7 +1515,7 @@ uv = PoolVector2Array(  )
 color = Color( 0.542969, 0.542969, 0.542969, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0, 0 )
-antialiased = false
+antialiased = true
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -219,7 +1531,7 @@ uv = PoolVector2Array(  )
 color = Color( 0.542969, 0.542969, 0.542969, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0, 0 )
-antialiased = false
+antialiased = true
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -235,7 +1547,7 @@ uv = PoolVector2Array(  )
 color = Color( 0.542969, 0.542969, 0.542969, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0, 0 )
-antialiased = false
+antialiased = true
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -248,51 +1560,124 @@ invert_border = 100.0
 build_mode = 0
 polygon = PoolVector2Array( -6, -59, -26, -46, -79, 11, -80, 28, 7, 64, 63, 21, 60, -55 )
 
-[node name="Player" type="KinematicBody2D" parent="Node2D"]
+[node name="Puzzles" type="Node2D" parent="Node2D"]
+
+[node name="Dead newt" type="Area2D" parent="Node2D/Puzzles" groups=[
+"Hotspots",
+]]
 
 editor/display_folded = true
+position = Vector2( 403.029, 588.189 )
+scale = Vector2( 0.930939, 0.911645 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 1 )
+_sections_unfolded = [ "Pickable", "Textures" ]
+__meta__ = {
+"_edit_group_": true
+}
+foot_str = null
+eye_str = PoolStringArray( "Eww!#A dead newt." )
+hand_str = PoolStringArray( "I don\'t want it." )
+correct_item = ""
+node_to_trigger = null
+one_shot = true
+click_distance = 64.0
+
+[node name="Label" type="Label" parent="Node2D/Puzzles/Dead newt"]
+
+modulate = Color( 1, 1, 0, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -61.0
+margin_top = -59.0
+margin_right = -49.0
+margin_bottom = -45.0
+rect_scale = Vector2( 5, 5 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "%"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "Visibility" ]
+
+[node name="Player" type="KinematicBody2D" parent="Node2D"]
+
 position = Vector2( 129, 79 )
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
 collision/safe_margin = 0.08
 script = ExtResource( 3 )
+_sections_unfolded = [ "Transform" ]
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Gfx" type="Node2D" parent="Node2D/Player"]
+[node name="Side" type="Node2D" parent="Node2D/Player"]
 
 editor/display_folded = true
+visible = false
 position = Vector2( -1.54971, -18.9837 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Head" type="Polygon2D" parent="Node2D/Player/Gfx"]
+[node name="Neck" type="Polygon2D" parent="Node2D/Player/Side"]
 
 editor/display_folded = true
-position = Vector2( 1.57343, -0.524467 )
+position = Vector2( -4.45029, -28.0163 )
 scale = Vector2( 3, 3 )
-polygon = PoolVector2Array( -4.45607, -13.8209, -6.58689, -16.5328, -7.74916, -20.9882, -6.78061, -24.2813, -3.68122, -26.9933, -0.388126, -27.5744, 3.29239, -25.4436, 4.06724, -21.5693, 3.4861, -16.7265, 0.774139, -13.046, 0.774139, -9.55922, -4.26236, -9.55922 )
+polygon = PoolVector2Array( -1.33333, 0.333333, -1, 1.66667, -1, 3.33333, -1.66667, 5, -1.33333, 6.33333, 0, 7.33333, 2.33333, 7, 2.66667, 5, 2, 3.66667, 1.66667, 1.33333, 1.66667, 0.333333 )
+uv = PoolVector2Array(  )
+color = Color( 0.980469, 0.796451, 0.509384, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( -0.333333, -5.66667 )
+antialiased = true
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Head" type="Polygon2D" parent="Node2D/Player/Side/Neck"]
+
+editor/display_folded = true
+position = Vector2( -0.333332, -5.66667 )
+polygon = PoolVector2Array( -2, 1.66667, -4.33333, 1, -5.66666, -1.33333, -5.33333, -4, -3, -6.33333, 0.666668, -6.66667, 4.33334, -6, 6, -4.33333, 6.66667, -3, 6.66667, -1.66667, 6, -0.666667, 7.33334, -1, 8.33334, -0.666667, 8.66667, 0, 8.33334, 0.666667, 7, 1, 5.66667, 0.666667, 5.66667, 2, 4.66667, 3.33333, 3.33334, 3.66667, 1, 3.33333 )
 uv = PoolVector2Array(  )
 color = Color( 0.980469, 0.796451, 0.509384, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0, 0 )
-antialiased = false
+antialiased = true
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
 texture_rotation = 0.0
 invert_enable = false
 invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
 
-[node name="Hair" type="Polygon2D" parent="Node2D/Player/Gfx/Head"]
+[node name="Hair" type="Polygon2D" parent="Node2D/Player/Side/Neck/Head"]
 
-polygon = PoolVector2Array( -1.21853, -29.1442, -4.91189, -27.7592, -8.5283, -23.7581, -9.06692, -20.6803, -8.68219, -18.5258, -10.2211, -17.8333, -11.8369, -16.2175, -12.6064, -14.063, -12.8372, -11.4469, -14.3761, -9.83102, -15.992, -9.60019, -17.0692, -10.2157, -16.8384, -8.52296, -14.607, -7.21489, -11.9139, -7.29184, -9.52859, -9.21546, -8.83608, -11.6777, -9.60553, -13.9091, -9.60553, -16.0636, -8.29747, -17.6794, -7.52802, -16.4483, -5.75828, -15.6019, -6.37384, -18.4489, -6.37384, -20.4494, -4.83494, -22.0653, -3.9116, -22.0653, -2.91132, -21.3728, -2.37271, -20.3725, -1.44937, -20.6033, -1.83409, -22.3731, -1.14158, -23.9889, -0.295191, -24.9122, 2.0901, -25.5278, 3.16733, -25.22, 3.24428, -26.4511, 1.62843, -28.4517 )
+position = Vector2( 0.333332, -2.33333 )
+polygon = PoolVector2Array( 5.33334, -3, 5, -2.33333, 4, -2, 2.66667, -1.33333, 1.66667, -0.333333, 1.33334, 1, 0.666668, 1, 0.333336, -0.333333, -1, -1, -2, 0, -2, 1.66667, -1, 2.33333, -2, 3.33333, -2.66666, 4, -5, 3.66667, -6.33333, 1, -6, -1.66667, -3.66666, -4.33333, 0.333336, -5, 4.33334, -4 )
 uv = PoolVector2Array(  )
-color = Color( 1, 0.8526, 0.179688, 1 )
+color = Color( 1, 0.705566, 0.199219, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0, 0 )
-antialiased = false
+antialiased = true
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -300,15 +1685,31 @@ texture_rotation = 0.0
 invert_enable = false
 invert_border = 100.0
 
-[node name="Nose" type="Polygon2D" parent="Node2D/Player/Gfx/Head"]
+[node name="Pony tail" type="Polygon2D" parent="Node2D/Player/Side/Neck/Head"]
 
-position = Vector2( -2.20126, -1.21916 )
-polygon = PoolVector2Array( 5.10007, -18.8202, 5.87898, -19.396, 7.06428, -19.5314, 8.18184, -19.0234, 8.48663, -18.1768, 8.14797, -17.364, 7.2336, -16.9238, 5.81125, -17.0931, 5.13394, -17.7365, 4.99848, -18.1768 )
+position = Vector2( -5.66667, -0.666667 )
+polygon = PoolVector2Array( -1, -0.666667, -2.33333, -1, -3.66667, -0.333333, -4.66667, 1.33333, -4.66667, 3.33333, -5, 4.66667, -6.33333, 5.66667, -7.66667, 5.66667, -6.66667, 6.33333, -5.33333, 6.66667, -3.66667, 6.33333, -2.66666, 5, -2.33333, 3.33333, -2.66666, 2, -3, 0.666667, -2, 0, -1, 0 )
 uv = PoolVector2Array(  )
-color = Color( 0.980392, 0.796078, 0.505882, 1 )
+color = Color( 1, 0.705566, 0.199219, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0, 0 )
-antialiased = false
+antialiased = true
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Red thing" type="Polygon2D" parent="Node2D/Player/Side/Neck/Head/Pony tail"]
+
+polygon = PoolVector2Array( 0, -1.66667, -0.666664, -1.66667, -1, -1.33333, -1.33333, -0.333333, -1, 0.333333, -0.333332, 1, 0.333336, 0.666667, 0.666668, 0, 0.333336, -1 )
+uv = PoolVector2Array(  )
+color = Color( 0.71875, 0.101074, 0.101074, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = true
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -316,15 +1717,15 @@ texture_rotation = 0.0
 invert_enable = false
 invert_border = 100.0
 
-[node name="Eye" type="Polygon2D" parent="Node2D/Player/Gfx/Head"]
+[node name="Eye" type="Polygon2D" parent="Node2D/Player/Side/Neck/Head"]
 
-editor/display_folded = true
-polygon = PoolVector2Array( 2.01926, -23.9945, 0.913588, -23.6259, 0.452889, -22.8427, 0.31468, -21.4146, 0.913588, -20.4932, 1.88105, -20.0325, 2.98673, -20.3549, 3.44743, -21.3224, 3.44743, -23.0731, 2.80245, -23.9484 )
+position = Vector2( 4.66667, -1.33333 )
+polygon = PoolVector2Array( 0.666664, -0.333333, 0.333332, -1.33333, -0.333336, -1.66667, -1, -1.33333, -1.33334, -0.333333, -1, 0.666667, -0.333336, 1, 0.333332, 0.666667 )
 uv = PoolVector2Array(  )
 color = Color( 1, 1, 1, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0, 0 )
-antialiased = false
+antialiased = true
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -332,15 +1733,14 @@ texture_rotation = 0.0
 invert_enable = false
 invert_border = 100.0
 
-[node name="Pupil" type="Polygon2D" parent="Node2D/Player/Gfx/Head/Eye"]
+[node name="Pupil" type="Polygon2D" parent="Node2D/Player/Side/Neck/Head/Eye"]
 
-position = Vector2( 0.0976148, 0.578707 )
-polygon = PoolVector2Array( 2.58602, -23.0602, 2.11303, -22.861, 1.8143, -22.388, 1.73962, -21.5665, 1.93877, -21.1433, 2.33708, -20.9442, 2.83496, -20.9442, 3.18349, -21.3176, 3.30796, -22.1391, 3.05901, -22.861 )
+polygon = PoolVector2Array( 0.333336, -0.666667, 0, -0.666667, -0.333332, -0.333333, -0.333332, 0.333333, 0, 0.666667, 0.333336, 0.666667, 0.666668, 0.333333, 0.666668, -0.333333 )
 uv = PoolVector2Array(  )
 color = Color( 0, 0, 0, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0, 0 )
-antialiased = false
+antialiased = true
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -351,50 +1751,289 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Spec1" type="Polygon2D" parent="Node2D/Player/Gfx/Head/Eye/Pupil"]
+[node name="Arm2" type="Polygon2D" parent="Node2D/Player/Side"]
 
-polygon = PoolVector2Array( 2.07977, -22.6759, 1.93733, -22.4458, 2.03594, -22.2486, 2.20029, -22.2595, 2.30986, -22.4787, 2.24412, -22.6649 )
+editor/display_folded = true
+show_behind_parent = true
+position = Vector2( -0.287361, -27.8186 )
+rotation = -0.277347
+scale = Vector2( 3, 3 )
+polygon = PoolVector2Array( 0, -1.33333, -1, -1, -1.66666, 0.333333, -2, 3.33333, -2.33333, 5.33333, -2.33333, 7.66667, -2.66666, 9.33333, -2, 9.33333, -0.333332, 9, -0.333332, 7.33333, -0.333332, 5, 0, 3, 0.666668, 0.666667, 0.666668, -0.666667 )
 uv = PoolVector2Array(  )
-color = Color( 1, 1, 1, 1 )
+color = Color( 0.054902, 0.054902, 0.054902, 1 )
 vertex_colors = PoolColorArray(  )
-offset = Vector2( 0, 0 )
-antialiased = false
+offset = Vector2( 0.202482, 0.331936 )
+antialiased = true
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
 texture_rotation = 0.0
 invert_enable = false
 invert_border = 100.0
+_sections_unfolded = [ "Transform", "Visibility" ]
 __meta__ = {
-"_edit_lock_": true
+"_edit_group_": true
 }
 
-[node name="Spec2" type="Polygon2D" parent="Node2D/Player/Gfx/Head/Eye/Pupil"]
+[node name="Shade" type="Polygon2D" parent="Node2D/Player/Side/Arm2"]
 
-position = Vector2( 0.865574, 1.15045 )
-polygon = PoolVector2Array( 2.07977, -22.6759, 1.93733, -22.4458, 2.03594, -22.2486, 2.20029, -22.2595, 2.30986, -22.4787, 2.24412, -22.6649 )
+position = Vector2( 0.202477, 0.331936 )
+polygon = PoolVector2Array( -1.86822, 4.43244, -1.6712, 2.62341, -1.66666, 0.333333, -2, 3.33333, -2.33333, 5.33333, -2.33333, 7.66667, -2.66666, 9.33333, -2, 9.33333, -0.333332, 9, -2.28018, 9.01771, -2.17271, 8.15797, -1.97569, 7.35196, -2.08315, 6.70716, -1.9936, 5.50711 )
 uv = PoolVector2Array(  )
-color = Color( 1, 1, 1, 1 )
+color = Color( 0.0390625, 0.0390625, 0.0390625, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0, 0 )
-antialiased = false
+antialiased = true
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
 texture_rotation = 0.0
 invert_enable = false
 invert_border = 100.0
-__meta__ = {
-"_edit_lock_": true
-}
 
-[node name="Shirt" type="Polygon2D" parent="Node2D/Player/Gfx"]
+[node name="Highlight" type="Polygon2D" parent="Node2D/Player/Side/Arm2"]
+
+position = Vector2( 0.202477, 0.331936 )
+polygon = PoolVector2Array( -0.666664, 5, -0.686832, 6.18912, -0.544933, 7.4662, -0.576469, 8.68809, -0.989174, 8.92713, -1.93985, 9.18388, -2.66666, 9.33333, -2, 9.33333, -0.333332, 9, -0.333332, 7.33333, -0.333332, 5, 0, 3, 0.666668, 0.666667, -0.333332, 3 )
+uv = PoolVector2Array(  )
+color = Color( 0.128906, 0.128906, 0.128906, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = true
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Hand" type="Polygon2D" parent="Node2D/Player/Side/Arm2"]
+
+show_behind_parent = true
+position = Vector2( -1.34412, 9.34673 )
+polygon = PoolVector2Array( -0.592575, -0.0341454, -0.754063, 0.553456, -0.913158, 1.00843, -0.812603, 1.63458, -0.437977, 2.06537, 0.283852, 2.14084, 0.803062, 1.76781, 0.958908, 1.06044, 1.22173, 0.911699, 1.0601, 0.354685, 0.765865, 0.0814276, 0.557629, -0.343758, 0.470749, -0.863004, -0.48415, -0.70855 )
+uv = PoolVector2Array(  )
+color = Color( 0.980469, 0.796387, 0.509277, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( -0.0326918, 0.450025 )
+antialiased = true
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Visibility" ]
+
+[node name="Leg 1" type="Polygon2D" parent="Node2D/Player/Side"]
+
+editor/display_folded = true
+position = Vector2( -3.34511, 3.21794 )
+rotation = -0.222074
+scale = Vector2( 3, 3 )
+polygon = PoolVector2Array( -0.333336, -2, -1.66667, -1.66667, -2.66667, -1, -3, 0.333332, -2.66667, 1.66667, -2.33334, 3, -2, 5.66667, -1.33334, 6.66667, -0.333336, 7, 0.666664, 6.66667, 1.33333, 5.66667, 1.66667, 3.66667, 2, 1.33333, 2, -0.333335, 1.66667, -1.33333, 0.666667, -1.66667 )
+uv = PoolVector2Array(  )
+color = Color( 0.0323887, 0.101562, 0.0245972, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0.333333, -0.333333 )
+antialiased = true
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Leg" type="Polygon2D" parent="Node2D/Player/Side/Leg 1"]
+
+position = Vector2( 0.107994, 4.98236 )
+rotation = 0.583865
+polygon = PoolVector2Array( -1.66666, 0, -1.66666, 1.33333, -2, 3.33333, -2.66666, 5.66667, -2.33333, 6.66667, -0.666664, 7, 1.66667, 6.33333, 2.66667, 5.66667, 2.66667, 4.66667, 2, 2.66667, 1.66667, 0.333332, 1.66667, -0.666668, 1.33334, -1.33333, 0.333336, -1.66667, -0.333332, -1.66667, -1, -1.33333, -1.66666, -0.666668 )
+uv = PoolVector2Array(  )
+color = Color( 0.0313726, 0.0980392, 0.0235294, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0.333333 )
+antialiased = true
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Shoe" type="Polygon2D" parent="Node2D/Player/Side/Leg 1/Leg"]
+
+show_behind_parent = true
+position = Vector2( 0.194572, 7.24305 )
+polygon = PoolVector2Array( -1.09824, 7.24464, 0.457874, 6.34981, 2.10791, 6.11499, 3.1449, 6.3041, 3.56884, 6.91716, 3.6158, 7.24717, 3.33276, 7.62414, 1.72968, 8.18896, 0.409649, 8.37682, -0.627342, 8.1877, -1.05128, 7.57465 )
+uv = PoolVector2Array(  )
+color = Color( 0.078125, 0.0402843, 0, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0.149206, -7.36388 )
+antialiased = true
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Visibility" ]
+
+[node name="Leg 2" type="Polygon2D" parent="Node2D/Player/Side"]
+
+editor/display_folded = true
+position = Vector2( -4.45029, 5.98372 )
+rotation = -0.0397674
+scale = Vector2( 3, 3 )
+polygon = PoolVector2Array( -0.333336, -2, -1.66667, -1.66667, -2.66667, -1, -3, 0.333332, -2.66667, 1.66667, -2.33334, 3, -2, 5.66667, -1.33334, 6.66667, -0.333336, 7, 0.666664, 6.66667, 1.33333, 5.66667, 1.66667, 3.66667, 2, 1.33333, 2, -0.333335, 1.66667, -1.33333, 0.666667, -1.66667 )
+uv = PoolVector2Array(  )
+color = Color( 0.0394287, 0.117188, 0.0306702, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0.333333, -0.333333 )
+antialiased = true
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Leg" type="Polygon2D" parent="Node2D/Player/Side/Leg 2"]
+
+position = Vector2( 0.107994, 4.98236 )
+rotation = 0.213266
+polygon = PoolVector2Array( -1.66666, 0, -1.66666, 1.33333, -2, 3.33333, -2.66666, 5.66667, -2.33333, 6.66667, -0.666664, 7, 1.66667, 6.33333, 2.66667, 5.66667, 2.66667, 4.66667, 2, 2.66667, 1.66667, 0.333332, 1.66667, -0.666668, 1.33334, -1.33333, 0.333336, -1.66667, -0.333332, -1.66667, -1, -1.33333, -1.66666, -0.666668 )
+uv = PoolVector2Array(  )
+color = Color( 0.0394287, 0.117188, 0.0306702, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0.333333 )
+antialiased = true
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Shoe" type="Polygon2D" parent="Node2D/Player/Side/Leg 2/Leg"]
+
+show_behind_parent = true
+position = Vector2( 0.194572, 7.24305 )
+rotation = -0.104633
+polygon = PoolVector2Array( -1.09824, 7.24464, 0.457874, 6.34981, 2.10791, 6.11499, 3.1449, 6.3041, 3.56884, 6.91716, 3.6158, 7.24717, 3.33276, 7.62414, 1.72968, 8.18896, 0.409649, 8.37682, -0.627342, 8.1877, -1.05128, 7.57465 )
+uv = PoolVector2Array(  )
+color = Color( 0.13269, 0.0684204, 0, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0.149206, -7.36388 )
+antialiased = true
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Visibility" ]
+
+[node name="Shirt" type="Polygon2D" parent="Node2D/Player/Side"]
 
 position = Vector2( 1.57343, -0.524467 )
 scale = Vector2( 3, 3 )
-polygon = PoolVector2Array( -4.03583, -10.1472, -6.09201, -7.5769, -6.60606, 0.13382, -6.22052, 6.68794, 3.03235, 6.68794, 3.28937, 0.13382, 2.13277, -7.5769, 0.590622, -10.1472 )
+polygon = PoolVector2Array( -4.0079, -10.1639, -4.67457, -8.16394, -5.0079, -6.16394, -4.67457, -3.49727, -4.67457, -1.8306, -5.0079, 0.169395, -5.67457, 1.83606, -4.0079, 1.83606, -1.0079, 1.1694, 0.992096, 0.836063, 1.9921, 0.169395, 1.65876, -0.497271, 1.32543, -1.49727, 0.992096, -3.16394, 0.992096, -4.8306, 1.32543, -6.8306, 0.992096, -8.8306, 0.325432, -10.1639, -1.0079, -9.8306, -2.67457, -9.8306, -3.34124, -9.8306 )
 uv = PoolVector2Array(  )
-color = Color( 0.234375, 0.0979614, 0.0979614, 1 )
+color = Color( 0.0742188, 0.0742188, 0.0742188, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = true
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Arm" type="Polygon2D" parent="Node2D/Player/Side/Shirt"]
+
+editor/display_folded = true
+position = Vector2( -3.6941, -9.28134 )
+rotation = 0.0683263
+polygon = PoolVector2Array( 0, -1.33333, -1, -1, -1.66666, 0.333333, -2, 3.33333, -2.33333, 5.33333, -2.33333, 7.66667, -2.66666, 9.33333, -2, 9.33333, -0.333332, 9, -0.333332, 7.33333, -0.333332, 5, 0, 3, 0.666668, 0.666667, 0.666668, -0.666667 )
+uv = PoolVector2Array(  )
+color = Color( 0.0742188, 0.0742188, 0.0742188, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0.202482, 0.331936 )
+antialiased = true
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Shade" type="Polygon2D" parent="Node2D/Player/Side/Shirt/Arm"]
+
+position = Vector2( 0.202477, 0.331936 )
+polygon = PoolVector2Array( -1.86822, 4.43244, -1.6712, 2.62341, -1.66666, 0.333333, -2, 3.33333, -2.33333, 5.33333, -2.33333, 7.66667, -2.66666, 9.33333, -2, 9.33333, -0.333332, 9, -2.28018, 9.01771, -2.17271, 8.15797, -1.97569, 7.35196, -2.08315, 6.70716, -1.9936, 5.50711 )
+uv = PoolVector2Array(  )
+color = Color( 0.0390625, 0.0390625, 0.0390625, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = true
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Highlight" type="Polygon2D" parent="Node2D/Player/Side/Shirt/Arm"]
+
+position = Vector2( 0.202477, 0.331936 )
+polygon = PoolVector2Array( -0.666664, 5, -0.686832, 6.18912, -0.544933, 7.4662, -0.576469, 8.68809, -0.989174, 8.92713, -1.93985, 9.18388, -2.66666, 9.33333, -2, 9.33333, -0.333332, 9, -0.333332, 7.33333, -0.333332, 5, 0, 3, 0.666668, 0.666667, -0.333332, 3 )
+uv = PoolVector2Array(  )
+color = Color( 0.128906, 0.128906, 0.128906, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = true
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Hand" type="Polygon2D" parent="Node2D/Player/Side/Shirt/Arm"]
+
+show_behind_parent = true
+position = Vector2( -1.34412, 9.34673 )
+polygon = PoolVector2Array( -0.592575, -0.0341454, -0.754063, 0.553456, -0.913158, 1.00843, -0.812603, 1.63458, -0.437977, 2.06537, 0.283852, 2.14084, 0.803062, 1.76781, 0.958908, 1.06044, 1.22173, 0.911699, 1.0601, 0.354685, 0.765865, 0.0814276, 0.557629, -0.343758, 0.470749, -0.863004, -0.48415, -0.70855 )
+uv = PoolVector2Array(  )
+color = Color( 0.980469, 0.796387, 0.509277, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( -0.0326918, 0.450025 )
+antialiased = true
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Visibility" ]
+
+[node name="Git logo2" type="Polygon2D" parent="Node2D/Player/Side/Shirt"]
+
+position = Vector2( -0.16135, -5.66936 )
+scale = Vector2( 0.06, 0.1 )
+polygon = PoolVector2Array( -3.94235, 8.32629, -8.2605, 8.32629, -13.4644, 0.464996, -7.70688, 5.89041, -4.27451, 5.89041, -2.7244, 3.34378, -6.48895, 2.67944, -8.92484, 0.243561, -9.47845, -2.19229, -8.7034, -4.84964, -7.59616, -6.17831, -8.2605, -9.27853, -5.16028, -7.1748, -2.7244, -7.72842, -0.177765, -7.83914, 3.80823, -7.39627, 5.46906, -6.84265, 8.67999, -9.0571, 7.35135, -5.95688, 8.67999, -4.51749, 9.34435, -2.41379, 8.56927, -0.531494, 6.57626, 1.68295, 3.14389, 3.12234, 4.47256, 5.33679, 4.80472, 11.5372, 8.56927, 10.43, 13.7732, 6.11185, 15.6555, 0.907928, 15.877, -5.62473, 13.3304, -10.275, 8.34784, -14.1503, 3.03317, -15.2575, -4.27451, -15.2575, -9.81061, -13.1538, -13.9073, -9.61072, -15.9004, -4.73892, -16.2325, 0.686432, -14.9038, 5.89041, -11.4715, 9.76572, -7.15329, 11.8694, -3.72089, 12.5337 )
+uv = PoolVector2Array(  )
+color = Color( 0.25, 0.25, 0.25, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0, 0 )
 antialiased = false
@@ -404,15 +2043,457 @@ texture_scale = Vector2( 1, 1 )
 texture_rotation = 0.0
 invert_enable = false
 invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
 
-[node name="Legs" type="Polygon2D" parent="Node2D/Player/Gfx"]
+[node name="Front" type="Node2D" parent="Node2D/Player"]
+
+editor/display_folded = true
+position = Vector2( -1.47965, -17.8971 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Neck" type="Polygon2D" parent="Node2D/Player/Front"]
+
+editor/display_folded = true
+position = Vector2( -4.45029, -28.0163 )
+scale = Vector2( 3, 3 )
+polygon = PoolVector2Array( -1.33333, 0.333333, -1, 1.66667, -1, 3.33333, -1.66667, 5, -1.33333, 6.33333, 0, 7.33333, 2.33333, 7, 2.66667, 5, 2, 3.66667, 1.66667, 1.33333, 1.66667, 0.333333 )
+uv = PoolVector2Array(  )
+color = Color( 0.980469, 0.796451, 0.509384, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( -0.333333, -5.66667 )
+antialiased = true
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Head" type="Polygon2D" parent="Node2D/Player/Front/Neck"]
+
+editor/display_folded = true
+position = Vector2( -0.810791, -5.62994 )
+polygon = PoolVector2Array( 0.580513, -6.60519, -1.43951, -6.3481, -2.94535, -5.31972, -3.71663, -3.66697, -3.79008, -2.45496, -4.67155, -3.26297, -5.44283, -3.0426, -5.51628, -1.9775, -5.03883, -0.802213, -4.26755, -0.21457, -3.75336, -0.361481, -3.23917, 0.703622, -0.998779, 2.50328, 0.433601, 3.09092, 1.53543, 3.09092, 3.18818, 2.46655, 4.95111, 0.556712, 5.35511, -0.251297, 5.72239, -0.324753, 6.31004, -0.985852, 6.67731, -2.49169, 6.31004, -3.07933, 5.72239, -3.26297, 5.42857, -3.07933, 5.28166, -3.92407, 4.84093, -4.98917, 3.40855, -6.20119, 1.82925, -6.64192 )
+uv = PoolVector2Array(  )
+color = Color( 0.980469, 0.796451, 0.509384, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = true
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Pony tail" type="Polygon2D" parent="Node2D/Player/Front/Neck/Head"]
+
+show_behind_parent = true
+position = Vector2( 0.303043, -0.945437 )
+rotation = -0.191741
+polygon = PoolVector2Array( -1, -0.666667, -2.33333, -1, -3.66667, -0.333333, -4.66667, 1.33333, -4.66667, 3.33333, -5, 4.66667, -6.33333, 5.66667, -7.66667, 5.66667, -6.66667, 6.33333, -5.33333, 6.66667, -3.66667, 6.33333, -2.66666, 5, -2.33333, 3.33333, -2.66666, 2, -3, 0.666667, -2, 0, -1, 0 )
+uv = PoolVector2Array(  )
+color = Color( 1, 0.705566, 0.199219, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = true
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="Hair" type="Polygon2D" parent="Node2D/Player/Front/Neck/Head"]
+
+position = Vector2( 0.333332, -2.33333 )
+polygon = PoolVector2Array( 0.724636, -3.72094, 0.687912, -3.09657, 0.504272, -2.58238, -0.524105, -2.39874, -1.95649, -2.21511, -2.80122, -1.70092, -3.60923, -0.378721, -3.90305, 0.392561, -4.16014, -0.268538, -4.41724, -1.18673, -4.0867, -2.39874, -3.38887, -3.46385, -1.91976, -4.30859, -0.450649, -4.71259, 0.724636, -4.52895, 1.67956, -4.82277, 2.67121, -4.67586, 3.51595, -4.08822, 4.61777, -3.02312, 5.13196, -2.25183, 5.24214, -1.44382, 5.06575, -0.767756, 4.77988, 0.0898638, 4.516, -0.833726, 3.92227, -1.71334, 3.48246, -2.26309, 2.51489, -2.52697, 1.3714, -2.59295, 1.01955, -3.07673, 0.931591, -3.40658 )
+uv = PoolVector2Array(  )
+color = Color( 1, 0.705566, 0.199219, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = true
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Nose" type="Polygon2D" parent="Node2D/Player/Front/Neck/Head"]
+
+position = Vector2( 1.02942, 0.218967 )
+polygon = PoolVector2Array( -0.931316, -0.449247, -1.18208, -0.162668, -1.32536, 0.177644, -1.23581, 0.57169, -0.788025, 0.894091, -0.0894928, 0.983648, 0.609043, 0.947825, 1.00309, 0.697069, 1.18221, 0.374667, 1.18221, -0.0552011, 1.021, -0.395514, 0.806068, -0.556715, 0.931446, -0.234313, 0.931446, 0.195555, 0.698601, 0.428401, 0.179176, 0.607512, -0.376068, 0.57169, -0.734295, 0.428401, -1.00296, 0.105999, -1.00296, -0.144758 )
+uv = PoolVector2Array(  )
+color = Color( 0.921875, 0.72351, 0.414124, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = true
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Eye" type="Polygon2D" parent="Node2D/Player/Front/Neck/Head"]
+
+editor/display_folded = true
+position = Vector2( -0.415627, -1.16725 )
+polygon = PoolVector2Array( 0.666664, -0.333333, 0.333332, -1.33333, -0.333336, -1.66667, -1, -1.33333, -1.33334, -0.333333, -1, 0.666667, -0.333336, 1, 0.333332, 0.666667 )
+uv = PoolVector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = true
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Pupil" type="Polygon2D" parent="Node2D/Player/Front/Neck/Head/Eye"]
+
+position = Vector2( -0.46405, -0.0331466 )
+polygon = PoolVector2Array( 0.333336, -0.666667, 0, -0.666667, -0.333332, -0.333333, -0.333332, 0.333333, 0, 0.666667, 0.333336, 0.666667, 0.666668, 0.333333, 0.666668, -0.333333 )
+uv = PoolVector2Array(  )
+color = Color( 0, 0, 0, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = true
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Eye2" type="Polygon2D" parent="Node2D/Player/Front/Neck/Head"]
+
+editor/display_folded = true
+position = Vector2( 3.19738, -1.1341 )
+polygon = PoolVector2Array( 0.666664, -0.333333, 0.333332, -1.33333, -0.333336, -1.66667, -1, -1.33333, -1.33334, -0.333333, -1, 0.666667, -0.333336, 1, 0.333332, 0.666667 )
+uv = PoolVector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = true
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Pupil" type="Polygon2D" parent="Node2D/Player/Front/Neck/Head/Eye2"]
+
+position = Vector2( -0.46405, -0.0331466 )
+polygon = PoolVector2Array( 0.333336, -0.666667, 0, -0.666667, -0.333332, -0.333333, -0.333332, 0.333333, 0, 0.666667, 0.333336, 0.666667, 0.666668, 0.333333, 0.666668, -0.333333 )
+uv = PoolVector2Array(  )
+color = Color( 0, 0, 0, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = true
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Leg 1" type="Polygon2D" parent="Node2D/Player/Front"]
+
+editor/display_folded = true
+position = Vector2( 2.09232, 5.05229 )
+rotation = -0.0904203
+scale = Vector2( 2.5, 3 )
+polygon = PoolVector2Array( -0.333336, -2, -1.66667, -1.66667, -2.66667, -1, -3, 0.333332, -2.66667, 1.66667, -2.33334, 3, -2, 5.66667, -1.33334, 6.66667, -0.333336, 7, 0.666664, 6.66667, 1.33333, 5.66667, 1.66667, 3.66667, 2, 1.33333, 2, -0.333335, 1.66667, -1.33333, 0.666667, -1.66667 )
+uv = PoolVector2Array(  )
+color = Color( 0.0394287, 0.117188, 0.0306702, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0.333333, -0.333333 )
+antialiased = true
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Leg" type="Polygon2D" parent="Node2D/Player/Front/Leg 1"]
+
+position = Vector2( 0.209005, 3.68349 )
+rotation = 0.130116
+polygon = PoolVector2Array( -1.66666, 0, -1.66666, 1.33333, -2, 3.33333, -2.66666, 5.66667, -2.33333, 6.66667, -0.666664, 7, 1.66667, 6.33333, 2.66667, 5.66667, 2.66667, 4.66667, 2, 2.66667, 1.66667, 0.333332, 1.66667, -0.666668, 1.33334, -1.33333, 0.333336, -1.66667, -0.333332, -1.66667, -1, -1.33333, -1.66666, -0.666668 )
+uv = PoolVector2Array(  )
+color = Color( 0.0394287, 0.117188, 0.0306702, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0.333333 )
+antialiased = true
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Shoe" type="Polygon2D" parent="Node2D/Player/Front/Leg 1/Leg"]
+
+show_behind_parent = true
+position = Vector2( -0.691872, 7.1699 )
+rotation = 0.15388
+polygon = PoolVector2Array( -1.09824, 7.24464, 0.457874, 6.34981, 2.10791, 6.11499, 3.1449, 6.3041, 3.56884, 6.91716, 3.6158, 7.24717, 3.33276, 7.62414, 1.72968, 8.18896, 0.409649, 8.37682, -0.627342, 8.1877, -1.05128, 7.57465 )
+uv = PoolVector2Array(  )
+color = Color( 0.13269, 0.0684204, 0, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0.149206, -7.36388 )
+antialiased = true
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Visibility" ]
+
+[node name="Leg 2" type="Polygon2D" parent="Node2D/Player/Front"]
+
+editor/display_folded = true
+position = Vector2( -6.81175, 4.75095 )
+rotation = 0.0589356
+scale = Vector2( 2.5, 3 )
+polygon = PoolVector2Array( -0.333336, -2, -1.66667, -1.66667, -2.66667, -1, -3, 0.333332, -2.66667, 1.66667, -2.33334, 3, -2, 5.66667, -1.33334, 6.66667, -0.333336, 7, 0.666664, 6.66667, 1.33333, 5.66667, 1.66667, 3.66667, 2, 1.33333, 2, -0.333335, 1.66667, -1.33333, 0.666667, -1.66667 )
+uv = PoolVector2Array(  )
+color = Color( 0.0394287, 0.117188, 0.0306702, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0.333333, -0.333333 )
+antialiased = true
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Leg" type="Polygon2D" parent="Node2D/Player/Front/Leg 2"]
+
+position = Vector2( 0.0846878, 4.28128 )
+rotation = 0.0931719
+polygon = PoolVector2Array( -1.66666, 0, -1.66666, 1.33333, -2, 3.33333, -2.66666, 5.66667, -2.33333, 6.66667, -0.666664, 7, 1.66667, 6.33333, 2.66667, 5.66667, 2.66667, 4.66667, 2, 2.66667, 1.66667, 0.333332, 1.66667, -0.666668, 1.33334, -1.33333, 0.333336, -1.66667, -0.333332, -1.66667, -1, -1.33333, -1.66666, -0.666668 )
+uv = PoolVector2Array(  )
+color = Color( 0.0394287, 0.117188, 0.0306702, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0.333333 )
+antialiased = true
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Shoe" type="Polygon2D" parent="Node2D/Player/Front/Leg 2/Leg"]
+
+show_behind_parent = true
+position = Vector2( -1.26431, 7.61833 )
+rotation = 0.0259987
+polygon = PoolVector2Array( -1.09824, 7.24464, 0.457874, 6.34981, 2.10791, 6.11499, 3.1449, 6.3041, 3.56884, 6.91716, 3.6158, 7.24717, 3.33276, 7.62414, 1.72968, 8.18896, 0.409649, 8.37682, -0.627342, 8.1877, -1.05128, 7.57465 )
+uv = PoolVector2Array(  )
+color = Color( 0.13269, 0.0684204, 0, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0.149206, -7.36388 )
+antialiased = true
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Visibility" ]
+
+[node name="Shirt" type="Polygon2D" parent="Node2D/Player/Front"]
 
 editor/display_folded = true
 position = Vector2( 1.57343, -0.524467 )
 scale = Vector2( 3, 3 )
-polygon = PoolVector2Array( -4.93539, 6.30241, -3.39325, 18.5111, 1.74722, 18.5111, 2.38979, 6.1739 )
+polygon = PoolVector2Array( -4.10586, -10.141, -3.17775, -9.80949, -1.61985, -9.74319, -0.492867, -9.80949, 0.302658, -10.141, 1.00413, -9.99075, 1.61986, -9.26508, 1.66383, -8.12158, 1.5099, -4.77907, 1.53189, -2.99786, 1.83976, -1.45854, 2.25757, 1.00437, 0.740242, 0.740484, -0.824333, 0.66489, -2.68055, 0.731184, -4.27159, 0.963211, -5.25463, 0.975431, -4.84268, -1.53213, -4.69939, -3.59192, -4.86059, -5.50842, -5.21881, -7.78314, -5.16508, -8.89363, -4.73565, -9.80949 )
 uv = PoolVector2Array(  )
-color = Color( 0.198706, 0.184097, 0.371094, 1 )
+color = Color( 0.0742188, 0.0742188, 0.0742188, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = true
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Arm" type="Polygon2D" parent="Node2D/Player/Front/Shirt"]
+
+editor/display_folded = true
+position = Vector2( -4.32231, -9.16168 )
+rotation = 0.066764
+polygon = PoolVector2Array( 0, -1.33333, -1, -1, -1.66666, 0.333333, -2, 3.33333, -2.33333, 5.33333, -2.33333, 7.66667, -2.66666, 9.33333, -2, 9.33333, -0.333332, 9, -0.333332, 7.33333, -0.333332, 5, 0, 3, 0.666668, 0.666667, 0.666668, -0.666667 )
+uv = PoolVector2Array(  )
+color = Color( 0.0742188, 0.0742188, 0.0742188, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0.202482, 0.331936 )
+antialiased = true
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Shade" type="Polygon2D" parent="Node2D/Player/Front/Shirt/Arm"]
+
+position = Vector2( 0.202477, 0.331936 )
+polygon = PoolVector2Array( -1.86822, 4.43244, -1.6712, 2.62341, -1.66666, 0.333333, -2, 3.33333, -2.33333, 5.33333, -2.33333, 7.66667, -2.66666, 9.33333, -2, 9.33333, -0.333332, 9, -2.28018, 9.01771, -2.17271, 8.15797, -1.97569, 7.35196, -2.08315, 6.70716, -1.9936, 5.50711 )
+uv = PoolVector2Array(  )
+color = Color( 0.0390625, 0.0390625, 0.0390625, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = true
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Highlight" type="Polygon2D" parent="Node2D/Player/Front/Shirt/Arm"]
+
+position = Vector2( 0.202477, 0.331936 )
+polygon = PoolVector2Array( -0.666664, 5, -0.686832, 6.18912, -0.544933, 7.4662, -0.576469, 8.68809, -0.989174, 8.92713, -1.93985, 9.18388, -2.66666, 9.33333, -2, 9.33333, -0.333332, 9, -0.333332, 7.33333, -0.333332, 5, 0, 3, 0.666668, 0.666667, -0.333332, 3 )
+uv = PoolVector2Array(  )
+color = Color( 0.128906, 0.128906, 0.128906, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = true
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Hand" type="Polygon2D" parent="Node2D/Player/Front/Shirt/Arm"]
+
+show_behind_parent = true
+position = Vector2( -1.34412, 9.34673 )
+polygon = PoolVector2Array( -0.592575, -0.0341454, -0.754063, 0.553456, -0.913158, 1.00843, -0.812603, 1.63458, -0.437977, 2.06537, 0.283852, 2.14084, 0.803062, 1.76781, 0.958908, 1.06044, 1.22173, 0.911699, 1.0601, 0.354685, 0.765865, 0.0814276, 0.557629, -0.343758, 0.470749, -0.863004, -0.48415, -0.70855 )
+uv = PoolVector2Array(  )
+color = Color( 0.980469, 0.796387, 0.509277, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( -0.0326918, 0.450025 )
+antialiased = true
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Visibility" ]
+
+[node name="Arm2" type="Polygon2D" parent="Node2D/Player/Front/Shirt"]
+
+editor/display_folded = true
+show_behind_parent = true
+position = Vector2( 0.698414, -9.13874 )
+rotation = -0.34292
+polygon = PoolVector2Array( 0, -1.33333, -1, -1, -1.66666, 0.333333, -2, 3.33333, -2.33333, 5.33333, -2.33333, 7.66667, -2.66666, 9.33333, -2, 9.33333, -0.333332, 9, -0.333332, 7.33333, -0.333332, 5, 0, 3, 0.666668, 0.666667, 0.666668, -0.666667 )
+uv = PoolVector2Array(  )
+color = Color( 0.054902, 0.054902, 0.054902, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0.202482, 0.331936 )
+antialiased = true
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform", "Visibility" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Shade" type="Polygon2D" parent="Node2D/Player/Front/Shirt/Arm2"]
+
+position = Vector2( 0.202477, 0.331936 )
+polygon = PoolVector2Array( -1.86822, 4.43244, -1.6712, 2.62341, -1.66666, 0.333333, -2, 3.33333, -2.33333, 5.33333, -2.33333, 7.66667, -2.66666, 9.33333, -2, 9.33333, -0.333332, 9, -2.28018, 9.01771, -2.17271, 8.15797, -1.97569, 7.35196, -2.08315, 6.70716, -1.9936, 5.50711 )
+uv = PoolVector2Array(  )
+color = Color( 0.0390625, 0.0390625, 0.0390625, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = true
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Highlight" type="Polygon2D" parent="Node2D/Player/Front/Shirt/Arm2"]
+
+position = Vector2( 0.202477, 0.331936 )
+polygon = PoolVector2Array( -0.666664, 5, -0.686832, 6.18912, -0.544933, 7.4662, -0.576469, 8.68809, -0.989174, 8.92713, -1.93985, 9.18388, -2.66666, 9.33333, -2, 9.33333, -0.333332, 9, -0.333332, 7.33333, -0.333332, 5, 0, 3, 0.666668, 0.666667, -0.333332, 3 )
+uv = PoolVector2Array(  )
+color = Color( 0.128906, 0.128906, 0.128906, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = true
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Hand" type="Polygon2D" parent="Node2D/Player/Front/Shirt/Arm2"]
+
+show_behind_parent = true
+position = Vector2( -1.34412, 9.34673 )
+polygon = PoolVector2Array( -0.592575, -0.0341454, -0.754063, 0.553456, -0.913158, 1.00843, -0.812603, 1.63458, -0.437977, 2.06537, 0.283852, 2.14084, 0.803062, 1.76781, 0.958908, 1.06044, 1.22173, 0.911699, 1.0601, 0.354685, 0.765865, 0.0814276, 0.557629, -0.343758, 0.470749, -0.863004, -0.48415, -0.70855 )
+uv = PoolVector2Array(  )
+color = Color( 0.980469, 0.796387, 0.509277, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( -0.0326918, 0.450025 )
+antialiased = true
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Visibility" ]
+
+[node name="Git logo" type="Polygon2D" parent="Node2D/Player/Front/Shirt"]
+
+position = Vector2( -0.585079, -5.86338 )
+scale = Vector2( 0.1, 0.1 )
+polygon = PoolVector2Array( -3.94235, 8.32629, -8.2605, 8.32629, -13.4644, 0.464996, -7.70688, 5.89041, -4.27451, 5.89041, -2.7244, 3.34378, -6.48895, 2.67944, -8.92484, 0.243561, -9.47845, -2.19229, -8.7034, -4.84964, -7.59616, -6.17831, -8.2605, -9.27853, -5.16028, -7.1748, -2.7244, -7.72842, -0.177765, -7.83914, 3.80823, -7.39627, 5.46906, -6.84265, 8.67999, -9.0571, 7.35135, -5.95688, 8.67999, -4.51749, 9.34435, -2.41379, 8.56927, -0.531494, 6.57626, 1.68295, 3.14389, 3.12234, 4.47256, 5.33679, 4.80472, 11.5372, 8.56927, 10.43, 13.7732, 6.11185, 15.6555, 0.907928, 15.877, -5.62473, 13.3304, -10.275, 8.34784, -14.1503, 3.03317, -15.2575, -4.27451, -15.2575, -9.81061, -13.1538, -13.9073, -9.61072, -15.9004, -4.73892, -16.2325, 0.686432, -14.9038, 5.89041, -11.4715, 9.76572, -7.15329, 11.8694, -3.72089, 12.5337 )
+uv = PoolVector2Array(  )
+color = Color( 0.25, 0.25, 0.25, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0, 0 )
 antialiased = false
@@ -422,15 +2503,366 @@ texture_scale = Vector2( 1, 1 )
 texture_rotation = 0.0
 invert_enable = false
 invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
 
-[node name="Shoe" type="Polygon2D" parent="Node2D/Player/Gfx/Legs"]
+[node name="Back" type="Node2D" parent="Node2D/Player"]
 
-polygon = PoolVector2Array( -3.06778, 18.3492, -3.14471, 21.6578, 7.78146, 21.9656, 7.70453, 19.5034, 5.7809, 18.2723, 1.1642, 18.657, 0.856415, 18.1184 )
+editor/display_folded = true
+visible = false
+position = Vector2( -0.951218, -18.4509 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Neck" type="Polygon2D" parent="Node2D/Player/Back"]
+
+position = Vector2( -4.45029, -28.0163 )
+scale = Vector2( 3, 3 )
+polygon = PoolVector2Array( -1.33333, 0.333333, -1, 1.66667, -1, 3.33333, -1.66667, 5, -1.33333, 6.33333, 0, 7.33333, 2.33333, 7, 2.66667, 5, 2, 3.66667, 1.66667, 1.33333, 1.66667, 0.333333 )
 uv = PoolVector2Array(  )
-color = Color( 0.101562, 0.101562, 0.101562, 1 )
+color = Color( 0.980469, 0.796451, 0.509384, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( -0.333333, -5.66667 )
+antialiased = true
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Leg 1" type="Polygon2D" parent="Node2D/Player/Back"]
+
+position = Vector2( 2.09232, 5.05229 )
+rotation = -0.0904203
+scale = Vector2( 2.5, 3 )
+polygon = PoolVector2Array( -0.333336, -2, -1.66667, -1.66667, -2.66667, -1, -3, 0.333332, -2.66667, 1.66667, -2.33334, 3, -2, 5.66667, -1.33334, 6.66667, -0.333336, 7, 0.666664, 6.66667, 1.33333, 5.66667, 1.66667, 3.66667, 2, 1.33333, 2, -0.333335, 1.66667, -1.33333, 0.666667, -1.66667 )
+uv = PoolVector2Array(  )
+color = Color( 0.0394287, 0.117188, 0.0306702, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0.333333, -0.333333 )
+antialiased = true
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Leg" type="Polygon2D" parent="Node2D/Player/Back/Leg 1"]
+
+position = Vector2( 0.18085, 4.31272 )
+rotation = 0.130116
+polygon = PoolVector2Array( -1.66666, 0, -1.66666, 1.33333, -2, 3.33333, -2.66666, 5.66667, -2.33333, 6.66667, -0.666664, 7, 1.66667, 6.33333, 2.66667, 5.66667, 2.66667, 4.66667, 2, 2.66667, 1.66667, 0.333332, 1.66667, -0.666668, 1.33334, -1.33333, 0.333336, -1.66667, -0.333332, -1.66667, -1, -1.33333, -1.66666, -0.666668 )
+uv = PoolVector2Array(  )
+color = Color( 0.0394287, 0.117188, 0.0306702, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0.333333 )
+antialiased = true
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Shoe" type="Polygon2D" parent="Node2D/Player/Back/Leg 1/Leg"]
+
+show_behind_parent = true
+position = Vector2( -0.691872, 7.1699 )
+rotation = 0.15388
+polygon = PoolVector2Array( -1.09824, 7.24464, 0.457874, 6.34981, 2.10791, 6.11499, 3.1449, 6.3041, 3.56884, 6.91716, 3.6158, 7.24717, 3.33276, 7.62414, 1.72968, 8.18896, 0.409649, 8.37682, -0.627342, 8.1877, -1.05128, 7.57465 )
+uv = PoolVector2Array(  )
+color = Color( 0.13269, 0.0684204, 0, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0.149206, -7.36388 )
+antialiased = true
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Visibility" ]
+
+[node name="Leg 2" type="Polygon2D" parent="Node2D/Player/Back"]
+
+position = Vector2( -6.81175, 4.75095 )
+rotation = 0.0589356
+scale = Vector2( 2.5, 3 )
+polygon = PoolVector2Array( -0.333336, -2, -1.66667, -1.66667, -2.66667, -1, -3, 0.333332, -2.66667, 1.66667, -2.33334, 3, -2, 5.66667, -1.33334, 6.66667, -0.333336, 7, 0.666664, 6.66667, 1.33333, 5.66667, 1.66667, 3.66667, 2, 1.33333, 2, -0.333335, 1.66667, -1.33333, 0.666667, -1.66667 )
+uv = PoolVector2Array(  )
+color = Color( 0.0394287, 0.117188, 0.0306702, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0.333333, -0.333333 )
+antialiased = true
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Leg" type="Polygon2D" parent="Node2D/Player/Back/Leg 2"]
+
+position = Vector2( 0.165606, 3.70402 )
+rotation = 0.0931719
+polygon = PoolVector2Array( -1.66666, 0, -1.66666, 1.33333, -2, 3.33333, -2.66666, 5.66667, -2.33333, 6.66667, -0.666664, 7, 1.66667, 6.33333, 2.66667, 5.66667, 2.66667, 4.66667, 2, 2.66667, 1.66667, 0.333332, 1.66667, -0.666668, 1.33334, -1.33333, 0.333336, -1.66667, -0.333332, -1.66667, -1, -1.33333, -1.66666, -0.666668 )
+uv = PoolVector2Array(  )
+color = Color( 0.0394287, 0.117188, 0.0306702, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0.333333 )
+antialiased = true
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Shoe" type="Polygon2D" parent="Node2D/Player/Back/Leg 2/Leg"]
+
+show_behind_parent = true
+position = Vector2( -1.26431, 7.61833 )
+rotation = 0.0259987
+polygon = PoolVector2Array( -1.09824, 7.24464, 0.457874, 6.34981, 2.10791, 6.11499, 3.1449, 6.3041, 3.56884, 6.91716, 3.6158, 7.24717, 3.33276, 7.62414, 1.72968, 8.18896, 0.409649, 8.37682, -0.627342, 8.1877, -1.05128, 7.57465 )
+uv = PoolVector2Array(  )
+color = Color( 0.13269, 0.0684204, 0, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0.149206, -7.36388 )
+antialiased = true
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Visibility" ]
+
+[node name="Shirt" type="Polygon2D" parent="Node2D/Player/Back"]
+
+position = Vector2( 1.57343, -0.524467 )
+scale = Vector2( 3, 3 )
+polygon = PoolVector2Array( -4.10586, -10.141, -3.17775, -9.80949, -1.61985, -9.74319, -0.492867, -9.80949, 0.302658, -10.141, 1.00413, -9.99075, 1.61986, -9.26508, 1.66383, -8.12158, 1.5099, -4.77907, 1.53189, -2.99786, 1.83976, -1.45854, 2.25757, 1.00437, 0.740242, 0.740484, -0.824333, 0.66489, -2.68055, 0.731184, -4.27159, 0.963211, -5.25463, 0.975431, -4.84268, -1.53213, -4.69939, -3.59192, -4.86059, -5.50842, -5.21881, -7.78314, -5.16508, -8.89363, -4.73565, -9.80949 )
+uv = PoolVector2Array(  )
+color = Color( 0.0742188, 0.0742188, 0.0742188, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0, 0 )
-antialiased = false
+antialiased = true
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Arm" type="Polygon2D" parent="Node2D/Player/Back/Shirt"]
+
+show_behind_parent = true
+position = Vector2( -4.32231, -9.16168 )
+rotation = 0.145942
+polygon = PoolVector2Array( 0, -1.33333, -1, -1, -1.66666, 0.333333, -2, 3.33333, -2.33333, 5.33333, -2.33333, 7.66667, -2.66666, 9.33333, -2, 9.33333, -0.333332, 9, -0.333332, 7.33333, -0.333332, 5, 0, 3, 0.666668, 0.666667, 0.666668, -0.666667 )
+uv = PoolVector2Array(  )
+color = Color( 0.0742188, 0.0742188, 0.0742188, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0.202482, 0.331936 )
+antialiased = true
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform", "Visibility" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Shade" type="Polygon2D" parent="Node2D/Player/Back/Shirt/Arm"]
+
+position = Vector2( 0.202477, 0.331936 )
+polygon = PoolVector2Array( -1.86822, 4.43244, -1.6712, 2.62341, -1.66666, 0.333333, -2, 3.33333, -2.33333, 5.33333, -2.33333, 7.66667, -2.66666, 9.33333, -2, 9.33333, -0.333332, 9, -2.28018, 9.01771, -2.17271, 8.15797, -1.97569, 7.35196, -2.08315, 6.70716, -1.9936, 5.50711 )
+uv = PoolVector2Array(  )
+color = Color( 0.0390625, 0.0390625, 0.0390625, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = true
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Highlight" type="Polygon2D" parent="Node2D/Player/Back/Shirt/Arm"]
+
+position = Vector2( 0.202477, 0.331936 )
+polygon = PoolVector2Array( -0.666664, 5, -0.686832, 6.18912, -0.544933, 7.4662, -0.576469, 8.68809, -0.989174, 8.92713, -1.93985, 9.18388, -2.66666, 9.33333, -2, 9.33333, -0.333332, 9, -0.333332, 7.33333, -0.333332, 5, 0, 3, 0.666668, 0.666667, -0.333332, 3 )
+uv = PoolVector2Array(  )
+color = Color( 0.128906, 0.128906, 0.128906, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = true
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Hand" type="Polygon2D" parent="Node2D/Player/Back/Shirt/Arm"]
+
+show_behind_parent = true
+position = Vector2( -1.34412, 9.34673 )
+polygon = PoolVector2Array( -0.592575, -0.0341454, -0.754063, 0.553456, -0.913158, 1.00843, -0.812603, 1.63458, -0.437977, 2.06537, 0.283852, 2.14084, 0.803062, 1.76781, 0.958908, 1.06044, 1.22173, 0.911699, 1.0601, 0.354685, 0.765865, 0.0814276, 0.557629, -0.343758, 0.470749, -0.863004, -0.48415, -0.70855 )
+uv = PoolVector2Array(  )
+color = Color( 0.980469, 0.796387, 0.509277, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( -0.0326918, 0.450025 )
+antialiased = true
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Visibility" ]
+
+[node name="Arm2" type="Polygon2D" parent="Node2D/Player/Back/Shirt"]
+
+show_behind_parent = true
+position = Vector2( 0.698414, -9.13874 )
+rotation = -0.447286
+polygon = PoolVector2Array( 0, -1.33333, -1, -1, -1.66666, 0.333333, -2, 3.33333, -2.33333, 5.33333, -2.33333, 7.66667, -2.66666, 9.33333, -2, 9.33333, -0.333332, 9, -0.333332, 7.33333, -0.333332, 5, 0, 3, 0.666668, 0.666667, 0.666668, -0.666667 )
+uv = PoolVector2Array(  )
+color = Color( 0.054902, 0.054902, 0.054902, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0.202482, 0.331936 )
+antialiased = true
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform", "Visibility" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Shade" type="Polygon2D" parent="Node2D/Player/Back/Shirt/Arm2"]
+
+position = Vector2( 0.202477, 0.331936 )
+polygon = PoolVector2Array( -1.86822, 4.43244, -1.6712, 2.62341, -1.66666, 0.333333, -2, 3.33333, -2.33333, 5.33333, -2.33333, 7.66667, -2.66666, 9.33333, -2, 9.33333, -0.333332, 9, -2.28018, 9.01771, -2.17271, 8.15797, -1.97569, 7.35196, -2.08315, 6.70716, -1.9936, 5.50711 )
+uv = PoolVector2Array(  )
+color = Color( 0.0390625, 0.0390625, 0.0390625, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = true
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Highlight" type="Polygon2D" parent="Node2D/Player/Back/Shirt/Arm2"]
+
+position = Vector2( 0.202477, 0.331936 )
+polygon = PoolVector2Array( -0.666664, 5, -0.686832, 6.18912, -0.544933, 7.4662, -0.576469, 8.68809, -0.989174, 8.92713, -1.93985, 9.18388, -2.66666, 9.33333, -2, 9.33333, -0.333332, 9, -0.333332, 7.33333, -0.333332, 5, 0, 3, 0.666668, 0.666667, -0.333332, 3 )
+uv = PoolVector2Array(  )
+color = Color( 0.128906, 0.128906, 0.128906, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = true
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Hand" type="Polygon2D" parent="Node2D/Player/Back/Shirt/Arm2"]
+
+show_behind_parent = true
+position = Vector2( -1.34412, 9.34673 )
+polygon = PoolVector2Array( -0.592575, -0.0341454, -0.754063, 0.553456, -0.913158, 1.00843, -0.812603, 1.63458, -0.437977, 2.06537, 0.283852, 2.14084, 0.803062, 1.76781, 0.958908, 1.06044, 1.22173, 0.911699, 1.0601, 0.354685, 0.765865, 0.0814276, 0.557629, -0.343758, 0.470749, -0.863004, -0.48415, -0.70855 )
+uv = PoolVector2Array(  )
+color = Color( 0.980469, 0.796387, 0.509277, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( -0.0326918, 0.450025 )
+antialiased = true
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Visibility" ]
+
+[node name="Head" type="Polygon2D" parent="Node2D/Player/Back"]
+
+position = Vector2( -6.88266, -44.9061 )
+scale = Vector2( 3, 3 )
+polygon = PoolVector2Array( 0.580513, -6.60519, -1.43951, -6.3481, -2.94535, -5.31972, -3.71663, -3.66697, -3.79008, -2.45496, -4.67155, -3.26297, -5.44283, -3.0426, -5.51628, -1.9775, -5.03883, -0.802213, -4.26755, -0.21457, -3.75336, -0.361481, -3.23917, 0.703622, -0.998779, 2.50328, 0.433601, 3.09092, 1.53543, 3.09092, 3.18818, 2.46655, 4.95111, 0.556712, 5.35511, -0.251297, 5.72239, -0.324753, 6.31004, -0.985852, 6.67731, -2.49169, 6.31004, -3.07933, 5.72239, -3.26297, 5.42857, -3.07933, 5.28166, -3.92407, 4.84093, -4.98917, 3.40855, -6.20119, 1.82925, -6.64192 )
+uv = PoolVector2Array(  )
+color = Color( 0.980469, 0.796451, 0.509384, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = true
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Hair" type="Polygon2D" parent="Node2D/Player/Back/Head"]
+
+position = Vector2( 0.333332, -2.33333 )
+polygon = PoolVector2Array( 0.460114, 3.76998, -0.161888, 3.70564, -0.793381, 3.57827, -1.53334, 3.34234, -2.57358, 2.78469, -3.1972, 2.35138, -3.74695, 1.42779, -4.12079, 0.636143, -4.34069, -0.243466, -4.41724, -1.18673, -4.0867, -2.39874, -3.38887, -3.46385, -1.91976, -4.30859, -0.450649, -4.71259, 0.724636, -4.52895, 1.67956, -4.82277, 2.67121, -4.67586, 3.51595, -4.08822, 4.61777, -3.02312, 5.13196, -2.25183, 5.24214, -1.44382, 5.06575, -0.767756, 4.98317, 0.614153, 4.60934, 1.33983, 4.2886, 1.89327, 3.62372, 2.57961, 2.9052, 3.07291, 2.26176, 3.41609, 1.55397, 3.63057, 0.985588, 3.75926 )
+uv = PoolVector2Array(  )
+color = Color( 1, 0.705566, 0.199219, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = true
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Pony tail2" type="Polygon2D" parent="Node2D/Player/Back/Head/Hair"]
+
+position = Vector2( 0.594536, 2.81969 )
+rotation = -0.855438
+polygon = PoolVector2Array( -0.438652, -0.142028, -1.82755, 0.23045, -3.75501, 1.24653, -5.41296, 2.77493, -6.1726, 4.22537, -6.31328, 5.22583, -6.99991, 6.30547, -7.89083, 6.94783, -6.66847, 6.93961, -5.30337, 6.23651, -4.27628, 4.9928, -4.20083, 3.91728, -3.14955, 1.99389, -1.67331, 0.711189, -0.368095, 0.191864 )
+uv = PoolVector2Array(  )
+color = Color( 1, 0.705566, 0.199219, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0.499539, 0.047274 )
+antialiased = true
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Red thing" type="Polygon2D" parent="Node2D/Player/Back/Head/Hair/Pony tail2"]
+
+position = Vector2( 0.499542, 0.0472755 )
+polygon = PoolVector2Array( -1.26186, 0.0214043, -1.18549, -0.465614, -0.726238, -0.996105, 0.152012, -0.681274, 0.488255, 0.341133, -0.105091, 0.777817, -0.825184, 0.614758 )
+uv = PoolVector2Array(  )
+color = Color( 0.71875, 0.101074, 0.101074, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = true
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -440,10 +2872,46 @@ invert_border = 100.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Player"]
 
-position = Vector2( 0.774857, 9.49186 )
+visible = false
+position = Vector2( -5, 11 )
 scale = Vector2( 3, 3 )
-shape = SubResource( 1 )
+shape = SubResource( 5 )
 _sections_unfolded = [ "Transform" ]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D/Player"]
+
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+root_node = NodePath("..")
+anims/Standing = SubResource( 7 )
+anims/Walking = SubResource( 6 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = ""
+
+[node name="Hotspot" type="Area2D" parent="Node2D/Player" groups=[
+"Hotspots",
+]]
+
+position = Vector2( -5.70099, -29.4769 )
+scale = Vector2( 0.613237, 1.71529 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 1 )
+_sections_unfolded = [ "Pickable", "Textures" ]
+foot_str = PoolStringArray( "Ouch!", "I just kicked my self.#Happy now\?", "Stop that!" )
+eye_str = PoolStringArray( "Looks like I\'ve tranformed to a child!", "It\'s me, TassuP.#I have the characteristics of a former time.#What a Throwback!", "Cool shirt, huh\?", "I got these pants as a Christmas present from my mom." )
+hand_str = PoolStringArray( "How do you do.", "Can you gimme a hand\?#Hehe...", "Pull my finger!", "Pick you own nose." )
+correct_item = ""
+node_to_trigger = null
+one_shot = false
+click_distance = 64.0
 
 [node name="Cursor" type="Node2D" parent="Node2D"]
 
@@ -899,9 +3367,9 @@ anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -512.0
-margin_top = -300.0
+margin_top = -293.0
 margin_right = 448.0
-margin_bottom = 236.0
+margin_bottom = 243.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -911,6 +3379,7 @@ _sections_unfolded = [ "Margin" ]
 
 [node name="PostProsessing" type="ColorRect" parent="Node2D/Camera2D/Control"]
 
+visible = false
 material = SubResource( 2 )
 anchor_left = 0.0
 anchor_top = 0.0
@@ -933,6 +3402,7 @@ __meta__ = {
 
 [node name="Fader" type="ColorRect" parent="Node2D/Camera2D/Control"]
 
+visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -946,7 +3416,7 @@ rect_clip_content = false
 mouse_filter = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-color = Color( 0, 0, 0, 0 )
+color = Color( 0, 0, 0, 1 )
 _sections_unfolded = [ "Margin", "Visibility" ]
 __meta__ = {
 "_edit_lock_": true
@@ -1033,13 +3503,22 @@ action = 1
 monolog = null
 next_event = NodePath("../Starting monolog")
 
+[node name="Dream Off" type="Node2D" parent="."]
+
+position = Vector2( 278, -14 )
+script = ExtResource( 2 )
+auto_start = true
+action = 6
+monolog = null
+next_event = null
+
 [node name="Starting monolog" type="Node2D" parent="."]
 
 position = Vector2( 278, -14 )
 script = ExtResource( 2 )
 auto_start = false
 action = 4
-monolog = PoolStringArray( "", "Whoa!!!", "I\'ve been Thrown Back in time!", "And I\'m a child again!", "I have regained my Characteristics Of a Former Time.", "", "Back in the good ol\' days when everything was still 2D.", "Just look at all those pixels!", "Could you turn them off please\?", "Press ESC and uncheck the Ugly Pixels effect." )
+monolog = PoolStringArray( "", "Whoa!!!", "I\'ve been Thrown Back in time!", "Back in the good ol\' days when everything was still 2D.", "Just look at all those pixels!", "Could you turn them off please\?", "Press ESC and uncheck the Ugly Pixels effect." )
 next_event = null
 
 [connection signal="toggled" from="Node2D/Camera2D/Control/PauseMenu/UglyPixels" to="Node2D/Camera2D/Control/PauseMenu" method="_on_UglyPixels_toggled"]
