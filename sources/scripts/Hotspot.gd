@@ -4,14 +4,17 @@ export(PoolStringArray) var foot_str
 export(PoolStringArray) var eye_str
 export(PoolStringArray) var hand_str
 export(String) var correct_item = ""
+export(PoolStringArray) var wrong_str
 export(NodePath) var node_to_trigger
 export var one_shot = true
 var has_triggered = false
 
 export var click_distance = 64.0
+
 var foot_str_i = 0
 var eye_str_i = 0
 var hand_str_i = 0
+var wrong_str_i = 0
 
 var mouse_is_over = false
 var wait_for_release = false
@@ -19,6 +22,12 @@ var wait_for_release = false
 func _ready():
 	if(node_to_trigger != null):
 		node_to_trigger = get_node(node_to_trigger)
+		
+	if(wrong_str == null):
+		wrong_str = []
+		wrong_str.append("Umm.. No.")
+		wrong_str.append("Nah..")
+		wrong_str.append("Meh..")
 
 func _process(delta):
 	if(Game.paused || Game.talking):
@@ -62,6 +71,19 @@ func _process(delta):
 								hand_str_i = hand_str.size()-1
 							else:
 								hand_str_i = 0
+								
+				# Item
+				if(Game.cursor.tool_mode >= 3):
+					print("Use ", Inventory.selected_item, " with ", get_name())
+					if(Inventory.selected_item == correct_item):
+						after_talk()
+					else:
+						var s = wrong_str[wrong_str_i].split("#", false)
+						Game.player_says(s, self)
+						wrong_str_i += 1
+						if(wrong_str_i >= wrong_str.size()):
+							wrong_str_i = 0
+						
 							
 	else:
 		wait_for_release = false

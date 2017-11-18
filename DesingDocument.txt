@@ -73,6 +73,13 @@ TassuP: "Oh no! I've been thrown back in time to an era when everything was stil
 
 
 
+	### Jojo puzzle
+	There's a hole in the ground blocking the path.
+	Player must use Jojo as a monkey wrench on a nearby water pipe to fill the hole with water.
+	Then use mutagen on a dead newt to transform into a were-newt.
+	Then player will swim across to the other side.
+	Mutagen will then wear off and player turns into himself again.
+
 
 
 ### Enging scene ###

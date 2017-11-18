@@ -1,14 +1,106 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://scripts/Hotspot.gd" type="Script" id=1]
 [ext_resource path="res://scripts/HotspotEvent.gd" type="Script" id=2]
-[ext_resource path="res://scripts/Player.gd" type="Script" id=3]
-[ext_resource path="res://scripts/Cursor.gd" type="Script" id=4]
-[ext_resource path="res://scripts/cam.gd" type="Script" id=5]
-[ext_resource path="res://shaders/dream_shader.shd" type="Shader" id=6]
-[ext_resource path="res://scripts/PauseMenu.gd" type="Script" id=7]
-[ext_resource path="res://Technically, But Not Actually.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://Technically, But Not Actually.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://scripts/Player.gd" type="Script" id=4]
+[ext_resource path="res://scripts/Cursor.gd" type="Script" id=5]
+[ext_resource path="res://scripts/cam.gd" type="Script" id=6]
+[ext_resource path="res://shaders/dream_shader.shd" type="Shader" id=7]
+[ext_resource path="res://scripts/PauseMenu.gd" type="Script" id=8]
 [ext_resource path="res://scripts/Talk label.gd" type="Script" id=9]
+
+[sub_resource type="DynamicFont" id=8]
+
+size = 72
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 3 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="Animation" id=9]
+
+resource_name = "Turtle"
+length = 2.0
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Leg:rotation_deg")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 19.3732, 0.0, 19.3732, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Leg2:rotation_deg")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 37.2785, 10.6017, 37.2785, 10.6017, 37.2785 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Leg3:rotation_deg")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ -165.942, -191.235, -167.371, -191.235, -167.371 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Leg4:rotation_deg")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ -162.482, -126.314, -162.482, -126.314, -162.482 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Head:rotation_deg")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -21.4309, 5.49709 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Tail:rotation_deg")
+tracks/5/interp = 2
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -12.4869, 15.5575, -12.4869 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Shell:rotation_deg")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -3.25114, 5.13084, -3.25114 ]
+}
 
 [sub_resource type="CircleShape2D" id=5]
 
@@ -1330,7 +1422,7 @@ tracks/58/keys = {
 [sub_resource type="ShaderMaterial" id=2]
 
 render_priority = 0
-shader = ExtResource( 6 )
+shader = ExtResource( 7 )
 shader_param/pixelize = true
 shader_param/dream = 0.5
 _sections_unfolded = [ "shader_param" ]
@@ -1340,7 +1432,7 @@ _sections_unfolded = [ "shader_param" ]
 size = 16
 use_mipmaps = false
 use_filter = false
-font_data = ExtResource( 8 )
+font_data = ExtResource( 3 )
 _sections_unfolded = [ "Font" ]
 
 [sub_resource type="DynamicFont" id=4]
@@ -1348,7 +1440,7 @@ _sections_unfolded = [ "Font" ]
 size = 30
 use_mipmaps = false
 use_filter = true
-font_data = ExtResource( 8 )
+font_data = ExtResource( 3 )
 _sections_unfolded = [ "Font", "Settings" ]
 
 [node name="Main" type="Node"]
@@ -1365,7 +1457,7 @@ uv = PoolVector2Array(  )
 color = Color( 0.289062, 0.289062, 0.289062, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0, 0 )
-antialiased = true
+antialiased = false
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -1409,11 +1501,12 @@ position = Vector2( 42.2055, 4.52197 )
 build_mode = 0
 polygon = PoolVector2Array( 227.762, 315.461, 228.99, 353.521, 274.573, 377.59, 282.695, 462.425, 277.28, 514.77, 232.155, 546.358, 231.253, 593.288, 779.973, 596.898, 782.68, 556.285, 575.105, 567.115, 481.245, 552.675, 466.805, 514.77, 493.88, 465.133, 517.345, 447.985, 443.34, 349.613, 378.36, 318.928 )
 
-[node name="Staircase up" type="Area2D" parent="Node2D" groups=[
+[node name="Puzzles" type="Node2D" parent="Node2D"]
+
+[node name="Staircase up" type="Area2D" parent="Node2D/Puzzles" groups=[
 "Hotspots",
 ]]
 
-editor/display_folded = true
 position = Vector2( 314, -43 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -1424,15 +1517,19 @@ audio_bus_override = false
 audio_bus_name = "Master"
 script = ExtResource( 1 )
 _sections_unfolded = [ "Pickable", "Textures" ]
+__meta__ = {
+"_edit_group_": true
+}
 foot_str = PoolStringArray( "I don\'t think I should go there.", "I really shouldn\'t...", "Umm...#Well...#What the heck.#$" )
 eye_str = PoolStringArray( "It\'s a staircase up.", "I\'ve heard stories about people who go up there.#They never come back.", "Remember what happened in NetHack\?", "It\'s a staircase up.#Maybe I should find a staircase down." )
 hand_str = null
 correct_item = ""
+wrong_str = null
 node_to_trigger = NodePath("Walk Here")
 one_shot = true
 click_distance = 64.0
 
-[node name="Walk Here" type="Node2D" parent="Node2D/Staircase up"]
+[node name="Walk Here" type="Node2D" parent="Node2D/Puzzles/Staircase up"]
 
 position = Vector2( -36, 29 )
 script = ExtResource( 2 )
@@ -1441,7 +1538,7 @@ action = 0
 monolog = null
 next_event = NodePath("../Fade Out")
 
-[node name="Fade Out" type="Node2D" parent="Node2D/Staircase up"]
+[node name="Fade Out" type="Node2D" parent="Node2D/Puzzles/Staircase up"]
 
 position = Vector2( -36, 29 )
 script = ExtResource( 2 )
@@ -1450,7 +1547,7 @@ action = 2
 monolog = null
 next_event = NodePath("../Game Over")
 
-[node name="Game Over" type="Node2D" parent="Node2D/Staircase up"]
+[node name="Game Over" type="Node2D" parent="Node2D/Puzzles/Staircase up"]
 
 position = Vector2( -36, 29 )
 script = ExtResource( 2 )
@@ -1459,7 +1556,7 @@ action = 3
 monolog = null
 next_event = null
 
-[node name="Staircase up2" type="Polygon2D" parent="Node2D/Staircase up"]
+[node name="Staircase up2" type="Polygon2D" parent="Node2D/Puzzles/Staircase up"]
 
 position = Vector2( 31, -109 )
 polygon = PoolVector2Array( 30, 52, 8, 58, -22, 111, -39, 158, -24, 176, 32, 134 )
@@ -1467,7 +1564,7 @@ uv = PoolVector2Array(  )
 color = Color( 0.421875, 0.421875, 0.421875, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0, 0 )
-antialiased = true
+antialiased = false
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -1475,7 +1572,7 @@ texture_rotation = 0.0
 invert_enable = false
 invert_border = 100.0
 
-[node name="Staircase up0" type="Polygon2D" parent="Node2D/Staircase up"]
+[node name="Staircase up0" type="Polygon2D" parent="Node2D/Puzzles/Staircase up"]
 
 position = Vector2( 31, -109 )
 polygon = PoolVector2Array( -40, 49, -63, 59, -61, 67, -78, 75, -77, 86, -96, 96, -94, 110, -117, 120, -114, 123, -24, 149, -8, 136, -7, 115, 6, 102, 5, 86, 18, 78, 17, 64, 30, 52 )
@@ -1483,7 +1580,7 @@ uv = PoolVector2Array(  )
 color = Color( 0.621094, 0.621094, 0.621094, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0, 0 )
-antialiased = true
+antialiased = false
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -1491,7 +1588,7 @@ texture_rotation = 0.0
 invert_enable = false
 invert_border = 100.0
 
-[node name="Staircase up1" type="Polygon2D" parent="Node2D/Staircase up"]
+[node name="Staircase up1" type="Polygon2D" parent="Node2D/Puzzles/Staircase up"]
 
 position = Vector2( -21, -38 )
 polygon = PoolVector2Array( -65, 49, -62, 68, 28, 105, 29, 77 )
@@ -1499,7 +1596,7 @@ uv = PoolVector2Array(  )
 color = Color( 0.542969, 0.542969, 0.542969, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0, 0 )
-antialiased = true
+antialiased = false
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -1507,7 +1604,7 @@ texture_rotation = 0.0
 invert_enable = false
 invert_border = 100.0
 
-[node name="Staircase up3" type="Polygon2D" parent="Node2D/Staircase up"]
+[node name="Staircase up3" type="Polygon2D" parent="Node2D/Puzzles/Staircase up"]
 
 position = Vector2( -3, -66 )
 polygon = PoolVector2Array( -62, 53, -62, 68, 26, 93, 27, 72 )
@@ -1515,7 +1612,7 @@ uv = PoolVector2Array(  )
 color = Color( 0.542969, 0.542969, 0.542969, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0, 0 )
-antialiased = true
+antialiased = false
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -1523,7 +1620,7 @@ texture_rotation = 0.0
 invert_enable = false
 invert_border = 100.0
 
-[node name="Staircase up4" type="Polygon2D" parent="Node2D/Staircase up"]
+[node name="Staircase up4" type="Polygon2D" parent="Node2D/Puzzles/Staircase up"]
 
 position = Vector2( 15, -90 )
 polygon = PoolVector2Array( -62, 56, -62, 68, 22, 83, 21, 67 )
@@ -1531,7 +1628,7 @@ uv = PoolVector2Array(  )
 color = Color( 0.542969, 0.542969, 0.542969, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0, 0 )
-antialiased = true
+antialiased = false
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -1539,7 +1636,7 @@ texture_rotation = 0.0
 invert_enable = false
 invert_border = 100.0
 
-[node name="Staircase up5" type="Polygon2D" parent="Node2D/Staircase up"]
+[node name="Staircase up5" type="Polygon2D" parent="Node2D/Puzzles/Staircase up"]
 
 position = Vector2( 31, -109 )
 polygon = PoolVector2Array( -63, 59, -62, 68, 18, 78, 17, 64 )
@@ -1547,7 +1644,7 @@ uv = PoolVector2Array(  )
 color = Color( 0.542969, 0.542969, 0.542969, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0, 0 )
-antialiased = true
+antialiased = false
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -1555,19 +1652,16 @@ texture_rotation = 0.0
 invert_enable = false
 invert_border = 100.0
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/Staircase up"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/Puzzles/Staircase up"]
 
 build_mode = 0
 polygon = PoolVector2Array( -6, -59, -26, -46, -79, 11, -80, 28, 7, 64, 63, 21, 60, -55 )
-
-[node name="Puzzles" type="Node2D" parent="Node2D"]
 
 [node name="Dead newt" type="Area2D" parent="Node2D/Puzzles" groups=[
 "Hotspots",
 ]]
 
-editor/display_folded = true
-position = Vector2( 403.029, 588.189 )
+position = Vector2( 411.222, 586.298 )
 scale = Vector2( 0.930939, 0.911645 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -1584,10 +1678,11 @@ __meta__ = {
 foot_str = null
 eye_str = PoolStringArray( "Eww!#A dead newt." )
 hand_str = PoolStringArray( "I don\'t want it." )
-correct_item = ""
-node_to_trigger = null
+correct_item = "Mutagen"
+wrong_str = null
+node_to_trigger = NodePath("Walk Here")
 one_shot = true
-click_distance = 64.0
+click_distance = 32.0
 
 [node name="Label" type="Label" parent="Node2D/Puzzles/Dead newt"]
 
@@ -1598,28 +1693,1819 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -61.0
 margin_top = -59.0
-margin_right = -49.0
-margin_bottom = -45.0
-rect_scale = Vector2( 5, 5 )
+margin_right = -4.0
+margin_bottom = 13.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 size_flags_horizontal = 1
 size_flags_vertical = 4
+custom_fonts/font = SubResource( 8 )
 text = "%"
+align = 1
+valign = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "Rect", "Visibility" ]
+_sections_unfolded = [ "Rect", "Visibility", "custom_fonts" ]
+
+[node name="Walk Here" type="Node2D" parent="Node2D/Puzzles/Dead newt"]
+
+position = Vector2( -49.5095, 0 )
+scale = Vector2( 1.07418, 1.09692 )
+script = ExtResource( 2 )
+_sections_unfolded = [ "Transform" ]
+auto_start = false
+action = 0
+monolog = null
+next_event = NodePath("../Here goes!")
+
+[node name="Here goes!" type="Node2D" parent="Node2D/Puzzles/Dead newt"]
+
+position = Vector2( -49.5095, 0 )
+scale = Vector2( 1.07418, 1.09692 )
+script = ExtResource( 2 )
+_sections_unfolded = [ "Transform" ]
+auto_start = false
+action = 4
+monolog = PoolStringArray( "Here goes!", "$" )
+next_event = NodePath("../Mutagen/Remove Item")
+
+[node name="Mutagen" type="Node2D" parent="Node2D/Puzzles/Dead newt"]
+
+editor/display_folded = true
+position = Vector2( -49.5095, 0 )
+scale = Vector2( 1.07418, 1.09692 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Remove Item" type="Node2D" parent="Node2D/Puzzles/Dead newt/Mutagen"]
+
+script = ExtResource( 2 )
+_sections_unfolded = [ "Transform" ]
+auto_start = false
+action = 8
+monolog = null
+next_event = null
+
+[node name="To werenewt" type="Node2D" parent="Node2D/Puzzles/Dead newt"]
+
+position = Vector2( -49.5095, 0 )
+scale = Vector2( 1.07418, 1.09692 )
+script = ExtResource( 2 )
+_sections_unfolded = [ "Transform" ]
+auto_start = false
+action = 4
+monolog = PoolStringArray( "Here goes!", "$" )
+next_event = NodePath("../Mutagen/Remove Item")
+
+[node name="Jojo" type="Area2D" parent="Node2D/Puzzles" groups=[
+"Hotspots",
+]]
+
+editor/display_folded = true
+position = Vector2( 510.362, 587.465 )
+scale = Vector2( 0.930939, 0.911645 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 1 )
+_sections_unfolded = [ "Pickable", "Textures" ]
+__meta__ = {
+"_edit_group_": true
+}
+foot_str = null
+eye_str = PoolStringArray( "It\'s Jojo the monkey!#I think he\'s petrified.", "I think last time I saw Jojo was in Phatt Island.", "It\'s Jojo the monkey.#Still petrified." )
+hand_str = PoolStringArray( "I always wanted a petrified pet monkey.#$" )
+correct_item = ""
+wrong_str = null
+node_to_trigger = NodePath("Take")
+one_shot = true
+click_distance = 32.0
+
+[node name="Take" type="Node2D" parent="Node2D/Puzzles/Jojo"]
+
+position = Vector2( 0.424011, -1.3642 )
+scale = Vector2( 1.07418, 1.09692 )
+script = ExtResource( 2 )
+auto_start = false
+action = 7
+monolog = null
+next_event = null
+
+[node name="Polygon2D" type="Polygon2D" parent="Node2D/Puzzles/Jojo"]
+
+editor/display_folded = true
+position = Vector2( -10.9517, 8.49938 )
+polygon = PoolVector2Array( 12.8948, -13.3676, 6.03009, -11.5546, -3.79352, -9.86255, -11.4868, -9.01654, -14.8411, -6.39056, -17.9963, -0.0727539, -19.6666, 0.901855, -22.6086, 0.77124, -25.0929, -0.61792, -26.22, -7.03027, -24.7709, -14.5934, -18.4915, -27.418, -13.0172, -31.1996, -9.3139, -30.3775, -7.86487, -27.418, -9.15295, -24.1296, -12.0511, -23.8008, -13.8222, -24.7873, -14.2545, -23.923, -12.5806, -23.0388, -10.5604, -22.9209, -7.96301, -23.3336, -6.75092, -25.2786, -6.28918, -27.9899, -7.27039, -30.4064, -8.48248, -31.939, -10.9067, -32.9409, -14.5431, -33.0588, -17.7754, -31.2317, -21.2386, -28.2256, -26.6003, -17.7986, -28.2492, -11.5445, -28.9559, -5.69116, -28.1707, -0.639709, -26.2077, 3.52979, -21.1824, 5.8551, -15.0355, 5.44495, -6.35931, 4.55902, 3.18457, 0.916626, 14.2709, -5.48218, 17.645, -9.41986, 16.1025, -14.1451 )
+uv = PoolVector2Array(  )
+color = Color( 0.726562, 0.356607, 0.0596008, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Polygon2D2" type="Polygon2D" parent="Node2D/Puzzles/Jojo/Polygon2D"]
+
+position = Vector2( 3.0163, 1.33917 )
+polygon = PoolVector2Array( -13.4291, 2.66083, -13.8563, 10.8416, -11.72, 12.0415, -9.90411, 12.1506, -5.41779, 8.44196, -6.59277, 4.73334, -7.66095, -0.175232 )
+uv = PoolVector2Array(  )
+color = Color( 0.726562, 0.356607, 0.0596008, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Polygon2D3" type="Polygon2D" parent="Node2D/Puzzles/Jojo/Polygon2D"]
+
+polygon = PoolVector2Array( 9.85706, -5.19269, 11.032, -1.37494, 10.7116, 4.18805, 9.42975, 9.42377, 9.53662, 12.3688, 11.032, 13.6778, 17.6547, 13.7869, 35.4932, 13.1324, 40.3167, 12.1873, 40, 11.8235, 35.3864, 11.4962, 34.1046, 9.86011, 27.5887, 9.3147, 18.1888, 8.44208, 16.0525, 7.89667, 15.5184, 6.15143, 16.8002, -2.02942, 18.1888, -8.68317, 17.2274, -11.4101, 14.4502, -12.61 )
+uv = PoolVector2Array(  )
+color = Color( 0.726562, 0.356607, 0.0596008, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Polygon2D4" type="Polygon2D" parent="Node2D/Puzzles/Jojo/Polygon2D"]
+
+position = Vector2( 2.48547, -0.362549 )
+polygon = PoolVector2Array( 4.05365, -10.3444, 9.50299, -25.9505, 9.98907, -28.8885, 10, -30.7001, 12.9714, -31.5037, 24.6431, -32.8428, 32.9052, -31.7714, 48.249, -27.0843, 50.085, -25.3433, 47.9867, -24.5399, 43.1344, -22.665, 30.2823, -23.6024, 20.9711, -25.3433, 16.6434, -26.1469, 14.6763, -24.5399, 13.496, -19.317, 14.414, -11.8175 )
+uv = PoolVector2Array(  )
+color = Color( 0.726562, 0.356607, 0.0596008, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Polygon2D5" type="Polygon2D" parent="Node2D/Puzzles/Jojo/Polygon2D"]
+
+position = Vector2( 2.48547, -0.362549 )
+polygon = PoolVector2Array( 12.3123, -12.8828, 16.6915, -14.5748, 18.4669, -16.3878, 19.8872, -16.8712, 27.462, -16.146, 28.1722, -14.2122, 24.2664, -14.4539, 22.6094, -13.6078, 22.2543, -12.0367, 23.793, -11.0698, 24.8582, -10.7072, 24.8582, -7.80652, 26.6335, -5.26837, 27.3437, -3.57635, 25.2132, -2.48859, 21.4258, -3.6972, 16.8099, -5.63098, 13.7326, -5.63098 )
+uv = PoolVector2Array(  )
+color = Color( 0.726562, 0.356607, 0.0596008, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Polygon2D6" type="Polygon2D" parent="Node2D/Puzzles/Jojo/Polygon2D"]
+
+position = Vector2( 2.48547, -0.362549 )
+polygon = PoolVector2Array( 28.4209, -13.983, 27.4451, -15.1961, 25.663, -15.4128, 23.3718, -14.8495, 22.1838, -13.8096, 21.8019, -12.7697, 22.0989, -11.8166, 22.7354, -11.1667, 23.6264, -10.6901, 24.2628, -10.4301, 24.6022, -9.56354, 24.5174, -8.30707, 25.0266, -7.13721, 26.257, -5.92407, 26.6813, -3.9743, 29.3119, -4.19098, 29.9059, -4.58087, 29.9484, -5.27417, 31.4758, -5.01422, 33.6397, -5.23083, 34.1489, -5.8374, 34.361, -6.96393, 33.0033, -9.04364, 31.1364, -10.9067, 29.2695, -12.2499, 28.4633, -12.7697 )
+uv = PoolVector2Array(  )
+color = Color( 0.941406, 0.713208, 0.319931, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Polygon2D7" type="Polygon2D" parent="Node2D/Puzzles/Jojo/Polygon2D"]
+
+position = Vector2( 2.48547, -0.362549 )
+polygon = PoolVector2Array( 20.0283, -13.4761, 19.2965, -13.7924, 18.3394, -13.3899, 17.861, -12.1827, 18.1705, -10.8317, 19.2402, -10.0844, 20.1691, -10.4868, 20.8447, -11.6077 )
+uv = PoolVector2Array(  )
+color = Color( 0.941406, 0.713208, 0.319931, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Polygon2D10" type="Polygon2D" parent="Node2D/Puzzles/Jojo/Polygon2D"]
+
+position = Vector2( 2.48547, -0.362549 )
+polygon = PoolVector2Array( -10.0913, 12.7281, -10.506, 13.8574, -8.77808, 14.4221, -3.21411, 14.6338, 1.55505, 14.5985, 4.28705, 14.3718, 4.58405, 13.6786, 3.77789, 13.1154, 1.86853, 13.5052, -0.21051, 13.4186, 1.10486, 12.1622, 2.63226, 11.3389, 3.73547, 10.949, 3.94757, 10.2125, 3.35358, 9.86578, 1.74127, 10.429, -0.380188, 11.5122, -1.1015, 12.1622, -0.846924, 10.689, -0.380188, 10.0391, -0.465088, 9.30249, -1.14392, 9.47583, -1.56824, 10.2991, -1.99255, 11.8155, -3.77454, 11.1656, -6.32031, 10.8623 )
+uv = PoolVector2Array(  )
+color = Color( 0.941406, 0.713208, 0.319931, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Polygon2D11" type="Polygon2D" parent="Node2D/Puzzles/Jojo/Polygon2D"]
+
+position = Vector2( 2.48547, -0.362549 )
+polygon = PoolVector2Array( 31.5458, 10.2448, 32.0654, 11.4825, 33.6238, 12.1899, 37.087, 12.3077, 44.6482, 12.6024, 45.3986, 12.072, 46.0912, 8.88916, 46.2644, 6.64941, 45.8604, 6.05994, 45.2254, 6.53149, 44.9368, 8.06396, 44.1287, 10.4806, 43.2052, 10.4806, 43.4362, 8.8302, 43.4362, 5.94208, 42.9166, 4.23279, 42.1663, 3.99701, 41.416, 4.40961, 41.9354, 5.41162, 42.224, 7.35669, 41.9931, 9.2428, 41.7045, 10.2448, 39.338, 10.0679, 39.0494, 8.12292, 38.4145, 6.17786, 37.6642, 6.1189, 37.491, 7.00305, 37.8373, 8.88916, 37.5487, 9.95007, 35.4131, 9.53754, 33.1042, 9.36072, 32.2962, 9.41962 )
+uv = PoolVector2Array(  )
+color = Color( 0.941406, 0.713208, 0.319931, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Polygon2D13" type="Polygon2D" parent="Node2D/Puzzles/Jojo/Polygon2D"]
+
+position = Vector2( 3.58197, -1.12885 )
+polygon = PoolVector2Array( 40.9282, -23.2104, 40.0778, -21.4014, 40.9991, -19.4475, 43.9754, -17.9279, 44.684, -18.4344, 44.5423, -19.7369, 43.125, -20.6053, 42.3455, -21.9079, 43.125, -22.4144, 46.6313, -22.8783, 48.767, -21.6994, 50.21, -18.9292, 49.928, -16.9148, 51.2036, -16.1911, 52.054, -16.9148, 51.8414, -19.3028, 50.3532, -22.2698, 48.5107, -24.0065, 51.4162, -24.0789, 52.8335, -24.0065, 53.4999, -22.4068, 54.3079, -20.167, 54.0193, -18.0452, 54.5965, -16.7485, 55.8664, -18.5167, 56.0395, -20.7565, 54.8274, -24.175, 53.6153, -25.4717, 51.9414, -26.1201, 49.5173, -25.8253, 47.4971, -25.0591, 44.842, -24.2339, 43.0541, -23.7894 )
+uv = PoolVector2Array(  )
+color = Color( 0.941406, 0.713208, 0.319931, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Polygon2D12" type="Polygon2D" parent="Node2D/Puzzles/Jojo/Polygon2D"]
+
+position = Vector2( 2.02368, 3.23285 )
+rotation = -0.107597
+polygon = PoolVector2Array( 32.8157, 9.71429, 35.9326, 8.94806, 39.338, 8.65338, 40.8964, 8.71234, 41.1273, 9.3017, 40.377, 9.59644, 35.9903, 10.009 )
+uv = PoolVector2Array(  )
+color = Color( 0.941406, 0.713208, 0.319931, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Polygon2D8" type="Polygon2D" parent="Node2D/Puzzles/Jojo/Polygon2D"]
+
+position = Vector2( 2.48547, -0.362549 )
+polygon = PoolVector2Array( 24.5322, -13.6774, 23.8285, -13.4187, 23.6877, -12.8726, 24.0537, -12.3552, 24.8418, -12.4127, 25.3204, -13.0162, 25.0388, -13.4474 )
+uv = PoolVector2Array(  )
+color = Color( 0, 0, 0, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Polygon2D9" type="Polygon2D" parent="Node2D/Puzzles/Jojo/Polygon2D"]
+
+position = Vector2( 2.48547, -0.362549 )
+polygon = PoolVector2Array( 29.9178, -4.92517, 29.4796, -5.14893, 28.6538, -5.5448, 28.0807, -5.57916, 28.4179, -5.83734, 29.2943, -5.75128, 29.9515, -5.4931, 30.1201, -5.28662 )
+uv = PoolVector2Array(  )
+color = Color( 0.527344, 0.123628, 0.0700378, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Polygon2D14" type="Polygon2D" parent="Node2D/Puzzles/Jojo/Polygon2D"]
+
+position = Vector2( 2.48547, -0.362549 )
+polygon = PoolVector2Array( 46.758, -25.9197, 37.9707, -27.9631, 31.9675, -29.6512, 23.7021, -30.5397, 17.4379, -29.7401, 11.9567, -29.1181, 11.1737, -26.1863, 9.43359, -20.7668, 7.25854, -12.6819, 4.73547, -11.3492, 8.04156, -21.0333, 9.52057, -25.8309, 10.1296, -28.2297, 10.4776, -30.1843, 12.3047, -30.8062, 17.3509, -31.6058, 23.0061, -32.2277, 26.3123, -32.05, 32.8375, -31.0728, 38.6667, -29.6512, 46.497, -27.2524, 48.498, -26.1863 )
+uv = PoolVector2Array(  )
+color = Color( 0.761719, 0.416623, 0.139847, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Polygon2D15" type="Polygon2D" parent="Node2D/Puzzles/Jojo/Polygon2D"]
+
+position = Vector2( 2.48547, -0.362549 )
+polygon = PoolVector2Array( -0.9198, -10.0165, 6.47546, -10.5497, 10.2166, -11.0827, 12.0436, -10.7274, 13.2618, -9.57233, 14.6538, -7.26239, 14.8278, -5.48553, 13.6968, -0.687927, 12.8267, 3.66547, 12.3917, 6.242, 12.4788, 8.55194, 13.5228, 9.17383, 16.6548, 9.44037, 31.1844, 10.4177, 17.9599, 10.1511, 13.9578, 10.4177, 11.0866, 9.61804, 9.86859, 7.93005, 9.78162, 4.9093, 10.3036, -0.59906, 10.1296, -3.53088, 8.30255, -4.41931, 4.64844, -5.13007, -2.74292, -6.47144, -9.52917, -6.91565, -14.3143, -6.38257, -15.7934, -6.02722, -14.2274, -7.6264, -9.70319, -8.78137, -4.396, -9.40326 )
+uv = PoolVector2Array(  )
+color = Color( 0.761719, 0.416623, 0.139847, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Polygon2D16" type="Polygon2D" parent="Node2D/Puzzles/Jojo/Polygon2D"]
+
+position = Vector2( 2.48547, -0.362549 )
+polygon = PoolVector2Array( -12.2347, -1.125, -11.5969, 1.6972, -11.9512, 4.73657, -12.2347, 7.05219, -11.8804, 9.29547, -11.3135, 10.3809, -9.40015, 10.8875, -6.99072, 10.8875, -5.78601, 10.6705, -5.64429, 9.36786, -6.70728, 6.54559, -7.62848, 3.50635, -7.55762, -0.546021, -7.62848, -3.22351, -7.91193, -4.81555, -9.11664, -5.901, -10.6757, -6.19049, -13.8646, -5.75635, -16.4157, -4.88794, -17.833, -3.513, -18.9669, -1.125, -20.1715, 1.04596, -22.014, 2.13141, -24.2817, 2.2038, -26.9037, 1.19067, -25.699, 2.34851, -23.5731, 3.21692, -21.8723, 3.28918, -19.5338, 2.27612, -19.1794, 0.611755, -18.1873, 1.6972, -16.3448, 2.49323, -14.2898, 2.99976, -13.0142, 2.56561, -12.589, 0.684082 )
+uv = PoolVector2Array(  )
+color = Color( 0.761719, 0.416623, 0.139847, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Polygon2D17" type="Polygon2D" parent="Node2D/Puzzles/Jojo/Polygon2D"]
+
+position = Vector2( 2.48547, -0.362549 )
+polygon = PoolVector2Array( -9.26819, -28.0391, -10.1185, -29.993, -11.0398, -31.2232, -12.6697, -31.9468, -14.583, -32.4533, -16.709, -32.4533, -18.0554, -31.9468, -20.3231, -30.4271, -22.3073, -28.6904, -23.9371, -27.0261, -26.5591, -21.8158, -28.8977, -17.3292, -29.8189, -13.4215, -28.6851, -16.2437, -26.5591, -20.658, -24.5041, -24.421, -22.6616, -27.2431, -20.7483, -29.197, -18.268, -30.8613, -16.142, -31.5126, -13.7327, -31.2955, -11.8902, -30.5719, -10.1185, -29.0522 )
+uv = PoolVector2Array(  )
+color = Color( 0.761719, 0.416623, 0.139847, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Mutagen spill" type="Polygon2D" parent="Node2D/Puzzles"]
+
+position = Vector2( 429.352, 1082.44 )
+rotation = -0.304734
+scale = Vector2( 0.929152, 0.913467 )
+polygon = PoolVector2Array( 18.2937, 20.5892, 3.02634, 6.81421, -25.6769, -2.99634, -43.2961, 3.17322, -63.5234, 12.0535, -82.3731, 16.6449, -108.573, 18.8754, -121.896, 9.86511, -147.869, -13.8545, -174.498, -28.3215, -228.958, -40.7573, -264.096, -31.9293, -307.457, -2.40991, -336.802, 25.1748, -349.274, 51.7419, -356.022, 82.5618, -354.433, 116.864, -336.44, 151.607, -318.002, 180.057, -313.356, 207.295, -306.368, 227.24, -281.011, 261.13, -234.576, 278.458, -208.699, 271.483, -189.775, 251.815, -179.48, 217.307, -186.725, 193.257, -174.276, 161.855, -158.855, 155.544, -117.488, 156.762, -80.0574, 180.048, -59.2995, 196.37, -25.3321, 191.189, -10.2141, 171.103, -11.3, 142.595, -26.6587, 111.916, -42.92, 91.4062, -47.0627, 69.9617, -35.2585, 52.8345, -10.5413, 51.9231, 8.9422, 50.1353, 20.5121, 33.7375 )
+uv = PoolVector2Array(  )
+color = Color( 0.0173035, 0.738281, 0.0961604, 0.33149 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 13.5236, 12.7693 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Mutagen" type="Area2D" parent="Node2D/Puzzles" groups=[
+"Hotspots",
+]]
+
+editor/display_folded = true
+position = Vector2( 459.81, 1092 )
+scale = Vector2( 0.930939, 0.911645 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 1 )
+_sections_unfolded = [ "Pickable", "Textures" ]
+__meta__ = {
+"_edit_group_": true
+}
+foot_str = null
+eye_str = PoolStringArray( "A mutagen canister." )
+hand_str = PoolStringArray( "There\'s still some mutagen left.#Awesome!#$" )
+correct_item = ""
+wrong_str = null
+node_to_trigger = NodePath("Take")
+one_shot = false
+click_distance = 64.0
+
+[node name="Mutagen" type="Polygon2D" parent="Node2D/Puzzles/Mutagen"]
+
+position = Vector2( -24.4656, -19.6799 )
+rotation = -0.31078
+scale = Vector2( 1, 1 )
+polygon = PoolVector2Array( -5.44637, -0.180964, -0.210571, 2.89392, 7.64224, 4.94641, 13.4713, 4.70435, 17.5725, 6.07148, 16.6917, 39.8025, -7.49993, 41.045 )
+uv = PoolVector2Array(  )
+color = Color( 0.0173035, 0.738281, 0.0961604, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 13.5236, 12.7693 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Glass" type="Polygon2D" parent="Node2D/Puzzles/Mutagen"]
+
+position = Vector2( -8.7132, -13.3927 )
+rotation = -0.31078
+scale = Vector2( 1, 1 )
+polygon = PoolVector2Array( -17.9488, -23.4411, -20.5924, 30.2482, 3.62974, 29.0039, 4.99994, -24.31 )
+uv = PoolVector2Array(  )
+color = Color( 0.342834, 0.535933, 0.640625, 0.55251 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 13.5236, 12.7693 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Cap" type="Polygon2D" parent="Node2D/Puzzles/Mutagen"]
+
+editor/display_folded = true
+position = Vector2( -25.7978, -20.55 )
+rotation = -0.31078
+scale = Vector2( 1, 1 )
+polygon = PoolVector2Array( -8.27942, -8.3446, 21.772, -8.79407, 22.4842, -19.6067, 18.245, -20.7334, 12.5159, -28.6815, -0.143824, -28.6943, -4.45831, -21.0672, -9.59045, -19.7958 )
+uv = PoolVector2Array(  )
+color = Color( 0.378906, 0.378906, 0.378906, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 13.5236, 12.7693 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Cap2" type="Polygon2D" parent="Node2D/Puzzles/Mutagen/Cap"]
+
+position = Vector2( -14.2365, -12.5701 )
+scale = Vector2( 1, 1 )
+polygon = PoolVector2Array( 5.17276, -6.62842, 6.19522, 3.34753, 33.4978, 3.104, 7.87463, 1.60205 )
+uv = PoolVector2Array(  )
+color = Color( 0.261719, 0.261719, 0.261719, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 13.5236, 12.7693 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Cap3" type="Polygon2D" parent="Node2D/Puzzles/Mutagen/Cap"]
+
+position = Vector2( -27.723, -25.153 )
+scale = Vector2( 1, 1 )
+polygon = PoolVector2Array( 27.6569, -2.70715, 24.4991, 3.64124, 40.7783, 4.04602, 26.5184, 2.38562 )
+uv = PoolVector2Array(  )
+color = Color( 0.261719, 0.261719, 0.261719, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 13.5236, 12.7693 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Cap4" type="Polygon2D" parent="Node2D/Puzzles/Mutagen/Cap"]
+
+position = Vector2( -41.1232, -38.1216 )
+scale = Vector2( 1, 1 )
+polygon = PoolVector2Array( 61.9609, 28.6066, 61.339, 20.5782, 35.0349, 18.8182, 38.1277, 17.5315, 62.9496, 19.2715 )
+uv = PoolVector2Array(  )
+color = Color( 0.453125, 0.453125, 0.453125, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 13.5236, 12.7693 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Cap5" type="Polygon2D" parent="Node2D/Puzzles/Mutagen/Cap"]
+
+position = Vector2( -54.3442, -51.1848 )
+scale = Vector2( 1, 1 )
+polygon = PoolVector2Array( 71.0606, 29.7053, 66.1391, 24.1722, 55.7584, 22.8904, 66.7851, 23.0876 )
+uv = PoolVector2Array(  )
+color = Color( 0.453125, 0.453125, 0.453125, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 13.5236, 12.7693 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Cap2" type="Polygon2D" parent="Node2D/Puzzles/Mutagen"]
+
+editor/display_folded = true
+position = Vector2( 27.8364, 18.0927 )
+rotation = -3.44397
+scale = Vector2( 1, 1 )
+polygon = PoolVector2Array( -8.27942, -8.3446, 21.772, -8.79407, 22.4842, -19.6067, 18.245, -20.7334, 12.5159, -28.6815, -0.143824, -28.6943, -4.45831, -21.0672, -9.59045, -19.7958 )
+uv = PoolVector2Array(  )
+color = Color( 0.378906, 0.378906, 0.378906, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 13.5236, 12.7693 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Cap2" type="Polygon2D" parent="Node2D/Puzzles/Mutagen/Cap2"]
+
+position = Vector2( -14.2365, -12.5701 )
+scale = Vector2( 1, 1 )
+polygon = PoolVector2Array( 5.17276, -6.62842, 6.19522, 3.34753, 33.4978, 3.104, 7.87463, 1.60205 )
+uv = PoolVector2Array(  )
+color = Color( 0.261719, 0.261719, 0.261719, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 13.5236, 12.7693 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Cap3" type="Polygon2D" parent="Node2D/Puzzles/Mutagen/Cap2"]
+
+position = Vector2( -27.723, -25.153 )
+scale = Vector2( 1, 1 )
+polygon = PoolVector2Array( 27.6569, -2.70715, 24.4991, 3.64124, 40.7783, 4.04602, 26.5184, 2.38562 )
+uv = PoolVector2Array(  )
+color = Color( 0.261719, 0.261719, 0.261719, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 13.5236, 12.7693 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Cap4" type="Polygon2D" parent="Node2D/Puzzles/Mutagen/Cap2"]
+
+position = Vector2( -41.1232, -38.1216 )
+scale = Vector2( 1, 1 )
+polygon = PoolVector2Array( 61.9609, 28.6066, 61.339, 20.5782, 35.0349, 18.8182, 38.1277, 17.5315, 62.9496, 19.2715 )
+uv = PoolVector2Array(  )
+color = Color( 0.453125, 0.453125, 0.453125, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 13.5236, 12.7693 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Cap5" type="Polygon2D" parent="Node2D/Puzzles/Mutagen/Cap2"]
+
+position = Vector2( -54.3442, -51.1848 )
+scale = Vector2( 1, 1 )
+polygon = PoolVector2Array( 71.0606, 29.7053, 66.1391, 24.1722, 55.7584, 22.8904, 66.7851, 23.0876 )
+uv = PoolVector2Array(  )
+color = Color( 0.453125, 0.453125, 0.453125, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 13.5236, 12.7693 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Take" type="Node2D" parent="Node2D/Puzzles/Mutagen"]
+
+scale = Vector2( 1.07418, 1.09692 )
+script = ExtResource( 2 )
+_sections_unfolded = [ "Transform" ]
+auto_start = false
+action = 7
+monolog = null
+next_event = null
+
+[node name="Turtles" type="Area2D" parent="Node2D/Puzzles" groups=[
+"Hotspots",
+]]
+
+editor/display_folded = true
+position = Vector2( 207.782, 1189.37 )
+scale = Vector2( 0.930939, 0.911645 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 1 )
+_sections_unfolded = [ "Pickable", "Textures" ]
+__meta__ = {
+"_edit_group_": true
+}
+foot_str = PoolStringArray( "I don\'t want to step on them!" )
+eye_str = PoolStringArray( "Mutant ninja baby turtles!", "Ooh! They\'re so cute!", "Cutesywutesy cowabungawunga!" )
+hand_str = PoolStringArray( "I can\'t just take them!#They need a proper terrarium." )
+correct_item = ""
+wrong_str = null
+node_to_trigger = null
+one_shot = false
+click_distance = 64.0
+
+[node name="Michelangelo" type="Node2D" parent="Node2D/Puzzles/Turtles"]
+
+editor/display_folded = true
+position = Vector2( 45.2172, 59.968 )
+rotation = 1.42411
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D/Puzzles/Turtles/Michelangelo"]
+
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+root_node = NodePath("..")
+anims/Turtle = SubResource( 9 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = "Turtle"
+
+[node name="Leg" type="Polygon2D" parent="Node2D/Puzzles/Turtles/Michelangelo"]
+
+position = Vector2( -9.56059, 5.21423 )
+rotation = 0.126474
+polygon = PoolVector2Array( -17.0658, -14.9069, -21.7351, -14.7424, -25.2773, -12.6049, -29.4636, -9.48096, -24.3113, -8.82324, -18.837, -9.48096, -15.7778, -10.9607, -12.0745, -12.276, -11.9135, -14.7424 )
+uv = PoolVector2Array(  )
+color = Color( 0.0654602, 0.558594, 0.130955, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 13.5236, 12.7693 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Leg2" type="Polygon2D" parent="Node2D/Puzzles/Turtles/Michelangelo"]
+
+position = Vector2( -5.53539, -9.09009 )
+rotation = 0.476478
+polygon = PoolVector2Array( -17.0658, -14.9069, -21.7351, -14.7424, -25.2773, -12.6049, -29.4636, -9.48096, -24.3113, -8.82324, -18.837, -9.48096, -15.7778, -10.9607, -12.0745, -12.276, -11.9135, -14.7424 )
+uv = PoolVector2Array(  )
+color = Color( 0.0654602, 0.558594, 0.130955, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 13.2392, 13.4373 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Leg3" type="Polygon2D" parent="Node2D/Puzzles/Turtles/Michelangelo"]
+
+position = Vector2( 3.80318, -7.93921 )
+rotation = -3.07696
+scale = Vector2( 1, 1 )
+polygon = PoolVector2Array( -17.0658, -14.9069, -21.7351, -14.7424, -25.2773, -12.6049, -29.4636, -9.48096, -24.3113, -8.82324, -18.837, -9.48096, -15.7778, -10.9607, -12.0745, -12.276, -11.9135, -14.7424 )
+uv = PoolVector2Array(  )
+color = Color( 0.0654602, 0.558594, 0.130955, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 13.2392, 13.4373 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Leg4" type="Polygon2D" parent="Node2D/Puzzles/Turtles/Michelangelo"]
+
+position = Vector2( 2.19324, 6.0365 )
+rotation = -2.59972
+scale = Vector2( 1, 1 )
+polygon = PoolVector2Array( -17.0658, -14.9069, -21.7351, -14.7424, -25.2773, -12.6049, -29.4636, -9.48096, -24.3113, -8.82324, -18.837, -9.48096, -15.7778, -10.9607, -12.0745, -12.276, -11.9135, -14.7424 )
+uv = PoolVector2Array(  )
+color = Color( 0.0654602, 0.558594, 0.130955, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 13.2392, 13.4373 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Head" type="Polygon2D" parent="Node2D/Puzzles/Turtles/Michelangelo"]
+
+editor/display_folded = true
+position = Vector2( -0.705063, -7.44592 )
+rotation = -0.333097
+polygon = PoolVector2Array( 7.08444, -16.7706, 9.17758, -21.3743, 9.49959, -26.4712, 9.98262, -31.8969, 12.2367, -34.3632, 14.8129, -34.692, 16.423, -33.3767, 17.067, -30.746, 15.779, -26.6356, 13.8468, -24.0049, 12.3978, -19.8945, 11.4317, -15.2908, 10.9487, -11.6737, 6.2794, -12.8246 )
+uv = PoolVector2Array(  )
+color = Color( 0.0654602, 0.558594, 0.130955, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( -9.01773, 13.5914 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Polygon2D" type="Polygon2D" parent="Node2D/Puzzles/Turtles/Michelangelo/Head"]
+
+position = Vector2( -8.27216, -5.57349 )
+polygon = PoolVector2Array( 8.80994, -12.4562, 8.43146, -11.5966, 8.18103, -10.4347, 8.7511, -9.79089, 9.79526, -9.45325, 11.0515, -9.28613, 11.7782, -9.04712, 12.0937, -8.22534, 11.8085, -7.2666, 11.105, -6.75146, 11.8004, -6.89758, 12.4725, -7.56458, 12.5834, -8.07959, 12.8436, -7.23279, 12.6693, -6.55652, 12.5347, -6.09729, 13.2542, -6.8855, 13.3892, -7.80994, 13.1449, -8.69714, 14.1339, -8.30823, 14.8751, -7.68115, 15.6096, -7.77087, 15.8944, -8.5022, 16.2384, -9.5824, 15.9181, -10.3384, 15.0983, -10.87, 13.8578, -11.2729, 12.2323, -11.7429, 10.9847, -12.2327, 9.82983, -12.644 )
+uv = PoolVector2Array(  )
+color = Color( 1, 0.726562, 0, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Tail" type="Polygon2D" parent="Node2D/Puzzles/Turtles/Michelangelo"]
+
+position = Vector2( -3.76425, 7.68054 )
+rotation = -0.145513
+polygon = PoolVector2Array( -5.47432, 13.9756, -5.47432, 21.7031, -7.08441, 28.4442, -9.49956, 33.87, -10.4656, 38.4738, -10.1436, 41.7621, -8.85553, 36.8295, -5.63531, 31.7325, -1.93211, 25.6492, -0.160995, 18.2504, 0.322052, 13.3179 )
+uv = PoolVector2Array(  )
+color = Color( 0.0654602, 0.558594, 0.130955, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 2.25294, -15.0173 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Shell" type="Polygon2D" parent="Node2D/Puzzles/Turtles/Michelangelo"]
+
+editor/display_folded = true
+position = Vector2( -1.67111, -1.19812 )
+rotation = -0.0301502
+polygon = PoolVector2Array( 4.99133, -22.6896, 1.61012, -22.5253, -2.41513, -21.2098, -5.4743, -17.9215, -6.60138, -14.4688, -7.72844, -9.04309, -8.05046, -4.9325, -7.56744, -0.822144, -5.95735, 2.79504, -3.7032, 4.60364, 0.805069, 6.57666, 5.31334, 5.26135, 8.53354, 1.47974, 10.4657, -4.76807, 11.1097, -13.1534, 9.98262, -18.0859, 7.56747, -21.5387 )
+uv = PoolVector2Array(  )
+color = Color( 0.0156097, 0.363281, 0.0617849, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( -1.4503, 9.15214 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Shell2" type="Polygon2D" parent="Node2D/Puzzles/Turtles/Michelangelo/Shell"]
+
+position = Vector2( 1.57039, -9.22095 )
+polygon = PoolVector2Array( -1.18297, -10.9424, -1.31804, -7.84452, -0.971725, -5.36894, 3.35725, -4.13126, 4.68481, -7.19621, 5.72682, -10.1405, 3.76382, -11.2631, 1.17264, -11.9045 )
+uv = PoolVector2Array(  )
+color = Color( 0.0654297, 0.558594, 0.130859, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( -1.4503, 9.15214 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Shell3" type="Polygon2D" parent="Node2D/Puzzles/Turtles/Michelangelo/Shell"]
+
+position = Vector2( -0.23558, 11.5463 )
+rotation = -3.07508
+polygon = PoolVector2Array( -1.18297, -10.9424, -0.790359, -7.81519, -0.0947108, -5.14152, 4.14476, -4.89225, 5.73149, -7.12455, 6.89549, -9.62406, 3.76382, -11.2631, 1.17264, -11.9045 )
+uv = PoolVector2Array(  )
+color = Color( 0.0654297, 0.558594, 0.130859, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( -1.4503, 9.15214 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Shell4" type="Polygon2D" parent="Node2D/Puzzles/Turtles/Michelangelo/Shell"]
+
+position = Vector2( -2.14034, 19.7393 )
+rotation = -3.07508
+polygon = PoolVector2Array( 2.9561, 5.05221, -2.15901, 4.68392, -5.48413, 8.8855, -2.87639, 13.8879, 2.18504, 14.3187, 5.26683, 10.2147 )
+uv = PoolVector2Array(  )
+color = Color( 0.0654297, 0.558594, 0.130859, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( -1.4503, 9.15214 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Shell5" type="Polygon2D" parent="Node2D/Puzzles/Turtles/Michelangelo/Shell"]
+
+position = Vector2( -4.33368, 28.6395 )
+rotation = -3.07508
+polygon = PoolVector2Array( 4.87042, 9.13611, 6.50613, 11.9808, 7.26736, 15.5927, 7.35199, 18.5996, 4.76816, 18.89, 2.23373, 12.9744 )
+uv = PoolVector2Array(  )
+color = Color( 0.0654297, 0.558594, 0.130859, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( -1.4503, 9.15214 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Shell6" type="Polygon2D" parent="Node2D/Puzzles/Turtles/Michelangelo/Shell"]
+
+position = Vector2( -6.35388, 37.8345 )
+rotation = -3.07508
+polygon = PoolVector2Array( -7.02722, 16.368, -6.36945, 20.1638, -5.83701, 22.0778, -9.04973, 26.291, -11.2079, 25.6843, -10.5584, 23.2783, -9.31171, 19.4147 )
+uv = PoolVector2Array(  )
+color = Color( 0.0654297, 0.558594, 0.130859, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( -1.4503, 9.15214 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Shell7" type="Polygon2D" parent="Node2D/Puzzles/Turtles/Michelangelo/Shell"]
+
+position = Vector2( -8.25864, 46.7346 )
+rotation = -3.07508
+polygon = PoolVector2Array( -7.99185, 41.8329, -10.6364, 36.8699, -12.334, 36.5695, -12.5114, 41.7206, -11.6507, 45.0894, -10.1772, 47.236 )
+uv = PoolVector2Array(  )
+color = Color( 0.0654297, 0.558594, 0.130859, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( -1.4503, 9.15214 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Shell8" type="Polygon2D" parent="Node2D/Puzzles/Turtles/Michelangelo/Shell"]
+
+position = Vector2( -10.5097, 55.8706 )
+rotation = -3.07508
+polygon = PoolVector2Array( -2.76833, 51.9825, 0.348816, 48.0706, 2.54123, 47.9838, 2.15454, 51.731, 0.711472, 55.5904, -1.80846, 57.7076, -2.02669, 55.3001 )
+uv = PoolVector2Array(  )
+color = Color( 0.0654297, 0.558594, 0.130859, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( -1.4503, 9.15214 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Donatello" type="Node2D" parent="Node2D/Puzzles/Turtles"]
+
+editor/display_folded = true
+position = Vector2( -25.7818, -30.141 )
+rotation = 2.26832
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D/Puzzles/Turtles/Donatello"]
+
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+root_node = NodePath("..")
+anims/Turtle = SubResource( 9 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = "Turtle"
+
+[node name="Leg" type="Polygon2D" parent="Node2D/Puzzles/Turtles/Donatello"]
+
+position = Vector2( -9.56059, 5.21423 )
+rotation = 0.126474
+polygon = PoolVector2Array( -17.0658, -14.9069, -21.7351, -14.7424, -25.2773, -12.6049, -29.4636, -9.48096, -24.3113, -8.82324, -18.837, -9.48096, -15.7778, -10.9607, -12.0745, -12.276, -11.9135, -14.7424 )
+uv = PoolVector2Array(  )
+color = Color( 0.0654602, 0.558594, 0.130955, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 13.5236, 12.7693 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Leg2" type="Polygon2D" parent="Node2D/Puzzles/Turtles/Donatello"]
+
+position = Vector2( -5.53539, -9.09009 )
+rotation = 0.476478
+polygon = PoolVector2Array( -17.0658, -14.9069, -21.7351, -14.7424, -25.2773, -12.6049, -29.4636, -9.48096, -24.3113, -8.82324, -18.837, -9.48096, -15.7778, -10.9607, -12.0745, -12.276, -11.9135, -14.7424 )
+uv = PoolVector2Array(  )
+color = Color( 0.0654602, 0.558594, 0.130955, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 13.2392, 13.4373 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Leg3" type="Polygon2D" parent="Node2D/Puzzles/Turtles/Donatello"]
+
+position = Vector2( 3.80318, -7.93921 )
+rotation = -3.07696
+scale = Vector2( 1, 1 )
+polygon = PoolVector2Array( -17.0658, -14.9069, -21.7351, -14.7424, -25.2773, -12.6049, -29.4636, -9.48096, -24.3113, -8.82324, -18.837, -9.48096, -15.7778, -10.9607, -12.0745, -12.276, -11.9135, -14.7424 )
+uv = PoolVector2Array(  )
+color = Color( 0.0654602, 0.558594, 0.130955, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 13.2392, 13.4373 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Leg4" type="Polygon2D" parent="Node2D/Puzzles/Turtles/Donatello"]
+
+position = Vector2( 2.19324, 6.0365 )
+rotation = -2.59972
+scale = Vector2( 1, 1 )
+polygon = PoolVector2Array( -17.0658, -14.9069, -21.7351, -14.7424, -25.2773, -12.6049, -29.4636, -9.48096, -24.3113, -8.82324, -18.837, -9.48096, -15.7778, -10.9607, -12.0745, -12.276, -11.9135, -14.7424 )
+uv = PoolVector2Array(  )
+color = Color( 0.0654602, 0.558594, 0.130955, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 13.2392, 13.4373 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Head" type="Polygon2D" parent="Node2D/Puzzles/Turtles/Donatello"]
+
+position = Vector2( -0.705063, -7.44592 )
+rotation = -0.333097
+polygon = PoolVector2Array( 7.08444, -16.7706, 9.17758, -21.3743, 9.49959, -26.4712, 9.98262, -31.8969, 12.2367, -34.3632, 14.8129, -34.692, 16.423, -33.3767, 17.067, -30.746, 15.779, -26.6356, 13.8468, -24.0049, 12.3978, -19.8945, 11.4317, -15.2908, 10.9487, -11.6737, 6.2794, -12.8246 )
+uv = PoolVector2Array(  )
+color = Color( 0.0654602, 0.558594, 0.130955, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( -9.01773, 13.5914 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Polygon2D" type="Polygon2D" parent="Node2D/Puzzles/Turtles/Donatello/Head"]
+
+position = Vector2( -8.27216, -5.57349 )
+polygon = PoolVector2Array( 8.80994, -12.4562, 8.43146, -11.5966, 8.18103, -10.4347, 8.7511, -9.79089, 9.79526, -9.45325, 11.0515, -9.28613, 11.7782, -9.04712, 12.0937, -8.22534, 11.8085, -7.2666, 11.105, -6.75146, 11.8004, -6.89758, 12.4725, -7.56458, 12.5834, -8.07959, 12.8436, -7.23279, 12.6693, -6.55652, 12.5347, -6.09729, 13.2542, -6.8855, 13.3892, -7.80994, 13.1449, -8.69714, 14.1339, -8.30823, 14.8751, -7.68115, 15.6096, -7.77087, 15.8944, -8.5022, 16.2384, -9.5824, 15.9181, -10.3384, 15.0983, -10.87, 13.8578, -11.2729, 12.2323, -11.7429, 10.9847, -12.2327, 9.82983, -12.644 )
+uv = PoolVector2Array(  )
+color = Color( 1, 0, 0.984375, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Tail" type="Polygon2D" parent="Node2D/Puzzles/Turtles/Donatello"]
+
+position = Vector2( -3.76425, 7.68054 )
+rotation = -0.145513
+polygon = PoolVector2Array( -5.47432, 13.9756, -5.47432, 21.7031, -7.08441, 28.4442, -9.49956, 33.87, -10.4656, 38.4738, -10.1436, 41.7621, -8.85553, 36.8295, -5.63531, 31.7325, -1.93211, 25.6492, -0.160995, 18.2504, 0.322052, 13.3179 )
+uv = PoolVector2Array(  )
+color = Color( 0.0654602, 0.558594, 0.130955, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 2.25294, -15.0173 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Shell" type="Polygon2D" parent="Node2D/Puzzles/Turtles/Donatello"]
+
+editor/display_folded = true
+position = Vector2( -1.67111, -1.19812 )
+rotation = -0.0301502
+polygon = PoolVector2Array( 4.99133, -22.6896, 1.61012, -22.5253, -2.41513, -21.2098, -5.4743, -17.9215, -6.60138, -14.4688, -7.72844, -9.04309, -8.05046, -4.9325, -7.56744, -0.822144, -5.95735, 2.79504, -3.7032, 4.60364, 0.805069, 6.57666, 5.31334, 5.26135, 8.53354, 1.47974, 10.4657, -4.76807, 11.1097, -13.1534, 9.98262, -18.0859, 7.56747, -21.5387 )
+uv = PoolVector2Array(  )
+color = Color( 0.0156097, 0.363281, 0.0617849, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( -1.4503, 9.15214 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Shell2" type="Polygon2D" parent="Node2D/Puzzles/Turtles/Donatello/Shell"]
+
+position = Vector2( 1.57039, -9.22095 )
+polygon = PoolVector2Array( -1.18297, -10.9424, -1.31804, -7.84452, -0.971725, -5.36894, 3.35725, -4.13126, 4.68481, -7.19621, 5.72682, -10.1405, 3.76382, -11.2631, 1.17264, -11.9045 )
+uv = PoolVector2Array(  )
+color = Color( 0.0654297, 0.558594, 0.130859, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( -1.4503, 9.15214 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Shell3" type="Polygon2D" parent="Node2D/Puzzles/Turtles/Donatello/Shell"]
+
+position = Vector2( -0.23558, 11.5463 )
+rotation = -3.07508
+polygon = PoolVector2Array( -1.18297, -10.9424, -0.790359, -7.81519, -0.0947108, -5.14152, 4.14476, -4.89225, 5.73149, -7.12455, 6.89549, -9.62406, 3.76382, -11.2631, 1.17264, -11.9045 )
+uv = PoolVector2Array(  )
+color = Color( 0.0654297, 0.558594, 0.130859, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( -1.4503, 9.15214 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Shell4" type="Polygon2D" parent="Node2D/Puzzles/Turtles/Donatello/Shell"]
+
+position = Vector2( -2.14034, 19.7393 )
+rotation = -3.07508
+polygon = PoolVector2Array( 2.9561, 5.05221, -2.15901, 4.68392, -5.48413, 8.8855, -2.87639, 13.8879, 2.18504, 14.3187, 5.26683, 10.2147 )
+uv = PoolVector2Array(  )
+color = Color( 0.0654297, 0.558594, 0.130859, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( -1.4503, 9.15214 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Shell5" type="Polygon2D" parent="Node2D/Puzzles/Turtles/Donatello/Shell"]
+
+position = Vector2( -4.33368, 28.6395 )
+rotation = -3.07508
+polygon = PoolVector2Array( 4.87042, 9.13611, 6.50613, 11.9808, 7.26736, 15.5927, 7.35199, 18.5996, 4.76816, 18.89, 2.23373, 12.9744 )
+uv = PoolVector2Array(  )
+color = Color( 0.0654297, 0.558594, 0.130859, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( -1.4503, 9.15214 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Shell6" type="Polygon2D" parent="Node2D/Puzzles/Turtles/Donatello/Shell"]
+
+position = Vector2( -6.35388, 37.8345 )
+rotation = -3.07508
+polygon = PoolVector2Array( -7.02722, 16.368, -6.36945, 20.1638, -5.83701, 22.0778, -9.04973, 26.291, -11.2079, 25.6843, -10.5584, 23.2783, -9.31171, 19.4147 )
+uv = PoolVector2Array(  )
+color = Color( 0.0654297, 0.558594, 0.130859, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( -1.4503, 9.15214 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Shell7" type="Polygon2D" parent="Node2D/Puzzles/Turtles/Donatello/Shell"]
+
+position = Vector2( -8.25864, 46.7346 )
+rotation = -3.07508
+polygon = PoolVector2Array( -7.99185, 41.8329, -10.6364, 36.8699, -12.334, 36.5695, -12.5114, 41.7206, -11.6507, 45.0894, -10.1772, 47.236 )
+uv = PoolVector2Array(  )
+color = Color( 0.0654297, 0.558594, 0.130859, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( -1.4503, 9.15214 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Shell8" type="Polygon2D" parent="Node2D/Puzzles/Turtles/Donatello/Shell"]
+
+position = Vector2( -10.5097, 55.8706 )
+rotation = -3.07508
+polygon = PoolVector2Array( -2.76833, 51.9825, 0.348816, 48.0706, 2.54123, 47.9838, 2.15454, 51.731, 0.711472, 55.5904, -1.80846, 57.7076, -2.02669, 55.3001 )
+uv = PoolVector2Array(  )
+color = Color( 0.0654297, 0.558594, 0.130859, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( -1.4503, 9.15214 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Leonardo" type="Node2D" parent="Node2D/Puzzles/Turtles"]
+
+editor/display_folded = true
+position = Vector2( 55.4742, -21.061 )
+rotation = 0.789991
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D/Puzzles/Turtles/Leonardo"]
+
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+root_node = NodePath("..")
+anims/Turtle = SubResource( 9 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = "Turtle"
+
+[node name="Leg" type="Polygon2D" parent="Node2D/Puzzles/Turtles/Leonardo"]
+
+position = Vector2( -9.56059, 5.21423 )
+rotation = 0.126474
+polygon = PoolVector2Array( -17.0658, -14.9069, -21.7351, -14.7424, -25.2773, -12.6049, -29.4636, -9.48096, -24.3113, -8.82324, -18.837, -9.48096, -15.7778, -10.9607, -12.0745, -12.276, -11.9135, -14.7424 )
+uv = PoolVector2Array(  )
+color = Color( 0.0654602, 0.558594, 0.130955, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 13.5236, 12.7693 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Leg2" type="Polygon2D" parent="Node2D/Puzzles/Turtles/Leonardo"]
+
+position = Vector2( -5.53539, -9.09009 )
+rotation = 0.476478
+polygon = PoolVector2Array( -17.0658, -14.9069, -21.7351, -14.7424, -25.2773, -12.6049, -29.4636, -9.48096, -24.3113, -8.82324, -18.837, -9.48096, -15.7778, -10.9607, -12.0745, -12.276, -11.9135, -14.7424 )
+uv = PoolVector2Array(  )
+color = Color( 0.0654602, 0.558594, 0.130955, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 13.2392, 13.4373 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Leg3" type="Polygon2D" parent="Node2D/Puzzles/Turtles/Leonardo"]
+
+position = Vector2( 3.80318, -7.93921 )
+rotation = -3.07696
+scale = Vector2( 1, 1 )
+polygon = PoolVector2Array( -17.0658, -14.9069, -21.7351, -14.7424, -25.2773, -12.6049, -29.4636, -9.48096, -24.3113, -8.82324, -18.837, -9.48096, -15.7778, -10.9607, -12.0745, -12.276, -11.9135, -14.7424 )
+uv = PoolVector2Array(  )
+color = Color( 0.0654602, 0.558594, 0.130955, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 13.2392, 13.4373 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Leg4" type="Polygon2D" parent="Node2D/Puzzles/Turtles/Leonardo"]
+
+position = Vector2( 2.19324, 6.0365 )
+rotation = -2.59972
+scale = Vector2( 1, 1 )
+polygon = PoolVector2Array( -17.0658, -14.9069, -21.7351, -14.7424, -25.2773, -12.6049, -29.4636, -9.48096, -24.3113, -8.82324, -18.837, -9.48096, -15.7778, -10.9607, -12.0745, -12.276, -11.9135, -14.7424 )
+uv = PoolVector2Array(  )
+color = Color( 0.0654602, 0.558594, 0.130955, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 13.2392, 13.4373 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Head" type="Polygon2D" parent="Node2D/Puzzles/Turtles/Leonardo"]
+
+position = Vector2( -0.705063, -7.44592 )
+rotation = -0.333097
+polygon = PoolVector2Array( 7.08444, -16.7706, 9.17758, -21.3743, 9.49959, -26.4712, 9.98262, -31.8969, 12.2367, -34.3632, 14.8129, -34.692, 16.423, -33.3767, 17.067, -30.746, 15.779, -26.6356, 13.8468, -24.0049, 12.3978, -19.8945, 11.4317, -15.2908, 10.9487, -11.6737, 6.2794, -12.8246 )
+uv = PoolVector2Array(  )
+color = Color( 0.0654602, 0.558594, 0.130955, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( -9.01773, 13.5914 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Polygon2D" type="Polygon2D" parent="Node2D/Puzzles/Turtles/Leonardo/Head"]
+
+position = Vector2( -8.27216, -5.57349 )
+polygon = PoolVector2Array( 8.80994, -12.4562, 8.43146, -11.5966, 8.18103, -10.4347, 8.7511, -9.79089, 9.79526, -9.45325, 11.0515, -9.28613, 11.7782, -9.04712, 12.0937, -8.22534, 11.8085, -7.2666, 11.105, -6.75146, 11.8004, -6.89758, 12.4725, -7.56458, 12.5834, -8.07959, 12.8436, -7.23279, 12.6693, -6.55652, 12.5347, -6.09729, 13.2542, -6.8855, 13.3892, -7.80994, 13.1449, -8.69714, 14.1339, -8.30823, 14.8751, -7.68115, 15.6096, -7.77087, 15.8944, -8.5022, 16.2384, -9.5824, 15.9181, -10.3384, 15.0983, -10.87, 13.8578, -11.2729, 12.2323, -11.7429, 10.9847, -12.2327, 9.82983, -12.644 )
+uv = PoolVector2Array(  )
+color = Color( 0, 0.109375, 1, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Tail" type="Polygon2D" parent="Node2D/Puzzles/Turtles/Leonardo"]
+
+position = Vector2( -3.76425, 7.68054 )
+rotation = -0.145513
+polygon = PoolVector2Array( -5.47432, 13.9756, -5.47432, 21.7031, -7.08441, 28.4442, -9.49956, 33.87, -10.4656, 38.4738, -10.1436, 41.7621, -8.85553, 36.8295, -5.63531, 31.7325, -1.93211, 25.6492, -0.160995, 18.2504, 0.322052, 13.3179 )
+uv = PoolVector2Array(  )
+color = Color( 0.0654602, 0.558594, 0.130955, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 2.25294, -15.0173 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Shell" type="Polygon2D" parent="Node2D/Puzzles/Turtles/Leonardo"]
+
+editor/display_folded = true
+position = Vector2( -1.67111, -1.19812 )
+rotation = -0.0301502
+polygon = PoolVector2Array( 4.99133, -22.6896, 1.61012, -22.5253, -2.41513, -21.2098, -5.4743, -17.9215, -6.60138, -14.4688, -7.72844, -9.04309, -8.05046, -4.9325, -7.56744, -0.822144, -5.95735, 2.79504, -3.7032, 4.60364, 0.805069, 6.57666, 5.31334, 5.26135, 8.53354, 1.47974, 10.4657, -4.76807, 11.1097, -13.1534, 9.98262, -18.0859, 7.56747, -21.5387 )
+uv = PoolVector2Array(  )
+color = Color( 0.0156097, 0.363281, 0.0617849, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( -1.4503, 9.15214 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Shell2" type="Polygon2D" parent="Node2D/Puzzles/Turtles/Leonardo/Shell"]
+
+position = Vector2( 1.57039, -9.22095 )
+polygon = PoolVector2Array( -1.18297, -10.9424, -1.31804, -7.84452, -0.971725, -5.36894, 3.35725, -4.13126, 4.68481, -7.19621, 5.72682, -10.1405, 3.76382, -11.2631, 1.17264, -11.9045 )
+uv = PoolVector2Array(  )
+color = Color( 0.0654297, 0.558594, 0.130859, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( -1.4503, 9.15214 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Shell3" type="Polygon2D" parent="Node2D/Puzzles/Turtles/Leonardo/Shell"]
+
+position = Vector2( -0.23558, 11.5463 )
+rotation = -3.07508
+polygon = PoolVector2Array( -1.18297, -10.9424, -0.790359, -7.81519, -0.0947108, -5.14152, 4.14476, -4.89225, 5.73149, -7.12455, 6.89549, -9.62406, 3.76382, -11.2631, 1.17264, -11.9045 )
+uv = PoolVector2Array(  )
+color = Color( 0.0654297, 0.558594, 0.130859, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( -1.4503, 9.15214 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Shell4" type="Polygon2D" parent="Node2D/Puzzles/Turtles/Leonardo/Shell"]
+
+position = Vector2( -2.14034, 19.7393 )
+rotation = -3.07508
+polygon = PoolVector2Array( 2.9561, 5.05221, -2.15901, 4.68392, -5.48413, 8.8855, -2.87639, 13.8879, 2.18504, 14.3187, 5.26683, 10.2147 )
+uv = PoolVector2Array(  )
+color = Color( 0.0654297, 0.558594, 0.130859, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( -1.4503, 9.15214 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Shell5" type="Polygon2D" parent="Node2D/Puzzles/Turtles/Leonardo/Shell"]
+
+position = Vector2( -4.33368, 28.6395 )
+rotation = -3.07508
+polygon = PoolVector2Array( 4.87042, 9.13611, 6.50613, 11.9808, 7.26736, 15.5927, 7.35199, 18.5996, 4.76816, 18.89, 2.23373, 12.9744 )
+uv = PoolVector2Array(  )
+color = Color( 0.0654297, 0.558594, 0.130859, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( -1.4503, 9.15214 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Shell6" type="Polygon2D" parent="Node2D/Puzzles/Turtles/Leonardo/Shell"]
+
+position = Vector2( -6.35388, 37.8345 )
+rotation = -3.07508
+polygon = PoolVector2Array( -7.02722, 16.368, -6.36945, 20.1638, -5.83701, 22.0778, -9.04973, 26.291, -11.2079, 25.6843, -10.5584, 23.2783, -9.31171, 19.4147 )
+uv = PoolVector2Array(  )
+color = Color( 0.0654297, 0.558594, 0.130859, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( -1.4503, 9.15214 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Shell7" type="Polygon2D" parent="Node2D/Puzzles/Turtles/Leonardo/Shell"]
+
+position = Vector2( -8.25864, 46.7346 )
+rotation = -3.07508
+polygon = PoolVector2Array( -7.99185, 41.8329, -10.6364, 36.8699, -12.334, 36.5695, -12.5114, 41.7206, -11.6507, 45.0894, -10.1772, 47.236 )
+uv = PoolVector2Array(  )
+color = Color( 0.0654297, 0.558594, 0.130859, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( -1.4503, 9.15214 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Shell8" type="Polygon2D" parent="Node2D/Puzzles/Turtles/Leonardo/Shell"]
+
+position = Vector2( -10.5097, 55.8706 )
+rotation = -3.07508
+polygon = PoolVector2Array( -2.76833, 51.9825, 0.348816, 48.0706, 2.54123, 47.9838, 2.15454, 51.731, 0.711472, 55.5904, -1.80846, 57.7076, -2.02669, 55.3001 )
+uv = PoolVector2Array(  )
+color = Color( 0.0654297, 0.558594, 0.130859, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( -1.4503, 9.15214 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Raphael" type="Node2D" parent="Node2D/Puzzles/Turtles"]
+
+editor/display_folded = true
+position = Vector2( -19.804, 45.5514 )
+rotation = -0.574561
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D/Puzzles/Turtles/Raphael"]
+
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+root_node = NodePath("..")
+anims/Turtle = SubResource( 9 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = "Turtle"
+
+[node name="Leg" type="Polygon2D" parent="Node2D/Puzzles/Turtles/Raphael"]
+
+position = Vector2( -9.56059, 5.21423 )
+rotation = 0.126474
+polygon = PoolVector2Array( -17.0658, -14.9069, -21.7351, -14.7424, -25.2773, -12.6049, -29.4636, -9.48096, -24.3113, -8.82324, -18.837, -9.48096, -15.7778, -10.9607, -12.0745, -12.276, -11.9135, -14.7424 )
+uv = PoolVector2Array(  )
+color = Color( 0.0654602, 0.558594, 0.130955, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 13.5236, 12.7693 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Leg2" type="Polygon2D" parent="Node2D/Puzzles/Turtles/Raphael"]
+
+position = Vector2( -5.53539, -9.09009 )
+rotation = 0.476478
+polygon = PoolVector2Array( -17.0658, -14.9069, -21.7351, -14.7424, -25.2773, -12.6049, -29.4636, -9.48096, -24.3113, -8.82324, -18.837, -9.48096, -15.7778, -10.9607, -12.0745, -12.276, -11.9135, -14.7424 )
+uv = PoolVector2Array(  )
+color = Color( 0.0654602, 0.558594, 0.130955, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 13.2392, 13.4373 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Leg3" type="Polygon2D" parent="Node2D/Puzzles/Turtles/Raphael"]
+
+position = Vector2( 3.80318, -7.93921 )
+rotation = -3.07696
+scale = Vector2( 1, 1 )
+polygon = PoolVector2Array( -17.0658, -14.9069, -21.7351, -14.7424, -25.2773, -12.6049, -29.4636, -9.48096, -24.3113, -8.82324, -18.837, -9.48096, -15.7778, -10.9607, -12.0745, -12.276, -11.9135, -14.7424 )
+uv = PoolVector2Array(  )
+color = Color( 0.0654602, 0.558594, 0.130955, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 13.2392, 13.4373 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Leg4" type="Polygon2D" parent="Node2D/Puzzles/Turtles/Raphael"]
+
+position = Vector2( 2.19324, 6.0365 )
+rotation = -2.59972
+scale = Vector2( 1, 1 )
+polygon = PoolVector2Array( -17.0658, -14.9069, -21.7351, -14.7424, -25.2773, -12.6049, -29.4636, -9.48096, -24.3113, -8.82324, -18.837, -9.48096, -15.7778, -10.9607, -12.0745, -12.276, -11.9135, -14.7424 )
+uv = PoolVector2Array(  )
+color = Color( 0.0654602, 0.558594, 0.130955, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 13.2392, 13.4373 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Head" type="Polygon2D" parent="Node2D/Puzzles/Turtles/Raphael"]
+
+position = Vector2( -0.705063, -7.44592 )
+rotation = -0.333097
+polygon = PoolVector2Array( 7.08444, -16.7706, 9.17758, -21.3743, 9.49959, -26.4712, 9.98262, -31.8969, 12.2367, -34.3632, 14.8129, -34.692, 16.423, -33.3767, 17.067, -30.746, 15.779, -26.6356, 13.8468, -24.0049, 12.3978, -19.8945, 11.4317, -15.2908, 10.9487, -11.6737, 6.2794, -12.8246 )
+uv = PoolVector2Array(  )
+color = Color( 0.0654602, 0.558594, 0.130955, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( -9.01773, 13.5914 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Polygon2D" type="Polygon2D" parent="Node2D/Puzzles/Turtles/Raphael/Head"]
+
+position = Vector2( -8.27216, -5.57349 )
+polygon = PoolVector2Array( 8.80994, -12.4562, 8.43146, -11.5966, 8.18103, -10.4347, 8.7511, -9.79089, 9.79526, -9.45325, 11.0515, -9.28613, 11.7782, -9.04712, 12.0937, -8.22534, 11.8085, -7.2666, 11.105, -6.75146, 11.8004, -6.89758, 12.4725, -7.56458, 12.5834, -8.07959, 12.8436, -7.23279, 12.6693, -6.55652, 12.5347, -6.09729, 13.2542, -6.8855, 13.3892, -7.80994, 13.1449, -8.69714, 14.1339, -8.30823, 14.8751, -7.68115, 15.6096, -7.77087, 15.8944, -8.5022, 16.2384, -9.5824, 15.9181, -10.3384, 15.0983, -10.87, 13.8578, -11.2729, 12.2323, -11.7429, 10.9847, -12.2327, 9.82983, -12.644 )
+uv = PoolVector2Array(  )
+color = Color( 1, 0, 0, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Tail" type="Polygon2D" parent="Node2D/Puzzles/Turtles/Raphael"]
+
+position = Vector2( -3.76425, 7.68054 )
+rotation = -0.145513
+polygon = PoolVector2Array( -5.47432, 13.9756, -5.47432, 21.7031, -7.08441, 28.4442, -9.49956, 33.87, -10.4656, 38.4738, -10.1436, 41.7621, -8.85553, 36.8295, -5.63531, 31.7325, -1.93211, 25.6492, -0.160995, 18.2504, 0.322052, 13.3179 )
+uv = PoolVector2Array(  )
+color = Color( 0.0654602, 0.558594, 0.130955, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 2.25294, -15.0173 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Shell" type="Polygon2D" parent="Node2D/Puzzles/Turtles/Raphael"]
+
+editor/display_folded = true
+position = Vector2( -1.67111, -1.19812 )
+rotation = -0.0301502
+polygon = PoolVector2Array( 4.99133, -22.6896, 1.61012, -22.5253, -2.41513, -21.2098, -5.4743, -17.9215, -6.60138, -14.4688, -7.72844, -9.04309, -8.05046, -4.9325, -7.56744, -0.822144, -5.95735, 2.79504, -3.7032, 4.60364, 0.805069, 6.57666, 5.31334, 5.26135, 8.53354, 1.47974, 10.4657, -4.76807, 11.1097, -13.1534, 9.98262, -18.0859, 7.56747, -21.5387 )
+uv = PoolVector2Array(  )
+color = Color( 0.0156097, 0.363281, 0.0617849, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( -1.4503, 9.15214 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Shell2" type="Polygon2D" parent="Node2D/Puzzles/Turtles/Raphael/Shell"]
+
+position = Vector2( 1.57039, -9.22095 )
+polygon = PoolVector2Array( -1.18297, -10.9424, -1.31804, -7.84452, -0.971725, -5.36894, 3.35725, -4.13126, 4.68481, -7.19621, 5.72682, -10.1405, 3.76382, -11.2631, 1.17264, -11.9045 )
+uv = PoolVector2Array(  )
+color = Color( 0.0654297, 0.558594, 0.130859, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( -1.4503, 9.15214 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Shell3" type="Polygon2D" parent="Node2D/Puzzles/Turtles/Raphael/Shell"]
+
+position = Vector2( -0.23558, 11.5463 )
+rotation = -3.07508
+polygon = PoolVector2Array( -1.18297, -10.9424, -0.790359, -7.81519, -0.0947108, -5.14152, 4.14476, -4.89225, 5.73149, -7.12455, 6.89549, -9.62406, 3.76382, -11.2631, 1.17264, -11.9045 )
+uv = PoolVector2Array(  )
+color = Color( 0.0654297, 0.558594, 0.130859, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( -1.4503, 9.15214 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Shell4" type="Polygon2D" parent="Node2D/Puzzles/Turtles/Raphael/Shell"]
+
+position = Vector2( -2.14034, 19.7393 )
+rotation = -3.07508
+polygon = PoolVector2Array( 2.9561, 5.05221, -2.15901, 4.68392, -5.48413, 8.8855, -2.87639, 13.8879, 2.18504, 14.3187, 5.26683, 10.2147 )
+uv = PoolVector2Array(  )
+color = Color( 0.0654297, 0.558594, 0.130859, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( -1.4503, 9.15214 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Shell5" type="Polygon2D" parent="Node2D/Puzzles/Turtles/Raphael/Shell"]
+
+position = Vector2( -4.33368, 28.6395 )
+rotation = -3.07508
+polygon = PoolVector2Array( 4.87042, 9.13611, 6.50613, 11.9808, 7.26736, 15.5927, 7.35199, 18.5996, 4.76816, 18.89, 2.23373, 12.9744 )
+uv = PoolVector2Array(  )
+color = Color( 0.0654297, 0.558594, 0.130859, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( -1.4503, 9.15214 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Shell6" type="Polygon2D" parent="Node2D/Puzzles/Turtles/Raphael/Shell"]
+
+position = Vector2( -6.35388, 37.8345 )
+rotation = -3.07508
+polygon = PoolVector2Array( -7.02722, 16.368, -6.36945, 20.1638, -5.83701, 22.0778, -9.04973, 26.291, -11.2079, 25.6843, -10.5584, 23.2783, -9.31171, 19.4147 )
+uv = PoolVector2Array(  )
+color = Color( 0.0654297, 0.558594, 0.130859, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( -1.4503, 9.15214 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Shell7" type="Polygon2D" parent="Node2D/Puzzles/Turtles/Raphael/Shell"]
+
+position = Vector2( -8.25864, 46.7346 )
+rotation = -3.07508
+polygon = PoolVector2Array( -7.99185, 41.8329, -10.6364, 36.8699, -12.334, 36.5695, -12.5114, 41.7206, -11.6507, 45.0894, -10.1772, 47.236 )
+uv = PoolVector2Array(  )
+color = Color( 0.0654297, 0.558594, 0.130859, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( -1.4503, 9.15214 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Shell8" type="Polygon2D" parent="Node2D/Puzzles/Turtles/Raphael/Shell"]
+
+position = Vector2( -10.5097, 55.8706 )
+rotation = -3.07508
+polygon = PoolVector2Array( -2.76833, 51.9825, 0.348816, 48.0706, 2.54123, 47.9838, 2.15454, 51.731, 0.711472, 55.5904, -1.80846, 57.7076, -2.02669, 55.3001 )
+uv = PoolVector2Array(  )
+color = Color( 0.0654297, 0.558594, 0.130859, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( -1.4503, 9.15214 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
 
 [node name="Player" type="KinematicBody2D" parent="Node2D"]
 
+editor/display_folded = true
 position = Vector2( 129, 79 )
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
 collision/safe_margin = 0.08
-script = ExtResource( 3 )
+script = ExtResource( 4 )
 _sections_unfolded = [ "Transform" ]
 __meta__ = {
 "_edit_group_": true
@@ -1634,7 +3520,6 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Neck" type="Polygon2D" parent="Node2D/Player/Side"]
 
-editor/display_folded = true
 position = Vector2( -4.45029, -28.0163 )
 scale = Vector2( 3, 3 )
 polygon = PoolVector2Array( -1.33333, 0.333333, -1, 1.66667, -1, 3.33333, -1.66667, 5, -1.33333, 6.33333, 0, 7.33333, 2.33333, 7, 2.66667, 5, 2, 3.66667, 1.66667, 1.33333, 1.66667, 0.333333 )
@@ -1642,7 +3527,7 @@ uv = PoolVector2Array(  )
 color = Color( 0.980469, 0.796451, 0.509384, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( -0.333333, -5.66667 )
-antialiased = true
+antialiased = false
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -1653,14 +3538,13 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Head" type="Polygon2D" parent="Node2D/Player/Side/Neck"]
 
-editor/display_folded = true
 position = Vector2( -0.333332, -5.66667 )
 polygon = PoolVector2Array( -2, 1.66667, -4.33333, 1, -5.66666, -1.33333, -5.33333, -4, -3, -6.33333, 0.666668, -6.66667, 4.33334, -6, 6, -4.33333, 6.66667, -3, 6.66667, -1.66667, 6, -0.666667, 7.33334, -1, 8.33334, -0.666667, 8.66667, 0, 8.33334, 0.666667, 7, 1, 5.66667, 0.666667, 5.66667, 2, 4.66667, 3.33333, 3.33334, 3.66667, 1, 3.33333 )
 uv = PoolVector2Array(  )
 color = Color( 0.980469, 0.796451, 0.509384, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0, 0 )
-antialiased = true
+antialiased = false
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -1677,7 +3561,7 @@ uv = PoolVector2Array(  )
 color = Color( 1, 0.705566, 0.199219, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0, 0 )
-antialiased = true
+antialiased = false
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -1693,7 +3577,7 @@ uv = PoolVector2Array(  )
 color = Color( 1, 0.705566, 0.199219, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0, 0 )
-antialiased = true
+antialiased = false
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -1709,7 +3593,7 @@ uv = PoolVector2Array(  )
 color = Color( 0.71875, 0.101074, 0.101074, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0, 0 )
-antialiased = true
+antialiased = false
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -1725,7 +3609,7 @@ uv = PoolVector2Array(  )
 color = Color( 1, 1, 1, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0, 0 )
-antialiased = true
+antialiased = false
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -1740,7 +3624,7 @@ uv = PoolVector2Array(  )
 color = Color( 0, 0, 0, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0, 0 )
-antialiased = true
+antialiased = false
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -1753,7 +3637,6 @@ __meta__ = {
 
 [node name="Arm2" type="Polygon2D" parent="Node2D/Player/Side"]
 
-editor/display_folded = true
 show_behind_parent = true
 position = Vector2( -0.287361, -27.8186 )
 rotation = -0.277347
@@ -1763,7 +3646,7 @@ uv = PoolVector2Array(  )
 color = Color( 0.054902, 0.054902, 0.054902, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0.202482, 0.331936 )
-antialiased = true
+antialiased = false
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -1783,7 +3666,7 @@ uv = PoolVector2Array(  )
 color = Color( 0.0390625, 0.0390625, 0.0390625, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0, 0 )
-antialiased = true
+antialiased = false
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -1799,7 +3682,7 @@ uv = PoolVector2Array(  )
 color = Color( 0.128906, 0.128906, 0.128906, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0, 0 )
-antialiased = true
+antialiased = false
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -1816,7 +3699,7 @@ uv = PoolVector2Array(  )
 color = Color( 0.980469, 0.796387, 0.509277, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( -0.0326918, 0.450025 )
-antialiased = true
+antialiased = false
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -1827,7 +3710,6 @@ _sections_unfolded = [ "Visibility" ]
 
 [node name="Leg 1" type="Polygon2D" parent="Node2D/Player/Side"]
 
-editor/display_folded = true
 position = Vector2( -3.34511, 3.21794 )
 rotation = -0.222074
 scale = Vector2( 3, 3 )
@@ -1836,7 +3718,7 @@ uv = PoolVector2Array(  )
 color = Color( 0.0323887, 0.101562, 0.0245972, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0.333333, -0.333333 )
-antialiased = true
+antialiased = false
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -1854,7 +3736,7 @@ uv = PoolVector2Array(  )
 color = Color( 0.0313726, 0.0980392, 0.0235294, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0, 0.333333 )
-antialiased = true
+antialiased = false
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -1872,7 +3754,7 @@ uv = PoolVector2Array(  )
 color = Color( 0.078125, 0.0402843, 0, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0.149206, -7.36388 )
-antialiased = true
+antialiased = false
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -1883,7 +3765,6 @@ _sections_unfolded = [ "Visibility" ]
 
 [node name="Leg 2" type="Polygon2D" parent="Node2D/Player/Side"]
 
-editor/display_folded = true
 position = Vector2( -4.45029, 5.98372 )
 rotation = -0.0397674
 scale = Vector2( 3, 3 )
@@ -1892,7 +3773,7 @@ uv = PoolVector2Array(  )
 color = Color( 0.0394287, 0.117188, 0.0306702, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0.333333, -0.333333 )
-antialiased = true
+antialiased = false
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -1910,7 +3791,7 @@ uv = PoolVector2Array(  )
 color = Color( 0.0394287, 0.117188, 0.0306702, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0, 0.333333 )
-antialiased = true
+antialiased = false
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -1929,7 +3810,7 @@ uv = PoolVector2Array(  )
 color = Color( 0.13269, 0.0684204, 0, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0.149206, -7.36388 )
-antialiased = true
+antialiased = false
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -1947,7 +3828,7 @@ uv = PoolVector2Array(  )
 color = Color( 0.0742188, 0.0742188, 0.0742188, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0, 0 )
-antialiased = true
+antialiased = false
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -1957,7 +3838,6 @@ invert_border = 100.0
 
 [node name="Arm" type="Polygon2D" parent="Node2D/Player/Side/Shirt"]
 
-editor/display_folded = true
 position = Vector2( -3.6941, -9.28134 )
 rotation = 0.0683263
 polygon = PoolVector2Array( 0, -1.33333, -1, -1, -1.66666, 0.333333, -2, 3.33333, -2.33333, 5.33333, -2.33333, 7.66667, -2.66666, 9.33333, -2, 9.33333, -0.333332, 9, -0.333332, 7.33333, -0.333332, 5, 0, 3, 0.666668, 0.666667, 0.666668, -0.666667 )
@@ -1965,7 +3845,7 @@ uv = PoolVector2Array(  )
 color = Color( 0.0742188, 0.0742188, 0.0742188, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0.202482, 0.331936 )
-antialiased = true
+antialiased = false
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -1985,7 +3865,7 @@ uv = PoolVector2Array(  )
 color = Color( 0.0390625, 0.0390625, 0.0390625, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0, 0 )
-antialiased = true
+antialiased = false
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -2001,7 +3881,7 @@ uv = PoolVector2Array(  )
 color = Color( 0.128906, 0.128906, 0.128906, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0, 0 )
-antialiased = true
+antialiased = false
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -2018,7 +3898,7 @@ uv = PoolVector2Array(  )
 color = Color( 0.980469, 0.796387, 0.509277, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( -0.0326918, 0.450025 )
-antialiased = true
+antialiased = false
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -2053,7 +3933,6 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Neck" type="Polygon2D" parent="Node2D/Player/Front"]
 
-editor/display_folded = true
 position = Vector2( -4.45029, -28.0163 )
 scale = Vector2( 3, 3 )
 polygon = PoolVector2Array( -1.33333, 0.333333, -1, 1.66667, -1, 3.33333, -1.66667, 5, -1.33333, 6.33333, 0, 7.33333, 2.33333, 7, 2.66667, 5, 2, 3.66667, 1.66667, 1.33333, 1.66667, 0.333333 )
@@ -2061,7 +3940,7 @@ uv = PoolVector2Array(  )
 color = Color( 0.980469, 0.796451, 0.509384, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( -0.333333, -5.66667 )
-antialiased = true
+antialiased = false
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -2071,14 +3950,13 @@ invert_border = 100.0
 
 [node name="Head" type="Polygon2D" parent="Node2D/Player/Front/Neck"]
 
-editor/display_folded = true
 position = Vector2( -0.810791, -5.62994 )
 polygon = PoolVector2Array( 0.580513, -6.60519, -1.43951, -6.3481, -2.94535, -5.31972, -3.71663, -3.66697, -3.79008, -2.45496, -4.67155, -3.26297, -5.44283, -3.0426, -5.51628, -1.9775, -5.03883, -0.802213, -4.26755, -0.21457, -3.75336, -0.361481, -3.23917, 0.703622, -0.998779, 2.50328, 0.433601, 3.09092, 1.53543, 3.09092, 3.18818, 2.46655, 4.95111, 0.556712, 5.35511, -0.251297, 5.72239, -0.324753, 6.31004, -0.985852, 6.67731, -2.49169, 6.31004, -3.07933, 5.72239, -3.26297, 5.42857, -3.07933, 5.28166, -3.92407, 4.84093, -4.98917, 3.40855, -6.20119, 1.82925, -6.64192 )
 uv = PoolVector2Array(  )
 color = Color( 0.980469, 0.796451, 0.509384, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0, 0 )
-antialiased = true
+antialiased = false
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -2097,7 +3975,7 @@ uv = PoolVector2Array(  )
 color = Color( 1, 0.705566, 0.199219, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0, 0 )
-antialiased = true
+antialiased = false
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -2114,7 +3992,7 @@ uv = PoolVector2Array(  )
 color = Color( 1, 0.705566, 0.199219, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0, 0 )
-antialiased = true
+antialiased = false
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -2130,7 +4008,7 @@ uv = PoolVector2Array(  )
 color = Color( 0.921875, 0.72351, 0.414124, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0, 0 )
-antialiased = true
+antialiased = false
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -2140,14 +4018,13 @@ invert_border = 100.0
 
 [node name="Eye" type="Polygon2D" parent="Node2D/Player/Front/Neck/Head"]
 
-editor/display_folded = true
 position = Vector2( -0.415627, -1.16725 )
 polygon = PoolVector2Array( 0.666664, -0.333333, 0.333332, -1.33333, -0.333336, -1.66667, -1, -1.33333, -1.33334, -0.333333, -1, 0.666667, -0.333336, 1, 0.333332, 0.666667 )
 uv = PoolVector2Array(  )
 color = Color( 1, 1, 1, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0, 0 )
-antialiased = true
+antialiased = false
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -2163,7 +4040,7 @@ uv = PoolVector2Array(  )
 color = Color( 0, 0, 0, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0, 0 )
-antialiased = true
+antialiased = false
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -2176,14 +4053,13 @@ __meta__ = {
 
 [node name="Eye2" type="Polygon2D" parent="Node2D/Player/Front/Neck/Head"]
 
-editor/display_folded = true
 position = Vector2( 3.19738, -1.1341 )
 polygon = PoolVector2Array( 0.666664, -0.333333, 0.333332, -1.33333, -0.333336, -1.66667, -1, -1.33333, -1.33334, -0.333333, -1, 0.666667, -0.333336, 1, 0.333332, 0.666667 )
 uv = PoolVector2Array(  )
 color = Color( 1, 1, 1, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0, 0 )
-antialiased = true
+antialiased = false
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -2199,7 +4075,7 @@ uv = PoolVector2Array(  )
 color = Color( 0, 0, 0, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0, 0 )
-antialiased = true
+antialiased = false
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -2212,7 +4088,6 @@ __meta__ = {
 
 [node name="Leg 1" type="Polygon2D" parent="Node2D/Player/Front"]
 
-editor/display_folded = true
 position = Vector2( 2.09232, 5.05229 )
 rotation = -0.0904203
 scale = Vector2( 2.5, 3 )
@@ -2221,7 +4096,7 @@ uv = PoolVector2Array(  )
 color = Color( 0.0394287, 0.117188, 0.0306702, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0.333333, -0.333333 )
-antialiased = true
+antialiased = false
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -2239,7 +4114,7 @@ uv = PoolVector2Array(  )
 color = Color( 0.0394287, 0.117188, 0.0306702, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0, 0.333333 )
-antialiased = true
+antialiased = false
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -2258,7 +4133,7 @@ uv = PoolVector2Array(  )
 color = Color( 0.13269, 0.0684204, 0, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0.149206, -7.36388 )
-antialiased = true
+antialiased = false
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -2269,7 +4144,6 @@ _sections_unfolded = [ "Visibility" ]
 
 [node name="Leg 2" type="Polygon2D" parent="Node2D/Player/Front"]
 
-editor/display_folded = true
 position = Vector2( -6.81175, 4.75095 )
 rotation = 0.0589356
 scale = Vector2( 2.5, 3 )
@@ -2278,7 +4152,7 @@ uv = PoolVector2Array(  )
 color = Color( 0.0394287, 0.117188, 0.0306702, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0.333333, -0.333333 )
-antialiased = true
+antialiased = false
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -2296,7 +4170,7 @@ uv = PoolVector2Array(  )
 color = Color( 0.0394287, 0.117188, 0.0306702, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0, 0.333333 )
-antialiased = true
+antialiased = false
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -2315,7 +4189,7 @@ uv = PoolVector2Array(  )
 color = Color( 0.13269, 0.0684204, 0, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0.149206, -7.36388 )
-antialiased = true
+antialiased = false
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -2326,7 +4200,6 @@ _sections_unfolded = [ "Visibility" ]
 
 [node name="Shirt" type="Polygon2D" parent="Node2D/Player/Front"]
 
-editor/display_folded = true
 position = Vector2( 1.57343, -0.524467 )
 scale = Vector2( 3, 3 )
 polygon = PoolVector2Array( -4.10586, -10.141, -3.17775, -9.80949, -1.61985, -9.74319, -0.492867, -9.80949, 0.302658, -10.141, 1.00413, -9.99075, 1.61986, -9.26508, 1.66383, -8.12158, 1.5099, -4.77907, 1.53189, -2.99786, 1.83976, -1.45854, 2.25757, 1.00437, 0.740242, 0.740484, -0.824333, 0.66489, -2.68055, 0.731184, -4.27159, 0.963211, -5.25463, 0.975431, -4.84268, -1.53213, -4.69939, -3.59192, -4.86059, -5.50842, -5.21881, -7.78314, -5.16508, -8.89363, -4.73565, -9.80949 )
@@ -2334,7 +4207,7 @@ uv = PoolVector2Array(  )
 color = Color( 0.0742188, 0.0742188, 0.0742188, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0, 0 )
-antialiased = true
+antialiased = false
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -2344,7 +4217,6 @@ invert_border = 100.0
 
 [node name="Arm" type="Polygon2D" parent="Node2D/Player/Front/Shirt"]
 
-editor/display_folded = true
 position = Vector2( -4.32231, -9.16168 )
 rotation = 0.066764
 polygon = PoolVector2Array( 0, -1.33333, -1, -1, -1.66666, 0.333333, -2, 3.33333, -2.33333, 5.33333, -2.33333, 7.66667, -2.66666, 9.33333, -2, 9.33333, -0.333332, 9, -0.333332, 7.33333, -0.333332, 5, 0, 3, 0.666668, 0.666667, 0.666668, -0.666667 )
@@ -2352,7 +4224,7 @@ uv = PoolVector2Array(  )
 color = Color( 0.0742188, 0.0742188, 0.0742188, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0.202482, 0.331936 )
-antialiased = true
+antialiased = false
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -2372,7 +4244,7 @@ uv = PoolVector2Array(  )
 color = Color( 0.0390625, 0.0390625, 0.0390625, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0, 0 )
-antialiased = true
+antialiased = false
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -2388,7 +4260,7 @@ uv = PoolVector2Array(  )
 color = Color( 0.128906, 0.128906, 0.128906, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0, 0 )
-antialiased = true
+antialiased = false
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -2405,7 +4277,7 @@ uv = PoolVector2Array(  )
 color = Color( 0.980469, 0.796387, 0.509277, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( -0.0326918, 0.450025 )
-antialiased = true
+antialiased = false
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -2416,7 +4288,6 @@ _sections_unfolded = [ "Visibility" ]
 
 [node name="Arm2" type="Polygon2D" parent="Node2D/Player/Front/Shirt"]
 
-editor/display_folded = true
 show_behind_parent = true
 position = Vector2( 0.698414, -9.13874 )
 rotation = -0.34292
@@ -2425,7 +4296,7 @@ uv = PoolVector2Array(  )
 color = Color( 0.054902, 0.054902, 0.054902, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0.202482, 0.331936 )
-antialiased = true
+antialiased = false
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -2445,7 +4316,7 @@ uv = PoolVector2Array(  )
 color = Color( 0.0390625, 0.0390625, 0.0390625, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0, 0 )
-antialiased = true
+antialiased = false
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -2461,7 +4332,7 @@ uv = PoolVector2Array(  )
 color = Color( 0.128906, 0.128906, 0.128906, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0, 0 )
-antialiased = true
+antialiased = false
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -2478,7 +4349,7 @@ uv = PoolVector2Array(  )
 color = Color( 0.980469, 0.796387, 0.509277, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( -0.0326918, 0.450025 )
-antialiased = true
+antialiased = false
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -2521,7 +4392,7 @@ uv = PoolVector2Array(  )
 color = Color( 0.980469, 0.796451, 0.509384, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( -0.333333, -5.66667 )
-antialiased = true
+antialiased = false
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -2539,7 +4410,7 @@ uv = PoolVector2Array(  )
 color = Color( 0.0394287, 0.117188, 0.0306702, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0.333333, -0.333333 )
-antialiased = true
+antialiased = false
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -2557,7 +4428,7 @@ uv = PoolVector2Array(  )
 color = Color( 0.0394287, 0.117188, 0.0306702, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0, 0.333333 )
-antialiased = true
+antialiased = false
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -2576,7 +4447,7 @@ uv = PoolVector2Array(  )
 color = Color( 0.13269, 0.0684204, 0, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0.149206, -7.36388 )
-antialiased = true
+antialiased = false
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -2595,7 +4466,7 @@ uv = PoolVector2Array(  )
 color = Color( 0.0394287, 0.117188, 0.0306702, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0.333333, -0.333333 )
-antialiased = true
+antialiased = false
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -2613,7 +4484,7 @@ uv = PoolVector2Array(  )
 color = Color( 0.0394287, 0.117188, 0.0306702, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0, 0.333333 )
-antialiased = true
+antialiased = false
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -2632,7 +4503,7 @@ uv = PoolVector2Array(  )
 color = Color( 0.13269, 0.0684204, 0, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0.149206, -7.36388 )
-antialiased = true
+antialiased = false
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -2650,7 +4521,7 @@ uv = PoolVector2Array(  )
 color = Color( 0.0742188, 0.0742188, 0.0742188, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0, 0 )
-antialiased = true
+antialiased = false
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -2668,7 +4539,7 @@ uv = PoolVector2Array(  )
 color = Color( 0.0742188, 0.0742188, 0.0742188, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0.202482, 0.331936 )
-antialiased = true
+antialiased = false
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -2688,7 +4559,7 @@ uv = PoolVector2Array(  )
 color = Color( 0.0390625, 0.0390625, 0.0390625, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0, 0 )
-antialiased = true
+antialiased = false
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -2704,7 +4575,7 @@ uv = PoolVector2Array(  )
 color = Color( 0.128906, 0.128906, 0.128906, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0, 0 )
-antialiased = true
+antialiased = false
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -2721,7 +4592,7 @@ uv = PoolVector2Array(  )
 color = Color( 0.980469, 0.796387, 0.509277, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( -0.0326918, 0.450025 )
-antialiased = true
+antialiased = false
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -2740,7 +4611,7 @@ uv = PoolVector2Array(  )
 color = Color( 0.054902, 0.054902, 0.054902, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0.202482, 0.331936 )
-antialiased = true
+antialiased = false
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -2760,7 +4631,7 @@ uv = PoolVector2Array(  )
 color = Color( 0.0390625, 0.0390625, 0.0390625, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0, 0 )
-antialiased = true
+antialiased = false
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -2776,7 +4647,7 @@ uv = PoolVector2Array(  )
 color = Color( 0.128906, 0.128906, 0.128906, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0, 0 )
-antialiased = true
+antialiased = false
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -2793,7 +4664,7 @@ uv = PoolVector2Array(  )
 color = Color( 0.980469, 0.796387, 0.509277, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( -0.0326918, 0.450025 )
-antialiased = true
+antialiased = false
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -2811,7 +4682,7 @@ uv = PoolVector2Array(  )
 color = Color( 0.980469, 0.796451, 0.509384, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0, 0 )
-antialiased = true
+antialiased = false
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -2828,7 +4699,7 @@ uv = PoolVector2Array(  )
 color = Color( 1, 0.705566, 0.199219, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0, 0 )
-antialiased = true
+antialiased = false
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -2845,7 +4716,7 @@ uv = PoolVector2Array(  )
 color = Color( 1, 0.705566, 0.199219, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0.499539, 0.047274 )
-antialiased = true
+antialiased = false
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -2862,7 +4733,7 @@ uv = PoolVector2Array(  )
 color = Color( 0.71875, 0.101074, 0.101074, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0, 0 )
-antialiased = true
+antialiased = false
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
@@ -2909,6 +4780,7 @@ foot_str = PoolStringArray( "Ouch!", "I just kicked my self.#Happy now\?", "Stop
 eye_str = PoolStringArray( "Looks like I\'ve tranformed to a child!", "It\'s me, TassuP.#I have the characteristics of a former time.#What a Throwback!", "Cool shirt, huh\?", "I got these pants as a Christmas present from my mom." )
 hand_str = PoolStringArray( "How do you do.", "Can you gimme a hand\?#Hehe...", "Pull my finger!", "Pick you own nose." )
 correct_item = ""
+wrong_str = null
 node_to_trigger = null
 one_shot = false
 click_distance = 64.0
@@ -2916,7 +4788,7 @@ click_distance = 64.0
 [node name="Cursor" type="Node2D" parent="Node2D"]
 
 editor/display_folded = true
-script = ExtResource( 4 )
+script = ExtResource( 5 )
 _sections_unfolded = [ "Visibility", "Z" ]
 
 [node name="Eye" type="Polygon2D" parent="Node2D/Cursor"]
@@ -3333,6 +5205,507 @@ texture_rotation = 0.0
 invert_enable = false
 invert_border = 100.0
 
+[node name="Items" type="Node2D" parent="Node2D/Cursor"]
+
+editor/display_folded = true
+
+[node name="Mutagen" type="Polygon2D" parent="Node2D/Cursor/Items"]
+
+editor/display_folded = true
+position = Vector2( -21.6364, -17.4755 )
+rotation = -0.304734
+scale = Vector2( 0.929152, 0.913467 )
+polygon = PoolVector2Array( -5.44637, -0.180964, -0.210571, 2.89392, 7.64224, 4.94641, 13.4713, 4.70435, 17.5725, 6.07148, 16.6917, 39.8025, -7.49993, 41.045 )
+uv = PoolVector2Array(  )
+color = Color( 0.0173035, 0.738281, 0.0961604, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 13.5236, 12.7693 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Glass" type="Polygon2D" parent="Node2D/Cursor/Items/Mutagen"]
+
+position = Vector2( 13.0752, 10.8033 )
+rotation = 5.96046e-08
+scale = Vector2( 1, 1 )
+polygon = PoolVector2Array( -17.9488, -23.4411, -20.5924, 30.2482, 3.62974, 29.0039, 4.99994, -24.31 )
+uv = PoolVector2Array(  )
+color = Color( 0.342834, 0.535933, 0.640625, 0.55251 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 13.5236, 12.7693 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Cap" type="Polygon2D" parent="Node2D/Cursor/Items/Mutagen"]
+
+editor/display_folded = true
+position = Vector2( -1.00226, -1.23572 )
+rotation = 5.96046e-08
+scale = Vector2( 1, 1 )
+polygon = PoolVector2Array( -8.27942, -8.3446, 21.772, -8.79407, 22.4842, -19.6067, 18.245, -20.7334, 12.5159, -28.6815, -0.143824, -28.6943, -4.45831, -21.0672, -9.59045, -19.7958 )
+uv = PoolVector2Array(  )
+color = Color( 0.378906, 0.378906, 0.378906, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 13.5236, 12.7693 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Cap2" type="Polygon2D" parent="Node2D/Cursor/Items/Mutagen/Cap"]
+
+position = Vector2( -14.2365, -12.5701 )
+scale = Vector2( 1, 1 )
+polygon = PoolVector2Array( 5.17276, -6.62842, 6.19522, 3.34753, 33.4978, 3.104, 7.87463, 1.60205 )
+uv = PoolVector2Array(  )
+color = Color( 0.261719, 0.261719, 0.261719, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 13.5236, 12.7693 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Cap3" type="Polygon2D" parent="Node2D/Cursor/Items/Mutagen/Cap"]
+
+position = Vector2( -27.723, -25.153 )
+scale = Vector2( 1, 1 )
+polygon = PoolVector2Array( 27.6569, -2.70715, 24.4991, 3.64124, 40.7783, 4.04602, 26.5184, 2.38562 )
+uv = PoolVector2Array(  )
+color = Color( 0.261719, 0.261719, 0.261719, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 13.5236, 12.7693 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Cap4" type="Polygon2D" parent="Node2D/Cursor/Items/Mutagen/Cap"]
+
+position = Vector2( -41.1232, -38.1216 )
+scale = Vector2( 1, 1 )
+polygon = PoolVector2Array( 61.9609, 28.6066, 61.339, 20.5782, 35.0349, 18.8182, 38.1277, 17.5315, 62.9496, 19.2715 )
+uv = PoolVector2Array(  )
+color = Color( 0.453125, 0.453125, 0.453125, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 13.5236, 12.7693 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Cap5" type="Polygon2D" parent="Node2D/Cursor/Items/Mutagen/Cap"]
+
+position = Vector2( -54.3442, -51.1848 )
+scale = Vector2( 1, 1 )
+polygon = PoolVector2Array( 71.0606, 29.7053, 66.1391, 24.1722, 55.7584, 22.8904, 66.7851, 23.0876 )
+uv = PoolVector2Array(  )
+color = Color( 0.453125, 0.453125, 0.453125, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 13.5236, 12.7693 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Cap2" type="Polygon2D" parent="Node2D/Cursor/Items/Mutagen"]
+
+editor/display_folded = true
+position = Vector2( 38.2456, 51.9573 )
+rotation = -3.13319
+scale = Vector2( 1, 1 )
+polygon = PoolVector2Array( -8.27942, -8.3446, 21.772, -8.79407, 22.4842, -19.6067, 18.245, -20.7334, 12.5159, -28.6815, -0.143824, -28.6943, -4.45831, -21.0672, -9.59045, -19.7958 )
+uv = PoolVector2Array(  )
+color = Color( 0.378906, 0.378906, 0.378906, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 13.5236, 12.7693 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Cap2" type="Polygon2D" parent="Node2D/Cursor/Items/Mutagen/Cap2"]
+
+position = Vector2( -14.2365, -12.5701 )
+scale = Vector2( 1, 1 )
+polygon = PoolVector2Array( 5.17276, -6.62842, 6.19522, 3.34753, 33.4978, 3.104, 7.87463, 1.60205 )
+uv = PoolVector2Array(  )
+color = Color( 0.261719, 0.261719, 0.261719, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 13.5236, 12.7693 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Cap3" type="Polygon2D" parent="Node2D/Cursor/Items/Mutagen/Cap2"]
+
+position = Vector2( -27.723, -25.153 )
+scale = Vector2( 1, 1 )
+polygon = PoolVector2Array( 27.6569, -2.70715, 24.4991, 3.64124, 40.7783, 4.04602, 26.5184, 2.38562 )
+uv = PoolVector2Array(  )
+color = Color( 0.261719, 0.261719, 0.261719, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 13.5236, 12.7693 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Cap4" type="Polygon2D" parent="Node2D/Cursor/Items/Mutagen/Cap2"]
+
+position = Vector2( -41.1232, -38.1216 )
+scale = Vector2( 1, 1 )
+polygon = PoolVector2Array( 61.9609, 28.6066, 61.339, 20.5782, 35.0349, 18.8182, 38.1277, 17.5315, 62.9496, 19.2715 )
+uv = PoolVector2Array(  )
+color = Color( 0.453125, 0.453125, 0.453125, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 13.5236, 12.7693 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Cap5" type="Polygon2D" parent="Node2D/Cursor/Items/Mutagen/Cap2"]
+
+position = Vector2( -54.3442, -51.1848 )
+scale = Vector2( 1, 1 )
+polygon = PoolVector2Array( 71.0606, 29.7053, 66.1391, 24.1722, 55.7584, 22.8904, 66.7851, 23.0876 )
+uv = PoolVector2Array(  )
+color = Color( 0.453125, 0.453125, 0.453125, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 13.5236, 12.7693 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Jojo" type="Polygon2D" parent="Node2D/Cursor/Items"]
+
+editor/display_folded = true
+position = Vector2( -8.89892, 8.79133 )
+scale = Vector2( 0.930939, 0.911645 )
+polygon = PoolVector2Array( 12.8948, -13.3676, 6.03009, -11.5546, -3.79352, -9.86255, -11.4868, -9.01654, -14.8411, -6.39056, -17.9963, -0.0727539, -19.6666, 0.901855, -22.6086, 0.77124, -25.0929, -0.61792, -26.22, -7.03027, -24.7709, -14.5934, -18.4915, -27.418, -13.0172, -31.1996, -9.3139, -30.3775, -7.86487, -27.418, -9.15295, -24.1296, -12.0511, -23.8008, -13.8222, -24.7873, -14.2545, -23.923, -12.5806, -23.0388, -10.5604, -22.9209, -7.96301, -23.3336, -6.75092, -25.2786, -6.28918, -27.9899, -7.27039, -30.4064, -8.48248, -31.939, -10.9067, -32.9409, -14.5431, -33.0588, -17.7754, -31.2317, -21.2386, -28.2256, -26.6003, -17.7986, -28.2492, -11.5445, -28.9559, -5.69116, -28.1707, -0.639709, -26.2077, 3.52979, -21.1824, 5.8551, -15.0355, 5.44495, -6.35931, 4.55902, 3.18457, 0.916626, 14.2709, -5.48218, 17.645, -9.41986, 16.1025, -14.1451 )
+uv = PoolVector2Array(  )
+color = Color( 0.726562, 0.356607, 0.0596008, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Polygon2D2" type="Polygon2D" parent="Node2D/Cursor/Items/Jojo"]
+
+position = Vector2( 3.0163, 1.33917 )
+polygon = PoolVector2Array( -13.4291, 2.66083, -13.8563, 10.8416, -11.72, 12.0415, -9.90411, 12.1506, -5.41779, 8.44196, -6.59277, 4.73334, -7.66095, -0.175232 )
+uv = PoolVector2Array(  )
+color = Color( 0.726562, 0.356607, 0.0596008, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Polygon2D3" type="Polygon2D" parent="Node2D/Cursor/Items/Jojo"]
+
+polygon = PoolVector2Array( 9.85706, -5.19269, 11.032, -1.37494, 10.7116, 4.18805, 9.42975, 9.42377, 9.53662, 12.3688, 11.032, 13.6778, 17.6547, 13.7869, 35.4932, 13.1324, 40.3167, 12.1873, 40, 11.8235, 35.3864, 11.4962, 34.1046, 9.86011, 27.5887, 9.3147, 18.1888, 8.44208, 16.0525, 7.89667, 15.5184, 6.15143, 16.8002, -2.02942, 18.1888, -8.68317, 17.2274, -11.4101, 14.4502, -12.61 )
+uv = PoolVector2Array(  )
+color = Color( 0.726562, 0.356607, 0.0596008, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Polygon2D4" type="Polygon2D" parent="Node2D/Cursor/Items/Jojo"]
+
+position = Vector2( 2.48547, -0.362549 )
+polygon = PoolVector2Array( 4.05365, -10.3444, 9.50299, -25.9505, 9.98907, -28.8885, 10, -30.7001, 12.9714, -31.5037, 24.6431, -32.8428, 32.9052, -31.7714, 48.249, -27.0843, 50.085, -25.3433, 47.9867, -24.5399, 43.1344, -22.665, 30.2823, -23.6024, 20.9711, -25.3433, 16.6434, -26.1469, 14.6763, -24.5399, 13.496, -19.317, 14.414, -11.8175 )
+uv = PoolVector2Array(  )
+color = Color( 0.726562, 0.356607, 0.0596008, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Polygon2D5" type="Polygon2D" parent="Node2D/Cursor/Items/Jojo"]
+
+position = Vector2( 2.48547, -0.362549 )
+polygon = PoolVector2Array( 12.3123, -12.8828, 16.6915, -14.5748, 18.4669, -16.3878, 19.8872, -16.8712, 27.462, -16.146, 28.1722, -14.2122, 24.2664, -14.4539, 22.6094, -13.6078, 22.2543, -12.0367, 23.793, -11.0698, 24.8582, -10.7072, 24.8582, -7.80652, 26.6335, -5.26837, 27.3437, -3.57635, 25.2132, -2.48859, 21.4258, -3.6972, 16.8099, -5.63098, 13.7326, -5.63098 )
+uv = PoolVector2Array(  )
+color = Color( 0.726562, 0.356607, 0.0596008, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Polygon2D6" type="Polygon2D" parent="Node2D/Cursor/Items/Jojo"]
+
+position = Vector2( 2.48547, -0.362549 )
+polygon = PoolVector2Array( 28.4209, -13.983, 27.4451, -15.1961, 25.663, -15.4128, 23.3718, -14.8495, 22.1838, -13.8096, 21.8019, -12.7697, 22.0989, -11.8166, 22.7354, -11.1667, 23.6264, -10.6901, 24.2628, -10.4301, 24.6022, -9.56354, 24.5174, -8.30707, 25.0266, -7.13721, 26.257, -5.92407, 26.6813, -3.9743, 29.3119, -4.19098, 29.9059, -4.58087, 29.9484, -5.27417, 31.4758, -5.01422, 33.6397, -5.23083, 34.1489, -5.8374, 34.361, -6.96393, 33.0033, -9.04364, 31.1364, -10.9067, 29.2695, -12.2499, 28.4633, -12.7697 )
+uv = PoolVector2Array(  )
+color = Color( 0.941406, 0.713208, 0.319931, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Polygon2D7" type="Polygon2D" parent="Node2D/Cursor/Items/Jojo"]
+
+position = Vector2( 2.48547, -0.362549 )
+polygon = PoolVector2Array( 20.0283, -13.4761, 19.2965, -13.7924, 18.3394, -13.3899, 17.861, -12.1827, 18.1705, -10.8317, 19.2402, -10.0844, 20.1691, -10.4868, 20.8447, -11.6077 )
+uv = PoolVector2Array(  )
+color = Color( 0.941406, 0.713208, 0.319931, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Polygon2D10" type="Polygon2D" parent="Node2D/Cursor/Items/Jojo"]
+
+position = Vector2( 2.48547, -0.362549 )
+polygon = PoolVector2Array( -10.0913, 12.7281, -10.506, 13.8574, -8.77808, 14.4221, -3.21411, 14.6338, 1.55505, 14.5985, 4.28705, 14.3718, 4.58405, 13.6786, 3.77789, 13.1154, 1.86853, 13.5052, -0.21051, 13.4186, 1.10486, 12.1622, 2.63226, 11.3389, 3.73547, 10.949, 3.94757, 10.2125, 3.35358, 9.86578, 1.74127, 10.429, -0.380188, 11.5122, -1.1015, 12.1622, -0.846924, 10.689, -0.380188, 10.0391, -0.465088, 9.30249, -1.14392, 9.47583, -1.56824, 10.2991, -1.99255, 11.8155, -3.77454, 11.1656, -6.32031, 10.8623 )
+uv = PoolVector2Array(  )
+color = Color( 0.941406, 0.713208, 0.319931, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Polygon2D11" type="Polygon2D" parent="Node2D/Cursor/Items/Jojo"]
+
+position = Vector2( 2.48547, -0.362549 )
+polygon = PoolVector2Array( 31.5458, 10.2448, 32.0654, 11.4825, 33.6238, 12.1899, 37.087, 12.3077, 44.6482, 12.6024, 45.3986, 12.072, 46.0912, 8.88916, 46.2644, 6.64941, 45.8604, 6.05994, 45.2254, 6.53149, 44.9368, 8.06396, 44.1287, 10.4806, 43.2052, 10.4806, 43.4362, 8.8302, 43.4362, 5.94208, 42.9166, 4.23279, 42.1663, 3.99701, 41.416, 4.40961, 41.9354, 5.41162, 42.224, 7.35669, 41.9931, 9.2428, 41.7045, 10.2448, 39.338, 10.0679, 39.0494, 8.12292, 38.4145, 6.17786, 37.6642, 6.1189, 37.491, 7.00305, 37.8373, 8.88916, 37.5487, 9.95007, 35.4131, 9.53754, 33.1042, 9.36072, 32.2962, 9.41962 )
+uv = PoolVector2Array(  )
+color = Color( 0.941406, 0.713208, 0.319931, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Polygon2D13" type="Polygon2D" parent="Node2D/Cursor/Items/Jojo"]
+
+position = Vector2( 3.58197, -1.12885 )
+polygon = PoolVector2Array( 40.9282, -23.2104, 40.0778, -21.4014, 40.9991, -19.4475, 43.9754, -17.9279, 44.684, -18.4344, 44.5423, -19.7369, 43.125, -20.6053, 42.3455, -21.9079, 43.125, -22.4144, 46.6313, -22.8783, 48.767, -21.6994, 50.21, -18.9292, 49.928, -16.9148, 51.2036, -16.1911, 52.054, -16.9148, 51.8414, -19.3028, 50.3532, -22.2698, 48.5107, -24.0065, 51.4162, -24.0789, 52.8335, -24.0065, 53.4999, -22.4068, 54.3079, -20.167, 54.0193, -18.0452, 54.5965, -16.7485, 55.8664, -18.5167, 56.0395, -20.7565, 54.8274, -24.175, 53.6153, -25.4717, 51.9414, -26.1201, 49.5173, -25.8253, 47.4971, -25.0591, 44.842, -24.2339, 43.0541, -23.7894 )
+uv = PoolVector2Array(  )
+color = Color( 0.941406, 0.713208, 0.319931, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Polygon2D12" type="Polygon2D" parent="Node2D/Cursor/Items/Jojo"]
+
+position = Vector2( 2.02368, 3.23285 )
+rotation = -0.107597
+polygon = PoolVector2Array( 32.8157, 9.71429, 35.9326, 8.94806, 39.338, 8.65338, 40.8964, 8.71234, 41.1273, 9.3017, 40.377, 9.59644, 35.9903, 10.009 )
+uv = PoolVector2Array(  )
+color = Color( 0.941406, 0.713208, 0.319931, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Polygon2D8" type="Polygon2D" parent="Node2D/Cursor/Items/Jojo"]
+
+position = Vector2( 2.48547, -0.362549 )
+polygon = PoolVector2Array( 24.5322, -13.6774, 23.8285, -13.4187, 23.6877, -12.8726, 24.0537, -12.3552, 24.8418, -12.4127, 25.3204, -13.0162, 25.0388, -13.4474 )
+uv = PoolVector2Array(  )
+color = Color( 0, 0, 0, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Polygon2D9" type="Polygon2D" parent="Node2D/Cursor/Items/Jojo"]
+
+position = Vector2( 2.48547, -0.362549 )
+polygon = PoolVector2Array( 29.9178, -4.92517, 29.4796, -5.14893, 28.6538, -5.5448, 28.0807, -5.57916, 28.4179, -5.83734, 29.2943, -5.75128, 29.9515, -5.4931, 30.1201, -5.28662 )
+uv = PoolVector2Array(  )
+color = Color( 0.527344, 0.123628, 0.0700378, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Polygon2D14" type="Polygon2D" parent="Node2D/Cursor/Items/Jojo"]
+
+position = Vector2( 2.48547, -0.362549 )
+polygon = PoolVector2Array( 46.758, -25.9197, 37.9707, -27.9631, 31.9675, -29.6512, 23.7021, -30.5397, 17.4379, -29.7401, 11.9567, -29.1181, 11.1737, -26.1863, 9.43359, -20.7668, 7.25854, -12.6819, 4.73547, -11.3492, 8.04156, -21.0333, 9.52057, -25.8309, 10.1296, -28.2297, 10.4776, -30.1843, 12.3047, -30.8062, 17.3509, -31.6058, 23.0061, -32.2277, 26.3123, -32.05, 32.8375, -31.0728, 38.6667, -29.6512, 46.497, -27.2524, 48.498, -26.1863 )
+uv = PoolVector2Array(  )
+color = Color( 0.761719, 0.416623, 0.139847, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Polygon2D15" type="Polygon2D" parent="Node2D/Cursor/Items/Jojo"]
+
+position = Vector2( 2.48547, -0.362549 )
+polygon = PoolVector2Array( -0.9198, -10.0165, 6.47546, -10.5497, 10.2166, -11.0827, 12.0436, -10.7274, 13.2618, -9.57233, 14.6538, -7.26239, 14.8278, -5.48553, 13.6968, -0.687927, 12.8267, 3.66547, 12.3917, 6.242, 12.4788, 8.55194, 13.5228, 9.17383, 16.6548, 9.44037, 31.1844, 10.4177, 17.9599, 10.1511, 13.9578, 10.4177, 11.0866, 9.61804, 9.86859, 7.93005, 9.78162, 4.9093, 10.3036, -0.59906, 10.1296, -3.53088, 8.30255, -4.41931, 4.64844, -5.13007, -2.74292, -6.47144, -9.52917, -6.91565, -14.3143, -6.38257, -15.7934, -6.02722, -14.2274, -7.6264, -9.70319, -8.78137, -4.396, -9.40326 )
+uv = PoolVector2Array(  )
+color = Color( 0.761719, 0.416623, 0.139847, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Polygon2D16" type="Polygon2D" parent="Node2D/Cursor/Items/Jojo"]
+
+position = Vector2( 2.48547, -0.362549 )
+polygon = PoolVector2Array( -12.2347, -1.125, -11.5969, 1.6972, -11.9512, 4.73657, -12.2347, 7.05219, -11.8804, 9.29547, -11.3135, 10.3809, -9.40015, 10.8875, -6.99072, 10.8875, -5.78601, 10.6705, -5.64429, 9.36786, -6.70728, 6.54559, -7.62848, 3.50635, -7.55762, -0.546021, -7.62848, -3.22351, -7.91193, -4.81555, -9.11664, -5.901, -10.6757, -6.19049, -13.8646, -5.75635, -16.4157, -4.88794, -17.833, -3.513, -18.9669, -1.125, -20.1715, 1.04596, -22.014, 2.13141, -24.2817, 2.2038, -26.9037, 1.19067, -25.699, 2.34851, -23.5731, 3.21692, -21.8723, 3.28918, -19.5338, 2.27612, -19.1794, 0.611755, -18.1873, 1.6972, -16.3448, 2.49323, -14.2898, 2.99976, -13.0142, 2.56561, -12.589, 0.684082 )
+uv = PoolVector2Array(  )
+color = Color( 0.761719, 0.416623, 0.139847, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Polygon2D17" type="Polygon2D" parent="Node2D/Cursor/Items/Jojo"]
+
+position = Vector2( 2.48547, -0.362549 )
+polygon = PoolVector2Array( -9.26819, -28.0391, -10.1185, -29.993, -11.0398, -31.2232, -12.6697, -31.9468, -14.583, -32.4533, -16.709, -32.4533, -18.0554, -31.9468, -20.3231, -30.4271, -22.3073, -28.6904, -23.9371, -27.0261, -26.5591, -21.8158, -28.8977, -17.3292, -29.8189, -13.4215, -28.6851, -16.2437, -26.5591, -20.658, -24.5041, -24.421, -22.6616, -27.2431, -20.7483, -29.197, -18.268, -30.8613, -16.142, -31.5126, -13.7327, -31.2955, -11.8902, -30.5719, -10.1185, -29.0522 )
+uv = PoolVector2Array(  )
+color = Color( 0.761719, 0.416623, 0.139847, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
 [node name="Camera2D" type="Camera2D" parent="Node2D"]
 
 position = Vector2( 129, 79 )
@@ -3356,7 +5729,7 @@ drag_margin_bottom = 0.0
 editor_draw_screen = true
 editor_draw_limits = false
 editor_draw_drag_margin = false
-script = ExtResource( 5 )
+script = ExtResource( 6 )
 _sections_unfolded = [ "Drag Margin", "Limit", "Smoothing", "Transform" ]
 target = NodePath("../Player")
 
@@ -3379,7 +5752,6 @@ _sections_unfolded = [ "Margin" ]
 
 [node name="PostProsessing" type="ColorRect" parent="Node2D/Camera2D/Control"]
 
-visible = false
 material = SubResource( 2 )
 anchor_left = 0.0
 anchor_top = 0.0
@@ -3402,7 +5774,6 @@ __meta__ = {
 
 [node name="Fader" type="ColorRect" parent="Node2D/Camera2D/Control"]
 
-visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -3439,7 +5810,7 @@ rect_clip_content = false
 mouse_filter = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-script = ExtResource( 7 )
+script = ExtResource( 8 )
 _sections_unfolded = [ "Visibility" ]
 post_prosessing = NodePath("../PostProsessing")
 
@@ -3514,11 +5885,11 @@ next_event = null
 
 [node name="Starting monolog" type="Node2D" parent="."]
 
-position = Vector2( 278, -14 )
+position = Vector2( 257.373, -14 )
 script = ExtResource( 2 )
 auto_start = false
 action = 4
-monolog = PoolStringArray( "", "Whoa!!!", "I\'ve been Thrown Back in time!", "Back in the good ol\' days when everything was still 2D.", "Just look at all those pixels!", "Could you turn them off please\?", "Press ESC and uncheck the Ugly Pixels effect." )
+monolog = PoolStringArray( "", "Whoa!!!", "What happened\?!     ", "Am I dreaming\?     ", "Just look at all those pixels!", "Could you turn them off please\?", "Press ESC and uncheck the Ugly Pixels effect." )
 next_event = null
 
 [connection signal="toggled" from="Node2D/Camera2D/Control/PauseMenu/UglyPixels" to="Node2D/Camera2D/Control/PauseMenu" method="_on_UglyPixels_toggled"]

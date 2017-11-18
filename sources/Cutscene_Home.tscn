@@ -247,7 +247,7 @@ tracks/4/keys = {
 }
 tracks/5/type = "value"
 tracks/5/path = NodePath("Scenery/Doggy/Head:position")
-tracks/5/interp = 1
+tracks/5/interp = 2
 tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/keys = {
@@ -258,7 +258,7 @@ tracks/5/keys = {
 }
 tracks/6/type = "value"
 tracks/6/path = NodePath("Scenery/Doggy/Head/eye1:position")
-tracks/6/interp = 1
+tracks/6/interp = 2
 tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/keys = {
@@ -269,7 +269,7 @@ tracks/6/keys = {
 }
 tracks/7/type = "value"
 tracks/7/path = NodePath("Scenery/Doggy/Head/eye2:position")
-tracks/7/interp = 1
+tracks/7/interp = 2
 tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/keys = {
@@ -280,7 +280,7 @@ tracks/7/keys = {
 }
 tracks/8/type = "value"
 tracks/8/path = NodePath("Scenery/Doggy/Head/Nose:position")
-tracks/8/interp = 1
+tracks/8/interp = 2
 tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/keys = {
@@ -2573,7 +2573,6 @@ invert_border = 100.0
 
 [node name="Polygon2D4" type="Polygon2D" parent="Posters/Godot/Polygon2D3"]
 
-scale = Vector2( 1, 1 )
 polygon = PoolVector2Array( -25.8866, -13.4966, -28.6635, -11.1824, -29.2421, -7.24841, -27.9693, -5.16568, -24.151, -3.77719, -19.7541, -5.85992, -19.6384, -10.1411, -20.9112, -13.0337, -23.6881, -13.8437 )
 uv = PoolVector2Array(  )
 color = Color( 0.167969, 0.167969, 0.167969, 1 )
@@ -2606,7 +2605,6 @@ invert_border = 100.0
 [node name="Polygon2D4" type="Polygon2D" parent="Posters/Godot/Polygon2D4"]
 
 position = Vector2( 6.57054, 4.05832 )
-scale = Vector2( 1, 1 )
 polygon = PoolVector2Array( -25.8866, -13.4966, -28.6635, -11.1824, -29.2421, -7.24841, -27.9693, -5.16568, -24.151, -3.77719, -19.7541, -5.85992, -19.6384, -10.1411, -20.9112, -13.0337, -23.6881, -13.8437 )
 uv = PoolVector2Array(  )
 color = Color( 0.167969, 0.167969, 0.167969, 1 )

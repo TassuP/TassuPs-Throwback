@@ -1,8 +1,8 @@
 extends Node2D
 
 export var auto_start = false
-enum HotspotEventType {walk_here, fade_in, fade_out, game_over, monolog, dream_on, dream_off}
-export(int, "Walk Here", "Fade In", "Fade Out", "Game Over", "Monolog", "Dream On", "Dream Off") var action
+enum HotspotEventType {walk_here, fade_in, fade_out, game_over, monolog, dream_on, dream_off, take, remove_item}
+export(int, "Walk Here", "Fade In", "Fade Out", "Game Over", "Monolog", "Dream On", "Dream Off", "Take", "Remove Item") var action
 export(PoolStringArray) var monolog
 export(NodePath) var next_event
 
@@ -102,3 +102,18 @@ func _process(delta):
 				stop()
 			else:
 				post_prosessing.get_material().set_shader_param("dream", 1.0 - t)
+				
+		# Take
+		if(action == HotspotEventType.take):
+			var here = get_global_position()
+			Game.player.target_pos = here
+			if(Game.player.get_global_position().distance_to(here) <= 10.0):
+				stop()
+				Inventory.add_item(get_parent().get_name())
+				get_parent().queue_free()
+				
+		# Remove Item
+		if(action == HotspotEventType.remove_item):
+			stop()
+			Inventory.remove_item(get_parent().get_name())
+			get_parent().queue_free()
