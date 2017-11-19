@@ -61,10 +61,7 @@ TassuP is thinking:
 "Nostalgic... ZZzzZZzzz..."
 
 
-TassuP falls asleep while thinking about nostalgic game ideas. In his dreams he is thrown back in time into a game world that is filled with elements from the games he played as a child. He finds a Nintendo Zapper, Zelda-like treasure boxes and stuff like that in a nethack-like dungeon. He makes his way deeper into the dungeons and ends up in gnomish mines. Lots of monsters there. He finds Toads who tell him the Princess is in another castle.
-
-
-
+TassuP falls asleep while thinking about nostalgic game ideas. In his dreams he is thrown back in time into a game world that is filled with elements from the games he played as a child.
 
 
 ### Game Starts ###
@@ -73,18 +70,31 @@ TassuP: "Oh no! I've been thrown back in time to an era when everything was stil
 
 
 
-	### Jojo puzzle
+	### Nethack puzzle
 	There's a hole in the ground blocking the path.
-	Player must use Jojo as a monkey wrench on a nearby water pipe to fill the hole with water.
+	Player must put turtles inside the water tank to provide turtle power for the pump.	
+	Then remove Jojo the monkey wrench from nearby water pipe to fill the ravine with water.
 	Then use mutagen on a dead newt to transform into a were-newt.
-	Then player will swim across to the other side.
+	Then player can swim across to the other side.
 	Mutagen will then wear off and player turns into himself again.
 
+	### Super Mario puzzle
+	Bowser is blocking the way.
+	Player finds a Mario box but can't reach it.
+	Player must put jojo into a Donkey Kong barrel.
+	The barrel shoots Jojo to the box and Nintendo Zapper falls down.
+	Player must shoot Bowser with Zapper.
+	Player can then proceed to Toad. Toad hanks player and says the princess is in another castle.
+	Player can then exit trough a pipe.
+
+	### Space Invaders puzzle
+	Player can do lots of things, but nothing helps.
+	The Space Invaders just keep coming and will eventually destroy everything.
 
 
 ### Enging scene ###
+The Space Invaders destroy planet Earth and TassuP wakes up screaming. Then he realizes it was all a dream. Now he has a cool idea for the GitHub Game Off.
 
-TassuP finds his way out from the horrible mines trough a Super Mario pipe only to find himself in the middle of a chaotic battlefield. Just as the Space Invaders are attacking, TassuP finds a DeLorean, gets thrown Back In To The Future and wakes up.
 
 "ZZzzZAAaaaAAaarGGGH!!!"
 "Huh?"
@@ -92,7 +102,7 @@ TassuP finds his way out from the horrible mines trough a Super Mario pipe only 
 "I'm here again."
 "What a crazy dream!"
 "Hey! I just had an idea!"
-"Oh my gosh, this game is going to so cool!"
+"Oh my gosh, this game is going to be so cool!"
 "Thanks for playing! You really helped me out."
 
 Then it's Game Over and Credits.
