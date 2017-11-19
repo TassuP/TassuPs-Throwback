@@ -11,6 +11,8 @@ var t = 0.0
 var fader = "/root/Main/Node2D/Camera2D/Control/Fader"
 var post_prosessing = "/root/Main/Node2D/Camera2D/Control/PostProsessing"
 
+var has_triggered = false
+
 func _ready():
 	
 	fader = get_node(fader)
@@ -29,6 +31,7 @@ func run():
 	set_process(true)
 	
 func stop():
+	has_triggered = true
 	is_running = false
 	set_process(false)
 	Game.event_running = false

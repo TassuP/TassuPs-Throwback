@@ -6,7 +6,10 @@ export(PoolStringArray) var hand_str
 export(String) var correct_item = ""
 export(PoolStringArray) var wrong_str
 export(NodePath) var node_to_trigger
+export var enabled = true
 export var one_shot = true
+export var delete_if_newt = false
+export var enable_if_newt = false
 var has_triggered = false
 
 export var click_distance = 64.0
@@ -28,9 +31,28 @@ func _ready():
 		wrong_str.append("Umm.. No.")
 		wrong_str.append("Nah..")
 		wrong_str.append("Meh..")
+		
+
+func run():
+	enabled = true
+	set_visible(true)
 
 func _process(delta):
 	if(Game.paused || Game.talking):
+		return
+		
+	if(delete_if_newt):
+		if(Game.player.newt_mode):
+			queue_free()
+			return
+	if(enable_if_newt):
+		if(Game.player.newt_mode):
+			enabled = true
+		
+	if(enabled == false):
+		return
+		
+	if(has_triggered):
 		return
 	
 	if(Input.is_mouse_button_pressed(BUTTON_LEFT)):

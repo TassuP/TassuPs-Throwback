@@ -14,12 +14,17 @@ var side
 var front
 var back
 
+var newt
+export var newt_mode = false
+
 func _ready():
 	Game.start_level()
 	ani = get_node("AnimationPlayer")
 	side = get_node("Side")
 	front = get_node("Front")
 	back = get_node("Back")
+	
+	newt = get_node("Newt")
 	
 	ani.play("Standing")
 	sz = get_global_scale()
@@ -28,16 +33,31 @@ func _ready():
 
 func _process(delta):
 	
+	if(newt_mode):
+		front.set_visible(false)
+		back.set_visible(false)
+		side.set_visible(false)
+		newt.set_visible(true)
+		get_node("Hotspot").enabled = false
+		get_node("Hotspot newt").enabled = true
+	else:
+		newt.set_visible(false)
+		get_node("Hotspot").enabled = true
+		get_node("Hotspot newt").enabled = false
+	
 	if(Game.paused || Game.talking):
 		return
 	
-	walking(delta)
 	
+	walking(delta)
 	facing()
 
 func facing():
+	if(newt_mode):
+		return
 	
 	var pos = get_global_position()
+	
 	
 	# Is moving
 	if(pos != last_pos):
