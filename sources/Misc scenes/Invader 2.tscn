@@ -1,0 +1,205 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scripts/Alien.gd" type="Script" id=1]
+
+[sub_resource type="Animation" id=1]
+
+resource_name = "invaderanim"
+length = 1.0
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("fr1:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("fr2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[node name="Invader 2" type="Node2D"]
+
+editor/display_folded = true
+script = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+root_node = NodePath("..")
+anims/invaderanim = SubResource( 1 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = "invaderanim"
+_sections_unfolded = [ "Playback Options", "playback" ]
+
+[node name="fr1" type="Polygon2D" parent="."]
+
+editor/display_folded = true
+position = Vector2( -0.594788, -4.43501 )
+polygon = PoolVector2Array( -57.3066, -1.63571, -10.0963, -60.222, 4.12372, -67.6164, 10.9493, -65.91, 21.7565, -59.6532, 66.1228, -5.61731, 72.3796, 8.03387, 69.5356, 21.6851, 58.1596, 33.061, 36.5452, 35.905, 29.7197, 47.8498, 14.3621, 54.1066, -3.27069, 52.4002, -14.6467, 42.1618, -26.5914, 34.7674, -48.7746, 34.7674, -60.1506, 25.0978, -62.9946, 9.74026 )
+uv = PoolVector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Visibility" ]
+
+[node name="eye1" type="Polygon2D" parent="fr1"]
+
+position = Vector2( 5.99998, -9.53674e-06 )
+polygon = PoolVector2Array( -35.7717, -7.71927, -7.49493, 0.579346, -12.4126, 5.1897, -31.4687, 2.11612 )
+uv = PoolVector2Array(  )
+color = Color( 0, 0, 0, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="eye2" type="Polygon2D" parent="fr1"]
+
+position = Vector2( 6, 0 )
+polygon = PoolVector2Array( 9.10233, -0.957428, 32.4614, -5.26044, 26.6216, 2.11612, 12.4832, 4.26764 )
+uv = PoolVector2Array(  )
+color = Color( 0, 0, 0, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="tentacle1" type="Polygon2D" parent="fr1"]
+
+position = Vector2( 6, 0 )
+polygon = PoolVector2Array( -34.2979, 19.4099, -57.6186, 38.1802, -67.2882, 48.9874, -66.1506, 58.0882, -58.7562, 67.189, -58, 67.189, -47.6317, 73.9766, -41.1234, 77.4273, -26.3347, 77.9961, -42.8298, 69.4642, -53.637, 56.9506, -53.4193, 48.9442, -35.4354, 34.1986, -24.0594, 27.9418 )
+uv = PoolVector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="tentacle2" type="Polygon2D" parent="fr1"]
+
+position = Vector2( 6, 0 )
+scale = Vector2( -1, 1 )
+polygon = PoolVector2Array( -34.2979, 19.4099, -57.6186, 38.1802, -67.2882, 48.9874, -66.1506, 58.0882, -58.7562, 67.189, -58, 67.189, -47.6317, 73.9766, -41.1234, 77.4273, -26.3347, 77.9961, -42.8298, 69.4642, -53.637, 56.9506, -53.4193, 48.9442, -35.4354, 34.1986, -24.0594, 27.9418 )
+uv = PoolVector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="fr2" type="Polygon2D" parent="."]
+
+editor/display_folded = true
+visible = false
+position = Vector2( -0.594788, -14.435 )
+polygon = PoolVector2Array( -57.3066, -1.63571, -10.0963, -60.222, 4.12372, -67.6164, 10.9493, -65.91, 21.7565, -59.6532, 66.1228, -5.61731, 72.3796, 8.03387, 69.5356, 21.6851, 58.1596, 33.061, 36.5452, 35.905, 29.7197, 47.8498, 14.3621, 54.1066, -3.27069, 52.4002, -14.6467, 42.1618, -26.5914, 34.7674, -48.7746, 34.7674, -60.1506, 25.0978, -62.9946, 9.74026 )
+uv = PoolVector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Visibility" ]
+
+[node name="eye1" type="Polygon2D" parent="fr2"]
+
+position = Vector2( 5.99998, -9.53674e-06 )
+polygon = PoolVector2Array( -35.7717, -7.71927, -7.49493, 0.579346, -12.4126, 5.1897, -31.4687, 2.11612 )
+uv = PoolVector2Array(  )
+color = Color( 0, 0, 0, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="eye2" type="Polygon2D" parent="fr2"]
+
+position = Vector2( 6, 0 )
+polygon = PoolVector2Array( 9.10233, -0.957428, 32.4614, -5.26044, 26.6216, 2.11612, 12.4832, 4.26764 )
+uv = PoolVector2Array(  )
+color = Color( 0, 0, 0, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="tentacles" type="Polygon2D" parent="fr2"]
+
+position = Vector2( 6, 0 )
+scale = Vector2( -1, 1 )
+polygon = PoolVector2Array( 41.9464, 22.6351, 50.6123, 44.059, 64.0477, 63.9805, 64, 63.9805, 76.0933, 74.6362, 60.8047, 69.54, 45.5161, 55.6413, 31.1541, 30.6236, 25.1313, 51.4717, 16.7921, 66.7603, 2.43005, 75.5628, 14.4756, 61.2008, 18.6452, 45.9122, 8.91614, 37.1097, -18.8813, 38.9629, -18.418, 52.8616, -13.7851, 68.6134, -23.9775, 53.3249, -26.7573, 38.0363, -31.8535, 29.2337, -36.9496, 47.7654, -39.5342, 51.9921, -47.142, 61.6641, -69.3799, 73.7096, -52.7015, 57.4945, -43.4357, 37.1097, -41.5825, 20.4312 )
+uv = PoolVector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+

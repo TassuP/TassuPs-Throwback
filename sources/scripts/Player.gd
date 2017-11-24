@@ -16,6 +16,7 @@ var back
 
 var newt
 export var newt_mode = false
+export var gravity = false
 
 func _ready():
 	Game.start_level()
@@ -48,9 +49,16 @@ func _process(delta):
 	if(Game.paused || Game.talking):
 		return
 	
-	
-	walking(delta)
 	facing()
+	if(gravity):
+		
+		target_pos.y = get_global_position().y
+		walking(delta)
+		if(!is_on_wall()):
+			move_and_slide(Vector2(0.0, 300.0))
+#			target_pos = get_global_position()
+	else:
+		walking(delta)
 
 func facing():
 	if(newt_mode):

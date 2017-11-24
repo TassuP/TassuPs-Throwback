@@ -17,27 +17,35 @@ var min_talk_delay = 1.5
 var talking_speed = 0.5
 
 var in_game = false
+var intro_started = false
+var ugly_pixels = true
 
-func _ready():
-	set_process(false)
+#func _ready():
+#	set_process(false)
 
 func start_level():
 	in_game = true
-	set_process(true)
+#	set_process(true)
 	cursor = get_node("/root/Main/Node2D/Cursor")
 	player = get_node("/root/Main/Node2D/Player")
 	player_talk_label = get_node("/root/Main/Node2D/Talk label")
 
 func _process(delta):
 	
-	if(in_game == false):
-		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-		return
+	if(OS.is_window_maximized()):
+		if(OS.is_window_fullscreen() == false):
+			OS.set_window_fullscreen(true)
+			
 	
-	if(paused):
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	else:
-		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	if(intro_started):
+		if(in_game == false):
+			Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+			return
+		
+		if(paused):
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		else:
+			Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	
 	if(Input.is_mouse_button_pressed(BUTTON_LEFT) == false):
 		wait_for_release = false
@@ -47,6 +55,10 @@ func _process(delta):
 func do_gameover():
 	in_game = false
 	get_tree().change_scene("GameOver.tscn")
+
+func enter_pipe():
+	in_game = false
+	get_tree().change_scene("Overworld.tscn")
 
 func player_says(say, caller):
 	talk_caller = caller
@@ -58,6 +70,11 @@ func player_says(say, caller):
 #	print(talk_str[talk_i])
 
 func do_talking(delta):
+	
+	if(paused):
+		player_talk_label.set_visible(false)
+		return
+	
 	if(talking):
 		player_talk_label.set_visible(true)
 		

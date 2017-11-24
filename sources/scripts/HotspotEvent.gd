@@ -1,13 +1,14 @@
 extends Node2D
 
 export var auto_start = false
-enum HotspotEventType {walk_here, fade_in, fade_out, game_over, monolog, dream_on, dream_off, take, remove_item}
-export(int, "Walk Here", "Fade In", "Fade Out", "Game Over", "Monolog", "Dream On", "Dream Off", "Take", "Remove Item") var action
+enum HotspotEventType {walk_here, fade_in, fade_out, game_over, monolog, dream_on, dream_off, take, remove_item, enter_pipe}
+export(int, "Walk Here", "Fade In", "Fade Out", "Game Over", "Monolog", "Dream On", "Dream Off", "Take", "Remove Item", "Enter Pipe") var action
 export(PoolStringArray) var monolog
 export(NodePath) var next_event
 
 var is_running = false
 var t = 0.0
+export var speed = 1.0
 var fader = "/root/Main/Node2D/Camera2D/Control/Fader"
 var post_prosessing = "/root/Main/Node2D/Camera2D/Control/PostProsessing"
 
@@ -90,7 +91,7 @@ func _process(delta):
 			
 		# Dream On
 		if(action == HotspotEventType.dream_on):
-			t += delta / 2.0
+			t += (delta / 2.0) * speed
 			if(t > 1.0):
 				t = 1.0
 				stop()
@@ -99,7 +100,7 @@ func _process(delta):
 				
 		# Dream Off
 		if(action == HotspotEventType.dream_off):
-			t += delta / 2.0
+			t += (delta / 2.0) * speed
 			if(t > 1.0):
 				t = 1.0
 				stop()
@@ -120,3 +121,7 @@ func _process(delta):
 			stop()
 			Inventory.remove_item(get_parent().get_name())
 			get_parent().queue_free()
+			
+		# Enter Pipe
+		if(action == HotspotEventType.enter_pipe):
+			Game.enter_pipe()

@@ -8,7 +8,7 @@ export(PoolStringArray) var wrong_str
 export(NodePath) var node_to_trigger
 export var enabled = true
 export var one_shot = true
-export var delete_if_newt = false
+export var disable_if_newt = false
 export var enable_if_newt = false
 var has_triggered = false
 
@@ -41,13 +41,15 @@ func _process(delta):
 	if(Game.paused || Game.talking):
 		return
 		
-	if(delete_if_newt):
+	if(disable_if_newt):
 		if(Game.player.newt_mode):
 			queue_free()
 			return
 	if(enable_if_newt):
 		if(Game.player.newt_mode):
 			enabled = true
+		else:
+			enabled = false
 		
 	if(enabled == false):
 		return
