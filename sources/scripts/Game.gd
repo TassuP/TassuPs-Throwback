@@ -20,11 +20,14 @@ var in_game = false
 var intro_started = false
 var ugly_pixels = true
 
+var skippable_talk = true
+
 #func _ready():
 #	set_process(false)
 
 func start_level():
 	in_game = true
+	skippable_talk = true
 #	set_process(true)
 	cursor = get_node("/root/Main/Node2D/Cursor")
 	player = get_node("/root/Main/Node2D/Player")
@@ -59,6 +62,10 @@ func do_gameover():
 func enter_pipe():
 	in_game = false
 	get_tree().change_scene("Overworld.tscn")
+	
+func wake_up():
+	in_game = false
+	get_tree().change_scene("Cutscene_Wakeup.tscn")
 
 func player_says(say, caller):
 	talk_caller = caller
@@ -87,9 +94,10 @@ func do_talking(delta):
 			player_talk_label.set_text(talk_str[talk_i])
 		
 		# Skipping lines
-		if(Input.is_mouse_button_pressed(BUTTON_LEFT) && wait_for_release == false):
-			wait_for_release = true
-			talk_t = 0.0
+		if(skippable_talk):
+			if(Input.is_mouse_button_pressed(BUTTON_LEFT) && wait_for_release == false):
+				wait_for_release = true
+				talk_t = 0.0
 			
 		# Advance talking
 		talk_t -= delta
@@ -100,6 +108,7 @@ func do_talking(delta):
 			if(talk_i >= talk_str.size()):
 				talking = false
 				player_talk_label.set_visible(false)
+				skippable_talk = true
 			else:
 				# Say next line
 #				print(talk_str[talk_i])

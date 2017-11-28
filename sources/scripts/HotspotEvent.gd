@@ -1,8 +1,8 @@
 extends Node2D
 
 export var auto_start = false
-enum HotspotEventType {walk_here, fade_in, fade_out, game_over, monolog, dream_on, dream_off, take, remove_item, enter_pipe}
-export(int, "Walk Here", "Fade In", "Fade Out", "Game Over", "Monolog", "Dream On", "Dream Off", "Take", "Remove Item", "Enter Pipe") var action
+enum HotspotEventType {walk_here, fade_in, fade_out, game_over, monolog, dream_on, dream_off, take, remove_item, enter_pipe, wake_up}
+export(int, "Walk Here", "Fade In", "Fade Out", "Game Over", "Monolog", "Dream On", "Dream Off", "Take", "Remove Item", "Enter Pipe", "Wake Up") var action
 export(PoolStringArray) var monolog
 export(NodePath) var next_event
 
@@ -125,3 +125,7 @@ func _process(delta):
 		# Enter Pipe
 		if(action == HotspotEventType.enter_pipe):
 			Game.enter_pipe()
+			
+		# Wake up
+		if(action == HotspotEventType.wake_up):
+			Game.wake_up()

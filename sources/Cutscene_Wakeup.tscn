@@ -1,0 +1,1233 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://scripts/Cutscene_Wakeup.gd" type="Script" id=1]
+[ext_resource path="res://shaders/dream_shader.shd" type="Shader" id=2]
+[ext_resource path="res://Technically, But Not Actually.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://scripts/CutsceneText.gd" type="Script" id=4]
+
+[sub_resource type="ShaderMaterial" id=1]
+
+render_priority = 0
+shader = ExtResource( 2 )
+shader_param/pixelize = null
+shader_param/dream = 1.0
+_sections_unfolded = [ "shader_param" ]
+
+[sub_resource type="DynamicFont" id=2]
+
+size = 42
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 3 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="Animation" id=3]
+
+resource_name = "fall asleep"
+length = 20.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("PostProcessing:material:shader_param/dream")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.2, 18.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Camera2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 1.4, 6.9, 20 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 512, 300 ), Vector2( 276.417, 212.096 ), Vector2( 276.417, 212.096 ), Vector2( 276.417, 212.096 ), Vector2( 347.345, 238.562 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Camera2D:zoom")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3, 1.4, 6.9, 20 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.2, 0.2 ), Vector2( 0.2, 0.2 ), Vector2( 0.5, 0.5 ), Vector2( 0.5, 0.5 ), Vector2( 0.650538, 0.650538 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:done")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/keys = {
+"times": PoolRealArray( 0, 20 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("TassuP/Face/Mouth scream:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1.8, 1.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, true, false ]
+}
+
+[node name="Cutscene_Wakeup" type="Node"]
+
+script = ExtResource( 1 )
+done = false
+
+[node name="Scenery" type="Node2D" parent="."]
+
+[node name="wall" type="Polygon2D" parent="Scenery"]
+
+editor/display_folded = true
+polygon = PoolVector2Array( -58.7866, -28.9258, 122.524, 85.4729, 133.317, 530.117, -32.8851, 633.723 )
+uv = PoolVector2Array(  )
+color = Color( 0.0617371, 0.0628476, 0.132812, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="wall2" type="Polygon2D" parent="Scenery/wall"]
+
+polygon = PoolVector2Array( -58.7866, -28.9258, 122.524, 85.4729, 903.889, 98.4237, 1063.62, -35.4012 )
+uv = PoolVector2Array(  )
+color = Color( 0.0846405, 0.0859425, 0.167969, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="wall3" type="Polygon2D" parent="Scenery/wall"]
+
+polygon = PoolVector2Array( 1042.03, 629.406, 899.572, 515.008, 903.889, 98.4237, 1063.62, -35.4012 )
+uv = PoolVector2Array(  )
+color = Color( 0.0588235, 0.0627451, 0.129412, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="wall4" type="Polygon2D" parent="Scenery/wall"]
+
+polygon = PoolVector2Array( 1042.03, 629.406, 899.572, 515.008, 133.297, 530.067, -46.2045, 637.238 )
+uv = PoolVector2Array(  )
+color = Color( 0.0334625, 0.0352927, 0.0664062, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Jojo" type="Polygon2D" parent="Scenery"]
+
+editor/display_folded = true
+modulate = Color( 0.265625, 0.265625, 0.265625, 1 )
+position = Vector2( 633.657, 158.024 )
+scale = Vector2( 0.930939, 0.911645 )
+polygon = PoolVector2Array( 12.8948, -13.3676, 6.03009, -11.5546, -3.79352, -9.86255, -11.4868, -9.01654, -14.8411, -6.39056, -17.9963, -0.0727539, -19.6666, 0.901855, -22.6086, 0.77124, -25.0929, -0.61792, -26.22, -7.03027, -24.7709, -14.5934, -18.4915, -27.418, -13.0172, -31.1996, -9.3139, -30.3775, -7.86487, -27.418, -9.15295, -24.1296, -12.0511, -23.8008, -13.8222, -24.7873, -14.2545, -23.923, -12.5806, -23.0388, -10.5604, -22.9209, -7.96301, -23.3336, -6.75092, -25.2786, -6.28918, -27.9899, -7.27039, -30.4064, -8.48248, -31.939, -10.9067, -32.9409, -14.5431, -33.0588, -17.7754, -31.2317, -21.2386, -28.2256, -26.6003, -17.7986, -28.2492, -11.5445, -28.9559, -5.69116, -28.1707, -0.639709, -26.2077, 3.52979, -21.1824, 5.8551, -15.0355, 5.44495, -6.35931, 4.55902, 3.18457, 0.916626, 14.2709, -5.48218, 17.645, -9.41986, 16.1025, -14.1451 )
+uv = PoolVector2Array(  )
+color = Color( 0.726562, 0.356607, 0.0596008, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Visibility" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Polygon2D2" type="Polygon2D" parent="Scenery/Jojo"]
+
+position = Vector2( 3.0163, 1.33917 )
+polygon = PoolVector2Array( -13.4291, 2.66083, -13.8563, 10.8416, -11.72, 12.0415, -9.90411, 12.1506, -5.41779, 8.44196, -6.59277, 4.73334, -7.66095, -0.175232 )
+uv = PoolVector2Array(  )
+color = Color( 0.726562, 0.356607, 0.0596008, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Polygon2D3" type="Polygon2D" parent="Scenery/Jojo"]
+
+polygon = PoolVector2Array( 9.85706, -5.19269, 11.032, -1.37494, 10.7116, 4.18805, 9.42975, 9.42377, 9.53662, 12.3688, 11.032, 13.6778, 17.6547, 13.7869, 35.4932, 13.1324, 40.3167, 12.1873, 40, 11.8235, 35.3864, 11.4962, 34.1046, 9.86011, 27.5887, 9.3147, 18.1888, 8.44208, 16.0525, 7.89667, 15.5184, 6.15143, 16.8002, -2.02942, 18.1888, -8.68317, 17.2274, -11.4101, 14.4502, -12.61 )
+uv = PoolVector2Array(  )
+color = Color( 0.726562, 0.356607, 0.0596008, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Polygon2D4" type="Polygon2D" parent="Scenery/Jojo"]
+
+position = Vector2( 2.48547, -0.362549 )
+polygon = PoolVector2Array( 4.05365, -10.3444, 9.50299, -25.9505, 9.98907, -28.8885, 10, -30.7001, 12.9714, -31.5037, 24.6431, -32.8428, 32.9052, -31.7714, 48.249, -27.0843, 50.085, -25.3433, 47.9867, -24.5399, 43.1344, -22.665, 30.2823, -23.6024, 20.9711, -25.3433, 16.6434, -26.1469, 14.6763, -24.5399, 13.496, -19.317, 14.414, -11.8175 )
+uv = PoolVector2Array(  )
+color = Color( 0.726562, 0.356607, 0.0596008, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Polygon2D5" type="Polygon2D" parent="Scenery/Jojo"]
+
+position = Vector2( 2.48547, -0.362549 )
+polygon = PoolVector2Array( 12.3123, -12.8828, 16.6915, -14.5748, 18.4669, -16.3878, 19.8872, -16.8712, 27.462, -16.146, 28.1722, -14.2122, 24.2664, -14.4539, 22.6094, -13.6078, 22.2543, -12.0367, 23.793, -11.0698, 24.8582, -10.7072, 24.8582, -7.80652, 26.6335, -5.26837, 27.3437, -3.57635, 25.2132, -2.48859, 21.4258, -3.6972, 16.8099, -5.63098, 13.7326, -5.63098 )
+uv = PoolVector2Array(  )
+color = Color( 0.726562, 0.356607, 0.0596008, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Polygon2D6" type="Polygon2D" parent="Scenery/Jojo"]
+
+position = Vector2( 2.48547, -0.362549 )
+polygon = PoolVector2Array( 28.4209, -13.983, 27.4451, -15.1961, 25.663, -15.4128, 23.3718, -14.8495, 22.1838, -13.8096, 21.8019, -12.7697, 22.0989, -11.8166, 22.7354, -11.1667, 23.6264, -10.6901, 24.2628, -10.4301, 24.6022, -9.56354, 24.5174, -8.30707, 25.0266, -7.13721, 26.257, -5.92407, 26.6813, -3.9743, 29.3119, -4.19098, 29.9059, -4.58087, 29.9484, -5.27417, 31.4758, -5.01422, 33.6397, -5.23083, 34.1489, -5.8374, 34.361, -6.96393, 33.0033, -9.04364, 31.1364, -10.9067, 29.2695, -12.2499, 28.4633, -12.7697 )
+uv = PoolVector2Array(  )
+color = Color( 0.941406, 0.713208, 0.319931, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Polygon2D7" type="Polygon2D" parent="Scenery/Jojo"]
+
+position = Vector2( 2.48547, -0.362549 )
+polygon = PoolVector2Array( 20.0283, -13.4761, 19.2965, -13.7924, 18.3394, -13.3899, 17.861, -12.1827, 18.1705, -10.8317, 19.2402, -10.0844, 20.1691, -10.4868, 20.8447, -11.6077 )
+uv = PoolVector2Array(  )
+color = Color( 0.941406, 0.713208, 0.319931, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Polygon2D10" type="Polygon2D" parent="Scenery/Jojo"]
+
+position = Vector2( 2.48547, -0.362549 )
+polygon = PoolVector2Array( -10.0913, 12.7281, -10.506, 13.8574, -8.77808, 14.4221, -3.21411, 14.6338, 1.55505, 14.5985, 4.28705, 14.3718, 4.58405, 13.6786, 3.77789, 13.1154, 1.86853, 13.5052, -0.21051, 13.4186, 1.10486, 12.1622, 2.63226, 11.3389, 3.73547, 10.949, 3.94757, 10.2125, 3.35358, 9.86578, 1.74127, 10.429, -0.380188, 11.5122, -1.1015, 12.1622, -0.846924, 10.689, -0.380188, 10.0391, -0.465088, 9.30249, -1.14392, 9.47583, -1.56824, 10.2991, -1.99255, 11.8155, -3.77454, 11.1656, -6.32031, 10.8623 )
+uv = PoolVector2Array(  )
+color = Color( 0.941406, 0.713208, 0.319931, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Polygon2D11" type="Polygon2D" parent="Scenery/Jojo"]
+
+position = Vector2( 2.48547, -0.362549 )
+polygon = PoolVector2Array( 31.5458, 10.2448, 32.0654, 11.4825, 33.6238, 12.1899, 37.087, 12.3077, 44.6482, 12.6024, 45.3986, 12.072, 46.0912, 8.88916, 46.2644, 6.64941, 45.8604, 6.05994, 45.2254, 6.53149, 44.9368, 8.06396, 44.1287, 10.4806, 43.2052, 10.4806, 43.4362, 8.8302, 43.4362, 5.94208, 42.9166, 4.23279, 42.1663, 3.99701, 41.416, 4.40961, 41.9354, 5.41162, 42.224, 7.35669, 41.9931, 9.2428, 41.7045, 10.2448, 39.338, 10.0679, 39.0494, 8.12292, 38.4145, 6.17786, 37.6642, 6.1189, 37.491, 7.00305, 37.8373, 8.88916, 37.5487, 9.95007, 35.4131, 9.53754, 33.1042, 9.36072, 32.2962, 9.41962 )
+uv = PoolVector2Array(  )
+color = Color( 0.941406, 0.713208, 0.319931, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Polygon2D13" type="Polygon2D" parent="Scenery/Jojo"]
+
+position = Vector2( 3.58197, -1.12885 )
+polygon = PoolVector2Array( 40.9282, -23.2104, 40.0778, -21.4014, 40.9991, -19.4475, 43.9754, -17.9279, 44.684, -18.4344, 44.5423, -19.7369, 43.125, -20.6053, 42.3455, -21.9079, 43.125, -22.4144, 46.6313, -22.8783, 48.767, -21.6994, 50.21, -18.9292, 49.928, -16.9148, 51.2036, -16.1911, 52.054, -16.9148, 51.8414, -19.3028, 50.3532, -22.2698, 48.5107, -24.0065, 51.4162, -24.0789, 52.8335, -24.0065, 53.4999, -22.4068, 54.3079, -20.167, 54.0193, -18.0452, 54.5965, -16.7485, 55.8664, -18.5167, 56.0395, -20.7565, 54.8274, -24.175, 53.6153, -25.4717, 51.9414, -26.1201, 49.5173, -25.8253, 47.4971, -25.0591, 44.842, -24.2339, 43.0541, -23.7894 )
+uv = PoolVector2Array(  )
+color = Color( 0.941406, 0.713208, 0.319931, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Polygon2D12" type="Polygon2D" parent="Scenery/Jojo"]
+
+position = Vector2( 2.02368, 3.23285 )
+rotation = -0.107597
+polygon = PoolVector2Array( 32.8157, 9.71429, 35.9326, 8.94806, 39.338, 8.65338, 40.8964, 8.71234, 41.1273, 9.3017, 40.377, 9.59644, 35.9903, 10.009 )
+uv = PoolVector2Array(  )
+color = Color( 0.941406, 0.713208, 0.319931, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Polygon2D8" type="Polygon2D" parent="Scenery/Jojo"]
+
+position = Vector2( 2.48547, -0.362549 )
+polygon = PoolVector2Array( 24.5322, -13.6774, 23.8285, -13.4187, 23.6877, -12.8726, 24.0537, -12.3552, 24.8418, -12.4127, 25.3204, -13.0162, 25.0388, -13.4474 )
+uv = PoolVector2Array(  )
+color = Color( 0, 0, 0, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Polygon2D9" type="Polygon2D" parent="Scenery/Jojo"]
+
+position = Vector2( 2.48547, -0.362549 )
+polygon = PoolVector2Array( 29.9178, -4.92517, 29.4796, -5.14893, 28.6538, -5.5448, 28.0807, -5.57916, 28.4179, -5.83734, 29.2943, -5.75128, 29.9515, -5.4931, 30.1201, -5.28662 )
+uv = PoolVector2Array(  )
+color = Color( 0.527344, 0.123628, 0.0700378, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Polygon2D14" type="Polygon2D" parent="Scenery/Jojo"]
+
+position = Vector2( 2.48547, -0.362549 )
+polygon = PoolVector2Array( 46.758, -25.9197, 37.9707, -27.9631, 31.9675, -29.6512, 23.7021, -30.5397, 17.4379, -29.7401, 11.9567, -29.1181, 11.1737, -26.1863, 9.43359, -20.7668, 7.25854, -12.6819, 4.73547, -11.3492, 8.04156, -21.0333, 9.52057, -25.8309, 10.1296, -28.2297, 10.4776, -30.1843, 12.3047, -30.8062, 17.3509, -31.6058, 23.0061, -32.2277, 26.3123, -32.05, 32.8375, -31.0728, 38.6667, -29.6512, 46.497, -27.2524, 48.498, -26.1863 )
+uv = PoolVector2Array(  )
+color = Color( 0.761719, 0.416623, 0.139847, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Polygon2D15" type="Polygon2D" parent="Scenery/Jojo"]
+
+position = Vector2( 2.48547, -0.362549 )
+polygon = PoolVector2Array( -0.9198, -10.0165, 6.47546, -10.5497, 10.2166, -11.0827, 12.0436, -10.7274, 13.2618, -9.57233, 14.6538, -7.26239, 14.8278, -5.48553, 13.6968, -0.687927, 12.8267, 3.66547, 12.3917, 6.242, 12.4788, 8.55194, 13.5228, 9.17383, 16.6548, 9.44037, 31.1844, 10.4177, 17.9599, 10.1511, 13.9578, 10.4177, 11.0866, 9.61804, 9.86859, 7.93005, 9.78162, 4.9093, 10.3036, -0.59906, 10.1296, -3.53088, 8.30255, -4.41931, 4.64844, -5.13007, -2.74292, -6.47144, -9.52917, -6.91565, -14.3143, -6.38257, -15.7934, -6.02722, -14.2274, -7.6264, -9.70319, -8.78137, -4.396, -9.40326 )
+uv = PoolVector2Array(  )
+color = Color( 0.761719, 0.416623, 0.139847, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Polygon2D16" type="Polygon2D" parent="Scenery/Jojo"]
+
+position = Vector2( 2.48547, -0.362549 )
+polygon = PoolVector2Array( -12.2347, -1.125, -11.5969, 1.6972, -11.9512, 4.73657, -12.2347, 7.05219, -11.8804, 9.29547, -11.3135, 10.3809, -9.40015, 10.8875, -6.99072, 10.8875, -5.78601, 10.6705, -5.64429, 9.36786, -6.70728, 6.54559, -7.62848, 3.50635, -7.55762, -0.546021, -7.62848, -3.22351, -7.91193, -4.81555, -9.11664, -5.901, -10.6757, -6.19049, -13.8646, -5.75635, -16.4157, -4.88794, -17.833, -3.513, -18.9669, -1.125, -20.1715, 1.04596, -22.014, 2.13141, -24.2817, 2.2038, -26.9037, 1.19067, -25.699, 2.34851, -23.5731, 3.21692, -21.8723, 3.28918, -19.5338, 2.27612, -19.1794, 0.611755, -18.1873, 1.6972, -16.3448, 2.49323, -14.2898, 2.99976, -13.0142, 2.56561, -12.589, 0.684082 )
+uv = PoolVector2Array(  )
+color = Color( 0.761719, 0.416623, 0.139847, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Polygon2D17" type="Polygon2D" parent="Scenery/Jojo"]
+
+position = Vector2( 2.48547, -0.362549 )
+polygon = PoolVector2Array( -9.26819, -28.0391, -10.1185, -29.993, -11.0398, -31.2232, -12.6697, -31.9468, -14.583, -32.4533, -16.709, -32.4533, -18.0554, -31.9468, -20.3231, -30.4271, -22.3073, -28.6904, -23.9371, -27.0261, -26.5591, -21.8158, -28.8977, -17.3292, -29.8189, -13.4215, -28.6851, -16.2437, -26.5591, -20.658, -24.5041, -24.421, -22.6616, -27.2431, -20.7483, -29.197, -18.268, -30.8613, -16.142, -31.5126, -13.7327, -31.2955, -11.8902, -30.5719, -10.1185, -29.0522 )
+uv = PoolVector2Array(  )
+color = Color( 0.761719, 0.416623, 0.139847, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Bed" type="Polygon2D" parent="Scenery"]
+
+editor/display_folded = true
+polygon = PoolVector2Array( 149.852, 144.292, 151.8, 487.142, 406.99, 491.038, 406.99, 140.396 )
+uv = PoolVector2Array(  )
+color = Color( 0.183365, 0.18551, 0.238281, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Bed2" type="Polygon2D" parent="Scenery/Bed"]
+
+polygon = PoolVector2Array( 149.852, 144.292, 110.266, 112.714, 431.384, 110.393, 406.99, 140.396 )
+uv = PoolVector2Array(  )
+color = Color( 0.120819, 0.121745, 0.144531, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Bed3" type="Polygon2D" parent="Scenery/Bed"]
+
+polygon = PoolVector2Array( 112.587, 101.108, 110.266, 112.714, 431.384, 110.393, 428.289, 96.4649 )
+uv = PoolVector2Array(  )
+color = Color( 0.212708, 0.214775, 0.265625, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Bed4" type="Polygon2D" parent="Scenery/Bed"]
+
+polygon = PoolVector2Array( 124.705, 506.741, 151.8, 487.142, 406.99, 491.038, 432.37, 510.257 )
+uv = PoolVector2Array(  )
+color = Color( 0.119019, 0.120473, 0.15625, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Bed5" type="Polygon2D" parent="Scenery/Bed"]
+
+polygon = PoolVector2Array( 124.705, 506.741, 124.987, 521.08, 431.926, 524.51, 432.37, 510.257 )
+uv = PoolVector2Array(  )
+color = Color( 0.183365, 0.18551, 0.238281, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Pillow" type="Polygon2D" parent="Scenery/Bed"]
+
+editor/display_folded = true
+position = Vector2( 6.25677, -1.1376 )
+polygon = PoolVector2Array( 177.864, 158.485, 182.997, 174.912, 179.917, 192.366, 180.944, 222.139, 185.564, 249.86, 221.498, 246.78, 267.698, 245.24, 311.332, 249.347, 333.406, 246.78, 344.7, 219.059, 349.32, 182.612, 349.833, 159.512, 326.219, 152.325, 250.245, 149.245, 212.258, 153.352, 191.724, 158.485 )
+uv = PoolVector2Array(  )
+color = Color( 0.378906, 0.378906, 0.378906, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Pillow2" type="Polygon2D" parent="Scenery/Bed/Pillow"]
+
+polygon = PoolVector2Array( 220.984, 156.432, 207.124, 159.512, 190.184, 162.592, 183.511, 163.619, 186.591, 170.292, 188.131, 186.719, 184.024, 207.766, 191.724, 191.339, 192.751, 176.965, 195.317, 167.212, 213.284, 162.592 )
+uv = PoolVector2Array(  )
+color = Color( 0.539062, 0.539062, 0.539062, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Pillow3" type="Polygon2D" parent="Scenery/Bed/Pillow"]
+
+polygon = PoolVector2Array( 325.193, 158.998, 339.566, 161.565, 344.186, 170.805, 342.646, 183.639, 338.026, 170.805, 331.866, 164.132 )
+uv = PoolVector2Array(  )
+color = Color( 0.539062, 0.539062, 0.539062, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Pillow4" type="Polygon2D" parent="Scenery/Bed/Pillow"]
+
+polygon = PoolVector2Array( 321.71, 244.062, 329.702, 240.373, 333.39, 232.997, 332.161, 241.91 )
+uv = PoolVector2Array(  )
+color = Color( 0.539062, 0.539062, 0.539062, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="door" type="Polygon2D" parent="Scenery"]
+
+polygon = PoolVector2Array( 563.288, 522.362, 573.363, 603.801, 753.236, 605.464, 705.051, 517.474 )
+uv = PoolVector2Array(  )
+color = Color( 1, 0.75293, 0.0117188, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="TassuP" type="Node2D" parent="."]
+
+position = Vector2( 288.921, 441.384 )
+scale = Vector2( 0.9, 0.9 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="TassuP front" type="Polygon2D" parent="TassuP"]
+
+position = Vector2( -16.2887, -193.779 )
+scale = Vector2( 1.5, 1.5 )
+polygon = PoolVector2Array( -9.77267, -37.9171, -8.69423, -29.2895, -9.12561, -21.5247, -11.0668, -15.9168, -16.459, -12.2501, -24.8709, -9.01474, -13.008, -1.68134, 15.6786, -1.24994, 25.6003, -7.28925, 14.6002, -12.0344, 11.3648, -17.4266, 10.9335, -24.9757, 13.306, -38.9955 )
+uv = PoolVector2Array(  )
+color = Color( 0.933594, 0.744945, 0.423035, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Hair" type="Polygon2D" parent="TassuP/TassuP front"]
+
+editor/display_folded = true
+position = Vector2( -45.6236, -18.3598 )
+rotation = 0.754001
+polygon = PoolVector2Array( 30.1992, -26.0344, 19.4841, -22.7369, 11.6187, -17.6055, -9.5589, -0.536354, -7.1115, -9.0359, -0.842789, -18.8691, 2.04483, -27.5001, -4.08176, -26.8204, -13.794, -23.0553, -20.1068, -21.0731, -30.771, -24.0246, -21.9263, -23.3107, -11.4196, -29.2313, -11.6629, -39.9958, -14.4252, -49.2404, -24.123, -50.5625, -19.4615, -55.5038, -15.9018, -67.0211, -13.8035, -78.2935, -1.91605, -91.1481, 9.41638, -95.5892, 3.29362, -90.4031, 13.1647, -94.5993, 26.198, -93.027, 41.069, -89.7981, 48.6386, -90.1418, 38.7128, -84.2029, 25.8514, -81.9903, 38.9797, -78.8161, 32.508, -76.4029, 41.8058, -71.6046, 45.222, -64.6652, 40.1218, -68.8956, 34.4901, -70.09, 41.6584, -57.6544, 48.9232, -52.92, 58.6667, -53.05, 37.7377, -30.0132 )
+uv = PoolVector2Array(  )
+color = Color( 1, 0.705963, 0.199219, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Red thing" type="Polygon2D" parent="TassuP/TassuP front/Hair"]
+
+position = Vector2( 198.372, -80.0669 )
+polygon = PoolVector2Array( 5.71667, -32.3968, 11.239, -31.9235, 14.8679, -30.0302, 16.2879, -26.7168, 15.3412, -22.4567, 13.4479, -19.9323, 11.5545, -18.67, 11.3967, -21.8256, 8.71448, -23.4034, 5.24335, -23.719, 2.87665, -22.6145, 0.983307, -20.4056, 0.0366211, -17.5656, -2.0145, -19.6167, -3.43451, -23.5612, -3.27673, -27.979, 0.352188, -31.4502 )
+uv = PoolVector2Array(  )
+color = Color( 0.605469, 0.00236511, 0.00236511, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Neck" type="Polygon2D" parent="TassuP/TassuP front"]
+
+position = Vector2( 1.43832, -3.28755 )
+polygon = PoolVector2Array( -9.77267, -37.9171, -14.7535, -30.9093, -11.5816, -21.5447, -11.0668, -15.9168, -16.459, -12.2501, -24.8709, -9.01474, -13.008, -1.68134, 15.6786, -1.24994, 25.6003, -7.28925, 14.6002, -12.0344, 11.3648, -17.4266, 10.9335, -24.9757, 13.306, -38.9955 )
+uv = PoolVector2Array(  )
+color = Color( 0.933594, 0.744945, 0.423035, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sock" type="Polygon2D" parent="TassuP/TassuP front"]
+
+position = Vector2( 241.326, -54.6635 )
+polygon = PoolVector2Array( -14.1813, 137.262, -16.3277, 140.982, -16.757, 144.273, -16.6139, 147.278, -12.178, 149.568, -1.15991, 149.711, 3.41905, 148.28, 6.1378, 144.417, 5.56543, 140.982, 2.27431, 136.69 )
+uv = PoolVector2Array(  )
+color = Color( 0.132812, 0.0684814, 0, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sock2" type="Polygon2D" parent="TassuP/TassuP front"]
+
+position = Vector2( 288.301, -107.236 )
+polygon = PoolVector2Array( -14.1813, 137.262, -16.3277, 140.982, -16.757, 144.273, -16.6139, 147.278, -12.178, 149.568, -1.15991, 149.711, 3.41905, 148.28, 6.1378, 144.417, 5.56543, 140.982, 2.27431, 136.69 )
+uv = PoolVector2Array(  )
+color = Color( 0.132812, 0.0684814, 0, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Pants" type="Polygon2D" parent="TassuP/TassuP front"]
+
+editor/display_folded = true
+position = Vector2( 218.996, 18.2059 )
+rotation = -2.01044
+polygon = PoolVector2Array( -11.7455, 54.7386, -12.9622, 68.4123, -15.8963, 89.5384, -20.0042, 123.868, -23.5252, 136.779, -23.2318, 141.473, -17.9503, 144.407, -2.69255, 145.288, 6.10999, 142.647, 11.9783, 139.419, 12.2718, 135.018, 8.75073, 126.509, 5.81656, 107.73, 6.99023, 95.1133, 10.8047, 87.7779, 16.0862, 87.4845, 20.4875, 94.8199, 23.4216, 104.503, 23.4216, 117.413, 19.3138, 130.617, 17.2599, 138.246, 19.9006, 142.354, 31.0505, 144.114, 44.8411, 142.94, 49.5358, 138.539, 49.5358, 132.671, 45.428, 120.347, 40.4399, 98.3409, 32.5176, 75.1609, 28.8365, 61.2387, 26.9041, 53.8602, 6.99023, 47.5796 )
+uv = PoolVector2Array(  )
+color = Color( 0.0394571, 0.117188, 0.0306702, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="shadow" type="Polygon2D" parent="TassuP/TassuP front/Pants"]
+
+polygon = PoolVector2Array( -11.813, 59.1183, -12.0921, 68.2598, -14.1158, 83.2631, -16.144, 105.344, -18.5429, 118.881, -19.3774, 125.635, -22.4077, 135.658, -22.2911, 140.087, -19.9601, 142.535, -14.2492, 143.584, -6.44037, 144.283, -1.89493, 144.05, -9.12102, 143.117, -17.396, 141.136, -19.3774, 138.106, -20.0767, 135.425, -19.0277, 129.947, -17.2795, 123.887, -16.8133, 116.194, -14.3672, 102.983, -12.9362, 88.5302, -11.3622, 75.0794, -10.0744, 67.2094, -7.92799, 64.6337, 1.94537, 61.9149, -3.27875, 57.0804 )
+uv = PoolVector2Array(  )
+color = Color( 0.0193293, 0.0664062, 0.0140076, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="shadow2" type="Polygon2D" parent="TassuP/TassuP front/Pants"]
+
+polygon = PoolVector2Array( 11.8373, 87.1873, 15.8407, 87.0581, 18.1653, 89.6409, 22.1686, 97.3894, 23.9766, 106.429, 24.1057, 115.34, 25.1389, 108.754, 25.0097, 101.005, 22.2978, 94.1609, 19.1984, 87.833, 15.5824, 85.8958 )
+uv = PoolVector2Array(  )
+color = Color( 0.0193293, 0.0664062, 0.0140076, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="shadow3" type="Polygon2D" parent="TassuP/TassuP front/Pants"]
+
+polygon = PoolVector2Array( 20.6572, 127.147, 19.4606, 130.674, 18.327, 135.208, 17.9491, 137.853, 19.9644, 142.01, 28.2776, 143.459, 37.0947, 143.144, 44.0853, 142.451, 36.3389, 141.947, 27.0181, 140.121, 22.2947, 136.027, 20.9721, 130.044, 21.7908, 123.872 )
+uv = PoolVector2Array(  )
+color = Color( 0.0193293, 0.0664062, 0.0140076, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="highlight" type="Polygon2D" parent="TassuP/TassuP front/Pants"]
+
+polygon = PoolVector2Array( 48.9741, 137.822, 48.4994, 132.885, 45.7464, 125.101, 43.3732, 117.032, 41.2847, 104.501, 43.3508, 112.686, 45.056, 120.359, 47.2158, 126.327, 49.0246, 131.891, 49.3639, 133.437 )
+uv = PoolVector2Array(  )
+color = Color( 0.075354, 0.214844, 0.0595856, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="highlight2" type="Polygon2D" parent="TassuP/TassuP front/Pants"]
+
+polygon = PoolVector2Array( -7.25618, 141.988, -0.549255, 142.67, 5.53246, 142.044, 9.96584, 139.941, 11.5005, 138.407, 12.012, 135.338, 10.0227, 130.677, 8.14702, 125.902, 5.43272, 111.129, 6.85667, 124.23, 8.28064, 129.071, 9.98938, 133.248, 10.2583, 136.474, 8.61002, 139.316, 4.46082, 141.419, -2.87134, 141.874 )
+uv = PoolVector2Array(  )
+color = Color( 0.075354, 0.214844, 0.0595856, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Shirt" type="Polygon2D" parent="TassuP/TassuP front"]
+
+editor/display_folded = true
+position = Vector2( 204.795, -39.0979 )
+rotation = 1.45374
+polygon = PoolVector2Array( 3.83817, -7.57245, 16.5638, -8.86658, 21.7404, -11.2392, 27.3483, -10.3764, 33.6033, -9.94504, 38.3484, -7.57245, 42.6622, 1.05508, 47.3367, 19.8835, 51.2775, 38.7412, 53.8143, 51.5838, 56.827, 64.9625, 48.1994, 67.5508, 40.2189, 66.2566, 39.1405, 55.9035, 36.7178, 40.7732, 34.471, 28.911, 30.9779, 16.874, 32.024, 30.0741, 32.2629, 45.6085, 34.4139, 54.4511, 30.59, 57.797, 23.1813, 59.9479, 1.43317, 61.1429, -7.40948, 58.5139, -16.546, 54.454, -14.2214, 45.5433, -14.3506, 34.1789, -17.1917, 21.1357, -18.3539, 16.2283, -19.1771, 31.6338, -20.6791, 41.6475, -24.5177, 59.8392, -24.8126, 65.2426, -36.3278, 63.0281, -35.3521, 54.7909, -32.7693, 36.5752, -31.6818, 22.9814, -30.8064, 11.6325, -29.7189, 4.01999, -26.4564, -5.76752, -22.7861, -9.43784, -18.8804, -11.3878, -13.1913, -13.5315, -8.53296, -9.4892, -1.22331, -7.78046 )
+uv = PoolVector2Array(  )
+color = Color( 0.0742188, 0.0742188, 0.0742188, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="highlights" type="Polygon2D" parent="TassuP/TassuP front/Shirt"]
+
+polygon = PoolVector2Array( -13.6584, -12.6857, -22.0257, -9.52896, -25.2654, -6.22406, -26.7612, -3.53171, -29.5134, 4.9043, -30.2313, 11.6052, -27.5988, 1.49399, -25.1458, -3.83087, -21.1338, -7.84286, -16.0056, -9.82419, -11.8098, -10.407 )
+uv = PoolVector2Array(  )
+color = Color( 0.164062, 0.164062, 0.164062, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="highlights2" type="Polygon2D" parent="TassuP/TassuP front/Shirt"]
+
+polygon = PoolVector2Array( 21.8042, -10.752, 20.1031, -9.36023, 31.0054, -7.73648, 34.3302, -6.80862, 37.0365, -4.48898, 41.1508, 3.56335, 43.8405, 15.2903, 46.8538, 26.6445, 53.4971, 52.402, 48.9517, 29.9079, 46.0828, 17.9965, 43.0673, 4.6972, 41.1508, -0.328522, 37.9551, -6.6973, 36.3068, -8.11826, 32.8965, -9.48239, 26.4169, -9.9371 )
+uv = PoolVector2Array(  )
+color = Color( 0.164062, 0.164062, 0.164062, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="shadow" type="Polygon2D" parent="TassuP/TassuP front/Shirt"]
+
+polygon = PoolVector2Array( -26.4224, 63.3428, -33.9515, 63.1214, -25.3152, 65.3359, -25.0937, 59.3569, -22.8793, 47.3988, -21.6613, 42.0842, -19.7791, 32.0084, -19.1288, 20.1346, -18.6902, 15.7, -20.006, 13.166, -19.6161, 16.1386, -22.6692, 39.7969, -23.2389, 43.9478, -24.7615, 50.2776, -25.9795, 58.2496 )
+uv = PoolVector2Array(  )
+color = Color( 0.0507812, 0.0507812, 0.0507812, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="shadow2" type="Polygon2D" parent="TassuP/TassuP front/Shirt"]
+
+polygon = PoolVector2Array( -17.8706, 16.5488, -14.0245, 33.0988, -13.4417, 43.2387, -14.3741, 48.9496, -15.7727, 53.495, -6.56531, 57.8074, -13.7914, 53.495, -13.0921, 49.6489, -11.9266, 42.5394, -13.0921, 32.0499, -15.19, 23.7749 )
+uv = PoolVector2Array(  )
+color = Color( 0.0507812, 0.0507812, 0.0507812, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="shadow3" type="Polygon2D" parent="TassuP/TassuP front/Shirt"]
+
+polygon = PoolVector2Array( 18.8425, 58.5067, 24.67, 57.3412, 31.1968, 54.544, 30.381, 49.7655, 29.4486, 42.5394, 30.381, 32.0499, 30.4975, 21.2108, 31.4299, 33.3319, 31.3134, 40.4415, 31.5464, 46.1524, 32.5954, 51.6302, 33.5278, 54.544, 30.1478, 57.1081, 24.9031, 58.9729, 15.6957, 59.6722, 7.65375, 60.1384 )
+uv = PoolVector2Array(  )
+color = Color( 0.0507812, 0.0507812, 0.0507812, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="shadow4" type="Polygon2D" parent="TassuP/TassuP front/Shirt"]
+
+polygon = PoolVector2Array( 31.8961, 18.1805, 35.4313, 30.7921, 37.235, 40.0953, 38.564, 47.5948, 40.6525, 65.6317, 48.0571, 66.9607, 41.5069, 64.7773, 39.893, 47.2152, 37.9031, 38.1225, 35.5727, 27.8916 )
+uv = PoolVector2Array(  )
+color = Color( 0.0507812, 0.0507812, 0.0507812, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Git logo" type="Polygon2D" parent="TassuP/TassuP front/Shirt"]
+
+position = Vector2( 7.7251, 20.596 )
+scale = Vector2( 0.7, 0.7 )
+polygon = PoolVector2Array( -3.94235, 8.32629, -8.2605, 8.32629, -13.4644, 0.464996, -7.70688, 5.89041, -4.27451, 5.89041, -2.7244, 3.34378, -6.48895, 2.67944, -8.92484, 0.243561, -9.47845, -2.19229, -8.7034, -4.84964, -7.59616, -6.17831, -8.2605, -9.27853, -5.16028, -7.1748, -2.7244, -7.72842, -0.177765, -7.83914, 3.80823, -7.39627, 5.46906, -6.84265, 8.67999, -9.0571, 7.35135, -5.95688, 8.67999, -4.51749, 9.34435, -2.41379, 8.56927, -0.531494, 6.57626, 1.68295, 3.14389, 3.12234, 4.47256, 5.33679, 4.80472, 11.5372, 8.56927, 10.43, 13.7732, 6.11185, 15.6555, 0.907928, 15.877, -5.62473, 13.3304, -10.275, 8.34784, -14.1503, 3.03317, -15.2575, -4.27451, -15.2575, -9.81061, -13.1538, -13.9073, -9.61072, -15.9004, -4.73892, -16.2325, 0.686432, -14.9038, 5.89041, -11.4715, 9.76572, -7.15329, 11.8694, -3.72089, 12.5337 )
+uv = PoolVector2Array(  )
+color = Color( 0.25, 0.25, 0.25, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Mouth closed" type="Polygon2D" parent="TassuP/TassuP front"]
+
+position = Vector2( 6.7614, -26.4481 )
+polygon = PoolVector2Array( 8.12453, -5.93488, 4.14542, -6.92966, 1.16107, -6.56792, -0.19545, -5.57315, 2.96977, -5.84445, 5.9541, -5.39227, 7.76277, -4.75923 )
+uv = PoolVector2Array(  )
+color = Color( 0, 0, 0, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Mouth open" type="Polygon2D" parent="TassuP/TassuP front"]
+
+visible = false
+position = Vector2( 1.56909, -29.0443 )
+polygon = PoolVector2Array( 5.08731, -2.97701, 6.71512, -5.05699, 10.2421, -5.50916, 14.0403, -4.78569, 14.0403, -3.24831, 12.8647, -1.62048, 9.51857, -1.25874, 6.89598, -2.25352 )
+uv = PoolVector2Array(  )
+color = Color( 0, 0, 0, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Visibility" ]
+
+[node name="Face" type="Polygon2D" parent="TassuP"]
+
+position = Vector2( -15.9091, -198.191 )
+scale = Vector2( 1.4, 1.4 )
+polygon = PoolVector2Array( -3.90302, -72.8062, -10.5305, -70.848, -15.3504, -66.1787, -19.8691, -59.25, -20.9235, -53.6769, -20.9235, -41.9283, -18.1463, -35.1853, -13.8442, -27.7697, -7.66858, -21.2928, 1.82068, -19.0335, 7.24316, -20.9916, 14.1718, -26.7153, 20.3474, -37.4095, 22.6068, -47.5013, 21.703, -58.3463, 15.3768, -66.6306, 11.31, -70.3961, 5.43567, -73.4086, 2.87506, -78.2286, 0.314453, -74.3124 )
+uv = PoolVector2Array(  )
+color = Color( 0.933594, 0.744945, 0.423035, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Eye" type="Polygon2D" parent="TassuP/Face"]
+
+editor/display_folded = true
+position = Vector2( -9.06009, -50.3855 )
+scale = Vector2( 0.6, 0.6 )
+polygon = PoolVector2Array( -12.3737, -58.8616, -16.1382, -56.7579, -19.2385, -53.2148, -19.4599, -51.0003, -18.2419, -46.5714, -14.5881, -45.4642, -8.83057, -45.3535, -3.29443, -47.4572, -1.85504, -51.7754, -2.96228, -55.6507, -4.95526, -58.5294, -8.38766, -59.3045 )
+uv = PoolVector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 9.8438, 52.7102 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="pupil" type="Polygon2D" parent="TassuP/Face/Eye"]
+
+position = Vector2( 11.4716, 52.6287 )
+polygon = PoolVector2Array( -10.7621, -54.8543, -12.4713, -54.366, -13.7736, -52.494, -14.3433, -49.7267, -13.6108, -46.9594, -12.2271, -46.1454, -9.62262, -46.3082, -7.99478, -48.0988, -7.50644, -50.9475, -8.32037, -52.9823, -9.05286, -54.2845 )
+uv = PoolVector2Array(  )
+color = Color( 0, 0, 0, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Eye2" type="Polygon2D" parent="TassuP/Face"]
+
+editor/display_folded = true
+position = Vector2( 9.71054, -49.8947 )
+scale = Vector2( -0.6, 0.6 )
+polygon = PoolVector2Array( -12.3737, -58.8616, -16.1382, -56.7579, -19.2385, -53.2148, -19.4599, -51.0003, -18.2419, -46.5714, -14.5881, -45.4642, -8.83057, -45.3535, -3.29443, -47.4572, -1.85504, -51.7754, -2.96228, -55.6507, -4.95526, -58.5294, -8.38766, -59.3045 )
+uv = PoolVector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 9.8438, 52.7102 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="pupil" type="Polygon2D" parent="TassuP/Face/Eye2"]
+
+position = Vector2( 11.4716, 52.6287 )
+polygon = PoolVector2Array( -10.7621, -54.8543, -12.4713, -54.366, -13.7736, -52.494, -14.3433, -49.7267, -13.6108, -46.9594, -12.2271, -46.1454, -9.62262, -46.3082, -7.99478, -48.0988, -7.50644, -50.9475, -8.32037, -52.9823, -9.05286, -54.2845 )
+uv = PoolVector2Array(  )
+color = Color( 0, 0, 0, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Nose" type="Polygon2D" parent="TassuP/Face"]
+
+position = Vector2( -0.109863, -39.5087 )
+polygon = PoolVector2Array( -3.07645, 0.62793, -1.53387, 2.09702, 0.890137, 2.39084, 3.02036, 2.09702, 4.04874, 0.774841, 3.69046, -0.207855, 3.66901, 0.671509, 2.91833, 1.46509, 1.5242, 1.78683, -0.320343, 1.76538, -1.52145, 1.40076, -2.44373, 0.628632, -2.25067, -0.336548 )
+uv = PoolVector2Array(  )
+color = Color( 0.726562, 0.528827, 0.187317, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Mouth scream" type="Polygon2D" parent="TassuP/Face"]
+
+position = Vector2( -0.109863, -39.5087 )
+polygon = PoolVector2Array( -6.62543, 12.6243, -4.60312, 6.91417, -0.558472, 5.48665, 4.19992, 5.60561, 7.29288, 8.69856, 8.60146, 13.6949, 5.97386, 11.4122, 1.15277, 11.2836, -2.63982, 11.4764 )
+uv = PoolVector2Array(  )
+color = Color( 0, 0, 0, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Visibility" ]
+
+[node name="Mouth closed" type="Polygon2D" parent="TassuP/Face"]
+
+position = Vector2( -1.00978, -39.4444 )
+polygon = PoolVector2Array( -2.12236, 8.56154, 0.127472, 7.27591, 3.21298, 7.34019, 5.33424, 7.98302, 5.46281, 8.69009, 3.14871, 8.11157, 0.256058, 8.24014 )
+uv = PoolVector2Array(  )
+color = Color( 0, 0, 0, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Cover" type="Polygon2D" parent="."]
+
+polygon = PoolVector2Array( 210.964, 226.649, 248.779, 231.06, 262.645, 237.363, 282.392, 242.661, 295.333, 241.299, 323.6, 241.639, 347.78, 247.769, 368.527, 256.27, 391.215, 267.615, 388.694, 280.22, 379.789, 315.677, 378.737, 351.466, 385.053, 384.098, 382.947, 427.255, 385.053, 457.782, 376.632, 479.887, 339.79, 477.782, 305.053, 477.782, 275.579, 484.097, 215.579, 480.94, 180.842, 467.255, 195.579, 438.834, 202.948, 389.361, 196.632, 346.203, 185.053, 287.256, 187.158, 245.15, 197.685, 227.256 )
+uv = PoolVector2Array(  )
+color = Color( 0.488281, 0.488281, 0.488281, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="light" type="Polygon2D" parent="."]
+
+polygon = PoolVector2Array( 563.288, 522.362, 519.838, 195.467, 736.68, 188.099, 705.051, 517.474 )
+uv = PoolVector2Array(  )
+color = Color( 1, 0.75293, 0.0117188, 0.116039 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="PostProcessing" type="ColorRect" parent="."]
+
+material = SubResource( 1 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -878.0
+margin_top = -235.0
+margin_right = 146.0
+margin_bottom = 189.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 1, 1, 1, 1 )
+_sections_unfolded = [ "Material", "Rect", "Size Flags" ]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Fade out" type="ColorRect" parent="."]
+
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -878.0
+margin_top = -235.0
+margin_right = 146.0
+margin_bottom = 189.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 0, 0, 0, 1 )
+_sections_unfolded = [ "Material", "Rect", "Size Flags", "Visibility" ]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+position = Vector2( 512, 300 )
+anchor_mode = 1
+rotating = false
+current = true
+zoom = Vector2( 1, 1 )
+limit_left = -10000000
+limit_top = -10000000
+limit_right = 10000000
+limit_bottom = 10000000
+limit_smoothed = false
+drag_margin_h_enabled = false
+drag_margin_v_enabled = false
+smoothing_enabled = false
+smoothing_speed = 5.0
+drag_margin_left = 0.2
+drag_margin_top = 0.2
+drag_margin_right = 0.2
+drag_margin_bottom = 0.2
+editor_draw_screen = true
+editor_draw_limits = false
+editor_draw_drag_margin = false
+_sections_unfolded = [ "Editor", "Transform" ]
+
+[node name="Text" type="Label" parent="Camera2D"]
+
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -416.0
+margin_top = 107.0
+margin_right = 356.0
+margin_bottom = 228.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 2 )
+align = 1
+valign = 1
+autowrap = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+script = ExtResource( 4 )
+_sections_unfolded = [ "Anchor", "Margin", "Rect", "Size Flags", "custom_fonts" ]
+txt = PoolStringArray( "Aaaarrrghh!!!!    ", "     ", "\?", "", "Phew!", "What a dream!", "", "It was almost like a game!", "Just a bit short.", "Must have been made in a hurry." )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+root_node = NodePath("..")
+"anims/fall asleep" = SubResource( 3 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = "fall asleep"
+
+

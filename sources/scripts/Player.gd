@@ -46,10 +46,12 @@ func _process(delta):
 		get_node("Hotspot").enabled = true
 		get_node("Hotspot newt").enabled = false
 	
-	if(Game.paused || Game.talking):
-		return
 	
 	facing()
+	
+	if(Game.paused || Game.talking):
+		return	
+	
 	if(gravity):
 		
 		target_pos.y = get_global_position().y
