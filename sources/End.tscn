@@ -4,9 +4,8 @@
 [ext_resource path="res://images/Niceland.png" type="Texture" id=2]
 [ext_resource path="res://images/particle.png" type="Texture" id=3]
 [ext_resource path="res://images/fire.png" type="Texture" id=4]
-[ext_resource path="res://Technically, But Not Actually.ttf" type="DynamicFontData" id=5]
-[ext_resource path="res://materials/PostProcessing.material" type="Material" id=6]
-[ext_resource path="res://scripts/CutsceneText.gd" type="Script" id=7]
+[ext_resource path="res://materials/PostProcessing.material" type="Material" id=5]
+[ext_resource path="res://scripts/CutsceneText.gd" type="Script" id=6]
 
 [sub_resource type="Animation" id=1]
 
@@ -227,18 +226,22 @@ anim_offset_random = 0.0
 anim_loop = false
 _sections_unfolded = [ "Angle", "Color", "Emission Shape", "Gravity", "Initial Velocity", "Orbit Velocity", "Radial Accel", "Scale", "Spread" ]
 
-[sub_resource type="DynamicFont" id=14]
+[sub_resource type="DynamicFontData" id=15]
+
+font_path = "res://Technically, But Not Actually.ttf"
+
+[sub_resource type="DynamicFont" id=16]
 
 size = 42
 use_mipmaps = false
 use_filter = false
-font_data = ExtResource( 5 )
+font_data = SubResource( 15 )
 _sections_unfolded = [ "Font", "Settings" ]
 
 [node name="Cutscene_End" type="Node"]
 
 script = ExtResource( 1 )
-done = true
+done = false
 
 [node name="Scenery" type="Node2D" parent="."]
 
@@ -760,7 +763,8 @@ autoplay = "Move TassuP"
 [node name="TassuP" type="Node2D" parent="."]
 
 editor/display_folded = true
-position = Vector2( 522.108, 429.37 )
+position = Vector2( 301.116, 296.257 )
+scale = Vector2( 0.6, 0.6 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="TassuP front" type="Polygon2D" parent="TassuP"]
@@ -2683,34 +2687,9 @@ texture_rotation = 0.0
 invert_enable = false
 invert_border = 100.0
 
-[node name="Text2" type="Label" parent="."]
-
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -441.0
-margin_top = 1.0
-margin_right = 331.0
-margin_bottom = 114.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-size_flags_horizontal = 1
-size_flags_vertical = 4
-custom_fonts/font = SubResource( 14 )
-text = "..."
-align = 1
-valign = 1
-autowrap = true
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "Anchor", "Margin", "Rect", "Size Flags", "Visibility", "custom_fonts" ]
-
 [node name="PostProcessing" type="ColorRect" parent="."]
 
-material = ExtResource( 6 )
+material = ExtResource( 5 )
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -2770,7 +2749,7 @@ rect_clip_content = false
 mouse_filter = 2
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 16 )
 text = "..."
 align = 1
 valign = 1
@@ -2778,8 +2757,8 @@ autowrap = true
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-script = ExtResource( 7 )
+script = ExtResource( 6 )
 _sections_unfolded = [ "Anchor", "Margin", "Rect", "Size Flags", "Visibility", "custom_fonts" ]
-txt = PoolStringArray( "", "That dream was such a throwback.", "I think I\'ll make a game out of it.", "A point and click adventure in such a tight schedule.", "Might be a bad idea, but what the heck.", "I will be short but fun." )
+txt = PoolStringArray( "That dream was such a throwback.", "I think I\'ll make a game out of it.", "", "A point and click adventure in such a tight schedule.", "Might be a bad idea, but what the heck.", "It\'ll be short but fun." )
 
 

@@ -1520,7 +1520,7 @@ tracks/6/keys = {
 render_priority = 0
 shader = ExtResource( 7 )
 shader_param/pixelize = true
-shader_param/dream = 0.456
+shader_param/dream = 0.0
 _sections_unfolded = [ "shader_param" ]
 
 [sub_resource type="DynamicFont" id=13]
@@ -1788,9 +1788,10 @@ tracks/14/keys = {
 
 [node name="Node2D" type="Node2D" parent="."]
 
+editor/display_folded = true
+
 [node name="Sky" type="TextureRect" parent="Node2D"]
 
-modulate = Color( 0, 0, 0, 1 )
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -1995,7 +1996,7 @@ _sections_unfolded = [ "Material", "Process Material", "Textures", "Time" ]
 material = SubResource( 3 )
 position = Vector2( 14.7173, 413.834 )
 rotation = -1.57233
-emitting = true
+emitting = false
 amount = 32
 lifetime = 2.0
 one_shot = false
@@ -2020,7 +2021,7 @@ _sections_unfolded = [ "Material", "Process Material", "Textures", "Time" ]
 material = SubResource( 3 )
 position = Vector2( 947.796, 403.495 )
 rotation = -1.57233
-emitting = true
+emitting = false
 amount = 32
 lifetime = 2.0
 one_shot = false
@@ -2169,7 +2170,7 @@ _sections_unfolded = [ "Material" ]
 material = SubResource( 3 )
 position = Vector2( 659.022, 489.176 )
 rotation = -1.57233
-emitting = true
+emitting = false
 amount = 32
 lifetime = 3.0
 one_shot = false
@@ -2194,7 +2195,7 @@ _sections_unfolded = [ "Material", "Process Material", "Textures", "Time" ]
 material = SubResource( 3 )
 position = Vector2( -120.033, 478.069 )
 rotation = -1.57233
-emitting = true
+emitting = false
 amount = 32
 lifetime = 3.0
 one_shot = false
@@ -2219,7 +2220,7 @@ _sections_unfolded = [ "Material", "Process Material", "Textures", "Time" ]
 material = SubResource( 3 )
 position = Vector2( 1033.48, 495.522 )
 rotation = -1.57233
-emitting = true
+emitting = false
 amount = 32
 lifetime = 3.0
 one_shot = false
@@ -3980,10 +3981,27 @@ invert_enable = false
 invert_border = 100.0
 _sections_unfolded = [ "Transform" ]
 
-[node name="Block" type="Node2D" parent="Node2D"]
+[node name="Block" type="Node2D" parent="Node2D" groups=[
+"Hotspots",
+]]
 
 editor/display_folded = true
 position = Vector2( 745.101, 312.693 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+foot_str = null
+eye_str = PoolStringArray( "That box probably has something cool inside it!", "I don\'t think I can reach it..." )
+hand_str = PoolStringArray( "I can\'t reach it." )
+correct_item = ""
+wrong_str = null
+node_to_trigger = null
+enabled = true
+one_shot = true
+disable_if_newt = false
+enable_if_newt = false
+click_distance = 32.0
 
 [node name="Polygon2D" type="Polygon2D" parent="Node2D/Block"]
 
@@ -4030,23 +4048,9 @@ texture_rotation = 0.0
 invert_enable = false
 invert_border = 100.0
 
-[node name="Polygon2D6" type="Polygon2D" parent="Node2D/Block"]
-
-polygon = PoolVector2Array( -20.7412, -17.6647, -20.4435, -20.0462, -19.3123, -22.6064, -17.7643, -23.7971, -15.2637, -24.5116, -13.1798, -24.6307, -15.74, -23.9162, -17.9429, -22.4278, -19.1337, -20.8202, -19.9077, -19.5104 )
-uv = PoolVector2Array(  )
-color = Color( 1, 1, 1, 1 )
-vertex_colors = PoolColorArray(  )
-offset = Vector2( 0, 0 )
-antialiased = false
-texture = null
-texture_offset = Vector2( 0, 0 )
-texture_scale = Vector2( 1, 1 )
-texture_rotation = 0.0
-invert_enable = false
-invert_border = 100.0
-
 [node name="Polygon2D3" type="Polygon2D" parent="Node2D/Block"]
 
+editor/display_folded = true
 position = Vector2( 1.34901, -0.149902 )
 polygon = PoolVector2Array( -12.9166, -7.98029, -7.3707, -7.53061, -6.77113, -12.9267, -3.77333, -15.3249, 3.42139, -15.3249, 6.11942, -12.9267, 6.2693, -2.88403, 4.47061, -1.08533, -1.52498, -1.08533, -3.77333, 1.01312, -4.22301, 9.55685, 1.17303, 9.70673, 0.573486, 2.96167, 6.56908, 2.6619, 8.96732, 1.4628, 10.6161, -2.28445, 10.0165, -15.0251, 8.36777, -17.7231, 4.02095, -19.8216, -7.3707, -19.3719, -10.3685, -17.5732, -11.8674, -15.0251 )
 uv = PoolVector2Array(  )
@@ -4078,6 +4082,7 @@ invert_border = 100.0
 
 [node name="Polygon2D4" type="Polygon2D" parent="Node2D/Block"]
 
+editor/display_folded = true
 position = Vector2( -1.52588e-05, -1.94858 )
 polygon = PoolVector2Array( -12.9166, -7.98029, -7.3707, -7.53061, -6.77113, -12.9267, -3.77333, -15.3249, 3.42139, -15.3249, 6.11942, -12.9267, 6.2693, -2.88403, 4.47061, -1.08533, -1.52498, -1.08533, -3.77333, 1.01312, -4.22301, 9.55685, 1.17303, 9.70673, 0.573486, 2.96167, 6.56908, 2.6619, 8.96732, 1.4628, 10.6161, -2.28445, 10.0165, -15.0251, 8.36777, -17.7231, 4.02095, -19.8216, -7.3707, -19.3719, -10.3685, -17.5732, -11.8674, -15.0251 )
 uv = PoolVector2Array(  )
@@ -6475,7 +6480,7 @@ position = Vector2( 278, -14 )
 
 script = ExtResource( 12 )
 monolog = PoolStringArray( "There\'s something in the sky..." )
-autostart = true
+autostart = false
 next_event = null
 skippable = false
 
@@ -6483,7 +6488,7 @@ skippable = false
 
 script = ExtResource( 12 )
 monolog = PoolStringArray( "Wait a second.", "Isn\'t that the Space Invaders\?" )
-autostart = true
+autostart = false
 next_event = null
 skippable = false
 
@@ -6491,7 +6496,7 @@ skippable = false
 
 script = ExtResource( 12 )
 monolog = PoolStringArray( "Huh\?!", "Was that an explosion\?" )
-autostart = true
+autostart = false
 next_event = null
 skippable = false
 
@@ -6499,7 +6504,7 @@ skippable = false
 
 script = ExtResource( 12 )
 monolog = PoolStringArray( "They\'re shooting!", "This is not fun anymore!" )
-autostart = true
+autostart = false
 next_event = null
 skippable = false
 
@@ -6507,7 +6512,7 @@ skippable = false
 
 script = ExtResource( 12 )
 monolog = PoolStringArray( "Aaaarrrghh!!!!", "$" )
-autostart = true
+autostart = false
 next_event = NodePath("../../Next level")
 skippable = false
 

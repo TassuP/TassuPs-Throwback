@@ -1,4 +1,4 @@
-extends Area2D
+extends Node2D
 
 export(PoolStringArray) var foot_str
 export(PoolStringArray) var eye_str

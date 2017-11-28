@@ -12,6 +12,8 @@ config_version=3
 
 config/name="TassuP's Throwback"
 run/main_scene="res://Cutscene_Intro.tscn"
+run/disable_stdout=true
+run/disable_stderr=true
 config/icon="res://icon.png"
 
 [autoload]

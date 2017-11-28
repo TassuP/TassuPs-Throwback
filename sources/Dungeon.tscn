@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://scripts/Hotspot.gd" type="Script" id=1]
 [ext_resource path="res://scripts/TriggerAnimation.gd" type="Script" id=2]
@@ -8,10 +8,12 @@
 [ext_resource path="res://scripts/Player.gd" type="Script" id=6]
 [ext_resource path="res://scripts/Cursor.gd" type="Script" id=7]
 [ext_resource path="res://scripts/Attach to.gd" type="Script" id=8]
-[ext_resource path="res://scripts/cam.gd" type="Script" id=9]
-[ext_resource path="res://shaders/dream_shader.shd" type="Shader" id=10]
-[ext_resource path="res://scripts/PauseMenu.gd" type="Script" id=11]
-[ext_resource path="res://scripts/Talk label.gd" type="Script" id=12]
+[ext_resource path="res://sounds/mutagen.ogg" type="AudioStream" id=9]
+[ext_resource path="res://scripts/cam.gd" type="Script" id=10]
+[ext_resource path="res://shaders/dream_shader.shd" type="Shader" id=11]
+[ext_resource path="res://scripts/PauseMenu.gd" type="Script" id=12]
+[ext_resource path="res://scripts/Talk label.gd" type="Script" id=13]
+[ext_resource path="res://sounds/dungeon.ogg" type="AudioStream" id=14]
 
 [sub_resource type="Animation" id=1]
 
@@ -1602,6 +1604,17 @@ tracks/3/keys = {
 "update": 0,
 "values": [ Vector2( 1603.85, -330.48 ), Vector2( 1284.76, 837.248 ) ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("../Mutagen sound:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 
 [sub_resource type="Animation" id=11]
 
@@ -1641,11 +1654,22 @@ tracks/2/keys = {
 "update": 1,
 "values": [ false, true ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("../Mutagen sound:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 
 [sub_resource type="ShaderMaterial" id=12]
 
 render_priority = 0
-shader = ExtResource( 10 )
+shader = ExtResource( 11 )
 shader_param/pixelize = true
 shader_param/dream = 0.5
 _sections_unfolded = [ "shader_param" ]
@@ -1666,7 +1690,7 @@ use_filter = false
 font_data = ExtResource( 5 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[sub_resource type="StyleBoxFlat" id=18]
+[sub_resource type="StyleBoxFlat" id=15]
 
 content_margin_left = -1.0
 content_margin_right = -1.0
@@ -1695,7 +1719,7 @@ anti_aliasing = true
 anti_aliasing_size = 1
 _sections_unfolded = [ "Border Width", "Corner Radius" ]
 
-[sub_resource type="StyleBoxFlat" id=15]
+[sub_resource type="StyleBoxFlat" id=16]
 
 content_margin_left = -1.0
 content_margin_right = -1.0
@@ -1724,7 +1748,7 @@ anti_aliasing = true
 anti_aliasing_size = 1
 _sections_unfolded = [ "Border Width", "Corner Radius" ]
 
-[sub_resource type="DynamicFont" id=16]
+[sub_resource type="DynamicFont" id=17]
 
 size = 24
 use_mipmaps = false
@@ -1732,7 +1756,7 @@ use_filter = false
 font_data = ExtResource( 5 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[sub_resource type="DynamicFont" id=17]
+[sub_resource type="DynamicFont" id=18]
 
 size = 30
 use_mipmaps = false
@@ -3168,7 +3192,7 @@ click_distance = 64.0
 "Hotspots",
 ]]
 
-position = Vector2( 1566.83, -410.349 )
+position = Vector2( 1603.85, -330.48 )
 scale = Vector2( 0.613237, 0.613889 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -3528,6 +3552,7 @@ shape = SubResource( 2 )
 
 [node name="Super Mario room" type="StaticBody2D" parent="Node2D"]
 
+editor/display_folded = true
 position = Vector2( 1304.52, 519.845 )
 input_pickable = false
 collision_layer = 1
@@ -7082,6 +7107,8 @@ invert_border = 100.0
 
 [node name="Puzzles in Mario room" type="Node2D" parent="Node2D"]
 
+editor/display_folded = true
+
 [node name="Pipe" type="Area2D" parent="Node2D/Puzzles in Mario room" groups=[
 "Hotspots",
 ]]
@@ -7291,6 +7318,7 @@ __meta__ = {
 "_edit_group_": true
 }
 newt_mode = false
+gravity = false
 
 [node name="Side" type="Node2D" parent="Node2D/Player"]
 
@@ -10717,8 +10745,17 @@ condition1 = NodePath("../../../Puzzles/Dead newt/Here goes!")
 condition2 = null
 condition3 = null
 
+[node name="Mutagen sound" type="AudioStreamPlayer" parent="Node2D/Mutagen effect"]
+
+stream = ExtResource( 9 )
+volume_db = 0.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
 [node name="Camera2D" type="Camera2D" parent="Node2D"]
 
+editor/display_folded = true
 position = Vector2( 1209.01, 817.496 )
 anchor_mode = 1
 rotating = false
@@ -10740,10 +10777,11 @@ drag_margin_bottom = 0.0
 editor_draw_screen = true
 editor_draw_limits = false
 editor_draw_drag_margin = false
-script = ExtResource( 9 )
+script = ExtResource( 10 )
 _sections_unfolded = [ "Drag Margin", "Limit", "Smoothing", "Transform" ]
 target = NodePath("../Player")
 attached = true
+lock_y_div_x = false
 
 [node name="Control" type="Control" parent="Node2D/Camera2D"]
 
@@ -10845,7 +10883,7 @@ rect_clip_content = false
 mouse_filter = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-script = ExtResource( 11 )
+script = ExtResource( 12 )
 _sections_unfolded = [ "Material", "Rect", "Visibility", "custom_styles" ]
 post_prosessing = NodePath("../PostProsessing")
 bg_node = NodePath("../PauseMenuBG")
@@ -10938,12 +10976,12 @@ rect_clip_content = false
 mouse_filter = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_styles/hover = SubResource( 18 )
-custom_styles/pressed = SubResource( 15 )
-custom_styles/focus = SubResource( 15 )
-custom_styles/disabled = SubResource( 15 )
-custom_styles/normal = SubResource( 15 )
-custom_fonts/font = SubResource( 16 )
+custom_styles/hover = SubResource( 15 )
+custom_styles/pressed = SubResource( 16 )
+custom_styles/focus = SubResource( 16 )
+custom_styles/disabled = SubResource( 16 )
+custom_styles/normal = SubResource( 16 )
+custom_fonts/font = SubResource( 17 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -10967,12 +11005,12 @@ rect_clip_content = false
 mouse_filter = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_styles/hover = SubResource( 18 )
-custom_styles/pressed = SubResource( 15 )
-custom_styles/focus = SubResource( 15 )
-custom_styles/disabled = SubResource( 15 )
-custom_styles/normal = SubResource( 15 )
-custom_fonts/font = SubResource( 16 )
+custom_styles/hover = SubResource( 15 )
+custom_styles/pressed = SubResource( 16 )
+custom_styles/focus = SubResource( 16 )
+custom_styles/disabled = SubResource( 16 )
+custom_styles/normal = SubResource( 16 )
+custom_fonts/font = SubResource( 17 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -10996,15 +11034,23 @@ rect_clip_content = false
 mouse_filter = 2
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 17 )
+custom_fonts/font = SubResource( 18 )
 align = 1
 valign = 1
 autowrap = true
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-script = ExtResource( 12 )
+script = ExtResource( 13 )
 _sections_unfolded = [ "custom_fonts" ]
+
+[node name="Music" type="AudioStreamPlayer" parent="Node2D"]
+
+stream = ExtResource( 14 )
+volume_db = 0.0
+autoplay = true
+mix_target = 0
+bus = "Master"
 
 [node name="Fade In" type="Node2D" parent="."]
 
