@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scripts/Cutscene_Wakeup.gd" type="Script" id=1]
 [ext_resource path="res://shaders/dream_shader.shd" type="Shader" id=2]
 [ext_resource path="res://Technically, But Not Actually.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://scripts/CutsceneText.gd" type="Script" id=4]
+[ext_resource path="res://sounds/dungeon.ogg" type="AudioStream" id=5]
 
 [sub_resource type="ShaderMaterial" id=1]
 
@@ -24,7 +25,7 @@ _sections_unfolded = [ "Font", "Settings" ]
 [sub_resource type="Animation" id=3]
 
 resource_name = "waking up"
-length = 20.0
+length = 22.0
 loop = false
 step = 0.1
 tracks/0/type = "value"
@@ -44,7 +45,7 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 1.4, 6.9, 20 ),
+"times": PoolRealArray( 0, 0.1, 1.4, 6.9, 22 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 512, 300 ), Vector2( 276.417, 212.096 ), Vector2( 276.417, 212.096 ), Vector2( 276.417, 212.096 ), Vector2( 347.345, 238.562 ) ]
@@ -55,7 +56,7 @@ tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.1, 0.3, 1.4, 6.9, 20 ),
+"times": PoolRealArray( 0, 0.1, 0.3, 1.4, 6.9, 22 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ), Vector2( 0.2, 0.2 ), Vector2( 0.2, 0.2 ), Vector2( 0.5, 0.5 ), Vector2( 0.5, 0.5 ), Vector2( 0.650538, 0.650538 ) ]
@@ -66,7 +67,7 @@ tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/keys = {
-"times": PoolRealArray( 0, 20 ),
+"times": PoolRealArray( 0, 22 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
@@ -82,6 +83,28 @@ tracks/4/keys = {
 "update": 1,
 "values": [ true, true, false ]
 }
+tracks/5/type = "value"
+tracks/5/path = NodePath("Fade out:color")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/keys = {
+"times": PoolRealArray( 0, 20, 22 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Music:volume_db")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/keys = {
+"times": PoolRealArray( 0, 4, 17.1, 22 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ -30.0, 0.0, 0.0, -30.0 ]
+}
 
 [node name="Cutscene_Wakeup" type="Node"]
 
@@ -89,6 +112,8 @@ script = ExtResource( 1 )
 done = false
 
 [node name="Scenery" type="Node2D" parent="."]
+
+editor/display_folded = true
 
 [node name="wall" type="Polygon2D" parent="Scenery"]
 
@@ -585,6 +610,7 @@ invert_border = 100.0
 
 [node name="TassuP" type="Node2D" parent="."]
 
+editor/display_folded = true
 position = Vector2( 288.921, 441.384 )
 scale = Vector2( 0.9, 0.9 )
 _sections_unfolded = [ "Transform" ]
@@ -1148,7 +1174,6 @@ __meta__ = {
 
 [node name="Fade out" type="ColorRect" parent="."]
 
-visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -1162,7 +1187,7 @@ rect_clip_content = false
 mouse_filter = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-color = Color( 0, 0, 0, 1 )
+color = Color( 0, 0, 0, 0 )
 _sections_unfolded = [ "Material", "Rect", "Size Flags", "Visibility" ]
 __meta__ = {
 "_edit_lock_": true
@@ -1170,6 +1195,7 @@ __meta__ = {
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
+editor/display_folded = true
 position = Vector2( 512, 300 )
 anchor_mode = 1
 rotating = false
@@ -1229,5 +1255,13 @@ playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
 autoplay = "waking up"
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+
+stream = ExtResource( 5 )
+volume_db = -30.0
+autoplay = true
+mix_target = 0
+bus = "Master"
 
 

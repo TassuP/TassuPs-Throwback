@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://scripts/Spawn.gd" type="Script" id=1]
 [ext_resource path="res://images/fire.png" type="Texture" id=2]
@@ -12,6 +12,12 @@
 [ext_resource path="res://scripts/Talk label.gd" type="Script" id=10]
 [ext_resource path="res://scripts/HotspotEvent.gd" type="Script" id=11]
 [ext_resource path="res://scripts/Monolog.gd" type="Script" id=12]
+[ext_resource path="res://sounds/dungeon.ogg" type="AudioStream" id=13]
+[ext_resource path="res://sounds/intro_1.ogg" type="AudioStream" id=14]
+[ext_resource path="res://sounds/walking.ogg" type="AudioStream" id=15]
+[ext_resource path="res://sounds/flush.ogg" type="AudioStream" id=16]
+[ext_resource path="res://sounds/pipe.ogg" type="AudioStream" id=17]
+[ext_resource path="res://sounds/switch.ogg" type="AudioStream" id=18]
 
 [sub_resource type="Gradient" id=1]
 
@@ -1783,12 +1789,32 @@ tracks/14/keys = {
 "update": 1,
 "values": [ false, true ]
 }
+tracks/15/type = "value"
+tracks/15/path = NodePath("Music:volume_db")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/keys = {
+"times": PoolRealArray( 0, 10.3, 111.1, 114.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ -40.0, -40.0, 0.0, -40.0 ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("Music2:volume_db")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/keys = {
+"times": PoolRealArray( 0, 41.9, 111.1, 114.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ -40.0, -40.0, 0.0, -40.0 ]
+}
 
 [node name="Main" type="Node"]
 
 [node name="Node2D" type="Node2D" parent="."]
-
-editor/display_folded = true
 
 [node name="Sky" type="TextureRect" parent="Node2D"]
 
@@ -2520,6 +2546,7 @@ _sections_unfolded = [ "Transform" ]
 __meta__ = {
 "_edit_group_": true
 }
+walking_snd = NodePath("../../Sounds/Walking")
 newt_mode = false
 gravity = true
 
@@ -6460,6 +6487,8 @@ auto_start = true
 action = 1
 monolog = null
 next_event = null
+sound_fx = null
+sound_fx_after = null
 speed = 1.0
 
 [node name="Next level" type="Node2D" parent="."]
@@ -6470,10 +6499,13 @@ auto_start = false
 action = 10
 monolog = null
 next_event = null
+sound_fx = null
+sound_fx_after = null
 speed = 1.0
 
 [node name="Monolog" type="Node2D" parent="."]
 
+editor/display_folded = true
 position = Vector2( 278, -14 )
 
 [node name="Something in the sky" type="Node2D" parent="Monolog"]
@@ -6527,6 +6559,56 @@ playback/speed = 1.0
 blend_times = [  ]
 autoplay = "SpaceInvadersProgress"
 _sections_unfolded = [ "Playback Options" ]
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+
+stream = ExtResource( 13 )
+volume_db = -40.0
+autoplay = true
+mix_target = 0
+bus = "Master"
+
+[node name="Music2" type="AudioStreamPlayer" parent="."]
+
+stream = ExtResource( 14 )
+volume_db = -40.0
+autoplay = true
+mix_target = 0
+bus = "Master"
+
+[node name="Sounds" type="Node2D" parent="."]
+
+[node name="Walking" type="AudioStreamPlayer" parent="Sounds"]
+
+stream = ExtResource( 15 )
+volume_db = 4.19
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="Flush" type="AudioStreamPlayer" parent="Sounds"]
+
+stream = ExtResource( 16 )
+volume_db = -9.02
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="Pipe" type="AudioStreamPlayer" parent="Sounds"]
+
+stream = ExtResource( 17 )
+volume_db = -8.0
+autoplay = true
+mix_target = 0
+bus = "Master"
+
+[node name="Switch" type="AudioStreamPlayer" parent="Sounds"]
+
+stream = ExtResource( 18 )
+volume_db = 0.0
+autoplay = false
+mix_target = 0
+bus = "Master"
 
 [connection signal="toggled" from="Node2D/Camera2D/Control/PauseMenu/Fullscreen" to="Node2D/Camera2D/Control/PauseMenu" method="toggle_fullscreen"]
 

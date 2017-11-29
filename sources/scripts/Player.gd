@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+export(NodePath) var walking_snd
+
 var walk_spd = 150.0
 var smooth_moves = 0.2
 var move_vec = Vector2(0.0, 0.0)
@@ -31,6 +33,9 @@ func _ready():
 	sz = get_global_scale()
 	target_pos = get_global_position()
 	last_pos = get_global_position()
+	
+	walking_snd = get_node(walking_snd)
+	walking_snd._set_playing(false)
 
 func _process(delta):
 	
@@ -73,6 +78,7 @@ func facing():
 	if(pos != last_pos):
 		if(ani.get_current_animation() != "Walking"):
 			ani.play("Walking")
+			walking_snd._set_playing(true)
 		
 		# Flip X scale
 		if(pos.x > last_pos.x):
@@ -105,6 +111,7 @@ func facing():
 	else:
 		if(ani.get_current_animation() != "Standing"):
 			ani.play("Standing")
+			walking_snd._set_playing(false)
 	
 	last_pos = get_global_position()
 

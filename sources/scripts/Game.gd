@@ -32,6 +32,8 @@ func start_level():
 	cursor = get_node("/root/Main/Node2D/Cursor")
 	player = get_node("/root/Main/Node2D/Player")
 	player_talk_label = get_node("/root/Main/Node2D/Talk label")
+	
+	AudioServer.set_bus_volume_db(0, 0.0)
 
 func _process(delta):
 	

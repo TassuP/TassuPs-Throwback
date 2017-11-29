@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://scripts/Cutscene_Home2.gd" type="Script" id=1]
 [ext_resource path="res://images/Niceland.png" type="Texture" id=2]
@@ -7,6 +7,9 @@
 [ext_resource path="res://materials/PostProcessing.material" type="Material" id=5]
 [ext_resource path="res://Technically, But Not Actually.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://scripts/CutsceneText.gd" type="Script" id=7]
+[ext_resource path="res://sounds/walking.ogg" type="AudioStream" id=8]
+[ext_resource path="res://sounds/fireplace.ogg" type="AudioStream" id=9]
+[ext_resource path="res://sounds/home.ogg" type="AudioStream" id=10]
 
 [sub_resource type="Animation" id=1]
 
@@ -68,6 +71,17 @@ tracks/4/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ false, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Sounds/Walking:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/keys = {
+"times": PoolRealArray( 0, 1.2, 8.5, 9.1, 13.1, 13.7, 21, 22.4, 25, 26, 27.3, 29 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true, false, true, false, true, false, true, false, true, false ]
 }
 
 [sub_resource type="CanvasItemMaterial" id=2]
@@ -253,6 +267,7 @@ done = false
 
 [node name="Scenery" type="Node2D" parent="."]
 
+editor/display_folded = true
 __meta__ = {
 "_edit_lock_": true
 }
@@ -769,8 +784,9 @@ autoplay = "Move TassuP"
 
 [node name="TassuP" type="Node2D" parent="."]
 
-position = Vector2( 382.534, 515.957 )
-scale = Vector2( 1.15, 1.15 )
+editor/display_folded = true
+position = Vector2( 485.722, 389.213 )
+scale = Vector2( 0.9, 0.9 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="TassuP front" type="Polygon2D" parent="TassuP"]
@@ -2787,5 +2803,31 @@ max_lines_visible = -1
 script = ExtResource( 7 )
 _sections_unfolded = [ "Anchor", "Margin", "Rect", "Size Flags", "custom_fonts" ]
 txt = PoolStringArray( "", "And there\'s still time to make something for GitHub Game Off!", "", "I must think of an idea.", "", "What\'s the theme, let\'s see.", "", "Hmm.. ", "\'Throwback\'", "", "Oh geez!", "There\'s gonna be sooo many pixelized retro remakes!", "I\'m tired of those." )
+
+[node name="Sounds" type="Node2D" parent="."]
+
+[node name="Walking" type="AudioStreamPlayer" parent="Sounds"]
+
+stream = ExtResource( 8 )
+volume_db = 0.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="Fireplace" type="AudioStreamPlayer" parent="Sounds"]
+
+stream = ExtResource( 9 )
+volume_db = 0.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="Music" type="AudioStreamPlayer" parent="Sounds"]
+
+stream = ExtResource( 10 )
+volume_db = 0.0
+autoplay = true
+mix_target = 0
+bus = "Master"
 
 

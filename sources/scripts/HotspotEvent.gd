@@ -5,6 +5,8 @@ enum HotspotEventType {walk_here, fade_in, fade_out, game_over, monolog, dream_o
 export(int, "Walk Here", "Fade In", "Fade Out", "Game Over", "Monolog", "Dream On", "Dream Off", "Take", "Remove Item", "Enter Pipe", "Wake Up") var action
 export(PoolStringArray) var monolog
 export(NodePath) var next_event
+export(NodePath) var sound_fx
+export(NodePath) var sound_fx_after
 
 var is_running = false
 var t = 0.0
@@ -21,6 +23,12 @@ func _ready():
 	
 	if(next_event != null):
 		next_event = get_node(next_event)
+		
+	if(sound_fx != null):
+		sound_fx = get_node(sound_fx)
+		
+	if(sound_fx_after != null):
+		sound_fx_after = get_node(sound_fx_after)
 	
 	set_process(false)
 	if(auto_start):
@@ -31,6 +39,9 @@ func run():
 	is_running = true
 	set_process(true)
 	
+	if(sound_fx != null):
+		sound_fx._set_playing(true)
+	
 func stop():
 	has_triggered = true
 	is_running = false
@@ -38,6 +49,9 @@ func stop():
 	Game.event_running = false
 	if(next_event != null):
 		next_event.run()
+		
+	if(sound_fx_after != null):
+		sound_fx_after._set_playing(true)
 	
 func after_talk():
 	stop()
@@ -77,6 +91,8 @@ func _process(delta):
 				var c = fader.get_frame_color()
 				c.a = clamp(t, 0.0, 1.0)
 				fader.set_frame_color(c)
+				
+				AudioServer.set_bus_volume_db(0, - t * 40.0)
 				
 		# Game Over
 		if(action == HotspotEventType.game_over):

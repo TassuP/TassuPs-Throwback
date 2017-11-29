@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://scripts/Cutscene_Home.gd" type="Script" id=1]
 [ext_resource path="res://images/particle.png" type="Texture" id=2]
@@ -7,6 +7,10 @@
 [ext_resource path="res://materials/PostProcessing.material" type="Material" id=5]
 [ext_resource path="res://Technically, But Not Actually.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://scripts/CutsceneText.gd" type="Script" id=7]
+[ext_resource path="res://sounds/fireplace.ogg" type="AudioStream" id=8]
+[ext_resource path="res://sounds/keyboard.ogg" type="AudioStream" id=9]
+[ext_resource path="res://sounds/fanfare.ogg" type="AudioStream" id=10]
+[ext_resource path="res://sounds/walking.ogg" type="AudioStream" id=11]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 
@@ -355,6 +359,28 @@ tracks/14/keys = {
 "update": 1,
 "values": [ false, true ]
 }
+tracks/15/type = "value"
+tracks/15/path = NodePath("Sounds/Fanfare:playing")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/keys = {
+"times": PoolRealArray( 0, 16.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("Sounds/Walking:playing")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/keys = {
+"times": PoolRealArray( 0, 14.3, 17.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
 
 [node name="Cutscene_Home" type="Node"]
 
@@ -363,6 +389,7 @@ done = false
 
 [node name="Scenery" type="Node2D" parent="."]
 
+editor/display_folded = true
 _sections_unfolded = [ "Transform" ]
 
 [node name="Back wall" type="Polygon2D" parent="Scenery"]
@@ -988,6 +1015,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Table" type="Polygon2D" parent="Scenery"]
 
+editor/display_folded = true
 position = Vector2( -206.938, 402.394 )
 scale = Vector2( 1.3, 1.3 )
 polygon = PoolVector2Array( -457.873, 386.652, -584.52, 461.373, -583.158, 484.531, -536.563, 484.466, -547.535, 623.993, -510.615, 623.993, -503.583, 485.105, -160.756, 483.346, -160.756, 631.026, -122.078, 631.026, -129.862, 484.524, -93.3909, 484.419, -90.8475, 463.637, -176.579, 381.377 )
@@ -2431,6 +2459,8 @@ invert_border = 100.0
 
 [node name="Posters" type="Node" parent="."]
 
+editor/display_folded = true
+
 [node name="Blender" type="Polygon2D" parent="Posters"]
 
 editor/display_folded = true
@@ -2854,5 +2884,39 @@ playback/speed = 1.0
 blend_times = [  ]
 autoplay = "Camera move"
 _sections_unfolded = [ "Playback Options", "playback" ]
+
+[node name="Sounds" type="Node2D" parent="."]
+
+[node name="Fireplace" type="AudioStreamPlayer" parent="Sounds"]
+
+stream = ExtResource( 8 )
+volume_db = 0.0
+autoplay = true
+mix_target = 0
+bus = "Master"
+
+[node name="Keyboard" type="AudioStreamPlayer" parent="Sounds"]
+
+stream = ExtResource( 9 )
+volume_db = 0.0
+autoplay = true
+mix_target = 0
+bus = "Master"
+
+[node name="Fanfare" type="AudioStreamPlayer" parent="Sounds"]
+
+stream = ExtResource( 10 )
+volume_db = -16.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="Walking" type="AudioStreamPlayer" parent="Sounds"]
+
+stream = ExtResource( 11 )
+volume_db = 0.0
+autoplay = false
+mix_target = 0
+bus = "Master"
 
 

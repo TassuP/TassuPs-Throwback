@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://scripts/Hotspot.gd" type="Script" id=1]
 [ext_resource path="res://scripts/TriggerAnimation.gd" type="Script" id=2]
@@ -14,6 +14,10 @@
 [ext_resource path="res://scripts/PauseMenu.gd" type="Script" id=12]
 [ext_resource path="res://scripts/Talk label.gd" type="Script" id=13]
 [ext_resource path="res://sounds/dungeon.ogg" type="AudioStream" id=14]
+[ext_resource path="res://sounds/walking.ogg" type="AudioStream" id=15]
+[ext_resource path="res://sounds/flush.ogg" type="AudioStream" id=16]
+[ext_resource path="res://sounds/pipe.ogg" type="AudioStream" id=17]
+[ext_resource path="res://sounds/switch.ogg" type="AudioStream" id=18]
 
 [sub_resource type="Animation" id=1]
 
@@ -97,6 +101,17 @@ tracks/6/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ), Vector2( 0.7, 0.7 ), Vector2( 0.7, 0.7 ), Vector2( 1, 1 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("../../../Sounds/Flush:playing")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.1, 4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
 }
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -1821,7 +1836,6 @@ __meta__ = {
 
 [node name="Floor" type="Polygon2D" parent="Node2D/Nethack room/Staircase room"]
 
-editor/display_folded = true
 polygon = PoolVector2Array( 211.839, 10.333, 75.3479, 7.52601, 68.6813, 13.4909, 66.9269, 113.14, 73.5936, 120.859, 211.488, 121.21, 221.313, 112.087, 222.015, 18.4032 )
 uv = PoolVector2Array(  )
 color = Color( 0, 0, 0, 1 )
@@ -2112,7 +2126,6 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Floor" type="Polygon2D" parent="Node2D/Nethack room/Turtle room"]
 
-editor/display_folded = true
 polygon = PoolVector2Array( 270.277, -26.6347, 39.514, -29.3701, 35.2271, -23.94, 36.9278, 153.081, 44.6471, 160.45, 270.881, 159.209, 274.998, 155.726, 280.279, -17.4893 )
 uv = PoolVector2Array(  )
 color = Color( 0, 0, 0, 1 )
@@ -2852,7 +2865,6 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Floor" type="Polygon2D" parent="Node2D/Nethack room/Corridor"]
 
-editor/display_folded = true
 polygon = PoolVector2Array( 120.858, 119.139, 126.91, 124.26, 127.22, 242.826, 127.107, 368.715, 120.556, 373.872, 170.121, 375.127, 164.268, 368.855, 164.825, 267.826, 169.917, 261.411, 472.998, 263.923, 480.447, 271.139, 483.882, 209.356, 474.383, 222.339, 169.122, 213.679, 164.356, 210.417, 163.074, 124.999, 168.504, 119.261 )
 uv = PoolVector2Array(  )
 color = Color( 0, 0, 0, 1 )
@@ -3119,6 +3131,7 @@ click_distance = 64.0
 "Hotspots",
 ]]
 
+editor/display_folded = true
 position = Vector2( 1279.17, 836.528 )
 scale = Vector2( 0.613237, 0.613889 )
 input_pickable = true
@@ -3192,6 +3205,7 @@ click_distance = 64.0
 "Hotspots",
 ]]
 
+editor/display_folded = true
 position = Vector2( 1603.85, -330.48 )
 scale = Vector2( 0.613237, 0.613889 )
 input_pickable = true
@@ -3325,6 +3339,7 @@ _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="Water" type="Polygon2D" parent="Node2D/Nethack room"]
 
+editor/display_folded = true
 position = Vector2( 1299.17, 977.084 )
 scale = Vector2( 3, 3 )
 polygon = PoolVector2Array( -17.8085, -23.3667, -21.1389, -21.0557, -22.0226, -19.6284, -19.9835, -18.133, -19.9835, -14.8705, -23.7218, -7.12207, -27.4601, -5.21896, -31.0624, -8.1416, -34.8007, -4.47128, -34.3929, -2.36426, -33.5773, 2.46155, -33.6225, 5.57578, -39.1467, 9.04633, -44.6543, 10.3815, -50.4236, 20.7398, -49.4225, 52.735, 11.1519, 53.0772, 9.62936, 18.0622, 6.13284, 16.0993, 6.19421, 13.2162, 6.37827, 8.30887, 12.1777, 5.78079, 15.4402, 1.70264, 17.0034, -4.21066, 14.6245, -7.94894, 14.8285, -10.056, 15.994, -15.2666, 20.5946, -21.1554, 20.9627, -22.3822 )
@@ -3412,6 +3427,7 @@ condition3 = null
 
 [node name="Ravine2" type="Node2D" parent="Node2D/Nethack room"]
 
+editor/display_folded = true
 position = Vector2( 1299.17, 837.084 )
 scale = Vector2( 3, 3 )
 _sections_unfolded = [ "Transform", "Visibility" ]
@@ -3530,6 +3546,7 @@ _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="Back to human" type="Area2D" parent="Node2D/Nethack room"]
 
+editor/display_folded = true
 position = Vector2( 1557.46, 800.765 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -3632,8 +3649,6 @@ invert_border = 100.0
 
 [node name="Puzzles" type="Node2D" parent="Node2D"]
 
-editor/display_folded = true
-
 [node name="Staircase up" type="Area2D" parent="Node2D/Puzzles" groups=[
 "Hotspots",
 ]]
@@ -3672,6 +3687,8 @@ auto_start = false
 action = 0
 monolog = null
 next_event = NodePath("../Fade Out")
+sound_fx = null
+sound_fx_after = null
 speed = 1.0
 
 [node name="Fade Out" type="Node2D" parent="Node2D/Puzzles/Staircase up"]
@@ -3682,6 +3699,8 @@ auto_start = false
 action = 2
 monolog = null
 next_event = NodePath("../Game Over")
+sound_fx = null
+sound_fx_after = null
 speed = 1.0
 
 [node name="Game Over" type="Node2D" parent="Node2D/Puzzles/Staircase up"]
@@ -3692,6 +3711,8 @@ auto_start = false
 action = 3
 monolog = null
 next_event = null
+sound_fx = null
+sound_fx_after = null
 speed = 1.0
 
 [node name="Staircase up2" type="Polygon2D" parent="Node2D/Puzzles/Staircase up"]
@@ -4003,7 +4024,6 @@ _sections_unfolded = [ "Transform" ]
 "Hotspots",
 ]]
 
-editor/display_folded = true
 position = Vector2( 844.434, 1292.29 )
 scale = Vector2( 0.930939, 0.911645 )
 input_pickable = true
@@ -4040,19 +4060,15 @@ auto_start = false
 action = 0
 monolog = null
 next_event = NodePath("../Turtles/Remove turtles")
+sound_fx = null
+sound_fx_after = null
 speed = 1.0
 
 [node name="Turtles" type="Node2D" parent="Node2D/Puzzles/Water tank"]
 
 position = Vector2( -126.774, 94.2203 )
 scale = Vector2( 1.08628, 1.08494 )
-script = ExtResource( 4 )
 _sections_unfolded = [ "Transform" ]
-auto_start = false
-action = 8
-monolog = null
-next_event = null
-speed = 1.0
 
 [node name="Remove turtles" type="Node2D" parent="Node2D/Puzzles/Water tank/Turtles"]
 
@@ -4062,6 +4078,8 @@ auto_start = false
 action = 8
 monolog = null
 next_event = NodePath("../../../Water tank powered")
+sound_fx = NodePath("../../../../../Sounds/Switch")
+sound_fx_after = null
 speed = 1.0
 
 [node name="Water tank powered" type="Area2D" parent="Node2D/Puzzles" groups=[
@@ -5254,6 +5272,8 @@ auto_start = false
 action = 0
 monolog = null
 next_event = NodePath("../../Valve is open")
+sound_fx = null
+sound_fx_after = NodePath("../../../../Sounds/Switch")
 speed = 1.0
 
 [node name="Valve is open" type="Area2D" parent="Node2D/Puzzles" groups=[
@@ -5352,6 +5372,8 @@ auto_start = false
 action = 0
 monolog = null
 next_event = NodePath("../Here goes!")
+sound_fx = null
+sound_fx_after = null
 speed = 1.0
 
 [node name="Here goes!" type="Node2D" parent="Node2D/Puzzles/Dead newt"]
@@ -5364,6 +5386,8 @@ auto_start = false
 action = 4
 monolog = PoolStringArray( "Here goes!", "$" )
 next_event = NodePath("../Mutagen/Remove Item")
+sound_fx = null
+sound_fx_after = null
 speed = 1.0
 
 [node name="Mutagen" type="Node2D" parent="Node2D/Puzzles/Dead newt"]
@@ -5380,13 +5404,14 @@ auto_start = false
 action = 8
 monolog = null
 next_event = null
+sound_fx = null
+sound_fx_after = null
 speed = 1.0
 
 [node name="Jojo" type="Area2D" parent="Node2D/Puzzles" groups=[
 "Hotspots",
 ]]
 
-editor/display_folded = true
 position = Vector2( 1030.88, 682.052 )
 rotation = 0.814763
 scale = Vector2( 0.930939, 0.911645 )
@@ -5423,6 +5448,8 @@ auto_start = false
 action = 7
 monolog = null
 next_event = NodePath("../../Valve")
+sound_fx = null
+sound_fx_after = NodePath("../../../../Sounds/Switch")
 speed = 1.0
 
 [node name="Polygon2D" type="Polygon2D" parent="Node2D/Puzzles/Jojo"]
@@ -5702,7 +5729,6 @@ invert_border = 100.0
 "Hotspots",
 ]]
 
-editor/display_folded = true
 position = Vector2( 571.551, 1458.16 )
 scale = Vector2( 0.930939, 0.911645 )
 input_pickable = true
@@ -5948,13 +5974,14 @@ auto_start = false
 action = 7
 monolog = null
 next_event = null
+sound_fx = null
+sound_fx_after = NodePath("../../../../Sounds/Switch")
 speed = 1.0
 
 [node name="Turtles" type="Area2D" parent="Node2D/Puzzles" groups=[
 "Hotspots",
 ]]
 
-editor/display_folded = true
 position = Vector2( 319.524, 1555.54 )
 scale = Vector2( 0.930939, 0.911645 )
 input_pickable = true
@@ -5990,6 +6017,8 @@ auto_start = false
 action = 7
 monolog = null
 next_event = null
+sound_fx = null
+sound_fx_after = NodePath("../../../../Sounds/Switch")
 speed = 1.0
 
 [node name="Michelangelo" type="Node2D" parent="Node2D/Puzzles/Turtles"]
@@ -7113,6 +7142,7 @@ editor/display_folded = true
 "Hotspots",
 ]]
 
+editor/display_folded = true
 position = Vector2( 1791.97, 779.161 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -7146,6 +7176,8 @@ auto_start = false
 action = 0
 monolog = null
 next_event = NodePath("../Fade Out")
+sound_fx = null
+sound_fx_after = null
 speed = 1.0
 
 [node name="Fade Out" type="Node2D" parent="Node2D/Puzzles in Mario room/Pipe"]
@@ -7156,6 +7188,8 @@ auto_start = false
 action = 2
 monolog = null
 next_event = NodePath("../Next level")
+sound_fx = NodePath("../../../../Sounds/Pipe")
+sound_fx_after = null
 speed = 1.0
 
 [node name="Next level" type="Node2D" parent="Node2D/Puzzles in Mario room/Pipe"]
@@ -7166,10 +7200,13 @@ auto_start = false
 action = 9
 monolog = null
 next_event = null
+sound_fx = null
+sound_fx_after = null
 speed = 1.0
 
 [node name="Pipe5" type="Polygon2D" parent="Node2D/Puzzles in Mario room/Pipe"]
 
+editor/display_folded = true
 position = Vector2( -74.1136, 9.13983 )
 scale = Vector2( 2, 2 )
 polygon = PoolVector2Array( 69.1219, -50.2807, 103.839, -52.5449, 113.65, -54.809, 119.31, -60.8466, 122.706, -74.4313, 123.083, -100.469, 124.215, -208.392, 187.979, -207.982, 190.5, -57.9822, 184.828, -23.3185, 184.8, -23.3185, 174.114, -1.89008, 156.467, 13.2359, 128.891, 24.0125, 115.06, 27.3934, 66.1904, 31.6964, 80.9436, 13.2549, 85.2466, -15.6366, 78.4847, -40.2252 )
@@ -7317,6 +7354,7 @@ _sections_unfolded = [ "Transform" ]
 __meta__ = {
 "_edit_group_": true
 }
+walking_snd = NodePath("../../Sounds/Walking")
 newt_mode = false
 gravity = false
 
@@ -10748,7 +10786,7 @@ condition3 = null
 [node name="Mutagen sound" type="AudioStreamPlayer" parent="Node2D/Mutagen effect"]
 
 stream = ExtResource( 9 )
-volume_db = 0.0
+volume_db = -12.0
 autoplay = false
 mix_target = 0
 bus = "Master"
@@ -11060,6 +11098,8 @@ auto_start = true
 action = 1
 monolog = null
 next_event = NodePath("../Starting monolog")
+sound_fx = null
+sound_fx_after = null
 speed = 1.0
 
 [node name="Dream Off" type="Node2D" parent="."]
@@ -11070,6 +11110,8 @@ auto_start = true
 action = 6
 monolog = null
 next_event = null
+sound_fx = null
+sound_fx_after = null
 speed = 1.0
 
 [node name="Starting monolog" type="Node2D" parent="."]
@@ -11080,7 +11122,43 @@ auto_start = false
 action = 4
 monolog = PoolStringArray( "", "Whoa!!!", "What happened\?!     ", "Am I dreaming\?     ", "Just look at all those pixels!", "Could you turn them off please\?", "Press ESC and uncheck the Ugly Pixels effect." )
 next_event = null
+sound_fx = null
+sound_fx_after = null
 speed = 1.0
+
+[node name="Sounds" type="Node2D" parent="."]
+
+[node name="Walking" type="AudioStreamPlayer" parent="Sounds"]
+
+stream = ExtResource( 15 )
+volume_db = 4.19
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="Flush" type="AudioStreamPlayer" parent="Sounds"]
+
+stream = ExtResource( 16 )
+volume_db = -9.02
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="Pipe" type="AudioStreamPlayer" parent="Sounds"]
+
+stream = ExtResource( 17 )
+volume_db = 0.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="Switch" type="AudioStreamPlayer" parent="Sounds"]
+
+stream = ExtResource( 18 )
+volume_db = 0.0
+autoplay = false
+mix_target = 0
+bus = "Master"
 
 [connection signal="body_entered" from="Node2D/Nethack room/Back to human" to="Node2D/Nethack room/Back to human" method="_on_player_entered"]
 
