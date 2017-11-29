@@ -111,6 +111,8 @@ func choose_cursor():
 		
 	# Choose an action
 	else:
+		Inventory.deselect_item()
+		
 		if(is_over_hotspot):
 			hand_cant.set_visible(false)
 			eye_cant.set_visible(false)

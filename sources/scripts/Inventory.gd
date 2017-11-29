@@ -18,3 +18,6 @@ func select_item(name_str):
 	if(selected_item != name_str):
 		print("Selected item ", name_str)
 	selected_item = name_str
+	
+func deselect_item():
+	selected_item = null

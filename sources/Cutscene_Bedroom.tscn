@@ -1107,7 +1107,7 @@ playback/speed = 1.0
 blend_times = [  ]
 autoplay = "fall asleep"
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="Music" type="AudioStreamPlayer" parent="."]
 
 stream = ExtResource( 5 )
 volume_db = 0.0

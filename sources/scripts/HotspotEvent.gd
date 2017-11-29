@@ -39,6 +39,8 @@ func run():
 	is_running = true
 	set_process(true)
 	
+	print(get_name())
+	
 	if(sound_fx != null):
 		sound_fx._set_playing(true)
 	
@@ -66,6 +68,10 @@ func _process(delta):
 		# Walk Here
 		if(action == HotspotEventType.walk_here):
 			var here = get_global_position()
+			
+			if(Game.player.gravity == true):
+				here.y = Game.player.get_global_position().y
+			
 			Game.player.target_pos = here
 			if(Game.player.get_global_position().distance_to(here) <= 10.0):
 				stop()
@@ -126,6 +132,10 @@ func _process(delta):
 		# Take
 		if(action == HotspotEventType.take):
 			var here = get_global_position()
+			
+			if(Game.player.gravity == true):
+				here.y = Game.player.get_global_position().y
+			
 			Game.player.target_pos = here
 			if(Game.player.get_global_position().distance_to(here) <= 10.0):
 				stop()

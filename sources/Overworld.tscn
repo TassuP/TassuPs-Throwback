@@ -1,23 +1,26 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://scripts/Spawn.gd" type="Script" id=1]
 [ext_resource path="res://images/fire.png" type="Texture" id=2]
 [ext_resource path="res://scripts/Player.gd" type="Script" id=3]
 [ext_resource path="res://scripts/Hotspot.gd" type="Script" id=4]
-[ext_resource path="res://scripts/Cursor.gd" type="Script" id=5]
-[ext_resource path="res://scripts/cam.gd" type="Script" id=6]
-[ext_resource path="res://shaders/dream_shader.shd" type="Shader" id=7]
-[ext_resource path="res://scripts/PauseMenu.gd" type="Script" id=8]
-[ext_resource path="res://Technically, But Not Actually.ttf" type="DynamicFontData" id=9]
-[ext_resource path="res://scripts/Talk label.gd" type="Script" id=10]
-[ext_resource path="res://scripts/HotspotEvent.gd" type="Script" id=11]
-[ext_resource path="res://scripts/Monolog.gd" type="Script" id=12]
-[ext_resource path="res://sounds/dungeon.ogg" type="AudioStream" id=13]
-[ext_resource path="res://sounds/intro_1.ogg" type="AudioStream" id=14]
-[ext_resource path="res://sounds/walking.ogg" type="AudioStream" id=15]
-[ext_resource path="res://sounds/flush.ogg" type="AudioStream" id=16]
-[ext_resource path="res://sounds/pipe.ogg" type="AudioStream" id=17]
-[ext_resource path="res://sounds/switch.ogg" type="AudioStream" id=18]
+[ext_resource path="res://images/particle.png" type="Texture" id=5]
+[ext_resource path="res://scripts/ZapperParty.gd" type="Script" id=6]
+[ext_resource path="res://scripts/HotspotEvent.gd" type="Script" id=7]
+[ext_resource path="res://scripts/TriggerAnimation.gd" type="Script" id=8]
+[ext_resource path="res://scripts/Cursor.gd" type="Script" id=9]
+[ext_resource path="res://scripts/cam.gd" type="Script" id=10]
+[ext_resource path="res://shaders/dream_shader.shd" type="Shader" id=11]
+[ext_resource path="res://scripts/PauseMenu.gd" type="Script" id=12]
+[ext_resource path="res://Technically, But Not Actually.ttf" type="DynamicFontData" id=13]
+[ext_resource path="res://scripts/Talk label.gd" type="Script" id=14]
+[ext_resource path="res://scripts/Monolog.gd" type="Script" id=15]
+[ext_resource path="res://sounds/dungeon.ogg" type="AudioStream" id=16]
+[ext_resource path="res://sounds/intro_1.ogg" type="AudioStream" id=17]
+[ext_resource path="res://sounds/walking.ogg" type="AudioStream" id=18]
+[ext_resource path="res://sounds/flush.ogg" type="AudioStream" id=19]
+[ext_resource path="res://sounds/pipe.ogg" type="AudioStream" id=20]
+[ext_resource path="res://sounds/switch.ogg" type="AudioStream" id=21]
 
 [sub_resource type="Gradient" id=1]
 
@@ -32,13 +35,13 @@ width = 256
 [sub_resource type="CanvasItemMaterial" id=3]
 
 render_priority = 0
-blend_mode = 1
+blend_mode = 0
 light_mode = 1
 
 [sub_resource type="Gradient" id=4]
 
 offsets = PoolRealArray( 0, 0.0414201, 0.0650888, 0.142012, 1 )
-colors = PoolColorArray( 1, 0, 0, 0, 1, 0.230937, 0.0479008, 0.408859, 1, 0.456084, 0.0591716, 0.430941, 1, 0.960938, 0, 0.0220784, 1, 1, 1, 0 )
+colors = PoolColorArray( 1, 0, 0, 0, 1, 0.230937, 0.0479008, 0.408859, 1, 0.456084, 0.0591716, 0.442, 1, 0.960938, 0, 0.0220784, 1, 1, 1, 0 )
 
 [sub_resource type="GradientTexture" id=5]
 
@@ -53,10 +56,10 @@ emission_shape = 0
 flag_align_y = false
 flag_rotate_y = false
 flag_disable_z = true
-spread = 90.0
+spread = 180.0
 flatness = 0.0
-gravity = Vector3( -98, 0, 0 )
-initial_velocity = 100.0
+gravity = Vector3( 0, -100, 0 )
+initial_velocity = 30.0
 initial_velocity_random = 1.0
 angular_velocity = 100.0
 angular_velocity_random = 1.0
@@ -72,7 +75,7 @@ damping = 0.0
 damping_random = 0.0
 angle = 0.0
 angle_random = 0.0
-scale = 1.0
+scale = 2.0
 scale_random = 0.5
 color_ramp = SubResource( 5 )
 hue_variation = 0.0
@@ -82,7 +85,7 @@ anim_speed_random = 0.0
 anim_offset = 0.0
 anim_offset_random = 0.0
 anim_loop = false
-_sections_unfolded = [ "Angular Velocity", "Color", "Gravity", "Initial Velocity", "Scale", "Spread" ]
+_sections_unfolded = [ "Angular Velocity", "Color", "Flags", "Gravity", "Initial Velocity", "Scale", "Spread" ]
 
 [sub_resource type="ParticlesMaterial" id=7]
 
@@ -1438,6 +1441,134 @@ tracks/58/keys = {
 "values": [ Vector2( 0.594536, 2.81969 ), Vector2( 0.594536, 2.81969 ) ]
 }
 
+[sub_resource type="CanvasItemMaterial" id=21]
+
+render_priority = 0
+blend_mode = 1
+light_mode = 0
+
+[sub_resource type="Gradient" id=23]
+
+offsets = PoolRealArray( 0, 0.0366795, 0.119691, 0.247104, 0.476834, 1 )
+colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0.491228, 1, 1, 1, 0.08565, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=24]
+
+gradient = SubResource( 23 )
+width = 2048
+
+[sub_resource type="ParticlesMaterial" id=22]
+
+render_priority = 0
+trail_divisor = 1
+emission_shape = 0
+flag_align_y = false
+flag_rotate_y = false
+flag_disable_z = true
+spread = 0.0
+flatness = 0.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 1000.0
+initial_velocity_random = 0.0
+angular_velocity = 0.0
+angular_velocity_random = 0.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 0.0
+linear_accel_random = 0.0
+radial_accel = 0.0
+radial_accel_random = 0.0
+tangential_accel = 0.0
+tangential_accel_random = 0.0
+damping = 0.0
+damping_random = 0.0
+angle = 0.0
+angle_random = 0.0
+scale = 0.4
+scale_random = 0.3
+color_ramp = SubResource( 24 )
+hue_variation = 0.0
+hue_variation_random = 0.0
+anim_speed = 0.0
+anim_speed_random = 0.0
+anim_offset = 0.0
+anim_offset_random = 0.0
+anim_loop = false
+_sections_unfolded = [ "Color", "Gravity", "Initial Velocity", "Scale" ]
+
+[sub_resource type="Animation" id=20]
+
+resource_name = "Player jumps"
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Player:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 748.344, 473.388 ), Vector2( 749.741, 417.521 ), Vector2( 745.551, 462.913 ), Vector2( 748.344, 473.388 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 745.101, 312.693 ), Vector2( 745.101, 312.693 ), Vector2( 745.101, 280.569 ), Vector2( 745.101, 312.693 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Polygon2D/done:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Zapper:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -0.761658, -5.01721 ), Vector2( -0.761658, -5.01721 ), Vector2( -0.761658, -5.01721 ), Vector2( -6.73877, -68.9798 ), Vector2( -41.9489, -108.359 ), Vector2( -88.3757, -114.55 ), Vector2( -136.35, -95.979 ), Vector2( -165.754, -44.1357 ), Vector2( -180.456, 39.4325 ), Vector2( -191.288, 162.464 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Zapper:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.2, 0.3, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.4, 0.4 ), Vector2( 0.4, 0.4 ), Vector2( 0.4, 0.4 ), Vector2( 0.8, 0.8 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Zapper:enabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
 [sub_resource type="Animation" id=11]
 
 length = 2.0
@@ -1524,7 +1655,7 @@ tracks/6/keys = {
 [sub_resource type="ShaderMaterial" id=12]
 
 render_priority = 0
-shader = ExtResource( 7 )
+shader = ExtResource( 11 )
 shader_param/pixelize = true
 shader_param/dream = 0.0
 _sections_unfolded = [ "shader_param" ]
@@ -1534,7 +1665,7 @@ _sections_unfolded = [ "shader_param" ]
 size = 24
 use_mipmaps = false
 use_filter = false
-font_data = ExtResource( 9 )
+font_data = ExtResource( 13 )
 _sections_unfolded = [ "Font", "Settings" ]
 
 [sub_resource type="DynamicFont" id=14]
@@ -1542,7 +1673,7 @@ _sections_unfolded = [ "Font", "Settings" ]
 size = 42
 use_mipmaps = false
 use_filter = false
-font_data = ExtResource( 9 )
+font_data = ExtResource( 13 )
 _sections_unfolded = [ "Font", "Settings" ]
 
 [sub_resource type="StyleBoxFlat" id=15]
@@ -1608,7 +1739,7 @@ _sections_unfolded = [ "Border Width", "Corner Radius" ]
 size = 24
 use_mipmaps = false
 use_filter = false
-font_data = ExtResource( 9 )
+font_data = ExtResource( 13 )
 _sections_unfolded = [ "Font", "Settings" ]
 
 [sub_resource type="DynamicFont" id=18]
@@ -1616,7 +1747,7 @@ _sections_unfolded = [ "Font", "Settings" ]
 size = 30
 use_mipmaps = false
 use_filter = true
-font_data = ExtResource( 9 )
+font_data = ExtResource( 13 )
 _sections_unfolded = [ "Font", "Settings" ]
 
 [sub_resource type="Animation" id=19]
@@ -2535,8 +2666,7 @@ polygon = PoolVector2Array( 98.6571, 295.42, 323.053, 296.967, 336.981, 330.24, 
 
 [node name="Player" type="KinematicBody2D" parent="Node2D"]
 
-editor/display_folded = true
-position = Vector2( 218.585, 269.766 )
+position = Vector2( 216.784, 263.902 )
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
@@ -3891,6 +4021,32 @@ disable_if_newt = false
 enable_if_newt = false
 click_distance = 64.0
 
+[node name="ZapperParty" type="Particles2D" parent="Node2D/Player"]
+
+modulate = Color( 1, 0, 0.1875, 1 )
+material = SubResource( 21 )
+position = Vector2( -2.95215, -48.6507 )
+emitting = false
+amount = 64
+lifetime = 0.5
+one_shot = false
+preprocess = 0.0
+speed_scale = 5.0
+explosiveness = 0.0
+randomness = 0.0
+fixed_fps = 0
+fract_delta = true
+visibility_rect = Rect2( -100, -100, 200, 200 )
+local_coords = false
+draw_order = 0
+process_material = SubResource( 22 )
+texture = ExtResource( 5 )
+normal_map = null
+h_frames = 1
+v_frames = 1
+script = ExtResource( 6 )
+_sections_unfolded = [ "Drawing", "Material", "Process Material", "Textures", "Time", "Visibility" ]
+
 [node name="Scenery FG" type="Node2D" parent="Node2D"]
 
 editor/display_folded = true
@@ -4015,23 +4171,116 @@ _sections_unfolded = [ "Transform" ]
 editor/display_folded = true
 position = Vector2( 745.101, 312.693 )
 script = ExtResource( 4 )
+_sections_unfolded = [ "Transform" ]
 __meta__ = {
 "_edit_group_": true
 }
 foot_str = null
-eye_str = PoolStringArray( "That box probably has something cool inside it!", "I don\'t think I can reach it..." )
-hand_str = PoolStringArray( "I can\'t reach it." )
+eye_str = PoolStringArray( "That box probably has something cool inside it!" )
+hand_str = PoolStringArray( "$" )
 correct_item = ""
 wrong_str = null
-node_to_trigger = null
+node_to_trigger = NodePath("Walk here")
 enabled = true
-one_shot = true
+one_shot = false
 disable_if_newt = false
 enable_if_newt = false
 click_distance = 32.0
 
+[node name="Zapper" type="Polygon2D" parent="Node2D/Block" groups=[
+"Hotspots",
+]]
+
+editor/display_folded = true
+position = Vector2( -0.761658, -5.01721 )
+scale = Vector2( 0.4, 0.4 )
+polygon = PoolVector2Array( -41.2685, -11.8534, 11.5969, -14.3122, 14.363, -18.3079, 33.4192, -18.9226, 37.1075, -25.0697, 41.4105, -18.9226, 45.0987, -16.7711, 47.2502, -1.40326, 41.7178, 2.59238, 38.6442, 9.04688, 40.7957, 15.8087, 49.709, 26.5662, 55.5488, 36.4016, 38.9516, 38.5531, 25.4279, 35.7869, 27.8868, 28.7177, 14.363, -0.173828, -37.5802, -0.788544, -39.117, -4.47684, -53.5358, -4.39429, -49.2538, -12.1428, -47.2147, -12.1428, -45.5835, -17.0365 )
+uv = PoolVector2Array(  )
+color = Color( 1, 0.210938, 0, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+script = ExtResource( 4 )
+_sections_unfolded = [ "Pause", "Transform", "Visibility" ]
+foot_str = null
+eye_str = PoolStringArray( "It\'s the NES Zapper!!!#Omg, I want it!" )
+hand_str = PoolStringArray( "$" )
+correct_item = ""
+wrong_str = null
+node_to_trigger = NodePath("Take")
+enabled = false
+one_shot = true
+disable_if_newt = false
+enable_if_newt = false
+click_distance = 64.0
+
+[node name="trigger" type="Polygon2D" parent="Node2D/Block/Zapper"]
+
+show_behind_parent = true
+polygon = PoolVector2Array( 11.8616, -3.62875, 11.2512, 5.16147, 9.90826, 9.06824, 22.1169, 7.84738 )
+uv = PoolVector2Array(  )
+color = Color( 0, 0, 0, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Visibility" ]
+
+[node name="grey" type="Polygon2D" parent="Node2D/Block/Zapper"]
+
+polygon = PoolVector2Array( -19.9454, -6.98776, -16.3937, 0.640625, -16, 0.640625, 14.3614, 2.45901, 16.9468, -1.41916, 49.0604, -1.60236, 53.9541, -11.186, 51.0994, -16.0797, 10.7921, -14.5211, 11.8954, -16.4084, 1.25531, -16.0826, -2.94122, -7.48499 )
+uv = PoolVector2Array(  )
+color = Color( 0.398438, 0.398438, 0.398438, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Take" type="Node2D" parent="Node2D/Block/Zapper"]
+
+script = ExtResource( 7 )
+auto_start = false
+action = 7
+monolog = null
+next_event = null
+sound_fx = null
+sound_fx_after = null
+speed = 1.0
+
+[node name="Walk here" type="Node2D" parent="Node2D/Block"]
+
+position = Vector2( 0, 157.851 )
+script = ExtResource( 7 )
+auto_start = false
+action = 0
+monolog = PoolStringArray( "Hmm" )
+next_event = null
+sound_fx = null
+sound_fx_after = null
+speed = 1.0
+
 [node name="Polygon2D" type="Polygon2D" parent="Node2D/Block"]
 
+editor/display_folded = true
 polygon = PoolVector2Array( 18.4062, -29.2012, -18.5744, -28.8238, -23.48, -26.5597, -24.9894, -21.6541, -26.1215, 19.4773, -24.9894, 23.2509, -19.7065, 25.515, 19.5382, 25.1376, 23.3117, 23.2509, 25.9532, 17.9679, 23.6891, -23.5409, 21.4513, -27.7023 )
 uv = PoolVector2Array(  )
 color = Color( 0.441406, 0.372437, 0, 1 )
@@ -4045,7 +4294,7 @@ texture_rotation = 0.0
 invert_enable = false
 invert_border = 100.0
 
-[node name="Polygon2D2" type="Polygon2D" parent="Node2D/Block"]
+[node name="Polygon2D2" type="Polygon2D" parent="Node2D/Block/Polygon2D"]
 
 polygon = PoolVector2Array( 17.4939, -26.1512, -16.5956, -25.4748, -20.248, -23.9868, -22.0066, -20.0638, -22.9536, 17.4076, -21.8714, 20.3836, -19.8422, 21.7364, 18.8466, 22.4128, 21.5522, 21.3306, 22.3638, 17.8134, 20.8758, -21.5518, 20.0641, -24.9337 )
 uv = PoolVector2Array(  )
@@ -4060,7 +4309,7 @@ texture_rotation = 0.0
 invert_enable = false
 invert_border = 100.0
 
-[node name="Polygon2D5" type="Polygon2D" parent="Node2D/Block"]
+[node name="Polygon2D5" type="Polygon2D" parent="Node2D/Block/Polygon2D"]
 
 polygon = PoolVector2Array( 20.1714, -21.3022, 20.3079, 17.2192, 19.5969, 18.9967, 18.175, 20.1026, -19.7288, 20.791, -21.8714, 20.3836, -19.8422, 21.7364, 18.8466, 22.4128, 21.5522, 21.3306, 22.3638, 17.8134, 20.8758, -21.5518, 20.0641, -24.9337 )
 uv = PoolVector2Array(  )
@@ -4075,10 +4324,10 @@ texture_rotation = 0.0
 invert_enable = false
 invert_border = 100.0
 
-[node name="Polygon2D3" type="Polygon2D" parent="Node2D/Block"]
+[node name="Polygon2D3" type="Polygon2D" parent="Node2D/Block/Polygon2D"]
 
 editor/display_folded = true
-position = Vector2( 1.34901, -0.149902 )
+position = Vector2( 1.349, -0.149902 )
 polygon = PoolVector2Array( -12.9166, -7.98029, -7.3707, -7.53061, -6.77113, -12.9267, -3.77333, -15.3249, 3.42139, -15.3249, 6.11942, -12.9267, 6.2693, -2.88403, 4.47061, -1.08533, -1.52498, -1.08533, -3.77333, 1.01312, -4.22301, 9.55685, 1.17303, 9.70673, 0.573486, 2.96167, 6.56908, 2.6619, 8.96732, 1.4628, 10.6161, -2.28445, 10.0165, -15.0251, 8.36777, -17.7231, 4.02095, -19.8216, -7.3707, -19.3719, -10.3685, -17.5732, -11.8674, -15.0251 )
 uv = PoolVector2Array(  )
 color = Color( 0.441406, 0.372314, 0, 1 )
@@ -4092,7 +4341,7 @@ texture_rotation = 0.0
 invert_enable = false
 invert_border = 100.0
 
-[node name="Polygon2D4" type="Polygon2D" parent="Node2D/Block/Polygon2D3"]
+[node name="Polygon2D4" type="Polygon2D" parent="Node2D/Block/Polygon2D/Polygon2D3"]
 
 polygon = PoolVector2Array( -4.52278, 13.454, 1.17303, 13.6039, 1.32294, 18.85, -4.97246, 18.5502 )
 uv = PoolVector2Array(  )
@@ -4107,10 +4356,10 @@ texture_rotation = 0.0
 invert_enable = false
 invert_border = 100.0
 
-[node name="Polygon2D4" type="Polygon2D" parent="Node2D/Block"]
+[node name="Polygon2D4" type="Polygon2D" parent="Node2D/Block/Polygon2D"]
 
 editor/display_folded = true
-position = Vector2( -1.52588e-05, -1.94858 )
+position = Vector2( 0, -1.94858 )
 polygon = PoolVector2Array( -12.9166, -7.98029, -7.3707, -7.53061, -6.77113, -12.9267, -3.77333, -15.3249, 3.42139, -15.3249, 6.11942, -12.9267, 6.2693, -2.88403, 4.47061, -1.08533, -1.52498, -1.08533, -3.77333, 1.01312, -4.22301, 9.55685, 1.17303, 9.70673, 0.573486, 2.96167, 6.56908, 2.6619, 8.96732, 1.4628, 10.6161, -2.28445, 10.0165, -15.0251, 8.36777, -17.7231, 4.02095, -19.8216, -7.3707, -19.3719, -10.3685, -17.5732, -11.8674, -15.0251 )
 uv = PoolVector2Array(  )
 color = Color( 1, 1, 1, 1 )
@@ -4124,7 +4373,7 @@ texture_rotation = 0.0
 invert_enable = false
 invert_border = 100.0
 
-[node name="Polygon2D4" type="Polygon2D" parent="Node2D/Block/Polygon2D4"]
+[node name="Polygon2D4" type="Polygon2D" parent="Node2D/Block/Polygon2D/Polygon2D4"]
 
 polygon = PoolVector2Array( -4.52278, 13.454, 1.17303, 13.6039, 1.32294, 18.85, -4.97246, 18.5502 )
 uv = PoolVector2Array(  )
@@ -4138,11 +4387,75 @@ texture_scale = Vector2( 1, 1 )
 texture_rotation = 0.0
 invert_enable = false
 invert_border = 100.0
+
+[node name="done" type="Polygon2D" parent="Node2D/Block/Polygon2D"]
+
+editor/display_folded = true
+modulate = Color( 1, 1, 1, 0 )
+polygon = PoolVector2Array( 18.4062, -29.2012, -18.5744, -28.8238, -23.48, -26.5597, -24.9894, -21.6541, -26.1215, 19.4773, -24.9894, 23.2509, -19.7065, 25.515, 19.5382, 25.1376, 23.3117, 23.2509, 25.9532, 17.9679, 23.6891, -23.5409, 21.4513, -27.7023 )
+uv = PoolVector2Array(  )
+color = Color( 0.441406, 0.372437, 0, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Visibility" ]
+
+[node name="Polygon2D2" type="Polygon2D" parent="Node2D/Block/Polygon2D/done"]
+
+polygon = PoolVector2Array( 17.4939, -26.1512, -16.5956, -25.4748, -20.248, -23.9868, -22.0066, -20.0638, -22.9536, 17.4076, -21.8714, 20.3836, -19.8422, 21.7364, 18.8466, 22.4128, 21.5522, 21.3306, 22.3638, 17.8134, 20.8758, -21.5518, 20.0641, -24.9337 )
+uv = PoolVector2Array(  )
+color = Color( 1, 0.539062, 0, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Polygon2D5" type="Polygon2D" parent="Node2D/Block/Polygon2D/done"]
+
+polygon = PoolVector2Array( 20.1714, -21.3022, 20.3079, 17.2192, 19.5969, 18.9967, 18.175, 20.1026, -19.7288, 20.791, -21.8714, 20.3836, -19.8422, 21.7364, 18.8466, 22.4128, 21.5522, 21.3306, 22.3638, 17.8134, 20.8758, -21.5518, 20.0641, -24.9337 )
+uv = PoolVector2Array(  )
+color = Color( 0.824219, 0.386353, 0, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Player jumps" type="AnimationPlayer" parent="Node2D/Block"]
+
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+root_node = NodePath("..")
+"anims/Player jumps" = SubResource( 20 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = ""
+script = ExtResource( 8 )
+anim_name = "Player jumps"
+condition1 = NodePath("../Walk here")
+condition2 = null
+condition3 = null
 
 [node name="Cursor" type="Node2D" parent="Node2D"]
 
 editor/display_folded = true
-script = ExtResource( 5 )
+script = ExtResource( 9 )
 _sections_unfolded = [ "Visibility", "Z" ]
 __meta__ = {
 "_edit_group_": true
@@ -4563,8 +4876,6 @@ invert_enable = false
 invert_border = 100.0
 
 [node name="Items" type="Node2D" parent="Node2D/Cursor"]
-
-editor/display_folded = true
 
 [node name="Mutagen" type="Polygon2D" parent="Node2D/Cursor/Items"]
 
@@ -6180,6 +6491,60 @@ texture_rotation = 0.0
 invert_enable = false
 invert_border = 100.0
 
+[node name="Zapper" type="Polygon2D" parent="Node2D/Cursor/Items"]
+
+editor/display_folded = true
+position = Vector2( -5.13878, -0.596092 )
+scale = Vector2( 0.8, 0.8 )
+polygon = PoolVector2Array( -41.2685, -11.8534, 11.5969, -14.3122, 14.363, -18.3079, 33.4192, -18.9226, 37.1075, -25.0697, 41.4105, -18.9226, 45.0987, -16.7711, 47.2502, -1.40326, 41.7178, 2.59238, 38.6442, 9.04688, 40.7957, 15.8087, 49.709, 26.5662, 55.5488, 36.4016, 38.9516, 38.5531, 25.4279, 35.7869, 27.8868, 28.7177, 14.363, -0.173828, -37.5802, -0.788544, -39.117, -4.47684, -53.5358, -4.39429, -49.2538, -12.1428, -47.2147, -12.1428, -45.5835, -17.0365 )
+uv = PoolVector2Array(  )
+color = Color( 1, 0.210938, 0, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Pause", "Transform", "Visibility" ]
+
+[node name="trigger" type="Polygon2D" parent="Node2D/Cursor/Items/Zapper"]
+
+show_behind_parent = true
+polygon = PoolVector2Array( 11.8616, -3.62875, 11.2512, 5.16147, 9.90826, 9.06824, 22.1169, 7.84738 )
+uv = PoolVector2Array(  )
+color = Color( 0, 0, 0, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Visibility" ]
+
+[node name="grey" type="Polygon2D" parent="Node2D/Cursor/Items/Zapper"]
+
+polygon = PoolVector2Array( -19.9454, -6.98776, -16.3937, 0.640625, -16, 0.640625, 14.3614, 2.45901, 16.9468, -1.41916, 49.0604, -1.60236, 53.9541, -11.186, 51.0994, -16.0797, 10.7921, -14.5211, 11.8954, -16.4084, 1.25531, -16.0826, -2.94122, -7.48499 )
+uv = PoolVector2Array(  )
+color = Color( 0.398438, 0.398438, 0.398438, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+__meta__ = {
+"_edit_group_": true
+}
+
 [node name="Camera2D" type="Camera2D" parent="Node2D"]
 
 editor/display_folded = true
@@ -6204,7 +6569,7 @@ drag_margin_bottom = 0.0
 editor_draw_screen = true
 editor_draw_limits = false
 editor_draw_drag_margin = false
-script = ExtResource( 6 )
+script = ExtResource( 10 )
 _sections_unfolded = [ "Drag Margin", "Limit", "Smoothing", "Transform" ]
 __meta__ = {
 "_edit_group_": true
@@ -6318,7 +6683,7 @@ rect_clip_content = false
 mouse_filter = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-script = ExtResource( 8 )
+script = ExtResource( 12 )
 _sections_unfolded = [ "Material", "Rect", "Visibility", "custom_styles" ]
 post_prosessing = NodePath("../PostProsessing")
 bg_node = NodePath("../PauseMenuBG")
@@ -6476,13 +6841,13 @@ autowrap = true
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-script = ExtResource( 10 )
+script = ExtResource( 14 )
 _sections_unfolded = [ "custom_fonts" ]
 
 [node name="Fade In" type="Node2D" parent="."]
 
 position = Vector2( 278, -14 )
-script = ExtResource( 11 )
+script = ExtResource( 7 )
 auto_start = true
 action = 1
 monolog = null
@@ -6494,7 +6859,7 @@ speed = 1.0
 [node name="Next level" type="Node2D" parent="."]
 
 position = Vector2( 278, -14 )
-script = ExtResource( 11 )
+script = ExtResource( 7 )
 auto_start = false
 action = 10
 monolog = null
@@ -6510,7 +6875,7 @@ position = Vector2( 278, -14 )
 
 [node name="Something in the sky" type="Node2D" parent="Monolog"]
 
-script = ExtResource( 12 )
+script = ExtResource( 15 )
 monolog = PoolStringArray( "There\'s something in the sky..." )
 autostart = false
 next_event = null
@@ -6518,7 +6883,7 @@ skippable = false
 
 [node name="Wait a second" type="Node2D" parent="Monolog"]
 
-script = ExtResource( 12 )
+script = ExtResource( 15 )
 monolog = PoolStringArray( "Wait a second.", "Isn\'t that the Space Invaders\?" )
 autostart = false
 next_event = null
@@ -6526,7 +6891,7 @@ skippable = false
 
 [node name="Explosion" type="Node2D" parent="Monolog"]
 
-script = ExtResource( 12 )
+script = ExtResource( 15 )
 monolog = PoolStringArray( "Huh\?!", "Was that an explosion\?" )
 autostart = false
 next_event = null
@@ -6534,7 +6899,7 @@ skippable = false
 
 [node name="Theyre shooting!" type="Node2D" parent="Monolog"]
 
-script = ExtResource( 12 )
+script = ExtResource( 15 )
 monolog = PoolStringArray( "They\'re shooting!", "This is not fun anymore!" )
 autostart = false
 next_event = null
@@ -6542,7 +6907,7 @@ skippable = false
 
 [node name="Aaarrgghhh!!!" type="Node2D" parent="Monolog"]
 
-script = ExtResource( 12 )
+script = ExtResource( 15 )
 monolog = PoolStringArray( "Aaaarrrghh!!!!", "$" )
 autostart = false
 next_event = NodePath("../../Next level")
@@ -6562,7 +6927,7 @@ _sections_unfolded = [ "Playback Options" ]
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 
-stream = ExtResource( 13 )
+stream = ExtResource( 16 )
 volume_db = -40.0
 autoplay = true
 mix_target = 0
@@ -6570,7 +6935,7 @@ bus = "Master"
 
 [node name="Music2" type="AudioStreamPlayer" parent="."]
 
-stream = ExtResource( 14 )
+stream = ExtResource( 17 )
 volume_db = -40.0
 autoplay = true
 mix_target = 0
@@ -6580,7 +6945,7 @@ bus = "Master"
 
 [node name="Walking" type="AudioStreamPlayer" parent="Sounds"]
 
-stream = ExtResource( 15 )
+stream = ExtResource( 18 )
 volume_db = 4.19
 autoplay = false
 mix_target = 0
@@ -6588,7 +6953,7 @@ bus = "Master"
 
 [node name="Flush" type="AudioStreamPlayer" parent="Sounds"]
 
-stream = ExtResource( 16 )
+stream = ExtResource( 19 )
 volume_db = -9.02
 autoplay = false
 mix_target = 0
@@ -6596,7 +6961,7 @@ bus = "Master"
 
 [node name="Pipe" type="AudioStreamPlayer" parent="Sounds"]
 
-stream = ExtResource( 17 )
+stream = ExtResource( 20 )
 volume_db = -8.0
 autoplay = true
 mix_target = 0
@@ -6604,7 +6969,7 @@ bus = "Master"
 
 [node name="Switch" type="AudioStreamPlayer" parent="Sounds"]
 
-stream = ExtResource( 18 )
+stream = ExtResource( 21 )
 volume_db = 0.0
 autoplay = false
 mix_target = 0

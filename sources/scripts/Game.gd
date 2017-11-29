@@ -88,6 +88,7 @@ func do_talking(delta):
 		player_talk_label.set_visible(true)
 		
 		if(talk_str[talk_i] == "$"):
+			print("Game starts aftertalk")
 			talk_caller.after_talk()
 			player_talk_label.set_visible(false)
 			talking = false
