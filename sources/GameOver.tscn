@@ -25,7 +25,7 @@ _sections_unfolded = [ "shader_param" ]
 [sub_resource type="Animation" id=3]
 
 resource_name = "Game Over"
-length = 30.0
+length = 60.0
 loop = false
 step = 0.1
 tracks/0/type = "value"
@@ -45,10 +45,10 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/keys = {
-"times": PoolRealArray( 0, 4, 30 ),
+"times": PoolRealArray( 0, 4, 60 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 7, 268 ), Vector2( 7, 268 ), Vector2( 9, -2223 ) ]
+"values": [ Vector2( 7, 268 ), Vector2( 7, 268 ), Vector2( 9, -6593 ) ]
 }
 
 [node name="Game Over" type="Node"]
@@ -74,9 +74,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -503.0
-margin_top = -2523.0
+margin_top = -6893.0
 margin_right = 506.0
-margin_bottom = 20.0
+margin_bottom = 5.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -93,22 +93,57 @@ text = "GAME OVER
 Game by Tapio Pyrhönen
 
 
+
 Starring:
+
 
 Tapio Pyrhönen
 as TassuP
+
 
 
 Altti
 as the dog
 
 
+
 Jojo
 as the monkey wrench
 
 
+
+Toad
+as the guy on shrooms
+
+
+
+Zaphod Beeblebrox
+commander of the star fleet
+
+
+
+Solid Snake
+tactical advisor
+
+
+
 Font by Misti Hammers
 www.mistifonts.com
+
+
+
+Special thanks to
+Guybrush Threepwood
+
+
+
+Sincere apologies to
+...
+
+
+
+Damn I forgot who...
+
 
 
 Software used:
@@ -116,6 +151,36 @@ Godot Engine
 Audacity
 Gimp
 Git
+
+
+
+Slartibartfast!!!
+That was his name!
+
+
+
+
+
+I bet nobody reads
+credits this far
+
+
+
+
+
+Please pay attention now
+
+
+
+
+
+Blablabla!!!!
+Cowabunga!!!
+
+
+
+
+Whatever...
 
 
 

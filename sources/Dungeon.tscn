@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://scripts/Hotspot.gd" type="Script" id=1]
 [ext_resource path="res://scripts/TriggerAnimation.gd" type="Script" id=2]
@@ -210,6 +210,46 @@ use_mipmaps = false
 use_filter = false
 font_data = ExtResource( 5 )
 _sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="Animation" id=19]
+
+resource_name = "Toad on shrooms"
+length = 3.0
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Head:rotation_deg")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5, 3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -6.21866, 7.14385, -6.21866 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Head/Face:rotation_deg")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.5, 3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -5.23146, 4.35044, -5.23146 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Body:rotation_deg")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1.5, 3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 2.36455, -0.855278, 2.36455 ]
+}
 
 [sub_resource type="CircleShape2D" id=5]
 
@@ -3649,6 +3689,8 @@ invert_border = 100.0
 
 [node name="Puzzles" type="Node2D" parent="Node2D"]
 
+editor/display_folded = true
+
 [node name="Staircase up" type="Area2D" parent="Node2D/Puzzles" groups=[
 "Hotspots",
 ]]
@@ -4024,6 +4066,7 @@ _sections_unfolded = [ "Transform" ]
 "Hotspots",
 ]]
 
+editor/display_folded = true
 position = Vector2( 844.434, 1292.29 )
 scale = Vector2( 0.930939, 0.911645 )
 input_pickable = true
@@ -5729,6 +5772,7 @@ invert_border = 100.0
 "Hotspots",
 ]]
 
+editor/display_folded = true
 position = Vector2( 571.551, 1458.16 )
 scale = Vector2( 0.930939, 0.911645 )
 input_pickable = true
@@ -7136,14 +7180,12 @@ invert_border = 100.0
 
 [node name="Puzzles in Mario room" type="Node2D" parent="Node2D"]
 
-editor/display_folded = true
-
 [node name="Pipe" type="Area2D" parent="Node2D/Puzzles in Mario room" groups=[
 "Hotspots",
 ]]
 
 editor/display_folded = true
-position = Vector2( 1791.97, 779.161 )
+position = Vector2( 2183.29, 792.953 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -7340,6 +7382,322 @@ scale = Vector2( 3, 3 )
 build_mode = 0
 polygon = PoolVector2Array( 11.6796, -18.7625, 5.51096, -15.2708, 2.71762, -8.17104, 1.67014, -5.84325, 1.43735, -1.76961, 14.473, -2.35156 )
 _sections_unfolded = [ "Transform" ]
+
+[node name="Toad" type="Node2D" parent="Node2D/Puzzles in Mario room" groups=[
+"Hotspots",
+]]
+
+editor/display_folded = true
+position = Vector2( 1858.67, 743.476 )
+script = ExtResource( 1 )
+foot_str = null
+eye_str = PoolStringArray( "Hi! How are you\?#Seen any princesses here\?#Maybe in another castle\?#No\?#Whatever." )
+hand_str = PoolStringArray( "I\'m not taking that with me!" )
+correct_item = ""
+wrong_str = PoolStringArray( "The guy is on shrooms!#I think a monkey might scare him." )
+node_to_trigger = null
+enabled = true
+one_shot = false
+disable_if_newt = false
+enable_if_newt = false
+click_distance = 64.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D/Puzzles in Mario room/Toad"]
+
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+root_node = NodePath("..")
+"anims/Toad on shrooms" = SubResource( 19 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = "Toad on shrooms"
+
+[node name="Pants" type="Polygon2D" parent="Node2D/Puzzles in Mario room/Toad"]
+
+position = Vector2( 8.95117, -0.385742 )
+polygon = PoolVector2Array( -20.5063, 13.6135, -22.1217, 16.7545, -21.4935, 20.2546, -17.0062, 24.2034, -11.1729, 25.2803, -4.62146, 24.9213, 0.942749, 21.7802, 2.82739, 17.5622, 1.84009, 13.434 )
+uv = PoolVector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Shoe1" type="Polygon2D" parent="Node2D/Puzzles in Mario room/Toad"]
+
+editor/display_folded = true
+position = Vector2( 8.95117, -0.385742 )
+polygon = PoolVector2Array( -28.7374, 25.1276, -26.5337, 19.5082, -22.5671, 17.5249, -18.8209, 17.8555, -15.9562, 20.0591, -14.5643, 22.3851, -14, 24.0258, -15.5154, 26.009, -19.7024, 27.772, -26.6439, 26.8905 )
+uv = PoolVector2Array(  )
+color = Color( 1, 0, 0, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Shoe2" type="Polygon2D" parent="Node2D/Puzzles in Mario room/Toad/Shoe1"]
+
+polygon = PoolVector2Array( -22.2723, 19.3629, -23.7083, 19.8116, -23.5288, 21.5167, -21.0159, 21.5167, -20.4774, 19.6321 )
+uv = PoolVector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Shoe2" type="Polygon2D" parent="Node2D/Puzzles in Mario room/Toad"]
+
+editor/display_folded = true
+position = Vector2( 31.3875, -0.475525 )
+polygon = PoolVector2Array( -28.7374, 25.1276, -26.5337, 19.5082, -22.5671, 17.5249, -18.8209, 17.8555, -15.9562, 20.0591, -14.5643, 22.3851, -14, 24.0258, -15.5154, 26.009, -19.7024, 27.772, -26.6439, 26.8905 )
+uv = PoolVector2Array(  )
+color = Color( 1, 0, 0, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Shoe2" type="Polygon2D" parent="Node2D/Puzzles in Mario room/Toad/Shoe2"]
+
+polygon = PoolVector2Array( -22.2723, 19.3629, -23.7083, 19.8116, -23.5288, 21.5167, -21.0159, 21.5167, -20.4774, 19.6321 )
+uv = PoolVector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Body" type="Polygon2D" parent="Node2D/Puzzles in Mario room/Toad"]
+
+editor/display_folded = true
+position = Vector2( -1.44556, 8.12152 )
+rotation = 0.0412691
+polygon = PoolVector2Array( -14.6932, -0.847473, -18.7417, 1.17682, -25.7347, -1.76758, -27.391, -6.73627, -29.0472, -6.92029, -28.4951, -3.23981, -34.3839, -6.1842, -38.2485, -3.42383, -31.0715, 0.808777, -25.7347, 2.64905, -19.6619, 4.48932, -20.9501, 13.5066, -12.6689, 16.0829, -4.3877, 16.451, 2.60522, 14.0587, -0.707153, 5.04138, 5.73364, 2.64905, 12.5427, -1.9516, 8.31006, -5.63214, 5.73364, -2.68774, 5.18164, -5.44812, 3.70947, -5.08008, 3.70947, -2.13562, -1.99536, 0.440735, -6.96411, -1.21552 )
+uv = PoolVector2Array(  )
+color = Color( 1, 0.711914, 0.101562, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 10.2173, -7.6098 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Vest" type="Polygon2D" parent="Node2D/Puzzles in Mario room/Toad/Body"]
+
+position = Vector2( 10.2173, -7.6098 )
+polygon = PoolVector2Array( -18.1812, 14.5593, -22.2928, 13.4187, -20.7018, 4.86682, -18.514, 0.690308, -16.8236, -0.105164, -14.437, -0.105164, -12.1499, 0.590881, -8.76892, 0.988647, -6.48181, 0.491455, -4.29407, -0.403503, -2.70312, -0.204651, -0.860229, 3.14734, 0, 5.16516, 3.85999, 12.8221, 2.46777, 14.4131, -0.813721, 15.507, -3.0061, 9.48517, -4.80103, 6.07489, -6.5061, 3.29279, -9.66394, 2.48029, -12.5477, 2.77856, -14.9342, 5.4635, -16.6248, 9.4411 )
+uv = PoolVector2Array(  )
+color = Color( 1, 0, 0, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Head" type="Polygon2D" parent="Node2D/Puzzles in Mario room/Toad"]
+
+rotation = -0.108536
+polygon = PoolVector2Array( -8.31433, -10.0609, -14.9429, -10.4667, -21.5714, -13.8486, -26.0355, -19.936, -26.1708, -28.4584, -21.4362, -34.8164, -12.6432, -38.6041, -1.82117, -39.4158, 8.05408, -38.7394, 16.5565, -36.675, 21.5817, -30.4876, 21.8424, -25.0128, 21.0314, -19.3724, 17.2526, -14.5992, 11.7833, -11.4172, 1.73987, -9.9256 )
+uv = PoolVector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Dots" type="Polygon2D" parent="Node2D/Puzzles in Mario room/Toad/Head"]
+
+editor/display_folded = true
+polygon = PoolVector2Array( -22.1621, -14.6783, -19.3752, -15.2357, -17.1924, -17.7349, -16.2788, -23.4306, -17.0311, -28.2666, -19.738, -31.316, -23.1537, -32.4178, -25.2472, -31.316, -27.2305, -28.1207, -28.0017, -23.2726, -27.561, -19.857, -26.4592, -16.6617, -24.3657, -14.8987 )
+uv = PoolVector2Array(  )
+color = Color( 1, 0, 0, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Toad3" type="Polygon2D" parent="Node2D/Puzzles in Mario room/Toad/Head/Dots"]
+
+position = Vector2( -0.497192, 0.795471 )
+polygon = PoolVector2Array( 19.4918, -32.982, 17.0059, -31.3909, 15.3153, -28.3083, 14.4204, -24.3307, 15.2159, -21.248, 16.608, -17.8671, 18.3979, -15.8783, 19.7902, -15.8783, 21.9779, -17.5687, 23.5688, -22.0436, 23.8672, -27.2145, 22.2761, -31.6893, 21.1824, -32.8826 )
+uv = PoolVector2Array(  )
+color = Color( 1, 0, 0, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Toad4" type="Polygon2D" parent="Node2D/Puzzles in Mario room/Toad/Head/Dots"]
+
+position = Vector2( -0.497192, 0.795471 )
+polygon = PoolVector2Array( -1.78833, -34.8713, -5.2688, -33.7775, -6.56152, -31.4904, -7.35706, -28.2088, -6.66101, -24.629, -4.47327, -22.8391, -1.58948, -22.2424, 1.49316, -23.0379, 3.58142, -25.2256, 4.47632, -28.9049, 4.078, -31.1366, 3.04846, -33.0348, 1.69202, -34.573 )
+uv = PoolVector2Array(  )
+color = Color( 1, 0, 0, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Toad5" type="Polygon2D" parent="Node2D/Puzzles in Mario room/Toad/Head/Dots"]
+
+position = Vector2( -31.7891, -29.0641 )
+rotation = 1.26234
+scale = Vector2( 0.3, 0.7 )
+polygon = PoolVector2Array( -1.78833, -34.8713, -5.2688, -33.7775, -6.56152, -31.4904, -7.35706, -28.2088, -6.66101, -24.629, -4.47327, -22.8391, -1.58948, -22.2424, 1.49316, -23.0379, 3.58142, -25.2256, 4.47632, -28.9049, 4.078, -31.1366, 3.04846, -33.0348, 1.69202, -34.573 )
+uv = PoolVector2Array(  )
+color = Color( 1, 0, 0, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Toad6" type="Polygon2D" parent="Node2D/Puzzles in Mario room/Toad/Head/Dots"]
+
+position = Vector2( 9.16431, -35.8209 )
+rotation = 1.80124
+scale = Vector2( 0.3, 0.7 )
+polygon = PoolVector2Array( -1.78833, -34.8713, -5.2688, -33.7775, -6.56152, -31.4904, -7.35706, -28.2088, -6.66101, -24.629, -4.47327, -22.8391, -1.58948, -22.2424, 1.49316, -23.0379, 3.58142, -25.2256, 4.47632, -28.9049, 4.078, -31.1366, 3.04846, -33.0348, 1.69202, -34.573 )
+uv = PoolVector2Array(  )
+color = Color( 1, 0, 0, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 2.53959, 28.3789 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Face" type="Polygon2D" parent="Node2D/Puzzles in Mario room/Toad/Head"]
+
+editor/display_folded = true
+position = Vector2( -1.03394, -7.7959 )
+rotation = -0.0913062
+polygon = PoolVector2Array( -2.09998, -18.2629, -7.82947, -18.0425, -12.0164, -15.288, -14.8813, -12.5334, -15.322, -9.22797, -14.3304, -5.37152, -11.1351, -1.8457, -4.96484, 0.137634, 3.18872, 0.0274658, 9.24878, -2.17621, 13.2155, -6.14282, 13.5459, -10.8807, 11.8932, -15.288, 7.59607, -17.3815 )
+uv = PoolVector2Array(  )
+color = Color( 1, 0.712219, 0.101562, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 1.03392, 7.79593 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="eye" type="Polygon2D" parent="Node2D/Puzzles in Mario room/Toad/Head/Face"]
+
+position = Vector2( 1.03394, 7.79584 )
+polygon = PoolVector2Array( -5.07495, -16.2275, -6.24451, -15.862, -6.82935, -14.6924, -7.04858, -12.4995, -6.53699, -10.1603, -5.36743, -9.5025, -4.05164, -10.2335, -3.24756, -12.3533, -3.68616, -15.3503 )
+uv = PoolVector2Array(  )
+color = Color( 0, 0, 0, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="eye2" type="Polygon2D" parent="Node2D/Puzzles in Mario room/Toad/Head/Face"]
+
+position = Vector2( 9.14771, 7.79584 )
+polygon = PoolVector2Array( -5.07495, -16.2275, -6.24451, -15.862, -6.82935, -14.6924, -7.04858, -12.4995, -6.53699, -10.1603, -5.36743, -9.5025, -4.05164, -10.2335, -3.24756, -12.3533, -3.68616, -15.3503 )
+uv = PoolVector2Array(  )
+color = Color( 0, 0, 0, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="mouth" type="Polygon2D" parent="Node2D/Puzzles in Mario room/Toad/Head/Face"]
+
+position = Vector2( 9.80554, 8.30756 )
+polygon = PoolVector2Array( -15.4205, -5.61865, -9.24084, -5.23157, -4.02905, -5.67242, -3.38416, -4.92017, -3.38416, -4.06042, -5.64099, -3.57678, -14.9906, -3.84546, -16.6564, -4.4903, -16.3877, -5.35004 )
+uv = PoolVector2Array(  )
+color = Color( 0, 0, 0, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
 
 [node name="Player" type="KinematicBody2D" parent="Node2D"]
 
@@ -11127,6 +11485,8 @@ sound_fx_after = null
 speed = 1.0
 
 [node name="Sounds" type="Node2D" parent="."]
+
+editor/display_folded = true
 
 [node name="Walking" type="AudioStreamPlayer" parent="Sounds"]
 
