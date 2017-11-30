@@ -15,7 +15,9 @@ func _process(delta):
 	
 	if(done):
 		get_tree().change_scene("Cutscene_Home.tscn")
+		
 func skip():
+	Game.intro_started = true
 	get_tree().change_scene("Dungeon.tscn")
 
 func _input(event):

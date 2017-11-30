@@ -12,6 +12,8 @@ config_version=3
 
 config/name="TassuP's Throwback"
 run/main_scene="res://Cutscene_Intro.tscn"
+run/disable_stdout=true
+run/disable_stderr=true
 config/icon="res://icon.png"
 
 [autoload]
@@ -30,12 +32,7 @@ singletons=[  ]
 [rendering]
 
 quality/intended_usage/framebuffer_allocation=0
-quality/shadows/filter_mode=0
-quality/reflections/texture_array_reflections=false
-quality/reflections/high_quality_ggx=false
 quality/voxel_cone_tracing/high_quality=false
 environment/default_clear_color=Color( 0, 0, 0, 1 )
-quality/reflections/atlas_size=2047
 quality/filters/msaa=1
-quality/depth/hdr=false
 environment/default_environment="res://default_env.tres"

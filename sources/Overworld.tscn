@@ -3,9 +3,9 @@
 [ext_resource path="res://scripts/Spawn.gd" type="Script" id=1]
 [ext_resource path="res://images/fire.png" type="Texture" id=2]
 [ext_resource path="res://scripts/Player.gd" type="Script" id=3]
-[ext_resource path="res://scripts/Hotspot.gd" type="Script" id=4]
-[ext_resource path="res://images/particle.png" type="Texture" id=5]
-[ext_resource path="res://scripts/ZapperParty.gd" type="Script" id=6]
+[ext_resource path="res://images/particle.png" type="Texture" id=4]
+[ext_resource path="res://scripts/ZapperParty.gd" type="Script" id=5]
+[ext_resource path="res://scripts/Hotspot.gd" type="Script" id=6]
 [ext_resource path="res://scripts/HotspotEvent.gd" type="Script" id=7]
 [ext_resource path="res://scripts/TriggerAnimation.gd" type="Script" id=8]
 [ext_resource path="res://scripts/Cursor.gd" type="Script" id=9]
@@ -1446,23 +1446,23 @@ tracks/58/keys = {
 "values": [ Vector2( 0.594536, 2.81969 ), Vector2( 0.594536, 2.81969 ) ]
 }
 
-[sub_resource type="CanvasItemMaterial" id=21]
+[sub_resource type="CanvasItemMaterial" id=11]
 
 render_priority = 0
 blend_mode = 1
 light_mode = 0
 
-[sub_resource type="Gradient" id=23]
+[sub_resource type="Gradient" id=12]
 
 offsets = PoolRealArray( 0, 0.0366795, 0.119691, 0.247104, 0.476834, 1 )
 colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0.491228, 1, 1, 1, 0.08565, 1, 1, 1, 0 )
 
-[sub_resource type="GradientTexture" id=24]
+[sub_resource type="GradientTexture" id=13]
 
-gradient = SubResource( 23 )
+gradient = SubResource( 12 )
 width = 2048
 
-[sub_resource type="ParticlesMaterial" id=22]
+[sub_resource type="ParticlesMaterial" id=14]
 
 render_priority = 0
 trail_divisor = 1
@@ -1491,7 +1491,7 @@ angle = 0.0
 angle_random = 0.0
 scale = 0.4
 scale_random = 0.3
-color_ramp = SubResource( 24 )
+color_ramp = SubResource( 13 )
 hue_variation = 0.0
 hue_variation_random = 0.0
 anim_speed = 0.0
@@ -1501,7 +1501,7 @@ anim_offset_random = 0.0
 anim_loop = false
 _sections_unfolded = [ "Color", "Gravity", "Initial Velocity", "Scale" ]
 
-[sub_resource type="Animation" id=20]
+[sub_resource type="Animation" id=15]
 
 resource_name = "Player jumps"
 length = 1.0
@@ -1574,7 +1574,7 @@ tracks/5/keys = {
 "values": [ false, true ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=16]
 
 length = 2.0
 loop = true
@@ -1657,7 +1657,7 @@ tracks/6/keys = {
 "values": [ -3.25114, 5.13084, -3.25114 ]
 }
 
-[sub_resource type="ShaderMaterial" id=12]
+[sub_resource type="ShaderMaterial" id=17]
 
 render_priority = 0
 shader = ExtResource( 11 )
@@ -1665,7 +1665,7 @@ shader_param/pixelize = true
 shader_param/dream = 0.0
 _sections_unfolded = [ "shader_param" ]
 
-[sub_resource type="DynamicFont" id=13]
+[sub_resource type="DynamicFont" id=18]
 
 size = 24
 use_mipmaps = false
@@ -1673,7 +1673,7 @@ use_filter = false
 font_data = ExtResource( 13 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[sub_resource type="DynamicFont" id=14]
+[sub_resource type="DynamicFont" id=19]
 
 size = 42
 use_mipmaps = false
@@ -1681,7 +1681,7 @@ use_filter = false
 font_data = ExtResource( 13 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[sub_resource type="StyleBoxFlat" id=15]
+[sub_resource type="StyleBoxFlat" id=20]
 
 content_margin_left = -1.0
 content_margin_right = -1.0
@@ -1710,7 +1710,7 @@ anti_aliasing = true
 anti_aliasing_size = 1
 _sections_unfolded = [ "Border Width", "Corner Radius" ]
 
-[sub_resource type="StyleBoxFlat" id=16]
+[sub_resource type="StyleBoxFlat" id=21]
 
 content_margin_left = -1.0
 content_margin_right = -1.0
@@ -1739,7 +1739,7 @@ anti_aliasing = true
 anti_aliasing_size = 1
 _sections_unfolded = [ "Border Width", "Corner Radius" ]
 
-[sub_resource type="DynamicFont" id=17]
+[sub_resource type="DynamicFont" id=22]
 
 size = 24
 use_mipmaps = false
@@ -1747,7 +1747,7 @@ use_filter = false
 font_data = ExtResource( 13 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[sub_resource type="DynamicFont" id=18]
+[sub_resource type="DynamicFont" id=23]
 
 size = 30
 use_mipmaps = false
@@ -1755,7 +1755,7 @@ use_filter = true
 font_data = ExtResource( 13 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[sub_resource type="Animation" id=19]
+[sub_resource type="Animation" id=24]
 
 length = 120.0
 loop = false
@@ -2682,7 +2682,6 @@ polygon = PoolVector2Array( 98.6571, 295.42, 323.053, 296.967, 336.981, 330.24, 
 
 [node name="Player" type="KinematicBody2D" parent="Node2D"]
 
-editor/display_folded = true
 position = Vector2( 216.145, 262.451 )
 input_pickable = false
 collision_layer = 1
@@ -3984,6 +3983,33 @@ playback/speed = 1.0
 blend_times = [  ]
 autoplay = ""
 
+[node name="ZapperParty" type="Particles2D" parent="Node2D/Player"]
+
+modulate = Color( 1, 0, 0.1875, 1 )
+material = SubResource( 11 )
+position = Vector2( -2.95215, -48.6507 )
+emitting = false
+amount = 64
+lifetime = 0.5
+one_shot = false
+preprocess = 0.0
+speed_scale = 5.0
+explosiveness = 0.0
+randomness = 0.0
+fixed_fps = 0
+fract_delta = true
+visibility_rect = Rect2( -100, -100, 200, 200 )
+local_coords = false
+draw_order = 0
+process_material = SubResource( 14 )
+texture = ExtResource( 4 )
+normal_map = null
+h_frames = 1
+v_frames = 1
+script = ExtResource( 5 )
+_sections_unfolded = [ "Drawing", "Material", "Process Material", "Textures", "Time", "Visibility" ]
+sfx = NodePath("../../../Sounds/Zap")
+
 [node name="Hotspot" type="Area2D" parent="Node2D/Player" groups=[
 "Hotspots",
 ]]
@@ -3997,10 +4023,10 @@ linear_damp = 0.1
 angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
-script = ExtResource( 4 )
+script = ExtResource( 6 )
 _sections_unfolded = [ "Pickable", "Textures" ]
 foot_str = PoolStringArray( "Ouch!", "I just kicked my self.#Happy now\?", "Stop that!" )
-eye_str = PoolStringArray( "Looks like I\'ve tranformed to a child!", "It\'s me, TassuP.#I have the characteristics of a former time.#What a Throwback!", "Cool shirt, huh\?", "I got these pants as a Christmas present from my mom." )
+eye_str = PoolStringArray( "Looks like I\'ve tranformed to a 2D-sprite!", "It\'s me, TassuP.#I have the characteristics of a former time.#What a Throwback!", "Cool shirt, huh\?" )
 hand_str = PoolStringArray( "How do you do.", "Can you gimme a hand\?#Hehe...", "Pull my finger!", "Pick you own nose." )
 correct_item = ""
 wrong_str = null
@@ -4024,7 +4050,7 @@ linear_damp = 0.1
 angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
-script = ExtResource( 4 )
+script = ExtResource( 6 )
 _sections_unfolded = [ "Pickable", "Textures" ]
 foot_str = null
 eye_str = PoolStringArray( "The mutagen transformed me to a newt!", "Newts are actually semi-aquatic salamanders.#Theyre good swimmers.", "I\'m a werenewt!" )
@@ -4037,33 +4063,6 @@ one_shot = false
 disable_if_newt = false
 enable_if_newt = false
 click_distance = 64.0
-
-[node name="ZapperParty" type="Particles2D" parent="Node2D/Player"]
-
-modulate = Color( 1, 0, 0.1875, 1 )
-material = SubResource( 21 )
-position = Vector2( -2.95215, -48.6507 )
-emitting = false
-amount = 64
-lifetime = 0.5
-one_shot = false
-preprocess = 0.0
-speed_scale = 5.0
-explosiveness = 0.0
-randomness = 0.0
-fixed_fps = 0
-fract_delta = true
-visibility_rect = Rect2( -100, -100, 200, 200 )
-local_coords = false
-draw_order = 0
-process_material = SubResource( 22 )
-texture = ExtResource( 5 )
-normal_map = null
-h_frames = 1
-v_frames = 1
-script = ExtResource( 6 )
-_sections_unfolded = [ "Drawing", "Material", "Process Material", "Textures", "Time", "Visibility" ]
-sfx = NodePath("../../../Sounds/Zap")
 
 [node name="Scenery FG" type="Node2D" parent="Node2D"]
 
@@ -4187,7 +4186,7 @@ _sections_unfolded = [ "Transform" ]
 ]]
 
 position = Vector2( 745.101, 312.693 )
-script = ExtResource( 4 )
+script = ExtResource( 6 )
 _sections_unfolded = [ "Transform" ]
 __meta__ = {
 "_edit_group_": true
@@ -4222,7 +4221,7 @@ texture_scale = Vector2( 1, 1 )
 texture_rotation = 0.0
 invert_enable = false
 invert_border = 100.0
-script = ExtResource( 4 )
+script = ExtResource( 6 )
 _sections_unfolded = [ "Pause", "Transform", "Visibility" ]
 foot_str = null
 eye_str = PoolStringArray( "It\'s the NES Zapper!!!#Omg, I want it!" )
@@ -4457,7 +4456,7 @@ invert_border = 100.0
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 root_node = NodePath("..")
-"anims/Player jumps" = SubResource( 20 )
+"anims/Player jumps" = SubResource( 15 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
@@ -5407,7 +5406,7 @@ rotation = 1.42411
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 root_node = NodePath("..")
-anims/Turtle = SubResource( 11 )
+anims/Turtle = SubResource( 16 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
@@ -5686,7 +5685,7 @@ rotation = 2.26832
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 root_node = NodePath("..")
-anims/Turtle = SubResource( 11 )
+anims/Turtle = SubResource( 16 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
@@ -5964,7 +5963,7 @@ rotation = 0.789991
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 root_node = NodePath("..")
-anims/Turtle = SubResource( 11 )
+anims/Turtle = SubResource( 16 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
@@ -6242,7 +6241,7 @@ rotation = -0.574561
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 root_node = NodePath("..")
-anims/Turtle = SubResource( 11 )
+anims/Turtle = SubResource( 16 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
@@ -6643,7 +6642,7 @@ rect = Rect2( -100, -100, 200, 200 )
 
 [node name="PostProsessing" type="ColorRect" parent="Node2D/Camera2D/Control"]
 
-material = SubResource( 12 )
+material = SubResource( 17 )
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -6721,7 +6720,7 @@ rect_clip_content = false
 mouse_filter = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_fonts/font = SubResource( 13 )
+custom_fonts/font = SubResource( 18 )
 toggle_mode = true
 enabled_focus_mode = 2
 shortcut = null
@@ -6746,7 +6745,7 @@ rect_clip_content = false
 mouse_filter = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_fonts/font = SubResource( 13 )
+custom_fonts/font = SubResource( 18 )
 toggle_mode = true
 pressed = true
 enabled_focus_mode = 2
@@ -6770,7 +6769,7 @@ rect_clip_content = false
 mouse_filter = 2
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 19 )
 text = "Game Paused"
 align = 1
 valign = 1
@@ -6794,12 +6793,12 @@ rect_clip_content = false
 mouse_filter = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_styles/hover = SubResource( 15 )
-custom_styles/pressed = SubResource( 16 )
-custom_styles/focus = SubResource( 16 )
-custom_styles/disabled = SubResource( 16 )
-custom_styles/normal = SubResource( 16 )
-custom_fonts/font = SubResource( 17 )
+custom_styles/hover = SubResource( 20 )
+custom_styles/pressed = SubResource( 21 )
+custom_styles/focus = SubResource( 21 )
+custom_styles/disabled = SubResource( 21 )
+custom_styles/normal = SubResource( 21 )
+custom_fonts/font = SubResource( 22 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -6823,12 +6822,12 @@ rect_clip_content = false
 mouse_filter = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_styles/hover = SubResource( 15 )
-custom_styles/pressed = SubResource( 16 )
-custom_styles/focus = SubResource( 16 )
-custom_styles/disabled = SubResource( 16 )
-custom_styles/normal = SubResource( 16 )
-custom_fonts/font = SubResource( 17 )
+custom_styles/hover = SubResource( 20 )
+custom_styles/pressed = SubResource( 21 )
+custom_styles/focus = SubResource( 21 )
+custom_styles/disabled = SubResource( 21 )
+custom_styles/normal = SubResource( 21 )
+custom_fonts/font = SubResource( 22 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -6852,7 +6851,7 @@ rect_clip_content = false
 mouse_filter = 2
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 18 )
+custom_fonts/font = SubResource( 23 )
 align = 1
 valign = 1
 autowrap = true
@@ -6936,7 +6935,7 @@ skippable = false
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 root_node = NodePath("..")
-anims/SpaceInvadersProgress = SubResource( 19 )
+anims/SpaceInvadersProgress = SubResource( 24 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
@@ -6988,7 +6987,7 @@ bus = "Master"
 [node name="Switch" type="AudioStreamPlayer" parent="Sounds"]
 
 stream = ExtResource( 21 )
-volume_db = -3.0
+volume_db = -7.0
 autoplay = false
 mix_target = 0
 bus = "Master"
