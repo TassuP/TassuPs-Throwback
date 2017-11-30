@@ -1,11 +1,10 @@
 extends Particles2D
 
+export(NodePath) var sfx
 var beam_length = 0.1
 
 func _ready():
-	# Called every time the node is added to the scene.
-	# Initialization here
-	pass
+	sfx = get_node(sfx)
 
 func _process(delta):
 	
@@ -16,6 +15,7 @@ func _process(delta):
 		if(beam_length >= 0.0):
 			if(is_emitting() == false):
 				look_at(get_global_mouse_position())
+				sfx.play()
 			beam_length -= delta
 			set_emitting(true)
 		else:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://scripts/Hotspot.gd" type="Script" id=1]
 [ext_resource path="res://scripts/TriggerAnimation.gd" type="Script" id=2]
@@ -16,8 +16,12 @@
 [ext_resource path="res://sounds/dungeon.ogg" type="AudioStream" id=14]
 [ext_resource path="res://sounds/walking.ogg" type="AudioStream" id=15]
 [ext_resource path="res://sounds/flush.ogg" type="AudioStream" id=16]
-[ext_resource path="res://sounds/pipe.ogg" type="AudioStream" id=17]
-[ext_resource path="res://sounds/switch.ogg" type="AudioStream" id=18]
+[ext_resource path="res://sounds/splash.ogg" type="AudioStream" id=17]
+[ext_resource path="res://sounds/pipe.ogg" type="AudioStream" id=18]
+[ext_resource path="res://sounds/switch.ogg" type="AudioStream" id=19]
+[ext_resource path="res://sounds/valve.ogg" type="AudioStream" id=20]
+[ext_resource path="res://sounds/inventory.ogg" type="AudioStream" id=21]
+[ext_resource path="res://sounds/attention.ogg" type="AudioStream" id=22]
 
 [sub_resource type="Animation" id=1]
 
@@ -112,6 +116,17 @@ tracks/7/keys = {
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ false, true, false ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("../Water hotspot newt:enabled")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
 }
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -1825,7 +1840,6 @@ _sections_unfolded = [ "Font", "Settings" ]
 
 [node name="Nethack room" type="StaticBody2D" parent="Node2D"]
 
-editor/display_folded = true
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
@@ -2166,6 +2180,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Floor" type="Polygon2D" parent="Node2D/Nethack room/Turtle room"]
 
+editor/display_folded = true
 polygon = PoolVector2Array( 270.277, -26.6347, 39.514, -29.3701, 35.2271, -23.94, 36.9278, 153.081, 44.6471, 160.45, 270.881, 159.209, 274.998, 155.726, 280.279, -17.4893 )
 uv = PoolVector2Array(  )
 color = Color( 0, 0, 0, 1 )
@@ -3258,7 +3273,7 @@ audio_bus_name = "Master"
 script = ExtResource( 1 )
 _sections_unfolded = [ "Pickable", "Textures", "Transform" ]
 foot_str = null
-eye_str = null
+eye_str = PoolStringArray(  )
 hand_str = null
 correct_item = ""
 wrong_str = null
@@ -3283,7 +3298,6 @@ bounce = 0.0
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Node2D/Nethack room/Water after mutagen wears off/Ravine collider"]
 
-visible = false
 position = Vector2( 0, -46.6666 )
 build_mode = 0
 polygon = PoolVector2Array( -20.2583, -26.5688, -50.4048, 16.6601, 11.76, 15.954, 21.8192, -26.604 )
@@ -3379,7 +3393,6 @@ _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="Water" type="Polygon2D" parent="Node2D/Nethack room"]
 
-editor/display_folded = true
 position = Vector2( 1299.17, 977.084 )
 scale = Vector2( 3, 3 )
 polygon = PoolVector2Array( -17.8085, -23.3667, -21.1389, -21.0557, -22.0226, -19.6284, -19.9835, -18.133, -19.9835, -14.8705, -23.7218, -7.12207, -27.4601, -5.21896, -31.0624, -8.1416, -34.8007, -4.47128, -34.3929, -2.36426, -33.5773, 2.46155, -33.6225, 5.57578, -39.1467, 9.04633, -44.6543, 10.3815, -50.4236, 20.7398, -49.4225, 52.735, 11.1519, 53.0772, 9.62936, 18.0622, 6.13284, 16.0993, 6.19421, 13.2162, 6.37827, 8.30887, 12.1777, 5.78079, 15.4402, 1.70264, 17.0034, -4.21066, 14.6245, -7.94894, 14.8285, -10.056, 15.994, -15.2666, 20.5946, -21.1554, 20.9627, -22.3822 )
@@ -3688,8 +3701,6 @@ invert_enable = false
 invert_border = 100.0
 
 [node name="Puzzles" type="Node2D" parent="Node2D"]
-
-editor/display_folded = true
 
 [node name="Staircase up" type="Area2D" parent="Node2D/Puzzles" groups=[
 "Hotspots",
@@ -4121,7 +4132,7 @@ auto_start = false
 action = 8
 monolog = null
 next_event = NodePath("../../../Water tank powered")
-sound_fx = NodePath("../../../../../Sounds/Switch")
+sound_fx = NodePath("../../../../../Sounds/Splash")
 sound_fx_after = null
 speed = 1.0
 
@@ -5316,7 +5327,7 @@ action = 0
 monolog = null
 next_event = NodePath("../../Valve is open")
 sound_fx = null
-sound_fx_after = NodePath("../../../../Sounds/Switch")
+sound_fx_after = NodePath("../../../../Sounds/Valve")
 speed = 1.0
 
 [node name="Valve is open" type="Area2D" parent="Node2D/Puzzles" groups=[
@@ -5369,7 +5380,7 @@ __meta__ = {
 "_edit_group_": true
 }
 foot_str = null
-eye_str = PoolStringArray( "Eww!#A dead newt." )
+eye_str = PoolStringArray( "Eww!#A dead newt.", "Newts are actually semi-aquatic salamanders.#Theyre good swimmers." )
 hand_str = PoolStringArray( "I don\'t want it." )
 correct_item = "Mutagen"
 wrong_str = null
@@ -5455,6 +5466,7 @@ speed = 1.0
 "Hotspots",
 ]]
 
+editor/display_folded = true
 position = Vector2( 1030.88, 682.052 )
 rotation = 0.814763
 scale = Vector2( 0.930939, 0.911645 )
@@ -5492,7 +5504,7 @@ action = 7
 monolog = null
 next_event = NodePath("../../Valve")
 sound_fx = null
-sound_fx_after = NodePath("../../../../Sounds/Switch")
+sound_fx_after = NodePath("../../../../Sounds/Inventory")
 speed = 1.0
 
 [node name="Polygon2D" type="Polygon2D" parent="Node2D/Puzzles/Jojo"]
@@ -6019,13 +6031,14 @@ action = 7
 monolog = null
 next_event = null
 sound_fx = null
-sound_fx_after = NodePath("../../../../Sounds/Switch")
+sound_fx_after = NodePath("../../../../Sounds/Inventory")
 speed = 1.0
 
 [node name="Turtles" type="Area2D" parent="Node2D/Puzzles" groups=[
 "Hotspots",
 ]]
 
+editor/display_folded = true
 position = Vector2( 319.524, 1555.54 )
 scale = Vector2( 0.930939, 0.911645 )
 input_pickable = true
@@ -6062,7 +6075,7 @@ action = 7
 monolog = null
 next_event = null
 sound_fx = null
-sound_fx_after = NodePath("../../../../Sounds/Switch")
+sound_fx_after = NodePath("../../../../Sounds/Inventory")
 speed = 1.0
 
 [node name="Michelangelo" type="Node2D" parent="Node2D/Puzzles/Turtles"]
@@ -7179,6 +7192,8 @@ invert_enable = false
 invert_border = 100.0
 
 [node name="Puzzles in Mario room" type="Node2D" parent="Node2D"]
+
+editor/display_folded = true
 
 [node name="Pipe" type="Area2D" parent="Node2D/Puzzles in Mario room" groups=[
 "Hotspots",
@@ -9019,7 +9034,7 @@ audio_bus_name = "Master"
 script = ExtResource( 1 )
 _sections_unfolded = [ "Pickable", "Textures" ]
 foot_str = PoolStringArray( "Ouch!", "I just kicked my self.#Happy now\?", "Stop that!" )
-eye_str = PoolStringArray( "Looks like I\'ve tranformed to a child!", "It\'s me, TassuP.#I have the characteristics of a former time.#What a Throwback!", "Cool shirt, huh\?", "I got these pants as a Christmas present from my mom." )
+eye_str = PoolStringArray( "Looks like I\'ve tranformed to a 2D-sprite!", "It\'s me, TassuP.#I have the characteristics of a former time.#What a Throwback!", "Cool shirt, huh\?" )
 hand_str = PoolStringArray( "How do you do.", "Can you gimme a hand\?#Hehe...", "Pull my finger!", "Pick you own nose." )
 correct_item = ""
 wrong_str = null
@@ -9065,6 +9080,8 @@ _sections_unfolded = [ "Visibility", "Z" ]
 __meta__ = {
 "_edit_group_": true
 }
+switch_snd = NodePath("../../Sounds/Switch")
+attention_snd = NodePath("../../Sounds/Attention")
 
 [node name="Eye" type="Polygon2D" parent="Node2D/Cursor"]
 
@@ -11152,7 +11169,7 @@ bus = "Master"
 [node name="Camera2D" type="Camera2D" parent="Node2D"]
 
 editor/display_folded = true
-position = Vector2( 1209.01, 817.496 )
+position = Vector2( 516.842, -397.403 )
 anchor_mode = 1
 rotating = false
 current = true
@@ -11486,8 +11503,6 @@ speed = 1.0
 
 [node name="Sounds" type="Node2D" parent="."]
 
-editor/display_folded = true
-
 [node name="Walking" type="AudioStreamPlayer" parent="Sounds"]
 
 stream = ExtResource( 15 )
@@ -11504,7 +11519,7 @@ autoplay = false
 mix_target = 0
 bus = "Master"
 
-[node name="Pipe" type="AudioStreamPlayer" parent="Sounds"]
+[node name="Splash" type="AudioStreamPlayer" parent="Sounds"]
 
 stream = ExtResource( 17 )
 volume_db = 0.0
@@ -11512,10 +11527,42 @@ autoplay = false
 mix_target = 0
 bus = "Master"
 
-[node name="Switch" type="AudioStreamPlayer" parent="Sounds"]
+[node name="Pipe" type="AudioStreamPlayer" parent="Sounds"]
 
 stream = ExtResource( 18 )
 volume_db = 0.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="Switch" type="AudioStreamPlayer" parent="Sounds"]
+
+stream = ExtResource( 19 )
+volume_db = -3.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="Valve" type="AudioStreamPlayer" parent="Sounds"]
+
+stream = ExtResource( 20 )
+volume_db = 0.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="Inventory" type="AudioStreamPlayer" parent="Sounds"]
+
+stream = ExtResource( 21 )
+volume_db = 0.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="Attention" type="AudioStreamPlayer" parent="Sounds"]
+
+stream = ExtResource( 22 )
+volume_db = -8.0
 autoplay = false
 mix_target = 0
 bus = "Master"

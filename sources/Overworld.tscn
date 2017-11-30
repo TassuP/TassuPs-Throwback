@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=2]
+[gd_scene load_steps=51 format=2]
 
 [ext_resource path="res://scripts/Spawn.gd" type="Script" id=1]
 [ext_resource path="res://images/fire.png" type="Texture" id=2]
@@ -15,12 +15,17 @@
 [ext_resource path="res://Technically, But Not Actually.ttf" type="DynamicFontData" id=13]
 [ext_resource path="res://scripts/Talk label.gd" type="Script" id=14]
 [ext_resource path="res://scripts/Monolog.gd" type="Script" id=15]
-[ext_resource path="res://sounds/dungeon.ogg" type="AudioStream" id=16]
+[ext_resource path="res://sounds/war_drums.ogg" type="AudioStream" id=16]
 [ext_resource path="res://sounds/intro_1.ogg" type="AudioStream" id=17]
 [ext_resource path="res://sounds/walking.ogg" type="AudioStream" id=18]
 [ext_resource path="res://sounds/flush.ogg" type="AudioStream" id=19]
 [ext_resource path="res://sounds/pipe.ogg" type="AudioStream" id=20]
 [ext_resource path="res://sounds/switch.ogg" type="AudioStream" id=21]
+[ext_resource path="res://sounds/zapper.ogg" type="AudioStream" id=22]
+[ext_resource path="res://sounds/jump.ogg" type="AudioStream" id=23]
+[ext_resource path="res://sounds/explosion.ogg" type="AudioStream" id=24]
+[ext_resource path="res://sounds/inventory.ogg" type="AudioStream" id=25]
+[ext_resource path="res://sounds/attention.ogg" type="AudioStream" id=26]
 
 [sub_resource type="Gradient" id=1]
 
@@ -1501,7 +1506,7 @@ _sections_unfolded = [ "Color", "Gravity", "Initial Velocity", "Scale" ]
 resource_name = "Player jumps"
 length = 1.0
 loop = false
-step = 0.1
+step = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath("../Player:position")
 tracks/0/interp = 1
@@ -1926,10 +1931,10 @@ tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/imported = false
 tracks/15/keys = {
-"times": PoolRealArray( 0, 10.3, 111.1, 114.1 ),
+"times": PoolRealArray( 0, 18, 114.9, 117.9 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ -40.0, -40.0, 0.0, -40.0 ]
+"values": [ -60.0, -60.0, 0.0, -40.0 ]
 }
 tracks/16/type = "value"
 tracks/16/path = NodePath("Music2:volume_db")
@@ -1937,10 +1942,21 @@ tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/imported = false
 tracks/16/keys = {
-"times": PoolRealArray( 0, 41.9, 111.1, 114.1 ),
+"times": PoolRealArray( 0, 6.1, 106.3, 117.9 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ -40.0, -40.0, 0.0, -40.0 ]
+"values": [ -60.0, -60.0, 0.0, -40.0 ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("Sounds/Explosion:playing")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/keys = {
+"times": PoolRealArray( 0, 83.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
 }
 
 [node name="Main" type="Node"]
@@ -2666,7 +2682,8 @@ polygon = PoolVector2Array( 98.6571, 295.42, 323.053, 296.967, 336.981, 330.24, 
 
 [node name="Player" type="KinematicBody2D" parent="Node2D"]
 
-position = Vector2( 216.784, 263.902 )
+editor/display_folded = true
+position = Vector2( 216.145, 262.451 )
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
@@ -4046,6 +4063,7 @@ h_frames = 1
 v_frames = 1
 script = ExtResource( 6 )
 _sections_unfolded = [ "Drawing", "Material", "Process Material", "Textures", "Time", "Visibility" ]
+sfx = NodePath("../../../Sounds/Zap")
 
 [node name="Scenery FG" type="Node2D" parent="Node2D"]
 
@@ -4168,7 +4186,6 @@ _sections_unfolded = [ "Transform" ]
 "Hotspots",
 ]]
 
-editor/display_folded = true
 position = Vector2( 745.101, 312.693 )
 script = ExtResource( 4 )
 _sections_unfolded = [ "Transform" ]
@@ -4191,7 +4208,6 @@ click_distance = 32.0
 "Hotspots",
 ]]
 
-editor/display_folded = true
 position = Vector2( -0.761658, -5.01721 )
 scale = Vector2( 0.4, 0.4 )
 polygon = PoolVector2Array( -41.2685, -11.8534, 11.5969, -14.3122, 14.363, -18.3079, 33.4192, -18.9226, 37.1075, -25.0697, 41.4105, -18.9226, 45.0987, -16.7711, 47.2502, -1.40326, 41.7178, 2.59238, 38.6442, 9.04688, 40.7957, 15.8087, 49.709, 26.5662, 55.5488, 36.4016, 38.9516, 38.5531, 25.4279, 35.7869, 27.8868, 28.7177, 14.363, -0.173828, -37.5802, -0.788544, -39.117, -4.47684, -53.5358, -4.39429, -49.2538, -12.1428, -47.2147, -12.1428, -45.5835, -17.0365 )
@@ -4263,7 +4279,7 @@ action = 7
 monolog = null
 next_event = null
 sound_fx = null
-sound_fx_after = null
+sound_fx_after = NodePath("../../../../Sounds/Inventory")
 speed = 1.0
 
 [node name="Walk here" type="Node2D" parent="Node2D/Block"]
@@ -4275,7 +4291,7 @@ action = 0
 monolog = PoolStringArray( "Hmm" )
 next_event = null
 sound_fx = null
-sound_fx_after = null
+sound_fx_after = NodePath("../../../Sounds/Jump")
 speed = 1.0
 
 [node name="Polygon2D" type="Polygon2D" parent="Node2D/Block"]
@@ -4460,6 +4476,8 @@ _sections_unfolded = [ "Visibility", "Z" ]
 __meta__ = {
 "_edit_group_": true
 }
+switch_snd = NodePath("../../Sounds/Switch")
+attention_snd = NodePath("../../Sounds/Attention")
 
 [node name="Eye" type="Polygon2D" parent="Node2D/Cursor"]
 
@@ -6928,7 +6946,7 @@ _sections_unfolded = [ "Playback Options" ]
 [node name="Music" type="AudioStreamPlayer" parent="."]
 
 stream = ExtResource( 16 )
-volume_db = -40.0
+volume_db = -60.0
 autoplay = true
 mix_target = 0
 bus = "Master"
@@ -6936,7 +6954,7 @@ bus = "Master"
 [node name="Music2" type="AudioStreamPlayer" parent="."]
 
 stream = ExtResource( 17 )
-volume_db = -40.0
+volume_db = -60.0
 autoplay = true
 mix_target = 0
 bus = "Master"
@@ -6970,7 +6988,47 @@ bus = "Master"
 [node name="Switch" type="AudioStreamPlayer" parent="Sounds"]
 
 stream = ExtResource( 21 )
-volume_db = 0.0
+volume_db = -3.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="Zap" type="AudioStreamPlayer" parent="Sounds"]
+
+stream = ExtResource( 22 )
+volume_db = -18.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="Jump" type="AudioStreamPlayer" parent="Sounds"]
+
+stream = ExtResource( 23 )
+volume_db = -5.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="Explosion" type="AudioStreamPlayer" parent="Sounds"]
+
+stream = ExtResource( 24 )
+volume_db = -5.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="Inventory" type="AudioStreamPlayer" parent="Sounds"]
+
+stream = ExtResource( 25 )
+volume_db = -5.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="Attention" type="AudioStreamPlayer" parent="Sounds"]
+
+stream = ExtResource( 26 )
+volume_db = -8.0
 autoplay = false
 mix_target = 0
 bus = "Master"

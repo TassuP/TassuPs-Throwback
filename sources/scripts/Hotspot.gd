@@ -46,10 +46,12 @@ func _process(delta):
 			queue_free()
 			return
 	if(enable_if_newt):
-		if(Game.player.newt_mode):
-			enabled = true
-		else:
-			enabled = false
+		if(Game.player.newt_mode == false):
+			return
+#		if(Game.player.newt_mode):
+#			enabled = true
+#		else:
+#			enabled = false
 		
 	if(enabled == false):
 		return

@@ -1,5 +1,7 @@
 extends Node2D
 
+export(NodePath) var switch_snd
+export(NodePath) var attention_snd
 var tool_mode = 1
 # 0 = foot
 # 1 = eye
@@ -19,6 +21,7 @@ var is_over_hotspot = false
 
 var pos
 var wait_for_release = false
+var attention = false
 
 func _ready():
 	foot = get_node("Foot")
@@ -26,6 +29,9 @@ func _ready():
 	eye_cant = eye.get_node("Can't")
 	hand = get_node("Hand")
 	hand_cant = hand.get_node("Can't")
+	
+	switch_snd = get_node(switch_snd)
+	attention_snd = get_node(attention_snd)
 	
 	items = get_node("Items").get_children()
 	
@@ -42,6 +48,9 @@ func _process(delta):
 	# Choose tool mode
 	if(Input.is_mouse_button_pressed(BUTTON_RIGHT)):
 		if(wait_for_release == false):
+			
+			switch_snd.play()
+			
 			wait_for_release = true
 			tool_mode += 1
 			
@@ -98,6 +107,14 @@ func choose_cursor():
 	while(i < items.size()):
 		items[i].set_visible(false)
 		i += 1
+		
+	# Attention sound when hovering over a hotspot
+	if(is_over_hotspot):
+		if(attention == false):
+			attention_snd.play()
+			attention = true
+	else:
+		attention = false
 	
 	# Choose an item
 	if(tool_mode >= 3):
