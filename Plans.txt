@@ -10,26 +10,26 @@ Dialog system:
 
 Throwback ideas:
 	- a reversion to an earlier ancestral characteristic
-		= powerup that transforms player into a caveman or amoeba
+		- powerup that transforms player into a caveman or amoeba? Nah...
 
 	- a person or thing having the characteristics of a former time
-		+ me as a child
+		- player is transformed into a 2D-sprite
 
 	- a nostalgia for something in the past (fashion, movies, literature, games, technology)
 		- elements from nostalgic games
 			- Nintendo zapper
 			- Roguelike dungeon
-			- Point 'n' click?
+			- Point 'n' click
 			- DeLorean that throws TassuP Back To The Future
 			- Princess is in another castle
 			- Zelda-like treasure boxes
 			- Pacman ghosts
 			- Super Mario pipe
+			- Jojo the monkey wrench
 
 	- something retro—a blast from the past
 		- 8bit music?
 		+ pixelized graphics (optional)
-		- pixelized effects?
 
 	- something passé—no longer fashionable or popular
 
@@ -92,7 +92,7 @@ TassuP: "Oh no! I've been thrown back in time to an era when everything was stil
 	The Space Invaders just keep coming and will eventually destroy everything.
 
 
-### Enging scene ###
+### Ending scene ###
 The Space Invaders destroy planet Earth and TassuP wakes up screaming. Then he realizes it was all a dream. Now he has a cool idea for the GitHub Game Off.
 
 
@@ -106,3 +106,6 @@ The Space Invaders destroy planet Earth and TassuP wakes up screaming. Then he r
 "Thanks for playing! You really helped me out."
 
 Then it's Game Over and Credits.
+
+Something like that.
+
