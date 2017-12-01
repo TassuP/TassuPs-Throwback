@@ -13,12 +13,10 @@ Ahem... Excuse me.
 
 All the puzzles and jokes are references to classic games. There's a Nethack dungeon with a dead newt, a NES Zapper, mutant ninja turtles and just about every cool thing ever invented in any game (minus a few I saved for the sequel).
 
-Builds for Linux a Windows can be found here:
+Builds for Linux and Windows can be found here:
 https://tassup.itch.io/tassups-throwback
 
 So have fun and check out my other games too at:
 https://tassup.itch.io
 
-The sources for this game can be found here:
-https://github.com/TassuP/TassuPs-Throwback
 
